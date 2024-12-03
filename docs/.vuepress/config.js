@@ -19,24 +19,6 @@ module.exports = {
 				recoverTime: 2000,
 			},
 		],
-		// 看板娘
-		[
-			"@vuepress-reco/vuepress-plugin-kan-ban-niang",
-			{
-				theme: ["blackCat"],
-				clean: true,
-				height: 260,
-				modelStyle: {
-					width: '100px',
-					position: "fixed",
-					right: "0px",
-					bottom: "0px",
-					opacity: "0.9",
-					zIndex: 99999,
-					objectFit: 'cover',
-				}
-			}
-		],
 		['vuepress-plugin-code-copy', true]
 	],
 	locales: {
