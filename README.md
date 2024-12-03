@@ -1,8 +1,6 @@
 # JavaPlusDoc
 
-<img align='center' src='https://user-images.githubusercontent.com/59645426/176986083-1aac28f7-dd59-43c9-bd86-097d1ad02b85.jpg' width='350'>
-
-> 点击勘误[issues](https://github.com/webVueBlog/awesome-css/issues)，感谢大家的阅读
+> 点击勘误[issues](https://github.com/webVueBlog/JavaPlusDoc/issues)，感谢大家的阅读
 
 ```js
 yarn install // 安装依赖
@@ -16,8 +14,6 @@ yarn serve // 预览
 ## 留言评论
 
 因为目前没有留言功能，请拉到文章底部，跳转到对应的 Github Issues，在 Issues 留言回复。
-
-<img src="./assets/20211213143926.png" style="display: flex; margin: auto; width: 100%;"/>
 
 ## 感谢指正
 
