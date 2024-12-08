@@ -4,7 +4,10 @@ module.exports = {
 	base: '/JavaPlusDoc/',
 	theme: 'reco',
 	head: [
-		['meta', { name: 'viewport', content: 'width=device-width,initial-scale=1,user-scalable=no' }]
+		['meta', {
+			name: 'viewport',
+			content: 'width=device-width,initial-scale=1,user-scalable=no'
+		}]
 	],
 	plugins: [
 		'@vuepress/medium-zoom',
@@ -19,6 +22,24 @@ module.exports = {
 				recoverTime: 2000,
 			},
 		],
+		// 看板娘
+		[
+			"@vuepress-reco/vuepress-plugin-kan-ban-niang",
+			{
+				theme: ["blackCat"],
+				clean: true,
+				height: 260,
+				modelStyle: {
+					width: '100px',
+					position: "fixed",
+					right: "0px",
+					bottom: "0px",
+					opacity: "0.9",
+					zIndex: 99999,
+					objectFit: 'cover',
+				}
+			}
+		],
 		['vuepress-plugin-code-copy', true]
 	],
 	locales: {
@@ -30,45 +51,80 @@ module.exports = {
 		lastUpdated: '上次更新',
 		subSidebar: 'auto',
 		nav: [{
-			text: '首页',
-			link: '/'
-		},
-		{
-			text: '星星',
-			link: 'https://github.com/webVueBlog/JavaPlusDoc'
-		},
-		{
-			text: '作者',
-			items: [{
-				text: 'Github',
-				link: 'https://github.com/webVueBlog'
-			}
-			]
-		}
-		],
-		sidebar: [{
-			title: '架构师',
-			path: '/',
-			collapsable: false, // 不折叠
-			children: [{
-				title: "学前必读",
-				path: "/"
-			}]
-		},
-		{
-			title: "服务器安装",
-			path: '/handbook/entry',
-			// collapsable: false, // 不折叠
-			children: [{
-				title: "入口entry",
-				path: "/handbook/entry"
+				text: '首页',
+				link: '/'
 			},
 			{
-				title: "target",
-				path: "/handbook/target"
+				text: '网站',
+				link: 'https://webvueblog.github.io/JavaPlusDoc/'
 			},
-			],
-		},
+			{
+				text: '星星',
+				link: 'https://github.com/webVueBlog/JavaPlusDoc'
+			},
+			{
+				text: '作者',
+				items: [{
+					text: 'Github',
+					link: 'https://github.com/webVueBlog'
+				}]
+			}
+		],
+		sidebar: [{
+				title: '架构师',
+				path: '/',
+				collapsable: false, // 不折叠
+				children: [{
+					title: "学前必读",
+					path: "/"
+				}]
+			},
+			{
+				title: "Java基础",
+				path: '/basic-grammar/basic-data-type',
+				// collapsable: false, // 不折叠
+				children: [{
+						title: "Java基本数据类型",
+						path: "/basic-grammar/basic-data-type"
+					},
+					{
+						title: "基本数据类型的转换",
+						path: "/basic-grammar/type-cast"
+					},
+					{
+						title: "基本数据类型缓存池剖析",
+						path: "/basic-grammar/int-cache"
+					},
+					{
+						title: "掌握运算符",
+						path: "/basic-grammar/operator"
+					},
+					{
+						title: "流程控制语句",
+						path: "/basic-grammar/flow-control"
+					},
+					{
+						title: "深入解读String类",
+						path: "/basic-grammar/string-source"
+					},
+					{
+						title: "字符串常量池",
+						path: "/basic-grammar/constant-pool"
+					},
+					{
+						title: "StringBuilder和StringBuffer",
+						path: "/basic-grammar/builder-buffer"
+					},
+					{
+						title: "如何比较两个字符串相等",
+						path: "/basic-grammar/equals"
+					},
+					{
+						title: "万物皆对象",
+						path: "/basic-grammar/object-class"
+					},
+				],
+			},
 		]
 	}
 }
