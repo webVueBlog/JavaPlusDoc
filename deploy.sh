@@ -2,6 +2,10 @@
 # 确保脚本抛出遇到的错误
 set -e
 
+# 配置 Git 用户信息
+git config --global user.name "webVueBlog"
+git config --global user.email "2979986590@qq.com"
+
 # 打包生成静态文件
 yarn docs:build
 printf "打包成功\n"

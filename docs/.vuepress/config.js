@@ -80,9 +80,54 @@ module.exports = {
 				}]
 			},
 			{
+				title: 'Redis',
+				path: '/redis/rumen',
+				collapsable: false, // 不折叠
+				children: [{
+					title: "入门教程",
+					path: "/redis/rumen"
+				},{
+					title: "缓存雪崩、穿透、击穿",
+					path: "/redis/xuebeng-chuantou-jichuan"
+				}]
+			},
+			{
+				title: '操作系统',
+				path: '/cs/os',
+				collapsable: false, // 不折叠
+				children: [{
+					title: "计算机操作系统",
+					path: "/cs/os"
+				},{
+					title: "计算机网络",
+					path: "/cs/wangluo"
+				}]
+			},
+			{
+				title: 'Java进阶',
+				path: '/java-up/nginx',
+				collapsable: false, // 不折叠
+				children: [{
+					title: "浅出搞懂Nginx",
+					path: "/java-up/nginx"
+				},{
+					title: "Nginx服务器SSL证书安装部署",
+					path: "/java-up/ssl"
+				},{
+					title: "SpringAOP扫盲",
+					path: "/java-up/aop-log"
+				},{
+					title: "SpringIoC扫盲",
+					path: "/java-up/ioc"
+				},{
+					title: "超详细Netty入门",
+					path: "/java-up/netty"
+				}]
+			},
+			{
 				title: "Java基础",
 				path: '/basic-grammar/basic-data-type',
-				// collapsable: false, // 不折叠
+				collapsable: false, // 不折叠
 				children: [{
 						title: "Java基本数据类型",
 						path: "/basic-grammar/basic-data-type"
@@ -122,6 +167,42 @@ module.exports = {
 					{
 						title: "万物皆对象",
 						path: "/basic-grammar/object-class"
+					},
+					{
+						title: "Java中的包",
+						path: "/basic-grammar/package"
+					},
+					{
+						title: "Java变量",
+						path: "/basic-grammar/var"
+					},
+					{
+						title: "Java方法",
+						path: "/basic-grammar/method"
+					},
+					{
+						title: "构造方法",
+						path: "/basic-grammar/construct"
+					},
+					{
+						title: "抽象类",
+						path: "/basic-grammar/abstract"
+					},
+					{
+						title: "接口和内部类",
+						path: "/basic-grammar/interface"
+					},
+					{
+						title: "封装继承多态",
+						path: "/basic-grammar/encapsulation-inheritance-polymorphism"
+					},
+					{
+						title: "this与super关键字",
+						path: "/basic-grammar/this-super"
+					},
+					{
+						title: "不可变对象",
+						path: "/basic-grammar/immutable"
 					},
 				],
 			},
