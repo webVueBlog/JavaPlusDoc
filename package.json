@@ -6,7 +6,9 @@
 	"license": "MIT",
 	"devDependencies": {
 		"vuepress": "^1.9.5",
-		"vuepress-plugin-dynamic-title": "^1.0.0"
+		"vuepress-plugin-dynamic-title": "^1.0.0",
+		"vuepress-plugin-seo": "^0.2.0",
+		"vuepress-plugin-google-analytics": "^2.0.0"
 	},
 	"scripts": {
 		"docs:dev": "vuepress dev docs",
@@ -19,6 +21,10 @@
 		"@vuepress-reco/vuepress-plugin-loading-page": "^1.4.0",
 		"@vuepress/plugin-medium-zoom": "^1.9.5",
 		"vuepress-plugin-code-copy": "^1.0.6",
-		"vuepress-theme-reco": "^1.6.10"
+		"vuepress-theme-reco": "^1.6.10",
+		"vuepress-plugin-nprogress": "^0.1.0",
+		"vuepress-plugin-smooth-scroll": "^0.1.0",
+		"vuepress-plugin-reading-time": "^1.0.1",
+		"vuepress-plugin-back-to-top": "^1.9.5"
 	}
 }

@@ -11,6 +11,48 @@ module.exports = {
 	],
 	plugins: [
 		'@vuepress/medium-zoom',
+		// 平滑滚动
+		["vuepress-plugin-smooth-scroll"],
+		// 页面加载进度条
+		["vuepress-plugin-nprogress"],
+		// 动态标题
+		[
+			"vuepress-plugin-dynamic-title",
+			{
+				showIcon: "/favicon.ico",
+				showText: "😃 欢迎回来！",
+				hideIcon: "/favicon.ico",
+				hideText: "👋 再见了！",
+				recoverTime: 2000
+			}
+		],
+		// SEO
+		[
+			"vuepress-plugin-seo",
+			{
+				siteTitle: (_, $site) => $site.title,
+				description: (_, $site) => $site.description,
+				author: (_, $site) => $site.themeConfig.author || $site.title,
+				tags: (_, $page) => $page.frontmatter.tags,
+				twitterCard: _ => "summary_large_image",
+				type: $page => ($page.regularPath === "/" ? "website" : "article")
+			}
+		],
+		// 阅读时间
+		[
+			"vuepress-plugin-reading-time",
+			{
+				excludes: ["/exclude-page.html"],
+				wordPerMinute: 300
+			}
+		],
+		// Google Analytics
+		[
+			"vuepress-plugin-google-analytics",
+			{
+				ga: "UA-XXXXXXXXX-X"
+			}
+		],
 		'@vuepress-reco/vuepress-plugin-loading-page',
 		[
 			'dynamic-title',
@@ -40,6 +82,10 @@ module.exports = {
 				}
 			}
 		],
+		// Medium Zoom 图片缩放
+		["@vuepress/plugin-medium-zoom"],
+		// 返回顶部
+		["vuepress-plugin-back-to-top"],
 		['vuepress-plugin-code-copy', true]
 	],
 	locales: {
@@ -80,13 +126,31 @@ module.exports = {
 				}]
 			},
 			{
+				title: '消息队列',
+				path: '/messagequeue/why-mq',
+				collapsable: false, // 不折叠
+				children: [{
+					title: "为什么使用消息队列",
+					path: "/messagequeue/why-mq"
+				}, {
+					title: "如何保证消息队列的高可用",
+					path: "/messagequeue/how-to-ensure-high-availability-of-message-queues"
+				}, {
+					title: "如何保证消息不被重复消费",
+					path: "/messagequeue/how-to-ensure-that-messages-are-not-repeatedly-consumed"
+				}, {
+					title: "如何保证消息的可靠性传输",
+					path: "/messagequeue/how-to-ensure-the-reliable-transmission-of-messages"
+				}]
+			},
+			{
 				title: 'Redis',
 				path: '/redis/rumen',
 				collapsable: false, // 不折叠
 				children: [{
 					title: "入门教程",
 					path: "/redis/rumen"
-				},{
+				}, {
 					title: "缓存雪崩、穿透、击穿",
 					path: "/redis/xuebeng-chuantou-jichuan"
 				}]
@@ -98,7 +162,7 @@ module.exports = {
 				children: [{
 					title: "计算机操作系统",
 					path: "/cs/os"
-				},{
+				}, {
 					title: "计算机网络",
 					path: "/cs/wangluo"
 				}]
@@ -110,16 +174,16 @@ module.exports = {
 				children: [{
 					title: "浅出搞懂Nginx",
 					path: "/java-up/nginx"
-				},{
+				}, {
 					title: "Nginx服务器SSL证书安装部署",
 					path: "/java-up/ssl"
-				},{
+				}, {
 					title: "SpringAOP扫盲",
 					path: "/java-up/aop-log"
-				},{
+				}, {
 					title: "SpringIoC扫盲",
 					path: "/java-up/ioc"
-				},{
+				}, {
 					title: "超详细Netty入门",
 					path: "/java-up/netty"
 				}]
