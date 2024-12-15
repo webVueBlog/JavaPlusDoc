@@ -2,7 +2,7 @@
 
 网站：https://webvueblog.github.io/JavaPlusDoc/
 
-![img.png](img.png)
+<img width="100%" src="https://raw.githubusercontent.com/webVueBlog/JavaPlusDoc/master/docs/img.png" />
 
 ## 学前必读
 
