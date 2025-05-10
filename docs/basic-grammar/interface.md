@@ -6,6 +6,8 @@ date: '2020-01-01'
 
 > 点击勘误[issues](https://github.com/webVueBlog/JavaPlusDoc/issues)，哪吒感谢大家的阅读
 
+<img align="right" width="100" src="https://cdn.jsdelivr.net/gh/YunYouJun/yun/images/yun-alpha-compressed.png">
+
 ## 接口和内部类
 
 接口通过 interface 关键字来定义

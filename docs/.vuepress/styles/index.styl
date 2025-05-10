@@ -7,3 +7,34 @@
 .page .page-title {
    display: none;
 }
+
+.content__default {
+   max-width: 85% !important;
+}
+
+.theme-container {
+    .sidebar {
+        width: 300px !important;
+    }
+}
+
+.sidebar-links {
+    max-height: 100%;
+    overflow-y: auto;
+    scrollbar-width: 20px;
+    .depth-0 {
+        font-size: 18px;
+    }
+}
+
+.sidebar-links > li > a:hover {
+    background-color: #f5f5f5;
+}
+
+div > pre {
+    position: static !important; /* 保持原有代码 */
+    white-space: pre-wrap; /* 自动换行 */
+    word-wrap: break-word; /* 允许单词中间断行换行（更适合大段文字或代码） */
+    overflow-wrap: break-word; /* 新版标准，兼容更多浏览器 */
+}
+

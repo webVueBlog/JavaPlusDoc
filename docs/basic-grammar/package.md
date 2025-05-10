@@ -6,6 +6,8 @@ date: '2020-01-01'
 
 > 点击勘误[issues](https://github.com/webVueBlog/JavaPlusDoc/issues)，哪吒感谢大家的阅读
 
+<img align="right" width="100" src="https://cdn.jsdelivr.net/gh/YunYouJun/yun/images/yun-alpha-compressed.png">
+
 ## Java中的包
 
 在 Java 虚拟机执行的时候，JVM 只看完整类名，因此，只要包名不同，类就不同。

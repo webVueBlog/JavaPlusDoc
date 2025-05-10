@@ -6,6 +6,8 @@ date: '2020-01-01'
 
 > 点击勘误[issues](https://github.com/webVueBlog/JavaPlusDoc/issues)，哪吒感谢大家的阅读
 
+<img align="right" width="100" src="https://cdn.jsdelivr.net/gh/YunYouJun/yun/images/yun-alpha-compressed.png">
+
 ## 深入解读String类
 
 什么字符串常量池了、字符串不可变性了、字符串拼接了、字符串长度限制了等等

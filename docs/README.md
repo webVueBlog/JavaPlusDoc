@@ -8,6 +8,8 @@
 <img align='right' src="https://count.getloli.com/get/@webVueBlog?theme=moebooru">
 
 
+会产品，会开发，会测试，会运维，会架构
+
 网站：[https://webvueblog.github.io/JavaPlusDoc/](https://webvueblog.github.io/JavaPlusDoc/)
 
 ![img_1.png](./img_1.png)
