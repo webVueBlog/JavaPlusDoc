@@ -6,6 +6,8 @@ date: '2020-01-01'
 
 > 点击勘误[issues](https://github.com/webVueBlog/JavaPlusDoc/issues)，哪吒感谢大家的阅读
 
+<img align="right" width="100" src="https://cdn.jsdelivr.net/gh/YunYouJun/yun/images/yun-alpha-compressed.png">
+
 ## 缓存雪崩、穿透、击穿
 
 加随机时间过期后，如果访问时间刚好就是加了随机时间后的数据，这样岂不是白加了随机时间？
