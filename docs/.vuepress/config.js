@@ -88,6 +88,39 @@ module.exports = {
                 path: '/aJava/jvm',
                 collapsable: false, // 不折叠
                 children: [{
+                    title: "云计算是什么",
+                    path: "/aJava/云计算是什么"
+                },{
+                    title: "HDFS是什么",
+                    path: "/aJava/HDFS是什么"
+                },{
+                    title: "块存储是什么",
+                    path: "/aJava/块存储是什么"
+                },{
+                    title: "对象存储是什么",
+                    path: "/aJava/对象存储是什么"
+                },{
+                    title: "Jenkins是什么",
+                    path: "/aJava/Jenkins是什么"
+                },{
+                    title: "Ansible是什么",
+                    path: "/aJava/Ansible是什么"
+                },{
+                    title: "DevOps是什么",
+                    path: "/aJava/DevOps是什么"
+                },{
+                    title: "WAF和DDOS的区别是什么",
+                    path: "/aJava/WAF和DDOS的区别是什么"
+                },{
+                    title: "cookie-session-token",
+                    path: "/aJava/cookie-session-token"
+                },{
+                    title: "负载均衡是什么",
+                    path: "/aJava/负载均衡是什么"
+                },{
+                    title: "什么是灰度发布",
+                    path: "/aJava/什么是灰度发布"
+                },{
                     title: "jvm",
                     path: "/aJava/jvm"
                 },{
