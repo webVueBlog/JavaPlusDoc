@@ -1,0 +1,69 @@
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+  <!-- 背景 -->
+  <rect width="800" height="400" fill="#181b1f" />
+  
+  <!-- 标题 -->
+  <text x="400" y="30" font-family="Arial" font-size="24" fill="#e9ecef" text-anchor="middle">Redis 监控面板</text>
+  
+  <!-- 指标面板 -->
+  <g>
+    <!-- 面板1: 内存使用 -->
+    <rect x="20" y="50" width="230" height="150" rx="5" fill="#212529" />
+    <text x="135" y="75" font-family="Arial" font-size="16" fill="#e9ecef" text-anchor="middle">内存使用</text>
+    <text x="135" y="120" font-family="Arial" font-size="32" fill="#20c997" text-anchor="middle">2.4 GB</text>
+    <text x="135" y="150" font-family="Arial" font-size="14" fill="#adb5bd" text-anchor="middle">已用 / 4 GB 总量</text>
+    
+    <!-- 面板2: 连接数 -->
+    <rect x="270" y="50" width="230" height="150" rx="5" fill="#212529" />
+    <text x="385" y="75" font-family="Arial" font-size="16" fill="#e9ecef" text-anchor="middle">客户端连接数</text>
+    <text x="385" y="120" font-family="Arial" font-size="32" fill="#20c997" text-anchor="middle">256</text>
+    <text x="385" y="150" font-family="Arial" font-size="14" fill="#adb5bd" text-anchor="middle">当前活跃连接</text>
+    
+    <!-- 面板3: 命令执行 -->
+    <rect x="520" y="50" width="230" height="150" rx="5" fill="#212529" />
+    <text x="635" y="75" font-family="Arial" font-size="16" fill="#e9ecef" text-anchor="middle">每秒命令数</text>
+    <text x="635" y="120" font-family="Arial" font-size="32" fill="#20c997" text-anchor="middle">4,532</text>
+    <text x="635" y="150" font-family="Arial" font-size="14" fill="#adb5bd" text-anchor="middle">过去1分钟平均</text>
+  </g>
+  
+  <!-- 图表 -->
+  <g>
+    <!-- 图表1: 内存使用趋势 -->
+    <rect x="20" y="220" width="370" height="160" rx="5" fill="#212529" />
+    <text x="205" y="245" font-family="Arial" font-size="16" fill="#e9ecef" text-anchor="middle">内存使用趋势</text>
+    
+    <!-- 简化的面积图 -->
+    <polygon points="40,350 40,320 70,310 100,330 130,320 160,300 190,310 220,290 250,280 280,290 310,270 340,280 370,260 370,350" 
+             fill="rgba(13, 110, 253, 0.2)" stroke="#0d6efd" stroke-width="2" />
+    
+    <!-- X轴 -->
+    <line x1="40" y1="350" x2="370" y2="350" stroke="#495057" stroke-width="1" />
+    <text x="205" y="370" font-family="Arial" font-size="12" fill="#adb5bd" text-anchor="middle">时间 (过去24小时)</text>
+    
+    <!-- Y轴 -->
+    <line x1="40" y1="260" x2="40" y2="350" stroke="#495057" stroke-width="1" />
+    <text x="30" y="305" font-family="Arial" font-size="12" fill="#adb5bd" text-anchor="middle" transform="rotate(-90,30,305)">内存 (GB)</text>
+    
+    <!-- 图表2: 键空间统计 -->
+    <rect x="410" y="220" width="370" height="160" rx="5" fill="#212529" />
+    <text x="595" y="245" font-family="Arial" font-size="16" fill="#e9ecef" text-anchor="middle">键空间统计</text>
+    
+    <!-- 简化的饼图 -->
+    <circle cx="595" cy="300" r="50" fill="transparent" stroke="#495057" stroke-width="1" />
+    
+    <!-- 饼图分段 -->
+    <path d="M 595 300 L 595 250 A 50 50 0 0 1 639 325 Z" fill="#0d6efd" />
+    <path d="M 595 300 L 639 325 A 50 50 0 0 1 551 325 Z" fill="#20c997" />
+    <path d="M 595 300 L 551 325 A 50 50 0 0 1 595 250 Z" fill="#ffc107" />
+    
+    <!-- 图例 -->
+    <rect x="670" y="270" width="12" height="12" fill="#0d6efd" />
+    <text x="690" y="280" font-family="Arial" font-size="12" fill="#e9ecef">字符串键 (65%)</text>
+    
+    <rect x="670" y="290" width="12" height="12" fill="#20c997" />
+    <text x="690" y="300" font-family="Arial" font-size="12" fill="#e9ecef">哈希键 (25%)</text>
+    
+    <rect x="670" y="310" width="12" height="12" fill="#ffc107" />
+    <text x="690" y="320" font-family="Arial" font-size="12" fill="#e9ecef">其他类型 (10%)</text>
+  </g>
+</svg>

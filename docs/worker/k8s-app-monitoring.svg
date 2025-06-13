@@ -1,0 +1,115 @@
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+  <!-- 背景 -->
+  <rect width="800" height="400" fill="#181b1f" />
+  
+  <!-- 标题 -->
+  <text x="400" y="30" font-family="Arial" font-size="24" fill="#e9ecef" text-anchor="middle">Spring Boot 应用监控</text>
+  
+  <!-- JVM内存使用 -->
+  <g>
+    <rect x="20" y="50" width="370" height="150" rx="5" fill="#212529" />
+    <text x="205" y="75" font-family="Arial" font-size="16" fill="#e9ecef" text-anchor="middle">JVM内存使用</text>
+    
+    <!-- 坐标轴 -->
+    <line x1="50" y1="170" x2="350" y2="170" stroke="#6c757d" stroke-width="1" />
+    <line x1="50" y1="170" x2="50" y2="90" stroke="#6c757d" stroke-width="1" />
+    
+    <!-- 刻度 -->
+    <text x="45" y="170" font-family="Arial" font-size="10" fill="#6c757d" text-anchor="end">0</text>
+    <text x="45" y="130" font-family="Arial" font-size="10" fill="#6c757d" text-anchor="end">1GB</text>
+    <text x="45" y="90" font-family="Arial" font-size="10" fill="#6c757d" text-anchor="end">2GB</text>
+    
+    <text x="50" y="185" font-family="Arial" font-size="10" fill="#6c757d" text-anchor="middle">0m</text>
+    <text x="125" y="185" font-family="Arial" font-size="10" fill="#6c757d" text-anchor="middle">5m</text>
+    <text x="200" y="185" font-family="Arial" font-size="10" fill="#6c757d" text-anchor="middle">10m</text>
+    <text x="275" y="185" font-family="Arial" font-size="10" fill="#6c757d" text-anchor="middle">15m</text>
+    <text x="350" y="185" font-family="Arial" font-size="10" fill="#6c757d" text-anchor="middle">20m</text>
+    
+    <!-- 堆内存使用曲线 -->
+    <polyline points="50,150 80,145 110,155 140,140 170,145 200,130 230,135 260,125 290,120 320,125 350,115" 
+              fill="none" stroke="#0d6efd" stroke-width="2" />
+    
+    <!-- 非堆内存使用曲线 -->
+    <polyline points="50,160 80,158 110,155 140,153 170,150 200,148 230,145 260,143 290,140 320,138 350,135" 
+              fill="none" stroke="#20c997" stroke-width="2" />
+    
+    <!-- 图例 -->
+    <rect x="70" y="100" width="10" height="10" fill="#0d6efd" />
+    <text x="85" y="110" font-family="Arial" font-size="12" fill="#e9ecef">堆内存</text>
+    
+    <rect x="150" y="100" width="10" height="10" fill="#20c997" />
+    <text x="165" y="110" font-family="Arial" font-size="12" fill="#e9ecef">非堆内存</text>
+  </g>
+  
+  <!-- HTTP请求统计 -->
+  <g>
+    <rect x="410" y="50" width="370" height="150" rx="5" fill="#212529" />
+    <text x="595" y="75" font-family="Arial" font-size="16" fill="#e9ecef" text-anchor="middle">HTTP请求统计</text>
+    
+    <!-- 请求总数 -->
+    <rect x="430" y="90" width="150" height="40" rx="3" fill="#343a40" />
+    <text x="440" y="110" font-family="Arial" font-size="12" fill="#e9ecef">请求总数</text>
+    <text x="570" y="110" font-family="Arial" font-size="16" fill="#e9ecef" text-anchor="end">12,458</text>
+    <text x="570" y="125" font-family="Arial" font-size="10" fill="#6c757d" text-anchor="end">+15.2%</text>
+    
+    <!-- 平均响应时间 -->
+    <rect x="430" y="140" width="150" height="40" rx="3" fill="#343a40" />
+    <text x="440" y="160" font-family="Arial" font-size="12" fill="#e9ecef">平均响应时间</text>
+    <text x="570" y="160" font-family="Arial" font-size="16" fill="#e9ecef" text-anchor="end">78ms</text>
+    <text x="570" y="175" font-family="Arial" font-size="10" fill="#20c997" text-anchor="end">-5.3%</text>
+    
+    <!-- 错误率 -->
+    <rect x="610" y="90" width="150" height="40" rx="3" fill="#343a40" />
+    <text x="620" y="110" font-family="Arial" font-size="12" fill="#e9ecef">错误率</text>
+    <text x="750" y="110" font-family="Arial" font-size="16" fill="#e9ecef" text-anchor="end">0.5%</text>
+    <text x="750" y="125" font-family="Arial" font-size="10" fill="#20c997" text-anchor="end">-0.2%</text>
+    
+    <!-- 活跃会话 -->
+    <rect x="610" y="140" width="150" height="40" rx="3" fill="#343a40" />
+    <text x="620" y="160" font-family="Arial" font-size="12" fill="#e9ecef">活跃会话</text>
+    <text x="750" y="160" font-family="Arial" font-size="16" fill="#e9ecef" text-anchor="end">245</text>
+    <text x="750" y="175" font-family="Arial" font-size="10" fill="#ffc107" text-anchor="end">+8.7%</text>
+  </g>
+  
+  <!-- 端点性能 -->
+  <g>
+    <rect x="20" y="220" width="760" height="160" rx="5" fill="#212529" />
+    <text x="400" y="245" font-family="Arial" font-size="16" fill="#e9ecef" text-anchor="middle">端点性能</text>
+    
+    <!-- 表头 -->
+    <rect x="40" y="260" width="720" height="25" fill="#343a40" />
+    <text x="60" y="277" font-family="Arial" font-size="12" fill="#e9ecef">端点</text>
+    <text x="300" y="277" font-family="Arial" font-size="12" fill="#e9ecef">请求数</text>
+    <text x="400" y="277" font-family="Arial" font-size="12" fill="#e9ecef">平均响应时间</text>
+    <text x="520" y="277" font-family="Arial" font-size="12" fill="#e9ecef">最大响应时间</text>
+    <text x="640" y="277" font-family="Arial" font-size="12" fill="#e9ecef">错误数</text>
+    <text x="720" y="277" font-family="Arial" font-size="12" fill="#e9ecef">错误率</text>
+    
+    <!-- 端点1 -->
+    <rect x="40" y="285" width="720" height="25" fill="#212529" />
+    <text x="60" y="302" font-family="Arial" font-size="12" fill="#e9ecef">/api/v1/users</text>
+    <text x="300" y="302" font-family="Arial" font-size="12" fill="#e9ecef">3,245</text>
+    <text x="400" y="302" font-family="Arial" font-size="12" fill="#e9ecef">45ms</text>
+    <text x="520" y="302" font-family="Arial" font-size="12" fill="#e9ecef">320ms</text>
+    <text x="640" y="302" font-family="Arial" font-size="12" fill="#e9ecef">12</text>
+    <text x="720" y="302" font-family="Arial" font-size="12" fill="#e9ecef">0.37%</text>
+    
+    <!-- 端点2 -->
+    <rect x="40" y="310" width="720" height="25" fill="#212529" />
+    <text x="60" y="327" font-family="Arial" font-size="12" fill="#e9ecef">/api/v1/products</text>
+    <text x="300" y="327" font-family="Arial" font-size="12" fill="#e9ecef">2,876</text>
+    <text x="400" y="327" font-family="Arial" font-size="12" fill="#e9ecef">65ms</text>
+    <text x="520" y="327" font-family="Arial" font-size="12" fill="#e9ecef">450ms</text>
+    <text x="640" y="327" font-family="Arial" font-size="12" fill="#e9ecef">8</text>
+    <text x="720" y="327" font-family="Arial" font-size="12" fill="#e9ecef">0.28%</text>
+    
+    <!-- 端点3 -->
+    <rect x="40" y="335" width="720" height="25" fill="#212529" />
+    <text x="60" y="352" font-family="Arial" font-size="12" fill="#e9ecef">/api/v1/orders</text>
+    <text x="300" y="352" font-family="Arial" font-size="12" fill="#e9ecef">1,987</text>
+    <text x="400" y="352" font-family="Arial" font-size="12" fill="#e9ecef">120ms</text>
+    <text x="520" y="352" font-family="Arial" font-size="12" fill="#e9ecef">780ms</text>
+    <text x="640" y="352" font-family="Arial" font-size="12" fill="#e9ecef">25</text>
+    <text x="720" y="352" font-family="Arial" font-size="12" fill="#e9ecef" fill="#ffc107">1.26%</text>
+  </g>
+</svg>

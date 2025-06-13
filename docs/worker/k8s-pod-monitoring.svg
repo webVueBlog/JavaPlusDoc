@@ -1,0 +1,122 @@
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+  <!-- 背景 -->
+  <rect width="800" height="400" fill="#181b1f" />
+  
+  <!-- 标题 -->
+  <text x="400" y="30" font-family="Arial" font-size="24" fill="#e9ecef" text-anchor="middle">Kubernetes Pod 监控面板</text>
+  
+  <!-- Pod状态概览 -->
+  <g>
+    <rect x="20" y="50" width="240" height="150" rx="5" fill="#212529" />
+    <text x="140" y="75" font-family="Arial" font-size="16" fill="#e9ecef" text-anchor="middle">Pod状态概览</text>
+    
+    <!-- 运行中 -->
+    <circle cx="50" cy="105" r="15" fill="#20c997" />
+    <text x="80" y="110" font-family="Arial" font-size="14" fill="#e9ecef">运行中:</text>
+    <text x="200" y="110" font-family="Arial" font-size="14" fill="#e9ecef" text-anchor="end">42</text>
+    
+    <!-- 待定 -->
+    <circle cx="50" cy="140" r="15" fill="#ffc107" />
+    <text x="80" y="145" font-family="Arial" font-size="14" fill="#e9ecef">待定:</text>
+    <text x="200" y="145" font-family="Arial" font-size="14" fill="#e9ecef" text-anchor="end">3</text>
+    
+    <!-- 失败 -->
+    <circle cx="50" cy="175" r="15" fill="#dc3545" />
+    <text x="80" y="180" font-family="Arial" font-size="14" fill="#e9ecef">失败:</text>
+    <text x="200" y="180" font-family="Arial" font-size="14" fill="#e9ecef" text-anchor="end">1</text>
+  </g>
+  
+  <!-- 命名空间分布 -->
+  <g>
+    <rect x="280" y="50" width="240" height="150" rx="5" fill="#212529" />
+    <text x="400" y="75" font-family="Arial" font-size="16" fill="#e9ecef" text-anchor="middle">命名空间分布</text>
+    
+    <!-- 饼图 -->
+    <circle cx="400" cy="125" r="50" fill="transparent" stroke="#343a40" stroke-width="1" />
+    
+    <!-- kube-system (25%) -->
+    <path d="M 400 125 L 400 75 A 50 50 0 0 1 443.3 102.5 Z" fill="#0d6efd" />
+    
+    <!-- default (15%) -->
+    <path d="M 400 125 L 443.3 102.5 A 50 50 0 0 1 448.3 147.5 Z" fill="#20c997" />
+    
+    <!-- monitoring (20%) -->
+    <path d="M 400 125 L 448.3 147.5 A 50 50 0 0 1 400 175 Z" fill="#ffc107" />
+    
+    <!-- application (40%) -->
+    <path d="M 400 125 L 400 175 A 50 50 0 0 1 350 125 A 50 50 0 0 1 400 75 Z" fill="#dc3545" />
+    
+    <!-- 图例 -->
+    <rect x="300" y="185" width="10" height="10" fill="#0d6efd" />
+    <text x="315" y="195" font-family="Arial" font-size="12" fill="#e9ecef">kube-system</text>
+    
+    <rect x="400" y="185" width="10" height="10" fill="#20c997" />
+    <text x="415" y="195" font-family="Arial" font-size="12" fill="#e9ecef">default</text>
+    
+    <rect x="300" y="205" width="10" height="10" fill="#ffc107" />
+    <text x="315" y="215" font-family="Arial" font-size="12" fill="#e9ecef">monitoring</text>
+    
+    <rect x="400" y="205" width="10" height="10" fill="#dc3545" />
+    <text x="415" y="215" font-family="Arial" font-size="12" fill="#e9ecef">application</text>
+  </g>
+  
+  <!-- 资源使用率 -->
+  <g>
+    <rect x="540" y="50" width="240" height="150" rx="5" fill="#212529" />
+    <text x="660" y="75" font-family="Arial" font-size="16" fill="#e9ecef" text-anchor="middle">资源使用率</text>
+    
+    <!-- CPU请求 vs 限制 -->
+    <text x="560" y="105" font-family="Arial" font-size="14" fill="#e9ecef">CPU请求/限制:</text>
+    <rect x="560" y="115" width="200" height="15" rx="3" fill="#343a40" />
+    <rect x="560" y="115" width="140" height="15" rx="3" fill="#0d6efd" />
+    <text x="680" y="127" font-family="Arial" font-size="12" fill="#e9ecef" text-anchor="middle">70%</text>
+    
+    <!-- 内存请求 vs 限制 -->
+    <text x="560" y="155" font-family="Arial" font-size="14" fill="#e9ecef">内存请求/限制:</text>
+    <rect x="560" y="165" width="200" height="15" rx="3" fill="#343a40" />
+    <rect x="560" y="165" width="160" height="15" rx="3" fill="#0d6efd" />
+    <text x="680" y="177" font-family="Arial" font-size="12" fill="#e9ecef" text-anchor="middle">80%</text>
+  </g>
+  
+  <!-- Pod列表 -->
+  <g>
+    <rect x="20" y="220" width="760" height="160" rx="5" fill="#212529" />
+    <text x="400" y="245" font-family="Arial" font-size="16" fill="#e9ecef" text-anchor="middle">关键Pod状态</text>
+    
+    <!-- 表头 -->
+    <rect x="40" y="260" width="720" height="25" fill="#343a40" />
+    <text x="60" y="277" font-family="Arial" font-size="12" fill="#e9ecef">Pod名称</text>
+    <text x="250" y="277" font-family="Arial" font-size="12" fill="#e9ecef">命名空间</text>
+    <text x="350" y="277" font-family="Arial" font-size="12" fill="#e9ecef">状态</text>
+    <text x="450" y="277" font-family="Arial" font-size="12" fill="#e9ecef">CPU使用</text>
+    <text x="550" y="277" font-family="Arial" font-size="12" fill="#e9ecef">内存使用</text>
+    <text x="650" y="277" font-family="Arial" font-size="12" fill="#e9ecef">重启次数</text>
+    
+    <!-- Pod 1 -->
+    <rect x="40" y="285" width="720" height="25" fill="#212529" />
+    <text x="60" y="302" font-family="Arial" font-size="12" fill="#e9ecef">prometheus-server-5fb8b98765-abcd</text>
+    <text x="250" y="302" font-family="Arial" font-size="12" fill="#e9ecef">monitoring</text>
+    <circle cx="350" cy="297" r="6" fill="#20c997" />
+    <text x="450" y="302" font-family="Arial" font-size="12" fill="#e9ecef">250m (25%)</text>
+    <text x="550" y="302" font-family="Arial" font-size="12" fill="#e9ecef">1.2Gi (60%)</text>
+    <text x="650" y="302" font-family="Arial" font-size="12" fill="#e9ecef">0</text>
+    
+    <!-- Pod 2 -->
+    <rect x="40" y="310" width="720" height="25" fill="#212529" />
+    <text x="60" y="327" font-family="Arial" font-size="12" fill="#e9ecef">grafana-deployment-6c64d84f95-efgh</text>
+    <text x="250" y="327" font-family="Arial" font-size="12" fill="#e9ecef">monitoring</text>
+    <circle cx="350" cy="322" r="6" fill="#20c997" />
+    <text x="450" y="327" font-family="Arial" font-size="12" fill="#e9ecef">120m (12%)</text>
+    <text x="550" y="327" font-family="Arial" font-size="12" fill="#e9ecef">512Mi (40%)</text>
+    <text x="650" y="327" font-family="Arial" font-size="12" fill="#e9ecef">0</text>
+    
+    <!-- Pod 3 -->
+    <rect x="40" y="335" width="720" height="25" fill="#212529" />
+    <text x="60" y="352" font-family="Arial" font-size="12" fill="#e9ecef">api-gateway-deployment-7d8f9b6c5-ijkl</text>
+    <text x="250" y="352" font-family="Arial" font-size="12" fill="#e9ecef">application</text>
+    <circle cx="350" cy="347" r="6" fill="#ffc107" />
+    <text x="450" y="352" font-family="Arial" font-size="12" fill="#e9ecef">350m (35%)</text>
+    <text x="550" y="352" font-family="Arial" font-size="12" fill="#e9ecef">1.5Gi (75%)</text>
+    <text x="650" y="352" font-family="Arial" font-size="12" fill="#e9ecef">2</text>
+  </g>
+</svg>

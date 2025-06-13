@@ -1,0 +1,66 @@
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+  <!-- 背景 -->
+  <rect width="800" height="400" fill="#181b1f" />
+  
+  <!-- 标题 -->
+  <text x="400" y="30" font-family="Arial" font-size="24" fill="#e9ecef" text-anchor="middle">Kubernetes 集群概览</text>
+  
+  <!-- 指标面板 -->
+  <g>
+    <!-- 面板1: 集群状态 -->
+    <rect x="20" y="50" width="230" height="150" rx="5" fill="#212529" />
+    <text x="135" y="75" font-family="Arial" font-size="16" fill="#e9ecef" text-anchor="middle">集群状态</text>
+    <text x="135" y="110" font-family="Arial" font-size="14" fill="#adb5bd" text-anchor="middle">控制平面组件</text>
+    <text x="135" y="135" font-family="Arial" font-size="24" fill="#20c997" text-anchor="middle">健康</text>
+    <text x="135" y="165" font-family="Arial" font-size="14" fill="#adb5bd" text-anchor="middle">API Server 响应时间: 12ms</text>
+    
+    <!-- 面板2: 节点状态 -->
+    <rect x="270" y="50" width="230" height="150" rx="5" fill="#212529" />
+    <text x="385" y="75" font-family="Arial" font-size="16" fill="#e9ecef" text-anchor="middle">节点状态</text>
+    <text x="385" y="110" font-family="Arial" font-size="14" fill="#adb5bd" text-anchor="middle">就绪/总计</text>
+    <text x="385" y="135" font-family="Arial" font-size="24" fill="#20c997" text-anchor="middle">5 / 5</text>
+    <text x="385" y="165" font-family="Arial" font-size="14" fill="#adb5bd" text-anchor="middle">资源压力: 低</text>
+    
+    <!-- 面板3: Pod状态 -->
+    <rect x="520" y="50" width="230" height="150" rx="5" fill="#212529" />
+    <text x="635" y="75" font-family="Arial" font-size="16" fill="#e9ecef" text-anchor="middle">Pod状态</text>
+    <text x="635" y="110" font-family="Arial" font-size="14" fill="#adb5bd" text-anchor="middle">运行/总计</text>
+    <text x="635" y="135" font-family="Arial" font-size="24" fill="#20c997" text-anchor="middle">42 / 45</text>
+    <text x="635" y="165" font-family="Arial" font-size="14" fill="#ffc107" text-anchor="middle">3个Pod处于Pending状态</text>
+  </g>
+  
+  <!-- 图表 -->
+  <g>
+    <!-- 图表1: 集群CPU使用率 -->
+    <rect x="20" y="220" width="370" height="160" rx="5" fill="#212529" />
+    <text x="205" y="245" font-family="Arial" font-size="16" fill="#e9ecef" text-anchor="middle">集群CPU使用率</text>
+    
+    <!-- 简化的折线图 -->
+    <polyline points="40,330 70,320 100,310 130,325 160,315 190,300 220,310 250,290 280,300 310,280 340,290 370,270" 
+              stroke="#20c997" fill="none" stroke-width="2" />
+    
+    <!-- X轴 -->
+    <line x1="40" y1="350" x2="370" y2="350" stroke="#495057" stroke-width="1" />
+    <text x="205" y="370" font-family="Arial" font-size="12" fill="#adb5bd" text-anchor="middle">时间 (过去1小时)</text>
+    
+    <!-- Y轴 -->
+    <line x1="40" y1="270" x2="40" y2="350" stroke="#495057" stroke-width="1" />
+    <text x="30" y="310" font-family="Arial" font-size="12" fill="#adb5bd" text-anchor="middle" transform="rotate(-90,30,310)">使用率 (%)</text>
+    
+    <!-- 图表2: 集群内存使用率 -->
+    <rect x="410" y="220" width="370" height="160" rx="5" fill="#212529" />
+    <text x="595" y="245" font-family="Arial" font-size="16" fill="#e9ecef" text-anchor="middle">集群内存使用率</text>
+    
+    <!-- 简化的面积图 -->
+    <polygon points="430,350 430,320 460,310 490,315 520,305 550,300 580,310 610,300 640,290 670,295 700,285 730,280 760,290 760,350" 
+             fill="rgba(13, 110, 253, 0.2)" stroke="#0d6efd" stroke-width="2" />
+    
+    <!-- X轴 -->
+    <line x1="430" y1="350" x2="760" y2="350" stroke="#495057" stroke-width="1" />
+    <text x="595" y="370" font-family="Arial" font-size="12" fill="#adb5bd" text-anchor="middle">时间 (过去1小时)</text>
+    
+    <!-- Y轴 -->
+    <line x1="430" y1="270" x2="430" y2="350" stroke="#495057" stroke-width="1" />
+    <text x="420" y="310" font-family="Arial" font-size="12" fill="#adb5bd" text-anchor="middle" transform="rotate(-90,420,310)">使用率 (%)</text>
+  </g>
+</svg>
