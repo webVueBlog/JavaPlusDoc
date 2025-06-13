@@ -1,0 +1,72 @@
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+  <!-- 背景 -->
+  <rect width="800" height="400" fill="#181b1f" />
+  
+  <!-- 标题 -->
+  <text x="400" y="30" font-family="Arial" font-size="24" fill="#e9ecef" text-anchor="middle">MongoDB 监控面板</text>
+  
+  <!-- 指标面板 -->
+  <g>
+    <!-- 面板1: 操作性能 -->
+    <rect x="20" y="50" width="230" height="150" rx="5" fill="#212529" />
+    <text x="135" y="75" font-family="Arial" font-size="16" fill="#e9ecef" text-anchor="middle">每秒操作数</text>
+    <text x="135" y="120" font-family="Arial" font-size="32" fill="#20c997" text-anchor="middle">3,721</text>
+    <text x="135" y="150" font-family="Arial" font-size="14" fill="#adb5bd" text-anchor="middle">过去1分钟平均</text>
+    
+    <!-- 面板2: 连接数 -->
+    <rect x="270" y="50" width="230" height="150" rx="5" fill="#212529" />
+    <text x="385" y="75" font-family="Arial" font-size="16" fill="#e9ecef" text-anchor="middle">连接数</text>
+    <text x="385" y="120" font-family="Arial" font-size="32" fill="#20c997" text-anchor="middle">187 / 500</text>
+    <text x="385" y="150" font-family="Arial" font-size="14" fill="#adb5bd" text-anchor="middle">当前 / 最大</text>
+    
+    <!-- 面板3: 内存使用 -->
+    <rect x="520" y="50" width="230" height="150" rx="5" fill="#212529" />
+    <text x="635" y="75" font-family="Arial" font-size="16" fill="#e9ecef" text-anchor="middle">内存使用</text>
+    <text x="635" y="120" font-family="Arial" font-size="32" fill="#20c997" text-anchor="middle">3.2 GB</text>
+    <text x="635" y="150" font-family="Arial" font-size="14" fill="#adb5bd" text-anchor="middle">常驻内存</text>
+  </g>
+  
+  <!-- 图表 -->
+  <g>
+    <!-- 图表1: 操作类型分布 -->
+    <rect x="20" y="220" width="370" height="160" rx="5" fill="#212529" />
+    <text x="205" y="245" font-family="Arial" font-size="16" fill="#e9ecef" text-anchor="middle">操作类型分布</text>
+    
+    <!-- 简化的水平条形图 -->
+    <!-- 查询操作 -->
+    <rect x="100" y="270" width="200" height="20" fill="#0d6efd" />
+    <text x="90" y="285" font-family="Arial" font-size="12" fill="#e9ecef" text-anchor="end">查询</text>
+    <text x="310" y="285" font-family="Arial" font-size="12" fill="#e9ecef">2,150/s</text>
+    
+    <!-- 插入操作 -->
+    <rect x="100" y="300" width="120" height="20" fill="#20c997" />
+    <text x="90" y="315" font-family="Arial" font-size="12" fill="#e9ecef" text-anchor="end">插入</text>
+    <text x="230" y="315" font-family="Arial" font-size="12" fill="#e9ecef">1,050/s</text>
+    
+    <!-- 更新操作 -->
+    <rect x="100" y="330" width="80" height="20" fill="#ffc107" />
+    <text x="90" y="345" font-family="Arial" font-size="12" fill="#e9ecef" text-anchor="end">更新</text>
+    <text x="190" y="345" font-family="Arial" font-size="12" fill="#e9ecef">450/s</text>
+    
+    <!-- 删除操作 -->
+    <rect x="100" y="360" width="20" height="20" fill="#dc3545" />
+    <text x="90" y="375" font-family="Arial" font-size="12" fill="#e9ecef" text-anchor="end">删除</text>
+    <text x="130" y="375" font-family="Arial" font-size="12" fill="#e9ecef">71/s</text>
+    
+    <!-- 图表2: WiredTiger缓存使用率 -->
+    <rect x="410" y="220" width="370" height="160" rx="5" fill="#212529" />
+    <text x="595" y="245" font-family="Arial" font-size="16" fill="#e9ecef" text-anchor="middle">WiredTiger缓存使用率</text>
+    
+    <!-- 简化的折线图 -->
+    <polyline points="430,330 460,320 490,310 520,320 550,300 580,290 610,300 640,280 670,290 700,270 730,280 760,260" 
+              stroke="#20c997" fill="none" stroke-width="2" />
+    
+    <!-- X轴 -->
+    <line x1="430" y1="350" x2="760" y2="350" stroke="#495057" stroke-width="1" />
+    <text x="595" y="370" font-family="Arial" font-size="12" fill="#adb5bd" text-anchor="middle">时间 (过去24小时)</text>
+    
+    <!-- Y轴 -->
+    <line x1="430" y1="260" x2="430" y2="350" stroke="#495057" stroke-width="1" />
+    <text x="420" y="305" font-family="Arial" font-size="12" fill="#adb5bd" text-anchor="middle" transform="rotate(-90,420,305)">使用率 (%)</text>
+  </g>
+</svg>

@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Docker Swarm集群 | Jeskson文档-微服务分布式系统架构</title>
+    <meta name="generator" content="VuePress 1.9.10">
+    <script src="/JavaPlusDoc/JavaPlusDoc/js/sidebar-scroll.js"></script>
+    <meta name="description" content="Jeskson文档-架构师">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    
+    <link rel="preload" href="/JavaPlusDoc/assets/css/0.styles.15f90da9.css" as="style"><link rel="preload" href="/JavaPlusDoc/assets/js/app.7366d2bd.js" as="script"><link rel="preload" href="/JavaPlusDoc/assets/js/7.a9854728.js" as="script"><link rel="preload" href="/JavaPlusDoc/assets/js/2.b62d6a43.js" as="script"><link rel="preload" href="/JavaPlusDoc/assets/js/1.1dab207e.js" as="script"><link rel="preload" href="/JavaPlusDoc/assets/js/159.656b1e25.js" as="script"><link rel="prefetch" href="/JavaPlusDoc/assets/js/10.1c0f3f1f.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/100.4626a6be.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/101.5e3d5a30.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/102.c0eb64d5.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/103.499de57d.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/104.8f8da069.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/105.c31407fe.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/106.c5a6607e.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/107.7f3f8736.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/108.df4efe4d.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/109.ffbf8926.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/11.79af72f0.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/110.5a75ff7c.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/111.d886229f.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/112.1f68bf4e.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/113.3330a4a4.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/114.ce6b71dc.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/115.43f7a1d8.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/116.44938ef1.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/117.f992f3df.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/118.fd3561c7.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/119.63116f1a.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/120.56714c62.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/121.40275419.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/122.a24508b2.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/123.5fcb7e36.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/124.a4ec7cf4.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/125.581cf9ce.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/126.0f48a14f.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/127.81bfc35f.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/128.f1f06769.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/129.fef57c3e.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/130.9544c04a.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/131.48795c74.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/132.a1202b30.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/133.02b1c0dd.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/134.63685b92.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/135.6dc3a345.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/136.98f3b766.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/137.17ac4865.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/138.72e11065.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/139.1e930062.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/14.bf53aaab.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/140.9e175f1c.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/141.9347dcbc.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/142.e0760040.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/143.67ca2f11.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/144.b2fcf380.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/145.051b495d.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/146.b79bf5a7.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/147.813d8674.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/148.93a507fc.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/149.cbba0b9e.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/15.193f7990.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/150.1861ddf7.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/151.0b6bbf4c.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/152.8889b462.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/153.d592a195.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/154.9e8e3de1.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/155.1ebcc74d.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/156.d77a8080.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/157.9509f8d7.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/158.344aac9b.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/16.69a2910b.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/160.46f6f21e.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/161.a11378f8.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/162.26141501.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/163.84a79d5e.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/164.4fed7fe9.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/165.db1ad67e.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/166.beb9e8d3.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/167.e4869de9.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/168.b610c8a2.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/169.22fa22c8.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/17.f834b0b6.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/170.4d352605.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/171.5c332384.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/172.42276104.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/173.3355f51f.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/174.0d15d9bc.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/175.4fab5fc3.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/176.bec317d0.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/177.6238fec6.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/178.05e52254.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/179.3c9f2f83.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/18.dd8b5e5b.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/180.e2c35b44.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/181.a97712b0.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/182.9abdc97e.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/183.12c6a8f6.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/184.aa3fb9ad.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/185.3762ab4a.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/186.50569396.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/187.211c8487.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/188.d75d3d31.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/189.414cb913.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/19.c27dc90f.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/190.18e2219a.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/191.36d5ee8d.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/192.932ed189.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/193.d7134feb.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/194.09c84dfb.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/195.a24ccf4c.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/196.39e5e781.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/197.f85605ee.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/198.463e7903.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/199.0c80f9eb.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/20.d1cc2d5f.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/200.cc58a6ac.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/201.1474eb08.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/202.c8adc163.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/203.1822be66.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/204.ebea23f1.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/205.fa8ffea3.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/206.fd865f95.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/207.b45d04e8.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/208.84168f06.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/209.4ae8569a.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/21.e4ed7275.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/210.9a26fe30.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/211.20130fc5.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/212.94e6925e.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/213.0de182c6.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/214.17eb9a1e.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/215.0e49c6f1.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/216.98d3ee69.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/217.0b1112fe.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/218.01a7ab08.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/219.fe5b1ce0.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/22.3fbcb370.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/220.4d8a406f.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/221.c4064f40.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/222.a7fc442e.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/223.e0c648c8.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/224.9b5be95a.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/225.6d0b7944.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/226.d26e72da.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/227.5e0b4d1e.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/228.ba36f7a4.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/229.5f386db1.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/23.b2b1e5d6.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/230.474d3c6a.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/231.7cf5fbcf.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/232.17a40b88.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/233.7de1401b.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/234.4cbb56b9.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/235.019ee9dd.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/236.10531de6.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/237.e05fe3c3.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/238.5020bdf4.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/239.aefa924a.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/24.498d9930.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/240.2f1620ee.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/241.ec8a7c6e.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/242.18c0e563.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/243.21dfec2d.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/244.6f9abed0.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/245.bd00f2aa.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/246.be5fcfda.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/247.7a18518f.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/248.ef3a4937.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/249.25b98c20.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/25.594c32d9.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/250.972d23ae.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/251.b7d3ff58.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/252.35a38a33.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/253.c4e3f87f.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/254.e7f25271.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/255.61edc8aa.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/256.4f184b5f.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/257.dddb92a5.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/26.9751b36c.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/27.ffd347c1.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/28.aad75411.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/29.85c681eb.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/3.6bd04d7a.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/30.a27fcdc2.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/31.bed0535e.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/32.aad86f11.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/33.4cdf6c50.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/34.782e9ccb.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/35.7b68631c.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/36.364efbdb.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/37.a51d34fa.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/38.5538c266.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/39.f825acda.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/4.aacd8566.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/40.08d710cb.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/41.cf86c64d.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/42.52b60ea1.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/43.82eaca89.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/44.41ba19e3.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/45.8217e946.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/46.dce2345a.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/47.cd436ba3.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/48.17aefa12.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/49.432c1ba2.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/5.b7c81e81.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/50.9495ecc7.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/51.7e5a25e8.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/52.3b8ceb33.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/53.7d8d48a8.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/54.bc13d7bb.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/55.ccfee92a.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/56.8f665985.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/57.e891bebd.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/58.9a1caef3.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/59.c41c08b2.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/6.9b99231a.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/60.4f64c180.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/61.e9e2280d.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/62.681d9ef9.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/63.33acad12.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/64.9cfcb4e3.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/65.8db4b472.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/66.0dcaa327.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/67.0ed6781c.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/68.37932c43.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/69.7bec785d.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/70.fe9e9e4a.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/71.2cbe8218.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/72.2c82ad09.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/73.3e103fa3.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/74.c53c02a8.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/75.7eb8d888.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/76.eb2f8d4c.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/77.7435472f.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/78.1acff691.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/79.2ed5fd40.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/8.db0eacd5.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/80.223a0f66.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/81.37c75479.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/82.94a401d7.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/83.0df70634.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/84.1d9c0129.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/85.54ef6147.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/86.4597f45a.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/87.77012a30.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/88.a5bb5c12.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/89.7f364010.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/9.c9b9ef09.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/90.10b639e9.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/91.55f55d7e.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/92.be68d9b5.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/93.a2ad0237.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/94.16a4573e.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/95.af9eef4e.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/96.06b93667.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/97.9b42483f.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/98.7a2662ba.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/99.eb69034a.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/vendors~docsearch.550598d7.js">
+    <link rel="stylesheet" href="/JavaPlusDoc/assets/css/0.styles.15f90da9.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container" data-v-7dd95ae2><div data-v-7dd95ae2><div class="password-shadow password-wrapper-out" style="display:none;" data-v-59e6cb88 data-v-7dd95ae2 data-v-7dd95ae2><h3 class="title" data-v-59e6cb88>Jeskson文档-微服务分布式系统架构</h3> <p class="description" data-v-59e6cb88>Jeskson文档-架构师</p> <label id="box" class="inputBox" data-v-59e6cb88><input type="password" value="" data-v-59e6cb88> <span data-v-59e6cb88>Konck! Knock!</span> <button data-v-59e6cb88>OK</button></label> <div class="footer" data-v-59e6cb88><span data-v-59e6cb88><i class="iconfont reco-theme" data-v-59e6cb88></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-59e6cb88>vuePress-theme-reco</a></span> <span data-v-59e6cb88><i class="iconfont reco-copyright" data-v-59e6cb88></i> <a data-v-59e6cb88><!---->
+          
+        <!---->
+        2025
+      </a></span></div></div> <div class="hide" data-v-7dd95ae2><header class="navbar" data-v-7dd95ae2><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/JavaPlusDoc/" class="home-link router-link-active"><!----> <span class="site-name">Jeskson文档-微服务分布式系统架构</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/JavaPlusDoc/" class="nav-link"><i class="undefined"></i>
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      学习路线
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/" class="nav-link"><i class="undefined"></i>
+  入门指南
+</a></li><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/basic-grammar/basic-data-type.html" class="nav-link"><i class="undefined"></i>
+  基础到进阶
+</a></li><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/high-concurrency/why-cache.html" class="nav-link"><i class="undefined"></i>
+  架构师成长
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      技术分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/basic-grammar/basic-data-type.html" class="nav-link"><i class="undefined"></i>
+  Java基础
+</a></li><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/java-up/nginx.html" class="nav-link"><i class="undefined"></i>
+  Java进阶
+</a></li><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/high-concurrency/why-cache.html" class="nav-link"><i class="undefined"></i>
+  分布式架构
+</a></li><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/worker/1.html" class="nav-link"><i class="undefined"></i>
+  微服务
+</a></li><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/mysql/mysql.html" class="nav-link"><i class="undefined"></i>
+  数据库
+</a></li><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/linux/linux.html" class="nav-link"><i class="undefined"></i>
+  运维与部署
+</a></li><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/docker/docker-tutorial.html" class="nav-link"><i class="undefined"></i>
+  Docker
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      实战案例
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/worker/1.html" class="nav-link"><i class="undefined"></i>
+  系统设计
+</a></li><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/high-concurrency/why-cache.html" class="nav-link"><i class="undefined"></i>
+  性能优化
+</a></li><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/java-up/nginx.html" class="nav-link"><i class="undefined"></i>
+  项目实践
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      资源
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://webvueblog.github.io/JavaPlusDoc/" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  官方文档
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://github.com/webVueBlog/JavaPlusDoc" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  GitHub仓库
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://github.com/webVueBlog" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  作者主页
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-7dd95ae2></div> <aside class="sidebar" data-v-7dd95ae2><div class="personal-info-wrapper" data-v-1fad0c41 data-v-7dd95ae2><!----> <!----> <div class="num" data-v-1fad0c41><div data-v-1fad0c41><h3 data-v-1fad0c41>220</h3> <h6 data-v-1fad0c41>文章</h6></div> <div data-v-1fad0c41><h3 data-v-1fad0c41>0</h3> <h6 data-v-1fad0c41>标签</h6></div></div> <ul class="social-links" data-v-1fad0c41></ul> <hr data-v-1fad0c41></div> <nav class="nav-links"><div class="nav-item"><a href="/JavaPlusDoc/" class="nav-link"><i class="undefined"></i>
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      学习路线
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/" class="nav-link"><i class="undefined"></i>
+  入门指南
+</a></li><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/basic-grammar/basic-data-type.html" class="nav-link"><i class="undefined"></i>
+  基础到进阶
+</a></li><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/high-concurrency/why-cache.html" class="nav-link"><i class="undefined"></i>
+  架构师成长
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      技术分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/basic-grammar/basic-data-type.html" class="nav-link"><i class="undefined"></i>
+  Java基础
+</a></li><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/java-up/nginx.html" class="nav-link"><i class="undefined"></i>
+  Java进阶
+</a></li><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/high-concurrency/why-cache.html" class="nav-link"><i class="undefined"></i>
+  分布式架构
+</a></li><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/worker/1.html" class="nav-link"><i class="undefined"></i>
+  微服务
+</a></li><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/mysql/mysql.html" class="nav-link"><i class="undefined"></i>
+  数据库
+</a></li><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/linux/linux.html" class="nav-link"><i class="undefined"></i>
+  运维与部署
+</a></li><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/docker/docker-tutorial.html" class="nav-link"><i class="undefined"></i>
+  Docker
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      实战案例
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/worker/1.html" class="nav-link"><i class="undefined"></i>
+  系统设计
+</a></li><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/high-concurrency/why-cache.html" class="nav-link"><i class="undefined"></i>
+  性能优化
+</a></li><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/java-up/nginx.html" class="nav-link"><i class="undefined"></i>
+  项目实践
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      资源
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://webvueblog.github.io/JavaPlusDoc/" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  官方文档
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://github.com/webVueBlog/JavaPlusDoc" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  GitHub仓库
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://github.com/webVueBlog" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  作者主页
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav> <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><a href="/JavaPlusDoc/" class="sidebar-heading clickable router-link-active open"><span>文档指南</span> <!----></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/JavaPlusDoc/" aria-current="page" class="sidebar-link">学前必读</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>Java核心技术</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading open"><span>基础篇</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/JavaPlusDoc/basic-grammar/basic-data-type.html" class="sidebar-link">Java基本数据类型</a></li><li><a href="/JavaPlusDoc/basic-grammar/type-cast.html" class="sidebar-link">数据类型转换</a></li><li><a href="/JavaPlusDoc/basic-grammar/int-cache.html" class="sidebar-link">数据类型缓存池</a></li><li><a href="/JavaPlusDoc/basic-grammar/operator.html" class="sidebar-link">运算符</a></li><li><a href="/JavaPlusDoc/basic-grammar/flow-control.html" class="sidebar-link">流程控制</a></li><li><a href="/JavaPlusDoc/basic-grammar/string-source.html" class="sidebar-link">String类详解</a></li><li><a href="/JavaPlusDoc/basic-grammar/constant-pool.html" class="sidebar-link">字符串常量池</a></li><li><a href="/JavaPlusDoc/basic-grammar/builder-buffer.html" class="sidebar-link">StringBuilder和Buffer</a></li><li><a href="/JavaPlusDoc/basic-grammar/equals.html" class="sidebar-link">字符串比较</a></li><li><a href="/JavaPlusDoc/basic-grammar/object-class.html" class="sidebar-link">面向对象基础</a></li><li><a href="/JavaPlusDoc/basic-grammar/package.html" class="sidebar-link">Java包机制</a></li><li><a href="/JavaPlusDoc/basic-grammar/var.html" class="sidebar-link">变量与方法</a></li><li><a href="/JavaPlusDoc/basic-grammar/construct.html" class="sidebar-link">构造方法</a></li><li><a href="/JavaPlusDoc/basic-grammar/abstract.html" class="sidebar-link">抽象类</a></li><li><a href="/JavaPlusDoc/basic-grammar/interface.html" class="sidebar-link">接口和内部类</a></li><li><a href="/JavaPlusDoc/basic-grammar/encapsulation-inheritance-polymorphism.html" class="sidebar-link">封装继承多态</a></li><li><a href="/JavaPlusDoc/basic-grammar/this-super.html" class="sidebar-link">this与super关键字</a></li><li><a href="/JavaPlusDoc/basic-grammar/immutable.html" class="sidebar-link">不可变对象</a></li></ul></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>集合框架</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>JVM与性能</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>并发编程</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>IO与网络</span> <span class="arrow right"></span></p> <!----></section></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>分布式架构</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading open"><span>缓存系统</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/JavaPlusDoc/high-concurrency/why-cache.html" class="sidebar-link">缓存使用场景</a></li><li><a href="/JavaPlusDoc/high-concurrency/redis-single-thread-model.html" class="sidebar-link">Redis vs Memcached</a></li><li><a href="/JavaPlusDoc/high-concurrency/redis-data-types.html" class="sidebar-link">Redis数据类型</a></li><li><a href="/JavaPlusDoc/high-concurrency/redis-expiration-policies-and-lru.html" class="sidebar-link">Redis过期策略</a></li><li><a href="/JavaPlusDoc/high-concurrency/how-to-ensure-high-concurrency-and-high-availability-of-redis.html" class="sidebar-link">Redis高并发与高可用</a></li><li><a href="/JavaPlusDoc/high-concurrency/redis-master-slave.html" class="sidebar-link">Redis主从架构</a></li><li><a href="/JavaPlusDoc/high-concurrency/redis-persistence.html" class="sidebar-link">Redis持久化</a></li><li><a href="/JavaPlusDoc/high-concurrency/redis-sentinel.html" class="sidebar-link">Redis哨兵集群</a></li><li><a href="/JavaPlusDoc/jobPro/redis.html" class="sidebar-link">Redis应用场景</a></li><li><a href="/JavaPlusDoc/redis/redis-key-expiration.html" class="sidebar-link">Redis key过期问题解决方案</a></li><li><a href="/JavaPlusDoc/java-up/redis-springboot.html" class="sidebar-link">SpringBoot整合Redis</a></li><li><a href="/JavaPlusDoc/redis/xuebeng-chuantou-jichuan.html" class="sidebar-link">缓存雪崩、穿透、击穿</a></li></ul></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>消息队列</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>搜索引擎</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>微服务架构</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>数据库技术</span> <span class="arrow right"></span></p> <!----></section></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>运维与部署</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading open"><span>Docker容器技术</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/JavaPlusDoc/docker/docker-tutorial.html" class="sidebar-link">Docker教程</a></li><li><a href="/JavaPlusDoc/docker/docker架构.html" class="sidebar-link">docker架构</a></li><li><a href="/JavaPlusDoc/docker/docker-install.html" class="sidebar-link">Docker安装指南</a></li><li><a href="/JavaPlusDoc/docker/docker-mirror.html" class="sidebar-link">Docker配置国内源</a></li><li><a href="/JavaPlusDoc/docker/docker-images.html" class="sidebar-link">Docker镜像管理</a></li><li><a href="/JavaPlusDoc/docker/docker-containers.html" class="sidebar-link">Docker容器管理</a></li><li><a href="/JavaPlusDoc/docker/docker-network.html" class="sidebar-link">Docker网络配置</a></li><li><a href="/JavaPlusDoc/docker/docker-volumes.html" class="sidebar-link">Docker数据卷管理</a></li><li><a href="/JavaPlusDoc/docker/docker-dockerfile.html" class="sidebar-link">Dockerfile最佳实践</a></li><li><a href="/JavaPlusDoc/docker/docker-compose.html" class="sidebar-link">Docker Compose详解</a></li><li><a href="/JavaPlusDoc/docker/docker-swarm.html" aria-current="page" class="active sidebar-link">Docker Swarm集群</a></li><li><a href="/JavaPlusDoc/docker/docker-security.html" class="sidebar-link">Docker安全最佳实践</a></li><li><a href="/JavaPlusDoc/docker/docker-production.html" class="sidebar-link">Docker生产环境部署</a></li></ul></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>基础设施</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>DevOps工具链</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>部署与监控</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>ElasticSearch</span> <span class="arrow right"></span></p> <!----></section></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>实战案例</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading open"><span>Web应用开发</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/JavaPlusDoc/jobPro/login.html" class="sidebar-link">用户注册登录系统</a></li><li><a href="/JavaPlusDoc/jobPro/lan.html" class="sidebar-link">多语言国际化</a></li><li><a href="/JavaPlusDoc/jobPro/jobPro.html" class="sidebar-link">PC网站微信扫码登录</a></li><li><a href="/JavaPlusDoc/jobPro/wechat-miniprogram-guide.html" class="sidebar-link">微信小程序开发完全指南</a></li><li><a href="/JavaPlusDoc/jobPro/appMsg.html" class="sidebar-link">微信小程序消息推送</a></li><li><a href="/JavaPlusDoc/jobPro/miniprogram.html" class="sidebar-link">微信小程序自动化部署</a></li><li><a href="/JavaPlusDoc/jobPro/appPay.html" class="sidebar-link">微信小程序支付功能</a></li><li><a href="/JavaPlusDoc/jobPro/uniapp.html" class="sidebar-link">iOS/Android打包发布</a></li></ul></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>企业级应用</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>物联网应用</span> <span class="arrow right"></span></p> <!----></section></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>计算机基础</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-59e6cb88 data-v-7dd95ae2><h3 class="title" data-v-59e6cb88></h3> <!----> <label id="box" class="inputBox" data-v-59e6cb88><input type="password" value="" data-v-59e6cb88> <span data-v-59e6cb88>Konck! Knock!</span> <button data-v-59e6cb88>OK</button></label> <div class="footer" data-v-59e6cb88><span data-v-59e6cb88><i class="iconfont reco-theme" data-v-59e6cb88></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-59e6cb88>vuePress-theme-reco</a></span> <span data-v-59e6cb88><i class="iconfont reco-copyright" data-v-59e6cb88></i> <a data-v-59e6cb88><!---->
+          
+        <!---->
+        2025
+      </a></span></div></div> <div data-v-7dd95ae2><div data-v-7dd95ae2><main class="page"><section style="display:;"><div class="page-title"><h1 class="title">Docker Swarm集群</h1> <div data-v-8a445198><!----> <!----> <!----> <!----></div></div> <div class="theme-reco-content content__default"><h1 id="docker-swarm集群"><a href="#docker-swarm集群" class="header-anchor">#</a> Docker Swarm集群</h1> <h2 id="什么是docker-swarm"><a href="#什么是docker-swarm" class="header-anchor">#</a> 什么是Docker Swarm</h2> <p>Docker Swarm是Docker的原生集群管理工具，它将多个Docker主机组合成一个虚拟的Docker主机，提供标准的Docker API，使得应用可以像在单个Docker主机上一样被部署到Swarm集群中。</p> <p>Docker Swarm的主要特点：</p> <ul><li><strong>分布式设计</strong>：内置分布式设计，无单点故障</li> <li><strong>声明式服务模型</strong>：使用声明式API定义服务的期望状态</li> <li><strong>服务扩展</strong>：可以轻松扩展或缩减服务实例数量</li> <li><strong>服务发现</strong>：内置服务发现机制，自动为服务分配DNS名称</li> <li><strong>负载均衡</strong>：自动为服务提供负载均衡</li> <li><strong>滚动更新</strong>：支持服务的滚动更新和回滚</li> <li><strong>安全通信</strong>：节点间通信采用TLS加密，提供自动密钥轮换功能</li></ul> <h2 id="swarm架构"><a href="#swarm架构" class="header-anchor">#</a> Swarm架构</h2> <h3 id="节点类型"><a href="#节点类型" class="header-anchor">#</a> 节点类型</h3> <p>Swarm集群由两种类型的节点组成：</p> <ol><li><p><strong>管理节点（Manager Node）</strong>：</p> <ul><li>维护集群状态</li> <li>调度服务</li> <li>提供Swarm API</li> <li>可以配置为高可用模式（通常建议3、5或7个管理节点）</li></ul></li> <li><p><strong>工作节点（Worker Node）</strong>：</p> <ul><li>执行容器</li> <li>不参与集群管理决策</li> <li>可以根据需要扩展</li></ul></li></ol> <h3 id="核心概念"><a href="#核心概念" class="header-anchor">#</a> 核心概念</h3> <ul><li><strong>节点（Node）</strong>：参与Swarm集群的Docker引擎实例</li> <li><strong>服务（Service）</strong>：在Swarm上运行的任务的定义</li> <li><strong>任务（Task）</strong>：调度到节点上的Docker容器实例</li> <li><strong>堆栈（Stack）</strong>：一组相关服务，通常通过Compose文件定义</li></ul> <h2 id="创建和管理swarm集群"><a href="#创建和管理swarm集群" class="header-anchor">#</a> 创建和管理Swarm集群</h2> <h3 id="初始化swarm集群"><a href="#初始化swarm集群" class="header-anchor">#</a> 初始化Swarm集群</h3> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># 初始化一个新的Swarm集群（在管理节点上执行）</span>
+<span class="token function">docker</span> swarm init --advertise-addr <span class="token operator">&lt;</span>MANAGER-IP<span class="token operator">&gt;</span>
+
+<span class="token comment"># 输出将显示加入集群的命令，例如：</span>
+<span class="token comment"># docker swarm join --token SWMTKN-1-49nj1cmql0jkz5s954yi3oex3nedyz0fb0xx14ie39trti4wxv-8vxv8rssmk743ojnwacrr2e7c 192.168.99.100:2377</span>
+</code></pre></div><h3 id="添加节点到集群"><a href="#添加节点到集群" class="header-anchor">#</a> 添加节点到集群</h3> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># 获取加入集群的命令（在管理节点上执行）</span>
+<span class="token comment"># 获取工作节点的加入命令</span>
+<span class="token function">docker</span> swarm join-token worker
+
+<span class="token comment"># 获取管理节点的加入命令</span>
+<span class="token function">docker</span> swarm join-token manager
+
+<span class="token comment"># 在新节点上执行加入命令</span>
+<span class="token function">docker</span> swarm <span class="token function">join</span> <span class="token parameter variable">--token</span> <span class="token operator">&lt;</span>TOKEN<span class="token operator">&gt;</span> <span class="token operator">&lt;</span>MANAGER-IP<span class="token operator">&gt;</span>:2377
+</code></pre></div><h3 id="查看集群信息"><a href="#查看集群信息" class="header-anchor">#</a> 查看集群信息</h3> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># 查看集群中的节点</span>
+<span class="token function">docker</span> <span class="token function">node</span> <span class="token function">ls</span>
+
+<span class="token comment"># 查看节点详细信息</span>
+<span class="token function">docker</span> <span class="token function">node</span> inspect <span class="token operator">&lt;</span>NODE-ID<span class="token operator">&gt;</span>
+
+<span class="token comment"># 以可读格式查看节点信息</span>
+<span class="token function">docker</span> <span class="token function">node</span> inspect <span class="token parameter variable">--pretty</span> <span class="token operator">&lt;</span>NODE-ID<span class="token operator">&gt;</span>
+</code></pre></div><h3 id="管理节点"><a href="#管理节点" class="header-anchor">#</a> 管理节点</h3> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># 提升工作节点为管理节点</span>
+<span class="token function">docker</span> <span class="token function">node</span> promote <span class="token operator">&lt;</span>NODE-ID<span class="token operator">&gt;</span>
+
+<span class="token comment"># 降级管理节点为工作节点</span>
+<span class="token function">docker</span> <span class="token function">node</span> demote <span class="token operator">&lt;</span>NODE-ID<span class="token operator">&gt;</span>
+
+<span class="token comment"># 更新节点</span>
+<span class="token function">docker</span> <span class="token function">node</span> update <span class="token operator">&lt;</span>NODE-ID<span class="token operator">&gt;</span>
+
+<span class="token comment"># 设置节点可用性</span>
+<span class="token function">docker</span> <span class="token function">node</span> update <span class="token parameter variable">--availability</span> active<span class="token operator">|</span>pause<span class="token operator">|</span>drain <span class="token operator">&lt;</span>NODE-ID<span class="token operator">&gt;</span>
+
+<span class="token comment"># 添加节点标签</span>
+<span class="token function">docker</span> <span class="token function">node</span> update --label-add <span class="token assign-left variable">datacenter</span><span class="token operator">=</span>east <span class="token operator">&lt;</span>NODE-ID<span class="token operator">&gt;</span>
+
+<span class="token comment"># 删除节点</span>
+<span class="token function">docker</span> <span class="token function">node</span> <span class="token function">rm</span> <span class="token operator">&lt;</span>NODE-ID<span class="token operator">&gt;</span>
+</code></pre></div><h3 id="离开swarm集群"><a href="#离开swarm集群" class="header-anchor">#</a> 离开Swarm集群</h3> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># 在工作节点上执行</span>
+<span class="token function">docker</span> swarm leave
+
+<span class="token comment"># 在管理节点上执行（强制离开）</span>
+<span class="token function">docker</span> swarm leave <span class="token parameter variable">--force</span>
+</code></pre></div><h2 id="服务管理"><a href="#服务管理" class="header-anchor">#</a> 服务管理</h2> <h3 id="创建服务"><a href="#创建服务" class="header-anchor">#</a> 创建服务</h3> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># 创建基本服务</span>
+<span class="token function">docker</span> <span class="token function">service</span> create <span class="token parameter variable">--name</span> my-web nginx
+
+<span class="token comment"># 创建带端口映射的服务</span>
+<span class="token function">docker</span> <span class="token function">service</span> create <span class="token parameter variable">--name</span> my-web <span class="token parameter variable">--publish</span> <span class="token number">8080</span>:80 nginx
+
+<span class="token comment"># 创建带环境变量的服务</span>
+<span class="token function">docker</span> <span class="token function">service</span> create <span class="token parameter variable">--name</span> my-db <span class="token punctuation">\</span>
+  <span class="token parameter variable">--env</span> <span class="token assign-left variable">MYSQL_ROOT_PASSWORD</span><span class="token operator">=</span>secret <span class="token punctuation">\</span>
+  <span class="token parameter variable">--env</span> <span class="token assign-left variable">MYSQL_DATABASE</span><span class="token operator">=</span>mydb <span class="token punctuation">\</span>
+  mysql:5.7
+
+<span class="token comment"># 创建带卷的服务</span>
+<span class="token function">docker</span> <span class="token function">service</span> create <span class="token parameter variable">--name</span> my-db <span class="token punctuation">\</span>
+  <span class="token parameter variable">--mount</span> <span class="token assign-left variable">type</span><span class="token operator">=</span>volume,source<span class="token operator">=</span>db-data,target<span class="token operator">=</span>/var/lib/mysql <span class="token punctuation">\</span>
+  mysql:5.7
+
+<span class="token comment"># 创建带约束的服务</span>
+<span class="token function">docker</span> <span class="token function">service</span> create <span class="token parameter variable">--name</span> my-web <span class="token punctuation">\</span>
+  <span class="token parameter variable">--constraint</span> <span class="token assign-left variable">node.role</span><span class="token operator">==</span>worker <span class="token punctuation">\</span>
+  <span class="token parameter variable">--constraint</span> <span class="token assign-left variable">node.labels.datacenter</span><span class="token operator">==</span>east <span class="token punctuation">\</span>
+  nginx
+
+<span class="token comment"># 创建带资源限制的服务</span>
+<span class="token function">docker</span> <span class="token function">service</span> create <span class="token parameter variable">--name</span> my-web <span class="token punctuation">\</span>
+  --limit-cpu <span class="token number">0.5</span> <span class="token punctuation">\</span>
+  --limit-memory 512M <span class="token punctuation">\</span>
+  nginx
+</code></pre></div><h3 id="查看服务信息"><a href="#查看服务信息" class="header-anchor">#</a> 查看服务信息</h3> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># 列出所有服务</span>
+<span class="token function">docker</span> <span class="token function">service</span> <span class="token function">ls</span>
+
+<span class="token comment"># 查看服务详细信息</span>
+<span class="token function">docker</span> <span class="token function">service</span> inspect <span class="token operator">&lt;</span>SERVICE-ID<span class="token operator">&gt;</span>
+
+<span class="token comment"># 以可读格式查看服务信息</span>
+<span class="token function">docker</span> <span class="token function">service</span> inspect <span class="token parameter variable">--pretty</span> <span class="token operator">&lt;</span>SERVICE-ID<span class="token operator">&gt;</span>
+
+<span class="token comment"># 查看服务日志</span>
+<span class="token function">docker</span> <span class="token function">service</span> logs <span class="token operator">&lt;</span>SERVICE-ID<span class="token operator">&gt;</span>
+
+<span class="token comment"># 查看服务任务</span>
+<span class="token function">docker</span> <span class="token function">service</span> <span class="token function">ps</span> <span class="token operator">&lt;</span>SERVICE-ID<span class="token operator">&gt;</span>
+</code></pre></div><h3 id="更新服务"><a href="#更新服务" class="header-anchor">#</a> 更新服务</h3> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># 更新服务镜像</span>
+<span class="token function">docker</span> <span class="token function">service</span> update <span class="token parameter variable">--image</span> nginx:1.19 my-web
+
+<span class="token comment"># 扩展服务实例数量</span>
+<span class="token function">docker</span> <span class="token function">service</span> scale my-web<span class="token operator">=</span><span class="token number">5</span>
+
+<span class="token comment"># 或者使用update命令扩展</span>
+<span class="token function">docker</span> <span class="token function">service</span> update <span class="token parameter variable">--replicas</span> <span class="token number">5</span> my-web
+
+<span class="token comment"># 更新端口映射</span>
+<span class="token function">docker</span> <span class="token function">service</span> update --publish-add <span class="token number">8081</span>:80 my-web
+
+<span class="token comment"># 更新环境变量</span>
+<span class="token function">docker</span> <span class="token function">service</span> update --env-add <span class="token assign-left variable">NODE_ENV</span><span class="token operator">=</span>production my-web
+
+<span class="token comment"># 更新挂载</span>
+<span class="token function">docker</span> <span class="token function">service</span> update --mount-add <span class="token assign-left variable">type</span><span class="token operator">=</span>volume,source<span class="token operator">=</span>new-data,target<span class="token operator">=</span>/data my-web
+
+<span class="token comment"># 配置滚动更新策略</span>
+<span class="token function">docker</span> <span class="token function">service</span> update <span class="token punctuation">\</span>
+  --update-parallelism <span class="token number">2</span> <span class="token punctuation">\</span>
+  --update-delay 10s <span class="token punctuation">\</span>
+  my-web
+
+<span class="token comment"># 回滚服务更新</span>
+<span class="token function">docker</span> <span class="token function">service</span> update <span class="token parameter variable">--rollback</span> my-web
+</code></pre></div><h3 id="删除服务"><a href="#删除服务" class="header-anchor">#</a> 删除服务</h3> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># 删除服务</span>
+<span class="token function">docker</span> <span class="token function">service</span> <span class="token function">rm</span> my-web
+</code></pre></div><h2 id="使用docker-stack部署应用"><a href="#使用docker-stack部署应用" class="header-anchor">#</a> 使用Docker Stack部署应用</h2> <p>Docker Stack允许使用Compose文件格式在Swarm上部署完整的应用程序堆栈。</p> <h3 id="创建堆栈文件"><a href="#创建堆栈文件" class="header-anchor">#</a> 创建堆栈文件</h3> <p><code>docker-stack.yml</code>：</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">version</span><span class="token punctuation">:</span> <span class="token string">'3.8'</span>
+
+<span class="token key atrule">services</span><span class="token punctuation">:</span>
+  <span class="token key atrule">web</span><span class="token punctuation">:</span>
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> nginx<span class="token punctuation">:</span>latest
+    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token string">&quot;80:80&quot;</span>
+    <span class="token key atrule">deploy</span><span class="token punctuation">:</span>
+      <span class="token key atrule">replicas</span><span class="token punctuation">:</span> <span class="token number">3</span>
+      <span class="token key atrule">update_config</span><span class="token punctuation">:</span>
+        <span class="token key atrule">parallelism</span><span class="token punctuation">:</span> <span class="token number">1</span>
+        <span class="token key atrule">delay</span><span class="token punctuation">:</span> 10s
+      <span class="token key atrule">restart_policy</span><span class="token punctuation">:</span>
+        <span class="token key atrule">condition</span><span class="token punctuation">:</span> on<span class="token punctuation">-</span>failure
+      <span class="token key atrule">placement</span><span class="token punctuation">:</span>
+        <span class="token key atrule">constraints</span><span class="token punctuation">:</span>
+          <span class="token punctuation">-</span> node.role == worker
+  
+  <span class="token key atrule">visualizer</span><span class="token punctuation">:</span>
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> dockersamples/visualizer
+    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token string">&quot;8080:8080&quot;</span>
+    <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> /var/run/docker.sock<span class="token punctuation">:</span>/var/run/docker.sock
+    <span class="token key atrule">deploy</span><span class="token punctuation">:</span>
+      <span class="token key atrule">placement</span><span class="token punctuation">:</span>
+        <span class="token key atrule">constraints</span><span class="token punctuation">:</span>
+          <span class="token punctuation">-</span> node.role == manager
+
+<span class="token key atrule">networks</span><span class="token punctuation">:</span>
+  <span class="token key atrule">webnet</span><span class="token punctuation">:</span>
+
+<span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+  <span class="token key atrule">data-volume</span><span class="token punctuation">:</span>
+</code></pre></div><h3 id="部署堆栈"><a href="#部署堆栈" class="header-anchor">#</a> 部署堆栈</h3> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># 部署堆栈</span>
+<span class="token function">docker</span> stack deploy <span class="token parameter variable">-c</span> docker-stack.yml my-app
+
+<span class="token comment"># 列出所有堆栈</span>
+<span class="token function">docker</span> stack <span class="token function">ls</span>
+
+<span class="token comment"># 列出堆栈中的服务</span>
+<span class="token function">docker</span> stack services my-app
+
+<span class="token comment"># 列出堆栈中的任务</span>
+<span class="token function">docker</span> stack <span class="token function">ps</span> my-app
+
+<span class="token comment"># 删除堆栈</span>
+<span class="token function">docker</span> stack <span class="token function">rm</span> my-app
+</code></pre></div><h2 id="swarm网络"><a href="#swarm网络" class="header-anchor">#</a> Swarm网络</h2> <p>Swarm模式提供了多种网络驱动，用于不同的网络需求。</p> <h3 id="覆盖网络-overlay-network"><a href="#覆盖网络-overlay-network" class="header-anchor">#</a> 覆盖网络（Overlay Network）</h3> <p>覆盖网络允许不同节点上的容器相互通信。</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># 创建覆盖网络</span>
+<span class="token function">docker</span> network create <span class="token parameter variable">--driver</span> overlay my-network
+
+<span class="token comment"># 创建加密的覆盖网络</span>
+<span class="token function">docker</span> network create <span class="token parameter variable">--driver</span> overlay <span class="token parameter variable">--opt</span> encrypted my-secure-network
+
+<span class="token comment"># 创建服务并连接到覆盖网络</span>
+<span class="token function">docker</span> <span class="token function">service</span> create <span class="token parameter variable">--name</span> my-web <span class="token parameter variable">--network</span> my-network nginx
+</code></pre></div><h3 id="入口网络-ingress-network"><a href="#入口网络-ingress-network" class="header-anchor">#</a> 入口网络（Ingress Network）</h3> <p>入口网络是一个特殊的覆盖网络，用于服务的负载均衡和路由网格。</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># 查看入口网络</span>
+<span class="token function">docker</span> network <span class="token function">ls</span> <span class="token parameter variable">--filter</span> <span class="token assign-left variable">name</span><span class="token operator">=</span>ingress
+
+<span class="token comment"># 重新创建入口网络（如果需要）</span>
+<span class="token function">docker</span> network <span class="token function">rm</span> ingress
+<span class="token function">docker</span> network create <span class="token parameter variable">--driver</span> overlay <span class="token parameter variable">--ingress</span> ingress
+</code></pre></div><h2 id="swarm安全"><a href="#swarm安全" class="header-anchor">#</a> Swarm安全</h2> <h3 id="tls配置"><a href="#tls配置" class="header-anchor">#</a> TLS配置</h3> <p>Swarm使用TLS进行节点间通信加密。</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># 查看当前TLS配置</span>
+<span class="token function">docker</span> info <span class="token operator">|</span> <span class="token function">grep</span> <span class="token string">&quot;Swarm&quot;</span>
+
+<span class="token comment"># 轮换证书（在管理节点上执行）</span>
+<span class="token function">docker</span> swarm ca <span class="token parameter variable">--rotate</span>
+
+<span class="token comment"># 查看证书有效期</span>
+<span class="token function">docker</span> swarm ca <span class="token parameter variable">--quiet</span> --cert-expiry
+</code></pre></div><h3 id="使用secrets管理敏感数据"><a href="#使用secrets管理敏感数据" class="header-anchor">#</a> 使用Secrets管理敏感数据</h3> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># 从文件创建secret</span>
+<span class="token builtin class-name">echo</span> <span class="token string">&quot;mypassword&quot;</span> <span class="token operator">|</span> <span class="token function">docker</span> secret create db_password -
+
+<span class="token comment"># 或者从文件创建</span>
+<span class="token function">docker</span> secret create db_password ./password.txt
+
+<span class="token comment"># 列出secrets</span>
+<span class="token function">docker</span> secret <span class="token function">ls</span>
+
+<span class="token comment"># 查看secret详情</span>
+<span class="token function">docker</span> secret inspect db_password
+
+<span class="token comment"># 创建使用secret的服务</span>
+<span class="token function">docker</span> <span class="token function">service</span> create <span class="token punctuation">\</span>
+  <span class="token parameter variable">--name</span> db <span class="token punctuation">\</span>
+  <span class="token parameter variable">--secret</span> db_password <span class="token punctuation">\</span>
+  <span class="token parameter variable">--env</span> <span class="token assign-left variable">MYSQL_ROOT_PASSWORD_FILE</span><span class="token operator">=</span>/run/secrets/db_password <span class="token punctuation">\</span>
+  mysql:5.7
+
+<span class="token comment"># 删除secret</span>
+<span class="token function">docker</span> secret <span class="token function">rm</span> db_password
+</code></pre></div><h3 id="使用configs管理配置文件"><a href="#使用configs管理配置文件" class="header-anchor">#</a> 使用Configs管理配置文件</h3> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># 从文件创建config</span>
+<span class="token function">docker</span> config create nginx_conf ./nginx.conf
+
+<span class="token comment"># 列出configs</span>
+<span class="token function">docker</span> config <span class="token function">ls</span>
+
+<span class="token comment"># 查看config详情</span>
+<span class="token function">docker</span> config inspect nginx_conf
+
+<span class="token comment"># 创建使用config的服务</span>
+<span class="token function">docker</span> <span class="token function">service</span> create <span class="token punctuation">\</span>
+  <span class="token parameter variable">--name</span> web <span class="token punctuation">\</span>
+  <span class="token parameter variable">--config</span> <span class="token assign-left variable">source</span><span class="token operator">=</span>nginx_conf,target<span class="token operator">=</span>/etc/nginx/nginx.conf <span class="token punctuation">\</span>
+  nginx
+
+<span class="token comment"># 删除config</span>
+<span class="token function">docker</span> config <span class="token function">rm</span> nginx_conf
+</code></pre></div><h2 id="高可用性配置"><a href="#高可用性配置" class="header-anchor">#</a> 高可用性配置</h2> <h3 id="管理节点高可用"><a href="#管理节点高可用" class="header-anchor">#</a> 管理节点高可用</h3> <p>为了实现高可用性，Swarm使用Raft共识算法，建议使用奇数个管理节点。</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># 推荐的管理节点数量：</span>
+<span class="token comment"># - 3个管理节点可以容忍1个节点故障</span>
+<span class="token comment"># - 5个管理节点可以容忍2个节点故障</span>
+<span class="token comment"># - 7个管理节点可以容忍3个节点故障</span>
+
+<span class="token comment"># 添加管理节点</span>
+<span class="token function">docker</span> swarm join-token manager
+<span class="token comment"># 然后在新节点上执行返回的命令</span>
+</code></pre></div><h3 id="备份和恢复swarm状态"><a href="#备份和恢复swarm状态" class="header-anchor">#</a> 备份和恢复Swarm状态</h3> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># 备份Swarm状态（在管理节点上执行）</span>
+systemctl stop <span class="token function">docker</span>
+<span class="token function">tar</span> <span class="token parameter variable">-czvf</span> swarm-backup.tar.gz /var/lib/docker/swarm
+systemctl start <span class="token function">docker</span>
+
+<span class="token comment"># 恢复Swarm状态</span>
+systemctl stop <span class="token function">docker</span>
+<span class="token function">rm</span> <span class="token parameter variable">-rf</span> /var/lib/docker/swarm
+<span class="token function">tar</span> <span class="token parameter variable">-xzvf</span> swarm-backup.tar.gz <span class="token parameter variable">-C</span> /var/lib/docker
+systemctl start <span class="token function">docker</span>
+</code></pre></div><h2 id="监控和日志"><a href="#监控和日志" class="header-anchor">#</a> 监控和日志</h2> <h3 id="服务日志"><a href="#服务日志" class="header-anchor">#</a> 服务日志</h3> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># 查看服务日志</span>
+<span class="token function">docker</span> <span class="token function">service</span> logs my-service
+
+<span class="token comment"># 实时查看日志</span>
+<span class="token function">docker</span> <span class="token function">service</span> logs <span class="token parameter variable">-f</span> my-service
+
+<span class="token comment"># 查看最近的日志</span>
+<span class="token function">docker</span> <span class="token function">service</span> logs <span class="token parameter variable">--tail</span> <span class="token number">100</span> my-service
+
+<span class="token comment"># 查看特定时间段的日志</span>
+<span class="token function">docker</span> <span class="token function">service</span> logs <span class="token parameter variable">--since</span> <span class="token number">2020</span>-01-01T00:00:00 my-service
+</code></pre></div><h3 id="使用prometheus和grafana监控swarm"><a href="#使用prometheus和grafana监控swarm" class="header-anchor">#</a> 使用Prometheus和Grafana监控Swarm</h3> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">version</span><span class="token punctuation">:</span> <span class="token string">'3.8'</span>
+
+<span class="token key atrule">services</span><span class="token punctuation">:</span>
+  <span class="token key atrule">prometheus</span><span class="token punctuation">:</span>
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> prom/prometheus
+    <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> ./prometheus.yml<span class="token punctuation">:</span>/etc/prometheus/prometheus.yml
+    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token string">&quot;9090:9090&quot;</span>
+    <span class="token key atrule">deploy</span><span class="token punctuation">:</span>
+      <span class="token key atrule">placement</span><span class="token punctuation">:</span>
+        <span class="token key atrule">constraints</span><span class="token punctuation">:</span>
+          <span class="token punctuation">-</span> node.role == manager
+  
+  <span class="token key atrule">node-exporter</span><span class="token punctuation">:</span>
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> prom/node<span class="token punctuation">-</span>exporter
+    <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> /proc<span class="token punctuation">:</span>/host/proc<span class="token punctuation">:</span>ro
+      <span class="token punctuation">-</span> /sys<span class="token punctuation">:</span>/host/sys<span class="token punctuation">:</span>ro
+      <span class="token punctuation">-</span> /<span class="token punctuation">:</span>/rootfs<span class="token punctuation">:</span>ro
+    <span class="token key atrule">command</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token string">'--path.procfs=/host/proc'</span>
+      <span class="token punctuation">-</span> <span class="token string">'--path.sysfs=/host/sys'</span>
+      <span class="token punctuation">-</span> <span class="token string">'--collector.filesystem.ignored-mount-points=^/(sys|proc|dev|host|etc)($$|/)'</span>
+    <span class="token key atrule">deploy</span><span class="token punctuation">:</span>
+      <span class="token key atrule">mode</span><span class="token punctuation">:</span> global
+  
+  <span class="token key atrule">cadvisor</span><span class="token punctuation">:</span>
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> google/cadvisor
+    <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> /<span class="token punctuation">:</span>/rootfs<span class="token punctuation">:</span>ro
+      <span class="token punctuation">-</span> /var/run<span class="token punctuation">:</span>/var/run<span class="token punctuation">:</span>rw
+      <span class="token punctuation">-</span> /sys<span class="token punctuation">:</span>/sys<span class="token punctuation">:</span>ro
+      <span class="token punctuation">-</span> /var/lib/docker/<span class="token punctuation">:</span>/var/lib/docker<span class="token punctuation">:</span>ro
+    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token string">&quot;8080:8080&quot;</span>
+    <span class="token key atrule">deploy</span><span class="token punctuation">:</span>
+      <span class="token key atrule">mode</span><span class="token punctuation">:</span> global
+  
+  <span class="token key atrule">grafana</span><span class="token punctuation">:</span>
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> grafana/grafana
+    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token string">&quot;3000:3000&quot;</span>
+    <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> grafana<span class="token punctuation">-</span>data<span class="token punctuation">:</span>/var/lib/grafana
+    <span class="token key atrule">deploy</span><span class="token punctuation">:</span>
+      <span class="token key atrule">placement</span><span class="token punctuation">:</span>
+        <span class="token key atrule">constraints</span><span class="token punctuation">:</span>
+          <span class="token punctuation">-</span> node.role == manager
+
+<span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+  <span class="token key atrule">grafana-data</span><span class="token punctuation">:</span>
+</code></pre></div><h2 id="实际应用示例"><a href="#实际应用示例" class="header-anchor">#</a> 实际应用示例</h2> <h3 id="部署web应用和数据库"><a href="#部署web应用和数据库" class="header-anchor">#</a> 部署Web应用和数据库</h3> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">version</span><span class="token punctuation">:</span> <span class="token string">'3.8'</span>
+
+<span class="token key atrule">services</span><span class="token punctuation">:</span>
+  <span class="token key atrule">web</span><span class="token punctuation">:</span>
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> nginx<span class="token punctuation">:</span>latest
+    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token string">&quot;80:80&quot;</span>
+    <span class="token key atrule">deploy</span><span class="token punctuation">:</span>
+      <span class="token key atrule">replicas</span><span class="token punctuation">:</span> <span class="token number">3</span>
+      <span class="token key atrule">update_config</span><span class="token punctuation">:</span>
+        <span class="token key atrule">parallelism</span><span class="token punctuation">:</span> <span class="token number">1</span>
+        <span class="token key atrule">delay</span><span class="token punctuation">:</span> 10s
+      <span class="token key atrule">restart_policy</span><span class="token punctuation">:</span>
+        <span class="token key atrule">condition</span><span class="token punctuation">:</span> on<span class="token punctuation">-</span>failure
+      <span class="token key atrule">placement</span><span class="token punctuation">:</span>
+        <span class="token key atrule">constraints</span><span class="token punctuation">:</span>
+          <span class="token punctuation">-</span> node.role == worker
+    <span class="token key atrule">networks</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> webnet
+  
+  <span class="token key atrule">api</span><span class="token punctuation">:</span>
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> my<span class="token punctuation">-</span>api<span class="token punctuation">:</span>latest
+    <span class="token key atrule">deploy</span><span class="token punctuation">:</span>
+      <span class="token key atrule">replicas</span><span class="token punctuation">:</span> <span class="token number">2</span>
+      <span class="token key atrule">update_config</span><span class="token punctuation">:</span>
+        <span class="token key atrule">parallelism</span><span class="token punctuation">:</span> <span class="token number">1</span>
+        <span class="token key atrule">delay</span><span class="token punctuation">:</span> 10s
+      <span class="token key atrule">restart_policy</span><span class="token punctuation">:</span>
+        <span class="token key atrule">condition</span><span class="token punctuation">:</span> on<span class="token punctuation">-</span>failure
+    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> DB_HOST=db
+      <span class="token punctuation">-</span> DB_USER=root
+      <span class="token punctuation">-</span> DB_PASSWORD_FILE=/run/secrets/db_password
+      <span class="token punctuation">-</span> DB_NAME=myapp
+    <span class="token key atrule">networks</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> webnet
+      <span class="token punctuation">-</span> dbnet
+    <span class="token key atrule">secrets</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> db_password
+  
+  <span class="token key atrule">db</span><span class="token punctuation">:</span>
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> mysql<span class="token punctuation">:</span><span class="token number">5.7</span>
+    <span class="token key atrule">deploy</span><span class="token punctuation">:</span>
+      <span class="token key atrule">placement</span><span class="token punctuation">:</span>
+        <span class="token key atrule">constraints</span><span class="token punctuation">:</span>
+          <span class="token punctuation">-</span> node.labels.db == true
+    <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> db<span class="token punctuation">-</span>data<span class="token punctuation">:</span>/var/lib/mysql
+    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> MYSQL_ROOT_PASSWORD_FILE=/run/secrets/db_password
+      <span class="token punctuation">-</span> MYSQL_DATABASE=myapp
+    <span class="token key atrule">networks</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> dbnet
+    <span class="token key atrule">secrets</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> db_password
+
+<span class="token key atrule">networks</span><span class="token punctuation">:</span>
+  <span class="token key atrule">webnet</span><span class="token punctuation">:</span>
+  <span class="token key atrule">dbnet</span><span class="token punctuation">:</span>
+    <span class="token key atrule">driver</span><span class="token punctuation">:</span> overlay
+    <span class="token key atrule">internal</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+
+<span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+  <span class="token key atrule">db-data</span><span class="token punctuation">:</span>
+
+<span class="token key atrule">secrets</span><span class="token punctuation">:</span>
+  <span class="token key atrule">db_password</span><span class="token punctuation">:</span>
+    <span class="token key atrule">external</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+</code></pre></div><h3 id="蓝绿部署"><a href="#蓝绿部署" class="header-anchor">#</a> 蓝绿部署</h3> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">version</span><span class="token punctuation">:</span> <span class="token string">'3.8'</span>
+
+<span class="token key atrule">services</span><span class="token punctuation">:</span>
+  <span class="token key atrule">blue</span><span class="token punctuation">:</span>
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> myapp<span class="token punctuation">:</span><span class="token number">1.0</span>
+    <span class="token key atrule">deploy</span><span class="token punctuation">:</span>
+      <span class="token key atrule">replicas</span><span class="token punctuation">:</span> <span class="token number">3</span>
+    <span class="token key atrule">networks</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> frontend
+  
+  <span class="token key atrule">green</span><span class="token punctuation">:</span>
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> myapp<span class="token punctuation">:</span><span class="token number">2.0</span>
+    <span class="token key atrule">deploy</span><span class="token punctuation">:</span>
+      <span class="token key atrule">replicas</span><span class="token punctuation">:</span> <span class="token number">0</span>
+    <span class="token key atrule">networks</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> frontend
+  
+  <span class="token key atrule">proxy</span><span class="token punctuation">:</span>
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> nginx<span class="token punctuation">:</span>latest
+    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token string">&quot;80:80&quot;</span>
+    <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> ./nginx.conf<span class="token punctuation">:</span>/etc/nginx/nginx.conf
+    <span class="token key atrule">deploy</span><span class="token punctuation">:</span>
+      <span class="token key atrule">placement</span><span class="token punctuation">:</span>
+        <span class="token key atrule">constraints</span><span class="token punctuation">:</span>
+          <span class="token punctuation">-</span> node.role == manager
+    <span class="token key atrule">networks</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> frontend
+
+<span class="token key atrule">networks</span><span class="token punctuation">:</span>
+  <span class="token key atrule">frontend</span><span class="token punctuation">:</span>
+</code></pre></div><p>蓝绿切换：</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># 扩展绿色版本</span>
+<span class="token function">docker</span> <span class="token function">service</span> scale my-app_green<span class="token operator">=</span><span class="token number">3</span>
+
+<span class="token comment"># 更新Nginx配置指向绿色版本</span>
+<span class="token comment"># ...</span>
+
+<span class="token comment"># 缩减蓝色版本</span>
+<span class="token function">docker</span> <span class="token function">service</span> scale my-app_blue<span class="token operator">=</span><span class="token number">0</span>
+</code></pre></div><h2 id="最佳实践"><a href="#最佳实践" class="header-anchor">#</a> 最佳实践</h2> <h3 id="管理节点配置"><a href="#管理节点配置" class="header-anchor">#</a> 管理节点配置</h3> <ol><li><strong>使用奇数个管理节点</strong>：3、5或7个，以实现高可用性</li> <li><strong>限制管理节点数量</strong>：不要超过7个管理节点，以避免共识性能下降</li> <li><strong>管理节点专用</strong>：在生产环境中，考虑将管理节点设置为仅管理，不运行工作负载<div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">docker</span> <span class="token function">node</span> update <span class="token parameter variable">--availability</span> drain <span class="token operator">&lt;</span>MANAGER-NODE-ID<span class="token operator">&gt;</span>
+</code></pre></div></li></ol> <h3 id="服务部署策略"><a href="#服务部署策略" class="header-anchor">#</a> 服务部署策略</h3> <ol><li><p><strong>使用标签和约束</strong>：根据节点特性分配服务</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># 添加标签</span>
+<span class="token function">docker</span> <span class="token function">node</span> update --label-add <span class="token assign-left variable">ssd</span><span class="token operator">=</span>true <span class="token operator">&lt;</span>NODE-ID<span class="token operator">&gt;</span>
+
+<span class="token comment"># 使用约束</span>
+<span class="token function">docker</span> <span class="token function">service</span> create <span class="token parameter variable">--constraint</span> <span class="token assign-left variable">node.labels.ssd</span><span class="token operator">==</span>true <span class="token parameter variable">--name</span> db mysql:5.7
+</code></pre></div></li> <li><p><strong>资源分配</strong>：为服务设置资源限制</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">docker</span> <span class="token function">service</span> create --limit-cpu <span class="token number">0.5</span> --limit-memory 512M <span class="token parameter variable">--name</span> app myapp
+</code></pre></div></li> <li><p><strong>滚动更新</strong>：配置适当的更新策略</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">docker</span> <span class="token function">service</span> create <span class="token punctuation">\</span>
+  --update-parallelism <span class="token number">1</span> <span class="token punctuation">\</span>
+  --update-delay 30s <span class="token punctuation">\</span>
+  --update-failure-action rollback <span class="token punctuation">\</span>
+  <span class="token parameter variable">--name</span> web nginx
+</code></pre></div></li></ol> <h3 id="网络安全"><a href="#网络安全" class="header-anchor">#</a> 网络安全</h3> <ol><li><p><strong>使用内部网络</strong>：对于不需要外部访问的服务</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">docker</span> network create <span class="token parameter variable">--driver</span> overlay <span class="token parameter variable">--internal</span> db-network
+</code></pre></div></li> <li><p><strong>加密覆盖网络</strong>：对敏感数据传输</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">docker</span> network create <span class="token parameter variable">--driver</span> overlay <span class="token parameter variable">--opt</span> encrypted secure-network
+</code></pre></div></li> <li><p><strong>使用Secrets</strong>：管理敏感信息</p></li></ol> <h3 id="数据管理"><a href="#数据管理" class="header-anchor">#</a> 数据管理</h3> <ol><li><p><strong>使用命名卷</strong>：确保数据持久化</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">docker</span> <span class="token function">service</span> create <span class="token punctuation">\</span>
+  <span class="token parameter variable">--mount</span> <span class="token assign-left variable">type</span><span class="token operator">=</span>volume,source<span class="token operator">=</span>db-data,target<span class="token operator">=</span>/var/lib/mysql <span class="token punctuation">\</span>
+  <span class="token parameter variable">--name</span> db mysql:5.7
+</code></pre></div></li> <li><p><strong>备份策略</strong>：定期备份关键数据</p></li> <li><p><strong>考虑使用外部存储</strong>：对于关键数据，考虑使用NFS、AWS EBS等</p></li></ol> <h2 id="常见问题与解决方案"><a href="#常见问题与解决方案" class="header-anchor">#</a> 常见问题与解决方案</h2> <h3 id="节点通信问题"><a href="#节点通信问题" class="header-anchor">#</a> 节点通信问题</h3> <p><strong>问题</strong>：节点无法加入集群或节点间通信失败</p> <p><strong>解决方案</strong>：</p> <ol><li><p>检查防火墙设置，确保以下端口开放：</p> <ul><li>TCP 2377：集群管理通信</li> <li>TCP/UDP 7946：节点间通信</li> <li>UDP 4789：覆盖网络流量</li></ul></li> <li><p>检查网络配置：</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># 查看Docker网络设置</span>
+<span class="token function">docker</span> info
+
+<span class="token comment"># 重新初始化Swarm，指定正确的IP</span>
+<span class="token function">docker</span> swarm init --advertise-addr <span class="token operator">&lt;</span>CORRECT-IP<span class="token operator">&gt;</span>
+</code></pre></div></li></ol> <h3 id="服务无法启动"><a href="#服务无法启动" class="header-anchor">#</a> 服务无法启动</h3> <p><strong>问题</strong>：服务创建后无法启动或处于准备状态</p> <p><strong>解决方案</strong>：</p> <ol><li><p>检查服务日志：</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">docker</span> <span class="token function">service</span> logs <span class="token operator">&lt;</span>SERVICE-ID<span class="token operator">&gt;</span>
+</code></pre></div></li> <li><p>检查任务状态：</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">docker</span> <span class="token function">service</span> <span class="token function">ps</span> <span class="token operator">&lt;</span>SERVICE-ID<span class="token operator">&gt;</span>
+</code></pre></div></li> <li><p>检查资源约束：</p> <ul><li>确保节点有足够的资源</li> <li>检查服务的约束条件是否有节点满足</li></ul></li> <li><p>检查镜像可用性：</p> <ul><li>确保所有节点都能访问镜像仓库</li> <li>考虑预先在节点上拉取镜像</li></ul></li></ol> <h3 id="负载均衡问题"><a href="#负载均衡问题" class="header-anchor">#</a> 负载均衡问题</h3> <p><strong>问题</strong>：服务负载不均衡或路由网格不工作</p> <p><strong>解决方案</strong>：</p> <ol><li><p>检查入口网络：</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">docker</span> network inspect ingress
+</code></pre></div></li> <li><p>确认端口发布正确：</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">docker</span> <span class="token function">service</span> inspect <span class="token parameter variable">--format</span><span class="token operator">=</span><span class="token string">'{{.Endpoint.Ports}}'</span> <span class="token operator">&lt;</span>SERVICE-ID<span class="token operator">&gt;</span>
+</code></pre></div></li> <li><p>尝试重新创建入口网络：</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">docker</span> network <span class="token function">rm</span> ingress
+<span class="token function">docker</span> network create <span class="token parameter variable">--driver</span> overlay <span class="token parameter variable">--ingress</span> ingress
+</code></pre></div></li></ol> <h3 id="管理节点故障"><a href="#管理节点故障" class="header-anchor">#</a> 管理节点故障</h3> <p><strong>问题</strong>：管理节点故障或无法访问</p> <p><strong>解决方案</strong>：</p> <ol><li><p>如果仍有法定数量的管理节点运行：</p> <ul><li>系统将自动恢复</li> <li>可以移除故障节点：<div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">docker</span> <span class="token function">node</span> <span class="token function">rm</span> <span class="token parameter variable">--force</span> <span class="token operator">&lt;</span>NODE-ID<span class="token operator">&gt;</span>
+</code></pre></div></li></ul></li> <li><p>如果失去法定数量的管理节点：</p> <ul><li>需要强制恢复集群：<div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># 在剩余的管理节点上</span>
+<span class="token function">docker</span> swarm init --force-new-cluster
+</code></pre></div></li> <li>然后添加新的管理节点恢复冗余</li></ul></li></ol> <h2 id="总结"><a href="#总结" class="header-anchor">#</a> 总结</h2> <p>Docker Swarm是一个强大的容器编排工具，提供了简单易用的集群管理功能。通过Swarm，您可以将多个Docker主机组合成一个虚拟的Docker主机，实现服务的高可用性、负载均衡和扩展。</p> <p>Swarm的核心优势在于其与Docker紧密集成，使用标准Docker API，学习曲线平缓。对于中小规模的容器部署，Swarm提供了足够的功能和性能。</p> <p>通过本文介绍的命令和最佳实践，您应该能够创建、管理和维护一个健壮的Docker Swarm集群，为您的应用提供可靠的运行环境。</p> <h2 id="下一步学习"><a href="#下一步学习" class="header-anchor">#</a> 下一步学习</h2> <ul><li><a href="/JavaPlusDoc/docker/docker-security.html">Docker安全最佳实践</a></li> <li><a href="/JavaPlusDoc/docker/docker-compose.html">Docker Compose详解</a></li> <li><a href="/JavaPlusDoc/docker/docker-volumes.html">Docker数据卷管理</a></li> <li><a href="/JavaPlusDoc/docker/docker-production.html">Docker生产环境部署</a></li></ul></div></section> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">上次更新: </span> <span class="time">2025/6/12 22:35:02</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev"><a href="/JavaPlusDoc/docker/docker-compose.html" class="prev">
+          Docker Compose详解
+        </a></span> <span class="next"><a href="/JavaPlusDoc/docker/docker-security.html">
+          Docker安全最佳实践
+        </a></span></p></div> <div class="comments-wrapper"><!----></div></main></div> <!----></div> <ul class="sub-sidebar sub-sidebar-wrapper" style="width:12rem;" data-v-b57cc07c data-v-7dd95ae2><li class="level-2" data-v-b57cc07c><a href="/JavaPlusDoc/docker/docker-swarm.html#什么是docker-swarm" class="sidebar-link reco-side-什么是docker-swarm" data-v-b57cc07c>什么是Docker Swarm</a></li><li class="level-2" data-v-b57cc07c><a href="/JavaPlusDoc/docker/docker-swarm.html#swarm架构" class="sidebar-link reco-side-swarm架构" data-v-b57cc07c>Swarm架构</a></li><li class="level-3" data-v-b57cc07c><a href="/JavaPlusDoc/docker/docker-swarm.html#节点类型" class="sidebar-link reco-side-节点类型" data-v-b57cc07c>节点类型</a></li><li class="level-3" data-v-b57cc07c><a href="/JavaPlusDoc/docker/docker-swarm.html#核心概念" class="sidebar-link reco-side-核心概念" data-v-b57cc07c>核心概念</a></li><li class="level-2" data-v-b57cc07c><a href="/JavaPlusDoc/docker/docker-swarm.html#创建和管理swarm集群" class="sidebar-link reco-side-创建和管理swarm集群" data-v-b57cc07c>创建和管理Swarm集群</a></li><li class="level-3" data-v-b57cc07c><a href="/JavaPlusDoc/docker/docker-swarm.html#初始化swarm集群" class="sidebar-link reco-side-初始化swarm集群" data-v-b57cc07c>初始化Swarm集群</a></li><li class="level-3" data-v-b57cc07c><a href="/JavaPlusDoc/docker/docker-swarm.html#添加节点到集群" class="sidebar-link reco-side-添加节点到集群" data-v-b57cc07c>添加节点到集群</a></li><li class="level-3" data-v-b57cc07c><a href="/JavaPlusDoc/docker/docker-swarm.html#查看集群信息" class="sidebar-link reco-side-查看集群信息" data-v-b57cc07c>查看集群信息</a></li><li class="level-3" data-v-b57cc07c><a href="/JavaPlusDoc/docker/docker-swarm.html#管理节点" class="sidebar-link reco-side-管理节点" data-v-b57cc07c>管理节点</a></li><li class="level-3" data-v-b57cc07c><a href="/JavaPlusDoc/docker/docker-swarm.html#离开swarm集群" class="sidebar-link reco-side-离开swarm集群" data-v-b57cc07c>离开Swarm集群</a></li><li class="level-2" data-v-b57cc07c><a href="/JavaPlusDoc/docker/docker-swarm.html#服务管理" class="sidebar-link reco-side-服务管理" data-v-b57cc07c>服务管理</a></li><li class="level-3" data-v-b57cc07c><a href="/JavaPlusDoc/docker/docker-swarm.html#创建服务" class="sidebar-link reco-side-创建服务" data-v-b57cc07c>创建服务</a></li><li class="level-3" data-v-b57cc07c><a href="/JavaPlusDoc/docker/docker-swarm.html#查看服务信息" class="sidebar-link reco-side-查看服务信息" data-v-b57cc07c>查看服务信息</a></li><li class="level-3" data-v-b57cc07c><a href="/JavaPlusDoc/docker/docker-swarm.html#更新服务" class="sidebar-link reco-side-更新服务" data-v-b57cc07c>更新服务</a></li><li class="level-3" data-v-b57cc07c><a href="/JavaPlusDoc/docker/docker-swarm.html#删除服务" class="sidebar-link reco-side-删除服务" data-v-b57cc07c>删除服务</a></li><li class="level-2" data-v-b57cc07c><a href="/JavaPlusDoc/docker/docker-swarm.html#使用docker-stack部署应用" class="sidebar-link reco-side-使用docker-stack部署应用" data-v-b57cc07c>使用Docker Stack部署应用</a></li><li class="level-3" data-v-b57cc07c><a href="/JavaPlusDoc/docker/docker-swarm.html#创建堆栈文件" class="sidebar-link reco-side-创建堆栈文件" data-v-b57cc07c>创建堆栈文件</a></li><li class="level-3" data-v-b57cc07c><a href="/JavaPlusDoc/docker/docker-swarm.html#部署堆栈" class="sidebar-link reco-side-部署堆栈" data-v-b57cc07c>部署堆栈</a></li><li class="level-2" data-v-b57cc07c><a href="/JavaPlusDoc/docker/docker-swarm.html#swarm网络" class="sidebar-link reco-side-swarm网络" data-v-b57cc07c>Swarm网络</a></li><li class="level-3" data-v-b57cc07c><a href="/JavaPlusDoc/docker/docker-swarm.html#覆盖网络-overlay-network" class="sidebar-link reco-side-覆盖网络-overlay-network" data-v-b57cc07c>覆盖网络（Overlay Network）</a></li><li class="level-3" data-v-b57cc07c><a href="/JavaPlusDoc/docker/docker-swarm.html#入口网络-ingress-network" class="sidebar-link reco-side-入口网络-ingress-network" data-v-b57cc07c>入口网络（Ingress Network）</a></li><li class="level-2" data-v-b57cc07c><a href="/JavaPlusDoc/docker/docker-swarm.html#swarm安全" class="sidebar-link reco-side-swarm安全" data-v-b57cc07c>Swarm安全</a></li><li class="level-3" data-v-b57cc07c><a href="/JavaPlusDoc/docker/docker-swarm.html#tls配置" class="sidebar-link reco-side-tls配置" data-v-b57cc07c>TLS配置</a></li><li class="level-3" data-v-b57cc07c><a href="/JavaPlusDoc/docker/docker-swarm.html#使用secrets管理敏感数据" class="sidebar-link reco-side-使用secrets管理敏感数据" data-v-b57cc07c>使用Secrets管理敏感数据</a></li><li class="level-3" data-v-b57cc07c><a href="/JavaPlusDoc/docker/docker-swarm.html#使用configs管理配置文件" class="sidebar-link reco-side-使用configs管理配置文件" data-v-b57cc07c>使用Configs管理配置文件</a></li><li class="level-2" data-v-b57cc07c><a href="/JavaPlusDoc/docker/docker-swarm.html#高可用性配置" class="sidebar-link reco-side-高可用性配置" data-v-b57cc07c>高可用性配置</a></li><li class="level-3" data-v-b57cc07c><a href="/JavaPlusDoc/docker/docker-swarm.html#管理节点高可用" class="sidebar-link reco-side-管理节点高可用" data-v-b57cc07c>管理节点高可用</a></li><li class="level-3" data-v-b57cc07c><a href="/JavaPlusDoc/docker/docker-swarm.html#备份和恢复swarm状态" class="sidebar-link reco-side-备份和恢复swarm状态" data-v-b57cc07c>备份和恢复Swarm状态</a></li><li class="level-2" data-v-b57cc07c><a href="/JavaPlusDoc/docker/docker-swarm.html#监控和日志" class="sidebar-link reco-side-监控和日志" data-v-b57cc07c>监控和日志</a></li><li class="level-3" data-v-b57cc07c><a href="/JavaPlusDoc/docker/docker-swarm.html#服务日志" class="sidebar-link reco-side-服务日志" data-v-b57cc07c>服务日志</a></li><li class="level-3" data-v-b57cc07c><a href="/JavaPlusDoc/docker/docker-swarm.html#使用prometheus和grafana监控swarm" class="sidebar-link reco-side-使用prometheus和grafana监控swarm" data-v-b57cc07c>使用Prometheus和Grafana监控Swarm</a></li><li class="level-2" data-v-b57cc07c><a href="/JavaPlusDoc/docker/docker-swarm.html#实际应用示例" class="sidebar-link reco-side-实际应用示例" data-v-b57cc07c>实际应用示例</a></li><li class="level-3" data-v-b57cc07c><a href="/JavaPlusDoc/docker/docker-swarm.html#部署web应用和数据库" class="sidebar-link reco-side-部署web应用和数据库" data-v-b57cc07c>部署Web应用和数据库</a></li><li class="level-3" data-v-b57cc07c><a href="/JavaPlusDoc/docker/docker-swarm.html#蓝绿部署" class="sidebar-link reco-side-蓝绿部署" data-v-b57cc07c>蓝绿部署</a></li><li class="level-2" data-v-b57cc07c><a href="/JavaPlusDoc/docker/docker-swarm.html#最佳实践" class="sidebar-link reco-side-最佳实践" data-v-b57cc07c>最佳实践</a></li><li class="level-3" data-v-b57cc07c><a href="/JavaPlusDoc/docker/docker-swarm.html#管理节点配置" class="sidebar-link reco-side-管理节点配置" data-v-b57cc07c>管理节点配置</a></li><li class="level-3" data-v-b57cc07c><a href="/JavaPlusDoc/docker/docker-swarm.html#服务部署策略" class="sidebar-link reco-side-服务部署策略" data-v-b57cc07c>服务部署策略</a></li><li class="level-3" data-v-b57cc07c><a href="/JavaPlusDoc/docker/docker-swarm.html#网络安全" class="sidebar-link reco-side-网络安全" data-v-b57cc07c>网络安全</a></li><li class="level-3" data-v-b57cc07c><a href="/JavaPlusDoc/docker/docker-swarm.html#数据管理" class="sidebar-link reco-side-数据管理" data-v-b57cc07c>数据管理</a></li><li class="level-2" data-v-b57cc07c><a href="/JavaPlusDoc/docker/docker-swarm.html#常见问题与解决方案" class="sidebar-link reco-side-常见问题与解决方案" data-v-b57cc07c>常见问题与解决方案</a></li><li class="level-3" data-v-b57cc07c><a href="/JavaPlusDoc/docker/docker-swarm.html#节点通信问题" class="sidebar-link reco-side-节点通信问题" data-v-b57cc07c>节点通信问题</a></li><li class="level-3" data-v-b57cc07c><a href="/JavaPlusDoc/docker/docker-swarm.html#服务无法启动" class="sidebar-link reco-side-服务无法启动" data-v-b57cc07c>服务无法启动</a></li><li class="level-3" data-v-b57cc07c><a href="/JavaPlusDoc/docker/docker-swarm.html#负载均衡问题" class="sidebar-link reco-side-负载均衡问题" data-v-b57cc07c>负载均衡问题</a></li><li class="level-3" data-v-b57cc07c><a href="/JavaPlusDoc/docker/docker-swarm.html#管理节点故障" class="sidebar-link reco-side-管理节点故障" data-v-b57cc07c>管理节点故障</a></li><li class="level-2" data-v-b57cc07c><a href="/JavaPlusDoc/docker/docker-swarm.html#总结" class="sidebar-link reco-side-总结" data-v-b57cc07c>总结</a></li><li class="level-2" data-v-b57cc07c><a href="/JavaPlusDoc/docker/docker-swarm.html#下一步学习" class="sidebar-link reco-side-下一步学习" data-v-b57cc07c>下一步学习</a></li></ul></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-c6073ba8 data-v-c6073ba8><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-c6073ba8><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-c6073ba8></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-c6073ba8></path></svg></div><div></div><div class="kanbanniang" data-v-5775ee02><div class="banniang-container" style="display:;" data-v-5775ee02><div class="messageBox" style="right:68px;bottom:190px;display:none;" data-v-5775ee02>
+      欢迎来到 Jeskson文档-微服务分布式系统架构
+    </div> <div class="operation" style="right:90px;bottom:40px;display:none;" data-v-5775ee02><i class="kbnfont kbn-ban-home ban-home" data-v-5775ee02></i> <i class="kbnfont kbn-ban-message message" data-v-5775ee02></i> <i class="kbnfont kbn-ban-close close" data-v-5775ee02></i> <a target="_blank" href="https://vuepress-theme-reco.recoluan.com/views/plugins/kanbanniang.html" data-v-5775ee02><i class="kbnfont kbn-ban-info info" data-v-5775ee02></i></a> <i class="kbnfont kbn-ban-theme skin" style="display:none;" data-v-5775ee02></i></div> <canvas id="banniang" width="150" height="260" class="live2d" style="width:100px;position:fixed;right:0px;bottom:0px;opacity:0.9;z-index:99999;object-fit:cover;" data-v-5775ee02></canvas></div> <div class="showBanNiang" style="display:none;" data-v-5775ee02>
+    看板娘
+  </div></div></div></div>
+    <script src="/JavaPlusDoc/assets/js/app.7366d2bd.js" defer></script><script src="/JavaPlusDoc/assets/js/7.a9854728.js" defer></script><script src="/JavaPlusDoc/assets/js/2.b62d6a43.js" defer></script><script src="/JavaPlusDoc/assets/js/1.1dab207e.js" defer></script><script src="/JavaPlusDoc/assets/js/159.656b1e25.js" defer></script>
+  </body>
+</html>
