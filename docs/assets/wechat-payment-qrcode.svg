@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="400" viewBox="0 0 300 400">
+  <!-- 背景 -->
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f8f9fa" />
+      <stop offset="100%" stop-color="#e9ecef" />
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="3" flood-color="#000" flood-opacity="0.15" />
+    </filter>
+  </defs>
+  
+  <!-- 卡片背景 -->
+  <rect width="300" height="400" fill="url(#bgGradient)" rx="15" ry="15" filter="url(#shadow)"/>
+  
+  <!-- 顶部标题区域 -->
+  <rect x="20" y="20" width="260" height="60" fill="#07c160" rx="10" ry="10"/>
+  <text x="150" y="55" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="white" text-anchor="middle">JavaPlus 技术文档平台</text>
+  <text x="150" y="75" font-family="Arial, sans-serif" font-size="14" fill="white" text-anchor="middle">微信扫码支持</text>
+  
+  <!-- Java图标 -->
+  <g transform="translate(40, 55) scale(0.4)">
+    <path d="M47.617 98.12c-19.192 5.362 11.677 16.439 36.115 5.969-4.003-1.556-6.874-3.351-6.874-3.351-10.897 2.06-15.952 2.222-25.844 1.092-8.164-.935-3.397-3.71-3.397-3.71z" fill="#fff"/>
+    <path d="M80.806 87.66c-.035 0-3.611 1.012-7.806 1.535-4.195.527-8.93.736-10.828.736-1.896 0-5.908-.176-8.814-.353-2.905-.176-5.908-.353-7.328-.353-1.422 0-2.358.176-2.358.353 0 .176 1.896.353 3.783.353 1.896 0 4.195.176 6.383.353 2.19.176 4.195.353 4.195.353h-21.046c-2.19 1.763-3.783 4.049-3.783 6.158 0 8.797 27.65 15.131 57.198 15.131 29.545 0 57.198-6.334 57.198-15.131 0-8.797-27.653-15.131-57.198-15.131-3.207 0-6.383.176-9.588.353z" fill="#fff"/>
+  </g>
+  
+  <!-- 二维码占位区域 (实际使用时替换为真实二维码) -->
+  <rect x="75" y="100" width="150" height="150" fill="white" rx="5" ry="5" stroke="#ddd" stroke-width="1"/>
+  <text x="150" y="175" font-family="Arial, sans-serif" font-size="12" fill="#888" text-anchor="middle">[微信收款码]</text>
+  
+  <!-- 装饰元素 -->
+  <circle cx="150" cy="270" r="15" fill="#07c160"/>
+  <path d="M145,270 L155,270 M150,265 L150,275" stroke="white" stroke-width="2"/>
+  
+  <!-- 说明文字 -->
+  <rect x="50" y="290" width="200" height="60" fill="white" rx="5" ry="5" opacity="0.8"/>
+  <text x="150" y="310" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#333" text-anchor="middle">感谢您的支持!</text>
+  <text x="150" y="330" font-family="Arial, sans-serif" font-size="12" fill="#666" text-anchor="middle">您的赞助将用于平台维护与内容更新</text>
+  
+  <!-- 技术图标 -->
+  <g transform="translate(60, 355)">
+    <!-- Spring -->
+    <circle cx="20" cy="10" r="8" fill="#6DB33F"/>
+    <path d="M20,5 C22.5,7.5 22.5,12.5 20,15" stroke="white" stroke-width="1.5" fill="none"/>
+    
+    <!-- Java -->
+    <circle cx="45" cy="10" r="8" fill="#F78C40"/>
+    <text x="45" y="13" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="white" text-anchor="middle">J</text>
+    
+    <!-- Redis -->
+    <circle cx="70" cy="10" r="8" fill="#DC382D"/>
+    <text x="70" y="13" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="white" text-anchor="middle">R</text>
+    
+    <!-- MySQL -->
+    <circle cx="95" cy="10" r="8" fill="#4479A1"/>
+    <text x="95" y="13" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="white" text-anchor="middle">M</text>
+    
+    <!-- Docker -->
+    <circle cx="120" cy="10" r="8" fill="#2496ED"/>
+    <text x="120" y="13" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="white" text-anchor="middle">D</text>
+    
+    <!-- K8s -->
+    <circle cx="145" cy="10" r="8" fill="#326CE5"/>
+    <text x="145" y="13" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="white" text-anchor="middle">K</text>
+    
+    <!-- Vue -->
+    <circle cx="170" cy="10" r="8" fill="#4FC08D"/>
+    <text x="170" y="13" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="white" text-anchor="middle">V</text>
+  </g>
+  
+  <!-- 底部信息 -->
+  <text x="150" y="385" font-family="Arial, sans-serif" font-size="10" fill="#999" text-anchor="middle">https://webvueblog.github.io/JavaPlusDoc/</text>
+</svg>
