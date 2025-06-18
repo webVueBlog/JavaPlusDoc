@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Prometheus单机部署 | Jeskson文档-微服务分布式系统架构</title>
+    <meta name="generator" content="VuePress 1.9.10">
+    <script src="/JavaPlusDoc/JavaPlusDoc/js/sidebar-scroll.js"></script>
+    <script src="/JavaPlusDoc/JavaPlusDoc/js/sidebar-enhance.js"></script>
+    <script src="/JavaPlusDoc/JavaPlusDoc/js/report-site-enhance.js"></script>
+    <meta name="description" content="Jeskson文档-架构师">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    
+    <link rel="preload" href="/JavaPlusDoc/assets/css/0.styles.838581c8.css" as="style"><link rel="preload" href="/JavaPlusDoc/assets/js/app.2b7d0a00.js" as="script"><link rel="preload" href="/JavaPlusDoc/assets/js/7.ae3ecc72.js" as="script"><link rel="preload" href="/JavaPlusDoc/assets/js/2.38d28b5c.js" as="script"><link rel="preload" href="/JavaPlusDoc/assets/js/1.d5984a11.js" as="script"><link rel="preload" href="/JavaPlusDoc/assets/js/90.48fcf336.js" as="script"><link rel="prefetch" href="/JavaPlusDoc/assets/js/10.ee6e60be.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/100.558346aa.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/101.93cf6d90.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/102.95d9af34.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/103.99e9feaf.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/104.ddefc88c.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/105.ed652fb5.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/106.15983ed0.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/107.b3e28c0e.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/108.9b673570.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/109.4a690e11.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/11.bc738240.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/110.b3828547.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/111.316c9bae.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/112.11301d8b.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/113.f610931a.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/114.03bf228e.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/115.24254df0.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/116.30fb1722.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/117.96652fb0.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/118.d965d8d0.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/119.d5eb52e1.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/120.e7f8c361.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/121.4477f75c.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/122.f71ab9da.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/123.d549a178.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/124.4fea7d53.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/125.1f4d4598.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/126.5c6637be.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/127.329e2c94.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/128.ba1ed385.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/129.09b5d544.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/130.bf4c05dc.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/131.e165fa03.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/132.1ad6a118.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/133.133930df.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/134.e90aa76b.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/135.8958d513.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/136.1304b26e.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/137.b9573ec4.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/138.e2a03031.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/139.7a54d318.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/14.8c0e8519.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/140.fd841522.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/141.7193aaa2.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/142.405326fa.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/143.ce8291ac.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/144.0879b941.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/145.28feb8d7.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/146.d71fcab8.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/147.911e0bdc.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/148.54bffa63.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/149.c73ce46a.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/15.12d8aaf0.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/150.c62e46f6.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/151.cc4f8788.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/152.b52601b1.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/153.85e3747e.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/154.dddaa014.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/155.5c321ff6.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/156.6528814c.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/157.b2757362.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/158.c8748982.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/159.c3e78860.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/16.7b7450ce.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/160.4c5462d0.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/161.4d53ab2b.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/162.b49f0461.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/163.2ab10325.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/164.ddf1dbac.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/165.bff1e049.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/166.dbf8ab40.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/167.932bac8e.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/168.4911c16c.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/169.6a7d91ce.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/17.b910952d.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/170.5b4e05ff.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/171.2024642d.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/172.38a67c1e.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/173.f88fab79.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/174.b94e2410.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/175.41d031cb.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/176.a134bff9.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/177.f6cb5444.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/178.2d9c713a.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/179.2e561100.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/18.201185e8.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/180.7ec77f3f.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/181.643f3813.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/182.c18c7f2f.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/183.700a4134.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/184.7631eb78.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/185.f79a9346.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/186.41a27f47.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/187.e7408b8a.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/188.43ea77f9.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/189.a7163945.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/19.761defe7.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/190.3341bc7d.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/191.96ede70e.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/192.51f7f7cc.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/193.3cb822b6.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/194.1e3e0028.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/195.df027d00.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/196.27e933a3.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/197.e4f0d063.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/198.06159626.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/199.91a7742f.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/20.ba6cadfc.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/200.2be28261.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/201.6804e259.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/202.25f8a300.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/203.13e6dbf1.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/204.c87037b8.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/205.d7eb5e1b.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/206.e4d7d160.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/207.f6178516.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/208.059d3fdf.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/209.6b469d7e.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/21.b4966bba.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/210.91a40170.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/211.0f2433fe.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/212.031333b4.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/213.e0cc98b2.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/214.4d031ff6.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/215.be66ec17.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/216.0a6330ab.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/217.f6b8a926.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/218.60512a33.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/219.3bc77870.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/22.aaaa9ef2.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/220.1cd886d6.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/221.7714e80c.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/222.2f4b1c07.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/223.c244012a.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/224.54ca36e0.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/225.b7ae09f4.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/226.e903e9de.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/227.16fcb482.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/228.ed58d894.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/229.d68aa0ab.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/23.6ac42d74.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/230.0404aa94.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/231.a81cd84d.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/232.81ef7a80.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/233.135fb9b6.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/234.d87da538.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/235.05a25afb.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/236.7ca6f824.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/237.1aa10417.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/238.431704c4.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/239.11737cb2.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/24.f06f5442.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/240.1ee0c994.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/241.0552636c.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/242.05733318.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/243.ff9fee7f.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/244.f304a737.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/245.c6e41975.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/246.5abe2828.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/247.3b8a261f.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/248.512131cd.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/249.8099e85c.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/25.46ddbb1f.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/250.9bb1543e.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/251.50aee814.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/252.544dc2b5.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/253.797949cc.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/254.9a916d00.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/255.0cfa659a.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/256.48968c7e.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/257.dac166b3.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/258.dc6be99d.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/259.f097d480.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/26.f66c9d76.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/260.fa2dcb64.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/261.bfb5e2c5.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/262.5f6ba0b1.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/263.9db9dcf1.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/264.8621fcd4.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/265.5bc50615.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/266.02ef8fd7.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/267.12b6e457.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/268.963f37ad.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/269.4edf626b.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/27.b7f97b38.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/270.a580d5ef.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/271.c960bdaf.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/272.78e31e74.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/273.c625d554.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/274.a9df5441.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/275.12f2ea2f.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/276.740c0ba1.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/277.6cff9a42.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/278.3bac71c6.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/279.f141581e.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/28.11b0c147.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/280.2cee1efa.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/281.97b61f40.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/282.8522d7ea.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/29.87ef569b.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/3.775e045d.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/30.e4534525.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/31.1c635921.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/32.f93cce65.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/33.4af2a473.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/34.a3aeb983.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/35.573b904a.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/36.0c949f81.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/37.8b8ee135.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/38.3acf7a1d.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/39.21da5bac.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/4.39538a4d.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/40.acc32a02.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/41.ab1fb14a.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/42.095888b7.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/43.7a93abe5.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/44.4e7b6a52.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/45.f839b842.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/46.88d29c26.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/47.8f6edfac.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/48.55bae6b9.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/49.10e3d993.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/5.f5fa1562.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/50.6f586577.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/51.2eaa5f00.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/52.36e642e8.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/53.b18667e7.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/54.e9a6c142.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/55.cf93d7a2.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/56.e62cbdb7.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/57.f1c174d0.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/58.7814ab56.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/59.aa6c07d3.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/6.6e2d492b.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/60.ccb00e99.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/61.e1c11537.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/62.cc0cf213.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/63.96182d56.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/64.8fdb78ee.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/65.dc2b77ff.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/66.06b2b83d.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/67.6a525ca5.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/68.c5fad2c1.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/69.061df513.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/70.11ef2206.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/71.34e4bcb3.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/72.a2716760.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/73.0d3b73a7.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/74.8eb442d5.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/75.a81fd2c4.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/76.82e8bf97.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/77.96e36edc.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/78.96518530.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/79.ae42598c.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/8.262aec13.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/80.9bb74a57.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/81.9f7a02c5.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/82.4abc7b8d.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/83.59fc7636.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/84.1811d9b8.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/85.cb685acc.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/86.f5e6d535.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/87.edf49292.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/88.9a90d9aa.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/89.eed032f3.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/9.f260ee48.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/91.54c7b214.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/92.8bc7bc66.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/93.dd7f3efb.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/94.141f7560.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/95.b50c2ea1.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/96.b0751174.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/97.90622297.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/98.aba5d50b.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/99.3a28d0e5.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/vendors~docsearch.c8337a40.js">
+    <link rel="stylesheet" href="/JavaPlusDoc/assets/css/0.styles.838581c8.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container" data-v-7dd95ae2><div data-v-7dd95ae2><div class="password-shadow password-wrapper-out" style="display:none;" data-v-59e6cb88 data-v-7dd95ae2 data-v-7dd95ae2><h3 class="title" data-v-59e6cb88>Jeskson文档-微服务分布式系统架构</h3> <p class="description" data-v-59e6cb88>Jeskson文档-架构师</p> <label id="box" class="inputBox" data-v-59e6cb88><input type="password" value="" data-v-59e6cb88> <span data-v-59e6cb88>Konck! Knock!</span> <button data-v-59e6cb88>OK</button></label> <div class="footer" data-v-59e6cb88><span data-v-59e6cb88><i class="iconfont reco-theme" data-v-59e6cb88></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-59e6cb88>vuePress-theme-reco</a></span> <span data-v-59e6cb88><i class="iconfont reco-copyright" data-v-59e6cb88></i> <a data-v-59e6cb88><!---->
+          
+        <!---->
+        2025
+      </a></span></div></div> <div class="hide" data-v-7dd95ae2><header class="navbar" data-v-7dd95ae2><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/JavaPlusDoc/" class="home-link router-link-active"><!----> <span class="site-name">Jeskson文档-微服务分布式系统架构</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/JavaPlusDoc/" class="nav-link"><i class="undefined"></i>
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      学习路线
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/" class="nav-link"><i class="undefined"></i>
+  入门指南
+</a></li><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/basic-grammar/basic-data-type.html" class="nav-link"><i class="undefined"></i>
+  基础到进阶
+</a></li><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/high-concurrency/why-cache.html" class="nav-link"><i class="undefined"></i>
+  架构师成长
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      技术分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/basic-grammar/basic-data-type.html" class="nav-link"><i class="undefined"></i>
+  Java基础
+</a></li><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/java-up/nginx.html" class="nav-link"><i class="undefined"></i>
+  Java进阶
+</a></li><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/high-concurrency/why-cache.html" class="nav-link"><i class="undefined"></i>
+  分布式架构
+</a></li><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/worker/1.html" class="nav-link"><i class="undefined"></i>
+  微服务
+</a></li><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/mysql/mysql.html" class="nav-link"><i class="undefined"></i>
+  数据库
+</a></li><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/linux/linux.html" class="nav-link"><i class="undefined"></i>
+  运维与部署
+</a></li><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/docker/docker-tutorial.html" class="nav-link"><i class="undefined"></i>
+  Docker
+</a></li><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/products/" class="nav-link"><i class="undefined"></i>
+  产品系列
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      实战案例
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/worker/1.html" class="nav-link"><i class="undefined"></i>
+  系统设计
+</a></li><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/high-concurrency/why-cache.html" class="nav-link"><i class="undefined"></i>
+  性能优化
+</a></li><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/java-up/nginx.html" class="nav-link"><i class="undefined"></i>
+  项目实践
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      资源
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://webvueblog.github.io/JavaPlusDoc/" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  官方文档
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://github.com/webVueBlog/JavaPlusDoc" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  GitHub仓库
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://github.com/webVueBlog" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  作者主页
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-7dd95ae2></div> <aside class="sidebar" data-v-7dd95ae2><div class="personal-info-wrapper" data-v-1fad0c41 data-v-7dd95ae2><!----> <!----> <div class="num" data-v-1fad0c41><div data-v-1fad0c41><h3 data-v-1fad0c41>244</h3> <h6 data-v-1fad0c41>文章</h6></div> <div data-v-1fad0c41><h3 data-v-1fad0c41>0</h3> <h6 data-v-1fad0c41>标签</h6></div></div> <ul class="social-links" data-v-1fad0c41></ul> <hr data-v-1fad0c41></div> <nav class="nav-links"><div class="nav-item"><a href="/JavaPlusDoc/" class="nav-link"><i class="undefined"></i>
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      学习路线
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/" class="nav-link"><i class="undefined"></i>
+  入门指南
+</a></li><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/basic-grammar/basic-data-type.html" class="nav-link"><i class="undefined"></i>
+  基础到进阶
+</a></li><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/high-concurrency/why-cache.html" class="nav-link"><i class="undefined"></i>
+  架构师成长
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      技术分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/basic-grammar/basic-data-type.html" class="nav-link"><i class="undefined"></i>
+  Java基础
+</a></li><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/java-up/nginx.html" class="nav-link"><i class="undefined"></i>
+  Java进阶
+</a></li><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/high-concurrency/why-cache.html" class="nav-link"><i class="undefined"></i>
+  分布式架构
+</a></li><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/worker/1.html" class="nav-link"><i class="undefined"></i>
+  微服务
+</a></li><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/mysql/mysql.html" class="nav-link"><i class="undefined"></i>
+  数据库
+</a></li><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/linux/linux.html" class="nav-link"><i class="undefined"></i>
+  运维与部署
+</a></li><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/docker/docker-tutorial.html" class="nav-link"><i class="undefined"></i>
+  Docker
+</a></li><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/products/" class="nav-link"><i class="undefined"></i>
+  产品系列
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      实战案例
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/worker/1.html" class="nav-link"><i class="undefined"></i>
+  系统设计
+</a></li><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/high-concurrency/why-cache.html" class="nav-link"><i class="undefined"></i>
+  性能优化
+</a></li><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/java-up/nginx.html" class="nav-link"><i class="undefined"></i>
+  项目实践
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      资源
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://webvueblog.github.io/JavaPlusDoc/" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  官方文档
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://github.com/webVueBlog/JavaPlusDoc" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  GitHub仓库
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://github.com/webVueBlog" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  作者主页
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav> <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><a href="/JavaPlusDoc/" class="sidebar-heading clickable router-link-active open"><span>文档指南</span> <!----></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/JavaPlusDoc/" aria-current="page" class="sidebar-link">学前必读</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>Java核心技术</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading open"><span>基础篇</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/JavaPlusDoc/basic-grammar/basic-data-type.html" class="sidebar-link">Java基本数据类型</a></li><li><a href="/JavaPlusDoc/basic-grammar/type-cast.html" class="sidebar-link">数据类型转换</a></li><li><a href="/JavaPlusDoc/basic-grammar/int-cache.html" class="sidebar-link">数据类型缓存池</a></li><li><a href="/JavaPlusDoc/basic-grammar/operator.html" class="sidebar-link">运算符</a></li><li><a href="/JavaPlusDoc/basic-grammar/flow-control.html" class="sidebar-link">流程控制</a></li><li><a href="/JavaPlusDoc/basic-grammar/string-source.html" class="sidebar-link">String类详解</a></li><li><a href="/JavaPlusDoc/basic-grammar/constant-pool.html" class="sidebar-link">字符串常量池</a></li><li><a href="/JavaPlusDoc/basic-grammar/builder-buffer.html" class="sidebar-link">StringBuilder和Buffer</a></li><li><a href="/JavaPlusDoc/basic-grammar/equals.html" class="sidebar-link">字符串比较</a></li><li><a href="/JavaPlusDoc/basic-grammar/object-class.html" class="sidebar-link">面向对象基础</a></li><li><a href="/JavaPlusDoc/basic-grammar/package.html" class="sidebar-link">Java包机制</a></li><li><a href="/JavaPlusDoc/basic-grammar/var.html" class="sidebar-link">变量与方法</a></li><li><a href="/JavaPlusDoc/basic-grammar/construct.html" class="sidebar-link">构造方法</a></li><li><a href="/JavaPlusDoc/basic-grammar/abstract.html" class="sidebar-link">抽象类</a></li><li><a href="/JavaPlusDoc/basic-grammar/interface.html" class="sidebar-link">接口和内部类</a></li><li><a href="/JavaPlusDoc/basic-grammar/encapsulation-inheritance-polymorphism.html" class="sidebar-link">封装继承多态</a></li><li><a href="/JavaPlusDoc/basic-grammar/this-super.html" class="sidebar-link">this与super关键字</a></li><li><a href="/JavaPlusDoc/basic-grammar/immutable.html" class="sidebar-link">不可变对象</a></li></ul></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>集合框架</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>JVM与性能</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>并发编程</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>IO与网络</span> <span class="arrow right"></span></p> <!----></section></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>分布式架构</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading open"><span>缓存系统</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/JavaPlusDoc/high-concurrency/why-cache.html" class="sidebar-link">缓存使用场景</a></li><li><a href="/JavaPlusDoc/high-concurrency/redis-single-thread-model.html" class="sidebar-link">Redis vs Memcached</a></li><li><a href="/JavaPlusDoc/high-concurrency/redis-data-types.html" class="sidebar-link">Redis数据类型</a></li><li><a href="/JavaPlusDoc/high-concurrency/redis-expiration-policies-and-lru.html" class="sidebar-link">Redis过期策略</a></li><li><a href="/JavaPlusDoc/high-concurrency/how-to-ensure-high-concurrency-and-high-availability-of-redis.html" class="sidebar-link">Redis高并发与高可用</a></li><li><a href="/JavaPlusDoc/high-concurrency/redis-master-slave.html" class="sidebar-link">Redis主从架构</a></li><li><a href="/JavaPlusDoc/high-concurrency/redis-persistence.html" class="sidebar-link">Redis持久化</a></li><li><a href="/JavaPlusDoc/high-concurrency/redis-sentinel.html" class="sidebar-link">Redis哨兵集群</a></li><li><a href="/JavaPlusDoc/jobPro/redis.html" class="sidebar-link">Redis应用场景</a></li><li><a href="/JavaPlusDoc/redis/redis-key-expiration.html" class="sidebar-link">Redis key过期问题解决方案</a></li><li><a href="/JavaPlusDoc/java-up/redis-springboot.html" class="sidebar-link">SpringBoot整合Redis</a></li><li><a href="/JavaPlusDoc/redis/xuebeng-chuantou-jichuan.html" class="sidebar-link">缓存雪崩、穿透、击穿</a></li><li><a href="/JavaPlusDoc/redis/redis-lua.html" class="sidebar-link">深入分析Redis Lua脚本运行原理</a></li></ul></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>消息队列</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>搜索引擎</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>微服务架构</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>数据库技术</span> <span class="arrow right"></span></p> <!----></section></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>运维与部署</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>Docker容器技术</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>基础设施</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>DevOps工具链</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading open"><span>部署与监控</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/JavaPlusDoc/worker/elk.html" class="sidebar-link">ELK日志系统</a></li><li><a href="/JavaPlusDoc/worker/elfk-cluster.html" class="sidebar-link">ELFK生产集群搭建</a></li><li><a href="/JavaPlusDoc/worker/jenkins.html" class="sidebar-link">Jenkins部署SpringBoot</a></li><li><a href="/JavaPlusDoc/worker/rocketmq.html" class="sidebar-link">RocketMQ安装</a></li><li><a href="/JavaPlusDoc/worker/grafana.html" class="sidebar-link">Grafana监控</a></li><li><a href="/JavaPlusDoc/worker/prometheus.html" aria-current="page" class="active sidebar-link">Prometheus单机部署</a></li><li><a href="/JavaPlusDoc/worker/grafana-database-monitoring.html" class="sidebar-link">Grafana监控MySQL、Redis和MongoDB</a></li><li><a href="/JavaPlusDoc/worker/k8s-monitoring.html" class="sidebar-link">K8s监控</a></li><li><a href="/JavaPlusDoc/worker/cpu-troubleshooting.html" class="sidebar-link">CPU使用率100%异常排查</a></li><li><a href="/JavaPlusDoc/worker/springboot.html" class="sidebar-link">SpringBoot启动脚本</a></li><li><a href="/JavaPlusDoc/worker/skywalking.html" class="sidebar-link">SkyWalking监控</a></li><li><a href="/JavaPlusDoc/worker/7.html" class="sidebar-link">前端自动化部署</a></li><li><a href="/JavaPlusDoc/sre/sre.html" class="sidebar-link">SRE实践</a></li><li><a href="/JavaPlusDoc/sre/monitor.html" class="sidebar-link">分布式监控</a></li><li><a href="/JavaPlusDoc/sre/serviceQuality.html" class="sidebar-link">服务质量目标</a></li><li><a href="/JavaPlusDoc/sre/errorBudget.html" class="sidebar-link">错误预算</a></li><li><a href="/JavaPlusDoc/sre/system.html" class="sidebar-link">系统性能指标</a></li><li><a href="/JavaPlusDoc/sre/server-mining-virus-removal.html" class="sidebar-link">服务器挖矿病毒清除</a></li></ul></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>ElasticSearch</span> <span class="arrow right"></span></p> <!----></section></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>产品系列</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/JavaPlusDoc/products/" class="sidebar-link">产品概述</a></li><li><a href="/JavaPlusDoc/products/product-gallery.html" class="sidebar-link">【溜溜梅】官方商城小程序</a></li><li><a href="/JavaPlusDoc/products/无人岛商业计划书.html" class="sidebar-link">无人岛商业计划书</a></li><li><a href="/JavaPlusDoc/products/蜗牛睡眠高嵩.html" class="sidebar-link">蜗牛睡眠高嵩</a></li><li><a href="/JavaPlusDoc/products/优质行业报告网站.html" class="sidebar-link">优质行业报告网站</a></li><li><a href="/JavaPlusDoc/products/篮球场如何赚钱.html" class="sidebar-link">篮球场如何赚钱</a></li><li><a href="/JavaPlusDoc/products/enterprise-platform.html" class="sidebar-link">企业级应用平台</a></li><li><a href="/JavaPlusDoc/products/microservice-framework.html" class="sidebar-link">微服务框架</a></li><li><a href="/JavaPlusDoc/products/data-analytics-suite.html" class="sidebar-link">数据分析套件</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>实战案例</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading open"><span>Web应用开发</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/JavaPlusDoc/jobPro/login.html" class="sidebar-link">用户注册登录系统</a></li><li><a href="/JavaPlusDoc/jobPro/lan.html" class="sidebar-link">多语言国际化</a></li><li><a href="/JavaPlusDoc/jobPro/jobPro.html" class="sidebar-link">PC网站微信扫码登录</a></li><li><a href="/JavaPlusDoc/jobPro/wechat-miniprogram-guide.html" class="sidebar-link">微信小程序开发完全指南</a></li><li><a href="/JavaPlusDoc/jobPro/wechat-customer-service.html" class="sidebar-link">微信小程序API客服消息</a></li><li><a href="/JavaPlusDoc/jobPro/wechat-open-api.html" class="sidebar-link">微信小程序开放接口</a></li><li><a href="/JavaPlusDoc/jobPro/wechat-operation-center.html" class="sidebar-link">微信小程序运维中心</a></li><li><a href="/JavaPlusDoc/jobPro/appMsg.html" class="sidebar-link">微信小程序消息推送</a></li><li><a href="/JavaPlusDoc/jobPro/miniprogram.html" class="sidebar-link">微信小程序自动化部署</a></li><li><a href="/JavaPlusDoc/jobPro/appPay.html" class="sidebar-link">微信小程序支付功能</a></li><li><a href="/JavaPlusDoc/jobPro/uniapp.html" class="sidebar-link">iOS/Android打包发布</a></li></ul></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>技术架构</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>企业级应用</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>物联网应用</span> <span class="arrow right"></span></p> <!----></section></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>计算机基础</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-59e6cb88 data-v-7dd95ae2><h3 class="title" data-v-59e6cb88>Prometheus单机部署</h3> <!----> <label id="box" class="inputBox" data-v-59e6cb88><input type="password" value="" data-v-59e6cb88> <span data-v-59e6cb88>Konck! Knock!</span> <button data-v-59e6cb88>OK</button></label> <div class="footer" data-v-59e6cb88><span data-v-59e6cb88><i class="iconfont reco-theme" data-v-59e6cb88></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-59e6cb88>vuePress-theme-reco</a></span> <span data-v-59e6cb88><i class="iconfont reco-copyright" data-v-59e6cb88></i> <a data-v-59e6cb88><!---->
+          
+        <!---->
+        2025
+      </a></span></div></div> <div data-v-7dd95ae2><div data-v-7dd95ae2><main class="page"><section style="display:;"><div class="page-title"><h1 class="title">Prometheus单机部署</h1> <div data-v-8a445198><i class="iconfont reco-account" data-v-8a445198><span data-v-8a445198>哪吒</span></i> <i class="iconfont reco-date" data-v-8a445198><span data-v-8a445198>2023/8/15</span></i> <!----> <!----></div></div> <div class="theme-reco-content content__default"><blockquote><p>点击勘误<a href="https://github.com/webVueBlog/JavaPlusDoc/issues" target="_blank" rel="noopener noreferrer">issues<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>，哪吒感谢大家的阅读</p></blockquote> <img align="right" width="100" src="https://cdn.jsdelivr.net/gh/YunYouJun/yun/images/yun-alpha-compressed.png"> <h2 id="prometheus单机部署"><a href="#prometheus单机部署" class="header-anchor">#</a> Prometheus单机部署</h2> <p>本文将介绍如何在单机环境中部署Prometheus监控系统，实现对服务器和应用的全面监控。</p> <h3 id="_1-prometheus简介"><a href="#_1-prometheus简介" class="header-anchor">#</a> 1. Prometheus简介</h3> <h4 id="_1-1-什么是prometheus"><a href="#_1-1-什么是prometheus" class="header-anchor">#</a> 1.1 什么是Prometheus</h4> <p>Prometheus是一个开源的系统监控和告警工具包，最初由SoundCloud开发，现在已经成为Cloud Native Computing Foundation（CNCF）的第二个项目（Kubernetes之后）。Prometheus具有以下特点：</p> <ul><li><strong>多维数据模型</strong>：由指标名称和键值对标签组成的时间序列数据</li> <li><strong>强大的查询语言PromQL</strong>：可以对收集的时间序列数据进行切片和切块</li> <li><strong>不依赖分布式存储</strong>：单个服务器节点是自治的</li> <li><strong>基于HTTP的pull模式</strong>：通过HTTP协议从目标处拉取指标数据</li> <li><strong>支持推送模式</strong>：通过中间网关支持推送模式</li> <li><strong>通过服务发现或静态配置发现目标</strong></li> <li><strong>多种图形和仪表盘支持</strong>：可与Grafana等工具集成</li></ul> <h4 id="_1-2-prometheus架构"><a href="#_1-2-prometheus架构" class="header-anchor">#</a> 1.2 Prometheus架构</h4> <p><img src="/JavaPlusDoc/assets/img/prometheus-architecture.8531e2b2.svg" alt="Prometheus架构"></p> <p>Prometheus的核心组件包括：</p> <ul><li><strong>Prometheus Server</strong>：负责抓取和存储时间序列数据</li> <li><strong>Client Libraries</strong>：用于检测应用程序代码</li> <li><strong>Pushgateway</strong>：支持短期作业的指标推送</li> <li><strong>Exporters</strong>：为第三方系统提供指标数据</li> <li><strong>Alertmanager</strong>：处理告警</li> <li><strong>可视化工具</strong>：如Grafana等</li></ul> <h3 id="_2-环境准备"><a href="#_2-环境准备" class="header-anchor">#</a> 2. 环境准备</h3> <h4 id="_2-1-系统要求"><a href="#_2-1-系统要求" class="header-anchor">#</a> 2.1 系统要求</h4> <ul><li>操作系统：Linux（推荐CentOS 7+/Ubuntu 18.04+）或Windows Server</li> <li>内存：至少2GB RAM（建议4GB以上）</li> <li>CPU：至少2核</li> <li>磁盘：根据数据保留策略，建议至少50GB可用空间</li> <li>Docker：18.09.0或更高版本</li> <li>Docker Compose：1.24.0或更高版本</li></ul> <h4 id="_2-2-安装docker和docker-compose"><a href="#_2-2-安装docker和docker-compose" class="header-anchor">#</a> 2.2 安装Docker和Docker Compose</h4> <p>如果您尚未安装Docker和Docker Compose，请参考<a href="/JavaPlusDoc/worker/grafana.html">安装监控grafana</a>文档中的相关章节进行安装。</p> <h3 id="_3-使用docker-compose部署prometheus"><a href="#_3-使用docker-compose部署prometheus" class="header-anchor">#</a> 3. 使用Docker Compose部署Prometheus</h3> <h4 id="_3-1-创建项目目录"><a href="#_3-1-创建项目目录" class="header-anchor">#</a> 3.1 创建项目目录</h4> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">mkdir</span> <span class="token parameter variable">-p</span> /home/docker/prometheus
+<span class="token function">mkdir</span> <span class="token parameter variable">-p</span> /home/docker/prometheus/prometheus_data
+<span class="token function">mkdir</span> <span class="token parameter variable">-p</span> /home/docker/prometheus/alertmanager_data
+<span class="token function">chmod</span> <span class="token number">777</span> /home/docker/prometheus/prometheus_data
+<span class="token function">chmod</span> <span class="token number">777</span> /home/docker/prometheus/alertmanager_data
+<span class="token builtin class-name">cd</span> /home/docker/prometheus
+</code></pre></div><h4 id="_3-2-创建prometheus配置文件"><a href="#_3-2-创建prometheus配置文件" class="header-anchor">#</a> 3.2 创建Prometheus配置文件</h4> <p>创建<code>prometheus.yml</code>文件：</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">cat</span> <span class="token operator">&gt;</span> /home/docker/prometheus/prometheus.yml <span class="token operator">&lt;&lt;</span> <span class="token string">'EOF'
+global:
+  scrape_interval: 15s  # 默认抓取间隔，15秒向目标抓取一次数据
+  evaluation_interval: 15s  # 执行规则的频率，15秒执行一次规则
+  scrape_timeout: 10s  # 抓取超时时间
+
+  # 附加到所有时间序列或警报的外部标签
+  external_labels:
+    monitor: 'prometheus-standalone'
+
+# Alertmanager配置
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets: ['alertmanager:9093']
+
+# 告警规则文件列表
+rule_files:
+  - &quot;rules/*.yml&quot;
+
+# 抓取配置
+scrape_configs:
+  # 监控Prometheus本身
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+
+  # 监控主机节点
+  - job_name: 'node-exporter'
+    static_configs:
+      - targets: ['node-exporter:9100']
+
+  # 监控Docker容器
+  - job_name: 'cadvisor'
+    static_configs:
+      - targets: ['cadvisor:8080']
+
+  # 监控Alertmanager
+  - job_name: 'alertmanager'
+    static_configs:
+      - targets: ['alertmanager:9093']
+
+  # 示例：监控Spring Boot应用
+  # - job_name: 'spring-boot-app'
+  #   metrics_path: '/actuator/prometheus'
+  #   scrape_interval: 5s
+  #   static_configs:
+  #     - targets: ['host.docker.internal:8080']
+
+  # 示例：监控MySQL
+  # - job_name: 'mysql'
+  #   static_configs:
+  #     - targets: ['mysql-exporter:9104']
+
+  # 示例：监控Redis
+  # - job_name: 'redis'
+  #   static_configs:
+  #     - targets: ['redis-exporter:9121']
+EOF</span>
+</code></pre></div><h4 id="_3-3-创建告警规则目录和示例规则"><a href="#_3-3-创建告警规则目录和示例规则" class="header-anchor">#</a> 3.3 创建告警规则目录和示例规则</h4> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">mkdir</span> <span class="token parameter variable">-p</span> /home/docker/prometheus/rules
+
+<span class="token function">cat</span> <span class="token operator">&gt;</span> /home/docker/prometheus/rules/node_alerts.yml <span class="token operator">&lt;&lt;</span> <span class="token string">'EOF'
+groups:
+- name: node_alerts
+  rules:
+  - alert: HighCPULoad
+    expr: 100 - (avg by(instance) (irate(node_cpu_seconds_total{mode=&quot;idle&quot;}[5m])) * 100) &gt; 80
+    for: 5m
+    labels:
+      severity: warning
+    annotations:
+      summary: &quot;High CPU load (instance {{ $labels.instance }})&quot;
+      description: &quot;CPU load is &gt; 80%\n  VALUE = {{ $value }}\n  LABELS: {{ $labels }}&quot;
+
+  - alert: HighMemoryLoad
+    expr: (node_memory_MemTotal_bytes - node_memory_MemFree_bytes - node_memory_Buffers_bytes - node_memory_Cached_bytes) / node_memory_MemTotal_bytes * 100 &gt; 80
+    for: 5m
+    labels:
+      severity: warning
+    annotations:
+      summary: &quot;High memory load (instance {{ $labels.instance }})&quot;
+      description: &quot;Memory load is &gt; 80%\n  VALUE = {{ $value }}\n  LABELS: {{ $labels }}&quot;
+
+  - alert: HighDiskUsage
+    expr: (node_filesystem_size_bytes{fstype!=&quot;tmpfs&quot;} - node_filesystem_free_bytes{fstype!=&quot;tmpfs&quot;}) / node_filesystem_size_bytes{fstype!=&quot;tmpfs&quot;} * 100 &gt; 80
+    for: 5m
+    labels:
+      severity: warning
+    annotations:
+      summary: &quot;High disk usage (instance {{ $labels.instance }})&quot;
+      description: &quot;Disk usage is &gt; 80%\n  VALUE = {{ $value }}\n  LABELS: {{ $labels }}&quot;
+EOF</span>
+</code></pre></div><h4 id="_3-4-创建alertmanager配置文件"><a href="#_3-4-创建alertmanager配置文件" class="header-anchor">#</a> 3.4 创建Alertmanager配置文件</h4> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">cat</span> <span class="token operator">&gt;</span> /home/docker/prometheus/alertmanager.yml <span class="token operator">&lt;&lt;</span> <span class="token string">'EOF'
+global:
+  resolve_timeout: 5m
+
+route:
+  group_by: ['alertname']
+  group_wait: 30s
+  group_interval: 5m
+  repeat_interval: 1h
+  receiver: 'web.hook'
+  routes:
+  - match:
+      severity: critical
+    receiver: 'web.hook'
+    continue: true
+
+receivers:
+- name: 'web.hook'
+  webhook_configs:
+  - url: 'http://127.0.0.1:5001/'
+    send_resolved: true
+
+# 示例：邮件告警配置
+# - name: 'email'
+#   email_configs:
+#   - to: 'your-email@example.com'
+#     from: 'alertmanager@example.com'
+#     smarthost: 'smtp.example.com:587'
+#     auth_username: 'alertmanager@example.com'
+#     auth_password: 'password'
+#     auth_identity: 'alertmanager@example.com'
+#     auth_secret: 'password'
+
+# 示例：企业微信告警配置
+# - name: 'wechat'
+#   wechat_configs:
+#   - corp_id: 'your-corp-id'
+#     api_url: 'https://qyapi.weixin.qq.com/cgi-bin/'
+#     api_secret: 'your-api-secret'
+#     to_party: 'your-party-id'
+#     agent_id: 'your-agent-id'
+#     message: '{{ template &quot;wechat.default.message&quot; . }}'
+
+inhibit_rules:
+  - source_match:
+      severity: 'critical'
+    target_match:
+      severity: 'warning'
+    equal: ['alertname', 'dev', 'instance']
+EOF</span>
+</code></pre></div><h4 id="_3-5-创建docker-compose配置文件"><a href="#_3-5-创建docker-compose配置文件" class="header-anchor">#</a> 3.5 创建Docker Compose配置文件</h4> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">cat</span> <span class="token operator">&gt;</span> /home/docker/prometheus/docker-compose.yml <span class="token operator">&lt;&lt;</span> <span class="token string">'EOF'
+version: '3.8'
+
+services:
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./rules:/etc/prometheus/rules
+      - ./prometheus_data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--storage.tsdb.retention.time=15d'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+      - '--web.enable-lifecycle'
+    ports:
+      - &quot;9090:9090&quot;
+    restart: always
+    networks:
+      - monitoring
+
+  alertmanager:
+    image: prom/alertmanager:latest
+    container_name: alertmanager
+    volumes:
+      - ./alertmanager.yml:/etc/alertmanager/alertmanager.yml
+      - ./alertmanager_data:/alertmanager
+    command:
+      - '--config.file=/etc/alertmanager/alertmanager.yml'
+      - '--storage.path=/alertmanager'
+    ports:
+      - &quot;9093:9093&quot;
+    restart: always
+    networks:
+      - monitoring
+
+  node-exporter:
+    image: prom/node-exporter:latest
+    container_name: node-exporter
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /:/rootfs:ro
+    command:
+      - '--path.procfs=/host/proc'
+      - '--path.sysfs=/host/sys'
+      - '--collector.filesystem.ignored-mount-points=^/(sys|proc|dev|host|etc)($$|/)'
+    ports:
+      - &quot;9100:9100&quot;
+    restart: always
+    networks:
+      - monitoring
+
+  cadvisor:
+    image: gcr.io/cadvisor/cadvisor:latest
+    container_name: cadvisor
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:rw
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+    ports:
+      - &quot;8080:8080&quot;
+    restart: always
+    networks:
+      - monitoring
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    volumes:
+      - ./grafana_data:/var/lib/grafana
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+      - GF_USERS_ALLOW_SIGN_UP=false
+    ports:
+      - &quot;3000:3000&quot;
+    restart: always
+    networks:
+      - monitoring
+
+networks:
+  monitoring:
+    driver: bridge
+
+volumes:
+  prometheus_data:
+  alertmanager_data:
+  grafana_data:
+EOF</span>
+</code></pre></div><h4 id="_3-6-启动服务"><a href="#_3-6-启动服务" class="header-anchor">#</a> 3.6 启动服务</h4> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token builtin class-name">cd</span> /home/docker/prometheus
+<span class="token function">docker-compose</span> up <span class="token parameter variable">-d</span>
+</code></pre></div><h3 id="_4-访问prometheus和grafana"><a href="#_4-访问prometheus和grafana" class="header-anchor">#</a> 4. 访问Prometheus和Grafana</h3> <h4 id="_4-1-访问prometheus-web界面"><a href="#_4-1-访问prometheus-web界面" class="header-anchor">#</a> 4.1 访问Prometheus Web界面</h4> <p>在浏览器中访问：<code>http://your-server-ip:9090</code></p> <p><img src="/worker/prometheus-dashboard.svg" alt="Prometheus Web界面"></p> <h4 id="_4-2-访问grafana"><a href="#_4-2-访问grafana" class="header-anchor">#</a> 4.2 访问Grafana</h4> <p>在浏览器中访问：<code>http://your-server-ip:3000</code></p> <p>默认用户名：<code>admin</code>
+默认密码：<code>admin</code></p> <p>首次登录会要求修改密码。</p> <h3 id="_5-配置grafana数据源和仪表板"><a href="#_5-配置grafana数据源和仪表板" class="header-anchor">#</a> 5. 配置Grafana数据源和仪表板</h3> <h4 id="_5-1-添加prometheus数据源"><a href="#_5-1-添加prometheus数据源" class="header-anchor">#</a> 5.1 添加Prometheus数据源</h4> <ol><li>登录Grafana</li> <li>点击左侧菜单的「Configuration」（齿轮图标）</li> <li>选择「Data Sources」</li> <li>点击「Add data source」</li> <li>选择「Prometheus」</li> <li>在URL字段中输入：<code>http://prometheus:9090</code></li> <li>点击「Save &amp; Test」确保连接成功</li></ol> <h4 id="_5-2-导入仪表板"><a href="#_5-2-导入仪表板" class="header-anchor">#</a> 5.2 导入仪表板</h4> <p>Grafana提供了许多预配置的仪表板，您可以导入这些仪表板来监控不同的系统和应用。</p> <ol><li>点击左侧菜单的「+」图标</li> <li>选择「Import」</li> <li>输入以下仪表板ID之一：
+<ul><li>1860：Node Exporter Full（主机监控）</li> <li>893：Docker and system monitoring（Docker监控）</li> <li>12900：Cadvisor Exporter（容器监控）</li> <li>9578：Prometheus 2.0 Overview（Prometheus自身监控）</li></ul></li> <li>点击「Load」</li> <li>在「Prometheus」数据源下拉菜单中选择您刚才添加的Prometheus数据源</li> <li>点击「Import」</li></ol> <h3 id="_6-监控自定义应用"><a href="#_6-监控自定义应用" class="header-anchor">#</a> 6. 监控自定义应用</h3> <h4 id="_6-1-监控spring-boot应用"><a href="#_6-1-监控spring-boot应用" class="header-anchor">#</a> 6.1 监控Spring Boot应用</h4> <ol><li>在Spring Boot应用中添加依赖：</li></ol> <div class="language-xml extra-class"><pre class="language-xml"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>spring-boot-starter-actuator<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">&gt;</span></span>io.micrometer<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">&gt;</span></span>micrometer-registry-prometheus<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">&gt;</span></span>
+</code></pre></div><ol start="2"><li>在<code>application.properties</code>中添加配置：</li></ol> <div class="language-properties extra-class"><pre class="language-properties"><code><span class="token key attr-name">management.endpoints.web.exposure.include</span><span class="token punctuation">=</span><span class="token value attr-value">prometheus,health,info</span>
+<span class="token key attr-name">management.endpoint.prometheus.enabled</span><span class="token punctuation">=</span><span class="token value attr-value">true</span>
+<span class="token key attr-name">management.metrics.export.prometheus.enabled</span><span class="token punctuation">=</span><span class="token value attr-value">true</span>
+</code></pre></div><ol start="3"><li>修改Prometheus配置文件，添加Spring Boot应用的监控配置：</li></ol> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token punctuation">-</span> <span class="token key atrule">job_name</span><span class="token punctuation">:</span> <span class="token string">'spring-boot-app'</span>
+  <span class="token key atrule">metrics_path</span><span class="token punctuation">:</span> <span class="token string">'/actuator/prometheus'</span>
+  <span class="token key atrule">scrape_interval</span><span class="token punctuation">:</span> 5s
+  <span class="token key atrule">static_configs</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">targets</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'host.docker.internal:8080'</span><span class="token punctuation">]</span>
+</code></pre></div><ol start="4"><li>重新加载Prometheus配置：</li></ol> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">curl</span> <span class="token parameter variable">-X</span> POST http://localhost:9090/-/reload
+</code></pre></div><h4 id="_6-2-监控mysql"><a href="#_6-2-监控mysql" class="header-anchor">#</a> 6.2 监控MySQL</h4> <ol><li>添加MySQL Exporter到docker-compose.yml：</li></ol> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">mysql-exporter</span><span class="token punctuation">:</span>
+  <span class="token key atrule">image</span><span class="token punctuation">:</span> prom/mysqld<span class="token punctuation">-</span>exporter<span class="token punctuation">:</span>latest
+  <span class="token key atrule">container_name</span><span class="token punctuation">:</span> mysql<span class="token punctuation">-</span>exporter
+  <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> DATA_SOURCE_NAME=user<span class="token punctuation">:</span>password@(mysql<span class="token punctuation">:</span>3306)/
+  <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token string">&quot;9104:9104&quot;</span>
+  <span class="token key atrule">restart</span><span class="token punctuation">:</span> always
+  <span class="token key atrule">networks</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> monitoring
+</code></pre></div><ol start="2"><li>修改Prometheus配置文件，添加MySQL监控配置：</li></ol> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token punctuation">-</span> <span class="token key atrule">job_name</span><span class="token punctuation">:</span> <span class="token string">'mysql'</span>
+  <span class="token key atrule">static_configs</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">targets</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'mysql-exporter:9104'</span><span class="token punctuation">]</span>
+</code></pre></div><ol start="3"><li>重新加载配置</li></ol> <h4 id="_6-3-监控redis"><a href="#_6-3-监控redis" class="header-anchor">#</a> 6.3 监控Redis</h4> <ol><li>添加Redis Exporter到docker-compose.yml：</li></ol> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">redis-exporter</span><span class="token punctuation">:</span>
+  <span class="token key atrule">image</span><span class="token punctuation">:</span> oliver006/redis_exporter<span class="token punctuation">:</span>latest
+  <span class="token key atrule">container_name</span><span class="token punctuation">:</span> redis<span class="token punctuation">-</span>exporter
+  <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> REDIS_ADDR=redis<span class="token punctuation">:</span><span class="token number">6379</span>
+  <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token string">&quot;9121:9121&quot;</span>
+  <span class="token key atrule">restart</span><span class="token punctuation">:</span> always
+  <span class="token key atrule">networks</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> monitoring
+</code></pre></div><ol start="2"><li>修改Prometheus配置文件，添加Redis监控配置：</li></ol> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token punctuation">-</span> <span class="token key atrule">job_name</span><span class="token punctuation">:</span> <span class="token string">'redis'</span>
+  <span class="token key atrule">static_configs</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token key atrule">targets</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'redis-exporter:9121'</span><span class="token punctuation">]</span>
+</code></pre></div><ol start="3"><li>重新加载配置</li></ol> <h3 id="_7-配置告警通知"><a href="#_7-配置告警通知" class="header-anchor">#</a> 7. 配置告警通知</h3> <h4 id="_7-1-配置邮件告警"><a href="#_7-1-配置邮件告警" class="header-anchor">#</a> 7.1 配置邮件告警</h4> <p>修改alertmanager.yml文件，添加邮件告警配置：</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">receivers</span><span class="token punctuation">:</span>
+<span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> <span class="token string">'email'</span>
+  <span class="token key atrule">email_configs</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">to</span><span class="token punctuation">:</span> <span class="token string">'your-email@example.com'</span>
+    <span class="token key atrule">from</span><span class="token punctuation">:</span> <span class="token string">'alertmanager@example.com'</span>
+    <span class="token key atrule">smarthost</span><span class="token punctuation">:</span> <span class="token string">'smtp.example.com:587'</span>
+    <span class="token key atrule">auth_username</span><span class="token punctuation">:</span> <span class="token string">'alertmanager@example.com'</span>
+    <span class="token key atrule">auth_password</span><span class="token punctuation">:</span> <span class="token string">'password'</span>
+    <span class="token key atrule">auth_identity</span><span class="token punctuation">:</span> <span class="token string">'alertmanager@example.com'</span>
+    <span class="token key atrule">auth_secret</span><span class="token punctuation">:</span> <span class="token string">'password'</span>
+</code></pre></div><h4 id="_7-2-配置企业微信告警"><a href="#_7-2-配置企业微信告警" class="header-anchor">#</a> 7.2 配置企业微信告警</h4> <p>修改alertmanager.yml文件，添加企业微信告警配置：</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">receivers</span><span class="token punctuation">:</span>
+<span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> <span class="token string">'wechat'</span>
+  <span class="token key atrule">wechat_configs</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">corp_id</span><span class="token punctuation">:</span> <span class="token string">'your-corp-id'</span>
+    <span class="token key atrule">api_url</span><span class="token punctuation">:</span> <span class="token string">'https://qyapi.weixin.qq.com/cgi-bin/'</span>
+    <span class="token key atrule">api_secret</span><span class="token punctuation">:</span> <span class="token string">'your-api-secret'</span>
+    <span class="token key atrule">to_party</span><span class="token punctuation">:</span> <span class="token string">'your-party-id'</span>
+    <span class="token key atrule">agent_id</span><span class="token punctuation">:</span> <span class="token string">'your-agent-id'</span>
+    <span class="token key atrule">message</span><span class="token punctuation">:</span> <span class="token string">'{{ template &quot;wechat.default.message&quot; . }}'</span>
+</code></pre></div><h4 id="_7-3-配置钉钉告警"><a href="#_7-3-配置钉钉告警" class="header-anchor">#</a> 7.3 配置钉钉告警</h4> <ol><li>安装钉钉告警适配器：</li></ol> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">dingtalk-webhook</span><span class="token punctuation">:</span>
+  <span class="token key atrule">image</span><span class="token punctuation">:</span> timonwong/prometheus<span class="token punctuation">-</span>webhook<span class="token punctuation">-</span>dingtalk<span class="token punctuation">:</span>latest
+  <span class="token key atrule">container_name</span><span class="token punctuation">:</span> dingtalk<span class="token punctuation">-</span>webhook
+  <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token string">&quot;8060:8060&quot;</span>
+  <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> ./dingtalk<span class="token punctuation">-</span>config.yml<span class="token punctuation">:</span>/etc/prometheus<span class="token punctuation">-</span>webhook<span class="token punctuation">-</span>dingtalk/config.yml
+  <span class="token key atrule">restart</span><span class="token punctuation">:</span> always
+  <span class="token key atrule">networks</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> monitoring
+</code></pre></div><ol start="2"><li>创建钉钉配置文件：</li></ol> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token comment"># dingtalk-config.yml</span>
+<span class="token key atrule">targets</span><span class="token punctuation">:</span>
+  <span class="token key atrule">webhook1</span><span class="token punctuation">:</span>
+    <span class="token key atrule">url</span><span class="token punctuation">:</span> https<span class="token punctuation">:</span>//oapi.dingtalk.com/robot/send<span class="token punctuation">?</span>access_token=xxxxxxxxxxxx
+    <span class="token key atrule">secret</span><span class="token punctuation">:</span> SEC000000000000000000000
+</code></pre></div><ol start="3"><li>修改alertmanager.yml，添加钉钉告警配置：</li></ol> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">receivers</span><span class="token punctuation">:</span>
+<span class="token punctuation">-</span> <span class="token key atrule">name</span><span class="token punctuation">:</span> <span class="token string">'dingtalk'</span>
+  <span class="token key atrule">webhook_configs</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">url</span><span class="token punctuation">:</span> <span class="token string">'http://dingtalk-webhook:8060/dingtalk/webhook1/send'</span>
+    <span class="token key atrule">send_resolved</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+</code></pre></div><h3 id="_8-性能优化"><a href="#_8-性能优化" class="header-anchor">#</a> 8. 性能优化</h3> <h4 id="_8-1-prometheus存储优化"><a href="#_8-1-prometheus存储优化" class="header-anchor">#</a> 8.1 Prometheus存储优化</h4> <p>修改Prometheus启动参数，优化存储性能：</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">command</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token string">'--config.file=/etc/prometheus/prometheus.yml'</span>
+  <span class="token punctuation">-</span> <span class="token string">'--storage.tsdb.path=/prometheus'</span>
+  <span class="token punctuation">-</span> <span class="token string">'--storage.tsdb.retention.time=15d'</span>  <span class="token comment"># 数据保留时间</span>
+  <span class="token punctuation">-</span> <span class="token string">'--storage.tsdb.retention.size=10GB'</span>  <span class="token comment"># 数据保留大小</span>
+  <span class="token punctuation">-</span> <span class="token string">'--storage.tsdb.wal-compression'</span>  <span class="token comment"># 启用WAL压缩</span>
+  <span class="token punctuation">-</span> <span class="token string">'--web.enable-lifecycle'</span>
+</code></pre></div><h4 id="_8-2-抓取频率优化"><a href="#_8-2-抓取频率优化" class="header-anchor">#</a> 8.2 抓取频率优化</h4> <p>根据实际需求调整抓取频率，减少资源消耗：</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">global</span><span class="token punctuation">:</span>
+  <span class="token key atrule">scrape_interval</span><span class="token punctuation">:</span> 30s  <span class="token comment"># 默认抓取间隔调整为30秒</span>
+
+<span class="token key atrule">scrape_configs</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> <span class="token key atrule">job_name</span><span class="token punctuation">:</span> <span class="token string">'critical-service'</span>  <span class="token comment"># 关键服务使用更频繁的抓取</span>
+    <span class="token key atrule">scrape_interval</span><span class="token punctuation">:</span> 5s
+    <span class="token key atrule">static_configs</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">targets</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'critical-service:8080'</span><span class="token punctuation">]</span>
+</code></pre></div><h3 id="_9-安全加固"><a href="#_9-安全加固" class="header-anchor">#</a> 9. 安全加固</h3> <h4 id="_9-1-启用基本认证"><a href="#_9-1-启用基本认证" class="header-anchor">#</a> 9.1 启用基本认证</h4> <ol><li>创建密码文件：</li></ol> <div class="language-bash extra-class"><pre class="language-bash"><code>htpasswd <span class="token parameter variable">-c</span> /home/docker/prometheus/web.htpasswd admin
+</code></pre></div><ol start="2"><li>修改Prometheus配置：</li></ol> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">prometheus</span><span class="token punctuation">:</span>
+  <span class="token key atrule">image</span><span class="token punctuation">:</span> prom/prometheus<span class="token punctuation">:</span>latest
+  <span class="token key atrule">container_name</span><span class="token punctuation">:</span> prometheus
+  <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> ./prometheus.yml<span class="token punctuation">:</span>/etc/prometheus/prometheus.yml
+    <span class="token punctuation">-</span> ./web.htpasswd<span class="token punctuation">:</span>/etc/prometheus/web.htpasswd
+  <span class="token key atrule">command</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token string">'--config.file=/etc/prometheus/prometheus.yml'</span>
+    <span class="token punctuation">-</span> <span class="token string">'--web.config.file=/etc/prometheus/web.yml'</span>
+</code></pre></div><ol start="3"><li>创建web.yml文件：</li></ol> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">basic_auth_users</span><span class="token punctuation">:</span>
+  <span class="token key atrule">admin</span><span class="token punctuation">:</span> <span class="token string">&quot;$2y$10$...&quot;</span>  <span class="token comment"># 密码哈希值</span>
+</code></pre></div><h4 id="_9-2-使用反向代理"><a href="#_9-2-使用反向代理" class="header-anchor">#</a> 9.2 使用反向代理</h4> <p>使用Nginx作为反向代理，提供额外的安全层：</p> <div class="language-nginx extra-class"><pre class="language-nginx"><code><span class="token directive"><span class="token keyword">server</span></span> <span class="token punctuation">{</span>
+    <span class="token directive"><span class="token keyword">listen</span> <span class="token number">80</span></span><span class="token punctuation">;</span>
+    <span class="token directive"><span class="token keyword">server_name</span> prometheus.example.com</span><span class="token punctuation">;</span>
+
+    <span class="token directive"><span class="token keyword">location</span> /</span> <span class="token punctuation">{</span>
+        <span class="token directive"><span class="token keyword">proxy_pass</span> http://localhost:9090</span><span class="token punctuation">;</span>
+        <span class="token directive"><span class="token keyword">proxy_set_header</span> Host <span class="token variable">$host</span></span><span class="token punctuation">;</span>
+        <span class="token directive"><span class="token keyword">proxy_set_header</span> X-Real-IP <span class="token variable">$remote_addr</span></span><span class="token punctuation">;</span>
+        <span class="token directive"><span class="token keyword">auth_basic</span> <span class="token string">&quot;Prometheus&quot;</span></span><span class="token punctuation">;</span>
+        <span class="token directive"><span class="token keyword">auth_basic_user_file</span> /etc/nginx/htpasswd</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><h3 id="_10-故障排查"><a href="#_10-故障排查" class="header-anchor">#</a> 10. 故障排查</h3> <h4 id="_10-1-检查prometheus状态"><a href="#_10-1-检查prometheus状态" class="header-anchor">#</a> 10.1 检查Prometheus状态</h4> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># 查看Prometheus容器日志</span>
+<span class="token function">docker</span> logs prometheus
+
+<span class="token comment"># 检查Prometheus目标状态</span>
+<span class="token function">curl</span> http://localhost:9090/api/v1/targets <span class="token operator">|</span> jq <span class="token builtin class-name">.</span>
+</code></pre></div><h4 id="_10-2-检查alertmanager状态"><a href="#_10-2-检查alertmanager状态" class="header-anchor">#</a> 10.2 检查Alertmanager状态</h4> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># 查看Alertmanager容器日志</span>
+<span class="token function">docker</span> logs alertmanager
+
+<span class="token comment"># 检查Alertmanager状态</span>
+<span class="token function">curl</span> http://localhost:9093/api/v1/status <span class="token operator">|</span> jq <span class="token builtin class-name">.</span>
+</code></pre></div><h4 id="_10-3-常见问题解决"><a href="#_10-3-常见问题解决" class="header-anchor">#</a> 10.3 常见问题解决</h4> <ol><li><strong>无法抓取目标</strong>：检查网络连接、防火墙设置和目标服务是否正常运行</li> <li><strong>数据存储问题</strong>：检查磁盘空间和权限</li> <li><strong>告警未触发</strong>：检查告警规则和Alertmanager配置</li> <li><strong>Grafana无法连接Prometheus</strong>：检查网络和数据源配置</li></ol> <h3 id="_11-备份和恢复"><a href="#_11-备份和恢复" class="header-anchor">#</a> 11. 备份和恢复</h3> <h4 id="_11-1-备份prometheus数据"><a href="#_11-1-备份prometheus数据" class="header-anchor">#</a> 11.1 备份Prometheus数据</h4> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># 停止Prometheus服务</span>
+<span class="token function">docker-compose</span> stop prometheus
+
+<span class="token comment"># 备份数据目录</span>
+<span class="token function">tar</span> <span class="token parameter variable">-czvf</span> prometheus_backup_<span class="token variable"><span class="token variable">$(</span><span class="token function">date</span> +%Y%m%d<span class="token variable">)</span></span>.tar.gz /home/docker/prometheus/prometheus_data
+
+<span class="token comment"># 重启Prometheus服务</span>
+<span class="token function">docker-compose</span> start prometheus
+</code></pre></div><h4 id="_11-2-恢复prometheus数据"><a href="#_11-2-恢复prometheus数据" class="header-anchor">#</a> 11.2 恢复Prometheus数据</h4> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># 停止Prometheus服务</span>
+<span class="token function">docker-compose</span> stop prometheus
+
+<span class="token comment"># 恢复数据目录</span>
+<span class="token function">rm</span> <span class="token parameter variable">-rf</span> /home/docker/prometheus/prometheus_data/*
+<span class="token function">tar</span> <span class="token parameter variable">-xzvf</span> prometheus_backup_20230815.tar.gz <span class="token parameter variable">-C</span> /
+
+<span class="token comment"># 重启Prometheus服务</span>
+<span class="token function">docker-compose</span> start prometheus
+</code></pre></div><h3 id="_12-总结"><a href="#_12-总结" class="header-anchor">#</a> 12. 总结</h3> <p>通过本文的指导，您已经成功部署了一个完整的Prometheus监控系统，包括：</p> <ul><li>Prometheus服务器用于收集和存储指标</li> <li>Node Exporter用于监控主机</li> <li>cAdvisor用于监控容器</li> <li>Alertmanager用于处理告警</li> <li>Grafana用于可视化监控数据</li></ul> <p>您还学习了如何监控自定义应用、配置告警通知、优化性能和加强安全性。这个监控系统可以帮助您及时发现和解决潜在问题，保障系统的稳定运行。</p> <p>随着业务的发展，您可以根据需要扩展监控系统，添加更多的Exporter来监控不同的服务和应用，或者升级到Prometheus的集群部署方案，以支持更大规模的监控需求。</p></div></section> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">上次更新: </span> <span class="time">2025/6/19 04:01:27</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev"><a href="/JavaPlusDoc/worker/grafana.html" class="prev">
+          Grafana监控
+        </a></span> <span class="next"><a href="/JavaPlusDoc/worker/grafana-database-monitoring.html">
+          Grafana监控MySQL、Redis和MongoDB
+        </a></span></p></div> <div class="comments-wrapper"><!----></div></main></div> <!----></div> <ul class="sub-sidebar sub-sidebar-wrapper" style="width:12rem;" data-v-b57cc07c data-v-7dd95ae2><li class="level-2" data-v-b57cc07c><a href="/JavaPlusDoc/worker/prometheus.html#prometheus单机部署" class="sidebar-link reco-side-prometheus单机部署" data-v-b57cc07c>Prometheus单机部署</a></li><li class="level-3" data-v-b57cc07c><a href="/JavaPlusDoc/worker/prometheus.html#_1-prometheus简介" class="sidebar-link reco-side-_1-prometheus简介" data-v-b57cc07c>1. Prometheus简介</a></li><li class="level-3" data-v-b57cc07c><a href="/JavaPlusDoc/worker/prometheus.html#_2-环境准备" class="sidebar-link reco-side-_2-环境准备" data-v-b57cc07c>2. 环境准备</a></li><li class="level-3" data-v-b57cc07c><a href="/JavaPlusDoc/worker/prometheus.html#_3-使用docker-compose部署prometheus" class="sidebar-link reco-side-_3-使用docker-compose部署prometheus" data-v-b57cc07c>3. 使用Docker Compose部署Prometheus</a></li><li class="level-3" data-v-b57cc07c><a href="/JavaPlusDoc/worker/prometheus.html#_4-访问prometheus和grafana" class="sidebar-link reco-side-_4-访问prometheus和grafana" data-v-b57cc07c>4. 访问Prometheus和Grafana</a></li><li class="level-3" data-v-b57cc07c><a href="/JavaPlusDoc/worker/prometheus.html#_5-配置grafana数据源和仪表板" class="sidebar-link reco-side-_5-配置grafana数据源和仪表板" data-v-b57cc07c>5. 配置Grafana数据源和仪表板</a></li><li class="level-3" data-v-b57cc07c><a href="/JavaPlusDoc/worker/prometheus.html#_6-监控自定义应用" class="sidebar-link reco-side-_6-监控自定义应用" data-v-b57cc07c>6. 监控自定义应用</a></li><li class="level-3" data-v-b57cc07c><a href="/JavaPlusDoc/worker/prometheus.html#_7-配置告警通知" class="sidebar-link reco-side-_7-配置告警通知" data-v-b57cc07c>7. 配置告警通知</a></li><li class="level-3" data-v-b57cc07c><a href="/JavaPlusDoc/worker/prometheus.html#_8-性能优化" class="sidebar-link reco-side-_8-性能优化" data-v-b57cc07c>8. 性能优化</a></li><li class="level-3" data-v-b57cc07c><a href="/JavaPlusDoc/worker/prometheus.html#_9-安全加固" class="sidebar-link reco-side-_9-安全加固" data-v-b57cc07c>9. 安全加固</a></li><li class="level-3" data-v-b57cc07c><a href="/JavaPlusDoc/worker/prometheus.html#_10-故障排查" class="sidebar-link reco-side-_10-故障排查" data-v-b57cc07c>10. 故障排查</a></li><li class="level-3" data-v-b57cc07c><a href="/JavaPlusDoc/worker/prometheus.html#_11-备份和恢复" class="sidebar-link reco-side-_11-备份和恢复" data-v-b57cc07c>11. 备份和恢复</a></li><li class="level-3" data-v-b57cc07c><a href="/JavaPlusDoc/worker/prometheus.html#_12-总结" class="sidebar-link reco-side-_12-总结" data-v-b57cc07c>12. 总结</a></li></ul></div></div></div><div class="global-ui"><div></div><div class="kanbanniang" data-v-5775ee02><div class="banniang-container" style="display:;" data-v-5775ee02><div class="messageBox" style="right:68px;bottom:190px;display:none;" data-v-5775ee02>
+      欢迎来到 Jeskson文档-微服务分布式系统架构
+    </div> <div class="operation" style="right:90px;bottom:40px;display:none;" data-v-5775ee02><i class="kbnfont kbn-ban-home ban-home" data-v-5775ee02></i> <i class="kbnfont kbn-ban-message message" data-v-5775ee02></i> <i class="kbnfont kbn-ban-close close" data-v-5775ee02></i> <a target="_blank" href="https://vuepress-theme-reco.recoluan.com/views/plugins/kanbanniang.html" data-v-5775ee02><i class="kbnfont kbn-ban-info info" data-v-5775ee02></i></a> <i class="kbnfont kbn-ban-theme skin" style="display:none;" data-v-5775ee02></i></div> <canvas id="banniang" width="150" height="260" class="live2d" style="width:100px;position:fixed;right:0px;bottom:0px;opacity:0.9;z-index:99999;object-fit:cover;" data-v-5775ee02></canvas></div> <div class="showBanNiang" style="display:none;" data-v-5775ee02>
+    看板娘
+  </div></div></div></div>
+    <script src="/JavaPlusDoc/assets/js/app.2b7d0a00.js" defer></script><script src="/JavaPlusDoc/assets/js/7.ae3ecc72.js" defer></script><script src="/JavaPlusDoc/assets/js/2.38d28b5c.js" defer></script><script src="/JavaPlusDoc/assets/js/1.d5984a11.js" defer></script><script src="/JavaPlusDoc/assets/js/90.48fcf336.js" defer></script>
+  </body>
+</html>
