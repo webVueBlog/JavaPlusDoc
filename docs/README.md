@@ -8,6 +8,27 @@
 
 **网站地址**：[https://webvueblog.github.io/JavaPlusDoc/](https://webvueblog.github.io/JavaPlusDoc/)
 
+## 为爱发电
+
+<div style="text-align: center; background-color: #f8f9fa; padding: 20px; border-radius: 15px; max-width: 450px; margin: 0 auto; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+  <h3 style="color: #07c160; margin-bottom: 15px; font-size: 1.5rem;">🙏 支持JavaPlus技术文档平台</h3>
+  <p style="color: #666; margin-bottom: 15px; line-height: 1.6;">如果您觉得本文档对您的学习和工作有所帮助，欢迎扫描下方二维码进行打赏支持。您的每一份鼓励都是我们持续创作优质内容的动力！</p>
+  <div style="background: linear-gradient(145deg, #f8f9fa, #e9ecef); padding: 15px; border-radius: 10px; display: inline-block;">
+    <img src="./微信收款码.png" alt="微信收款码" style="width: 220px; height: auto; margin: 0 auto; display: block;" />
+  </div>
+  <p style="font-size: 15px; color: #07c160; margin-top: 15px; font-weight: bold;">感谢您的支持与鼓励！</p>
+  <p style="font-size: 13px; color: #666; margin-top: 5px; font-style: italic;">您的赞助将用于平台维护、内容更新与技术研究</p>
+  <div style="margin-top: 10px; font-size: 12px; color: #999;">
+    <span style="margin: 0 5px;">Spring</span>
+    <span style="margin: 0 5px;">Java</span>
+    <span style="margin: 0 5px;">Redis</span>
+    <span style="margin: 0 5px;">MySQL</span>
+    <span style="margin: 0 5px;">Docker</span>
+    <span style="margin: 0 5px;">K8s</span>
+    <span style="margin: 0 5px;">Vue</span>
+  </div>
+</div>
+
 ## 项目亮点
 
 - **分层知识体系**：按照初级、中级、高级三个层次组织内容，满足不同水平读者需求
@@ -64,6 +85,110 @@
   <img src="https://img.shields.io/badge/-Git-F05032?logo=Git&logoColor=FFF" alt="Git" style="display: inline-block;" />&nbsp;
 </p>
 
+## 精选技术文章
+
+<div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
+
+  <!-- Redis专题 -->
+  <div style="width: 300px; background: linear-gradient(145deg, #ffffff, #f5f7fa); border-radius: 12px; padding: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+    <h3 style="color: #DC382D; border-bottom: 2px solid #DC382D; padding-bottom: 8px; margin-top: 0;">
+      <img src="https://img.shields.io/badge/-Redis-DC382D?logo=Redis&logoColor=FFF" alt="Redis" style="vertical-align: middle;" /> Redis核心技术
+    </h3>
+    <ul style="padding-left: 20px;">
+      <li><a href="/JavaPlusDoc/high-concurrency/why-cache.html">为什么使用缓存 - 高性能与高并发</a></li>
+      <li><a href="/JavaPlusDoc/redis/redis-key-expiration.html">Redis key过期问题解决方案</a></li>
+      <li><a href="/JavaPlusDoc/high-concurrency/redis-master-slave.html">Redis主从架构详解</a></li>
+      <li><a href="/JavaPlusDoc/redis/xuebeng-chuantou-jichuan.html">缓存雪崩、穿透与击穿问题</a></li>
+      <li><a href="/JavaPlusDoc/high-concurrency/how-to-ensure-high-concurrency-and-high-availability-of-redis.html">Redis高并发与高可用保障</a></li>
+    </ul>
+  </div>
+
+  <!-- 微服务专题 -->
+  <div style="width: 300px; background: linear-gradient(145deg, #ffffff, #f5f7fa); border-radius: 12px; padding: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+    <h3 style="color: #6DB33F; border-bottom: 2px solid #6DB33F; padding-bottom: 8px; margin-top: 0;">
+      <img src="https://img.shields.io/badge/-Microservices-6DB33F?logo=Spring&logoColor=FFF" alt="微服务" style="vertical-align: middle;" /> 微服务架构
+    </h3>
+    <ul style="padding-left: 20px;">
+      <li><a href="/JavaPlusDoc/aJava/微服务是什么.html">微服务架构基础概念</a></li>
+      <li><a href="/JavaPlusDoc/worker/3.html">微服务优雅上下线方案</a></li>
+      <li><a href="/JavaPlusDoc/jobPro/spring.html">Spring微服务与分布式实践</a></li>
+      <li><a href="/JavaPlusDoc/java-up/nginx.html">Nginx在微服务中的应用</a></li>
+      <li><a href="/JavaPlusDoc/java-up/rabbitmq.html">消息队列与微服务集成</a></li>
+    </ul>
+  </div>
+
+  <!-- 高并发专题 -->
+  <div style="width: 300px; background: linear-gradient(145deg, #ffffff, #f5f7fa); border-radius: 12px; padding: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+    <h3 style="color: #F78C40; border-bottom: 2px solid #F78C40; padding-bottom: 8px; margin-top: 0;">
+      <img src="https://img.shields.io/badge/-High%20Concurrency-F78C40?logo=Java&logoColor=FFF" alt="高并发" style="vertical-align: middle;" /> 高并发设计
+    </h3>
+    <ul style="padding-left: 20px;">
+      <li><a href="/JavaPlusDoc/jobPro/linux.html">高并发系统架构扩展方案</a></li>
+      <li><a href="/JavaPlusDoc/nio/network-connect.html">NIO与高并发网络编程</a></li>
+      <li><a href="/JavaPlusDoc/jobPro/redis.html">Redis在高并发场景中的应用</a></li>
+      <li><a href="/JavaPlusDoc/mysql/mysql.html">MySQL高并发优化策略</a></li>
+      <li><a href="/JavaPlusDoc/messagequeue/why-mq.html">消息队列在高并发中的作用</a></li>
+    </ul>
+  </div>
+
+  <!-- 分布式架构专题 -->
+  <div style="width: 300px; background: linear-gradient(145deg, #ffffff, #f5f7fa); border-radius: 12px; padding: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+    <h3 style="color: #326CE5; border-bottom: 2px solid #326CE5; padding-bottom: 8px; margin-top: 0;">
+      <img src="https://img.shields.io/badge/-Distributed-326CE5?logo=Kubernetes&logoColor=FFF" alt="分布式" style="vertical-align: middle;" /> 分布式架构
+    </h3>
+    <ul style="padding-left: 20px;">
+      <li><a href="/JavaPlusDoc/worker/4.html">现代化分布式核心系统白皮书</a></li>
+      <li><a href="/JavaPlusDoc/searchEngine/es-architecture.html">ES的分布式架构原理</a></li>
+      <li><a href="/JavaPlusDoc/mysql/shiwu-shixia.html">分布式事务与数据一致性</a></li>
+      <li><a href="/JavaPlusDoc/sre/monitor.html">分布式系统监控方案</a></li>
+      <li><a href="/JavaPlusDoc/messagequeue/how-to-ensure-high-availability-of-message-queues.html">分布式消息队列高可用保障</a></li>
+    </ul>
+  </div>
+
+  <!-- 云原生专题 -->
+  <div style="width: 300px; background: linear-gradient(145deg, #ffffff, #f5f7fa); border-radius: 12px; padding: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+    <h3 style="color: #2496ED; border-bottom: 2px solid #2496ED; padding-bottom: 8px; margin-top: 0;">
+      <img src="https://img.shields.io/badge/-Cloud%20Native-2496ED?logo=Docker&logoColor=FFF" alt="云原生" style="vertical-align: middle;" /> 云原生技术
+    </h3>
+    <ul style="padding-left: 20px;">
+      <li><a href="/JavaPlusDoc/docker/docker-tutorial.html">Docker容器化实战指南</a></li>
+      <li><a href="/JavaPlusDoc/docker/docker-production.html">Docker生产环境最佳实践</a></li>
+      <li><a href="/JavaPlusDoc/aJava/DevOps是什么.html">DevOps持续集成与部署</a></li>
+      <li><a href="/JavaPlusDoc/docker/docker-security.html">容器安全防护策略</a></li>
+      <li><a href="/JavaPlusDoc/aJava/什么是灰度发布.html">灰度发布与流量控制</a></li>
+    </ul>
+  </div>
+
+  <!-- 安全专题 -->
+  <div style="width: 300px; background: linear-gradient(145deg, #ffffff, #f5f7fa); border-radius: 12px; padding: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+    <h3 style="color: #D24939; border-bottom: 2px solid #D24939; padding-bottom: 8px; margin-top: 0;">
+      <img src="https://img.shields.io/badge/-Security-D24939?logo=Jenkins&logoColor=FFF" alt="安全" style="vertical-align: middle;" /> 系统安全
+    </h3>
+    <ul style="padding-left: 20px;">
+      <li><a href="/JavaPlusDoc/java-up/ssl.html">SSL/TLS安全通信协议</a></li>
+      <li><a href="/JavaPlusDoc/aJava/WAF和DDOS的区别是什么.html">WAF与DDOS防护方案</a></li>
+      <li><a href="/JavaPlusDoc/aJava/cookie-session-token.html">Cookie、Session与Token认证</a></li>
+      <li><a href="/JavaPlusDoc/aJava/安全组是什么.html">安全组与网络隔离</a></li>
+      <li><a href="/JavaPlusDoc/docker/docker-security.html">容器环境安全加固</a></li>
+    </ul>
+  </div>
+
+  <!-- 微信小程序开发专题 -->
+  <div style="width: 300px; background: linear-gradient(145deg, #ffffff, #f5f7fa); border-radius: 12px; padding: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+    <h3 style="color: #07C160; border-bottom: 2px solid #07C160; padding-bottom: 8px; margin-top: 0;">
+      <img src="https://img.shields.io/badge/-WeChat-07C160?logo=WeChat&logoColor=FFF" alt="微信小程序" style="vertical-align: middle;" /> 微信小程序开发
+    </h3>
+    <ul style="padding-left: 20px;">
+      <li><a href="/JavaPlusDoc/jobPro/wechat-miniprogram-guide.html">微信小程序开发完全指南</a></li>
+      <li><a href="/JavaPlusDoc/jobPro/miniprogram.html">小程序自动化部署CI实践</a></li>
+      <li><a href="/JavaPlusDoc/jobPro/appMsg.html">小程序订阅消息推送实现</a></li>
+      <li><a href="/JavaPlusDoc/jobPro/appPay.html">小程序支付功能全流程实践</a></li>
+      <li><a href="/JavaPlusDoc/jobPro/uniapp.html">uni-app打包与发布全流程</a></li>
+    </ul>
+  </div>
+
+</div>
+  
 ## 文档内容
 
 本文档库按照技术深度和应用场景，将内容分为三个层次：
@@ -76,7 +201,7 @@
 
 核心技术领域及其业务价值：
 
-| 技术领域 | 主要内容 | 业务价值 | 应用场景 |
+|现有技术 | 主要内容 | 业务价值 | 应用场景 |
 |---------|----------|----------|----------|
 | **Java核心** | JVM原理、多线程并发、内存模型、性能调优 | 提升系统性能，降低资源成本 | 核心业务系统、高性能服务 |
 | **分布式架构** | 微服务设计、服务注册发现、负载均衡、熔断降级 | 支持业务快速扩展，提高系统可用性 | 大型业务平台、多区域部署 |
@@ -226,3 +351,9 @@
 - **评估体系**：与企业人才评估体系对接
 
 欢迎通过[Issues](https://github.com/webVueBlog/JavaPlusDoc/issues)提交反馈和建议，帮助我们持续提升平台价值。
+
+### 技术理念
+
+> 进一寸有一寸的欣喜 —— 持续学习，每天进步一点点！
+
+作者致力于技术的学习与分享，通过开源项目和技术文章帮助更多开发者成长。欢迎通过GitHub、掘金等与作者交流，共同进步！

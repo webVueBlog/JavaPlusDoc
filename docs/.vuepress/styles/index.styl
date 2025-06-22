@@ -10,6 +10,8 @@
 
 .content__default {
    max-width: 85% !important;
+   line-height: 1.7;
+   font-size: 16px;
 }
 
 .theme-container {
@@ -37,4 +39,52 @@ div > pre {
     word-wrap: break-word; /* 允许单词中间断行换行（更适合大段文字或代码） */
     overflow-wrap: break-word; /* 新版标准，兼容更多浏览器 */
 }
+
+// 全局阅读体验优化
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #2c3e50;
+}
+
+.theme-default-content p {
+    margin: 1.2em 0;
+    line-height: 1.7;
+}
+
+.theme-default-content h1, .theme-default-content h2, .theme-default-content h3, .theme-default-content h4, .theme-default-content h5, .theme-default-content h6 {
+    margin-top: 2rem;
+    margin-bottom: 1.2rem;
+    font-weight: 600;
+    line-height: 1.25;
+}
+
+.theme-default-content blockquote {
+    border-left: 4px solid #3178c6;
+    padding: 0.8rem 1.5rem;
+    color: #666;
+    background-color: #f8f9fa;
+    border-radius: 0 4px 4px 0;
+    margin: 1.5rem 0;
+}
+
+.theme-default-content img {
+    max-width: 100%;
+    border-radius: 5px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    margin: 1.5rem 0;
+}
+
+.theme-default-content code {
+    padding: 0.25rem 0.5rem;
+    margin: 0 0.2rem;
+    border-radius: 3px;
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+    font-size: 0.85em;
+    background-color: #f6f8fa;
+}
+
+// 引入行业报告网站专用样式
+@import "./report-site.styl";
 

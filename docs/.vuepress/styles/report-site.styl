@@ -1,0 +1,131 @@
+/* 行业报告网站专用样式 */
+
+/* 表格样式优化 */
+.theme-default-content table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 1.5rem 0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+}
+
+.theme-default-content table th {
+  background-color: #f6f8fa;
+  padding: 12px 16px;
+  font-weight: 600;
+  text-align: left;
+  border-bottom: 2px solid #e1e4e8;
+  color: #24292e;
+}
+
+.theme-default-content table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #eaecef;
+  transition: background-color 0.2s ease;
+}
+
+.theme-default-content table tr:last-child td {
+  border-bottom: none;
+}
+
+.theme-default-content table tr:hover td {
+  background-color: #f6f8fa;
+}
+
+/* 链接样式优化 */
+.theme-default-content a {
+  position: relative;
+  text-decoration: none;
+  color: #3178c6;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  border-bottom: 1px solid transparent;
+}
+
+.theme-default-content a:hover {
+  border-bottom: 1px solid #3178c6;
+}
+
+/* 提示框样式优化 */
+.custom-block.tip,
+.custom-block.warning {
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin: 1.5rem 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.custom-block.tip {
+  background-color: #f2f7ff;
+  border-left: 5px solid #3178c6;
+}
+
+.custom-block.warning {
+  background-color: #fff7f0;
+  border-left: 5px solid #e67e22;
+}
+
+.custom-block.tip p:first-child,
+.custom-block.warning p:first-child {
+  font-weight: 600;
+}
+
+/* 标题样式优化 */
+.theme-default-content h2 {
+  border-bottom: 2px solid #eaecef;
+  padding-bottom: 0.5rem;
+  margin-top: 2.5rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.theme-default-content h2::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100px;
+  height: 2px;
+  background-color: #3178c6;
+}
+
+/* 列表样式优化 */
+.theme-default-content ol,
+.theme-default-content ul {
+  padding-left: 1.5rem;
+  margin: 1rem 0;
+}
+
+.theme-default-content ol li,
+.theme-default-content ul li {
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+}
+
+/* 行业报告网站页面专用样式 */
+.products-report-site {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.products-report-site h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2.2rem;
+  color: #2c3e50;
+}
+
+/* 响应式调整 */
+@media (max-width: 719px) {
+  .theme-default-content table {
+    display: block;
+    overflow-x: auto;
+  }
+  
+  .products-report-site {
+    padding: 0 15px;
+  }
+}
