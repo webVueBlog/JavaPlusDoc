@@ -861,6 +861,18 @@ module.exports = {
                         path: "/products/product-gallery"
                     },
                     {
+                        title: "小区充电桩小程序",
+                        path: "/products/productChange"
+                    },
+                    {
+                        title: "分销小程序",
+                        path: "/products/productShare"
+                    },
+                    {
+                        title: "电动车充电桩小程序",
+                        path: "/products/product-car"
+                    },
+                    {
                         title: "无人岛商业计划书",
                         path: "/products/无人岛商业计划书"
                     },
