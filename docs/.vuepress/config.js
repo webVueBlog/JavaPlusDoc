@@ -1057,8 +1057,58 @@ module.exports = {
                 ]
             },
             {
+                title: 'Java线程',
+                collapsable: false,
+                children: [
+                    {
+                        title: "linux线程基础",
+                        path: "/aThread/linux"
+                    },
+                    {
+                        title: "jvm基础知识",
+                        path: "/aThread/jvm"
+                    },
+                    {
+                        title: "jvm线程",
+                        path: "/aThread/jvmThread"
+                    },
+                    {
+                        title: "jvm线程通信原理",
+                        path: "/aThread/jvmThreadEvent"
+                    },
+                    {
+                        title: "jvm线程同步机制",
+                        path: "/aThread/jvmThreadSync"
+                    },
+                    {
+                        title: "java锁实现原理",
+                        path: "/aThread/jvmLock"
+                    },
+                    {
+                        title: "java原子操作类实现原理",
+                        path: "/aThread/jvmAtomic"
+                    },
+                    {
+                        title: "java并发容器实现原理",
+                        path: "/aThread/jvmConcurrent"
+                    },
+                    {
+                        title: "java线程池实现原理",
+                        path: "/aThread/javaThreadPool"
+                    },
+                    {
+                        title: "java线程池使用",
+                        path: "/aThread/javaThreadPoolUse"
+                    },
+                    {
+                        title: "java多线程编程技巧",
+                        path: "/aThread/javaThreadSkill"
+                    },
+                ]
+            },
+            {
                 title: '计算机基础',
-                collapsable: true,
+                collapsable: false,
                 children: [
                     {
                         title: "操作系统",
