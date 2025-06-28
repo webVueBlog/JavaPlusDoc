@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>黄广达 - Java后端&AI全栈架构师简历</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #1a3b5d;
+      --primary-light: #eaf1fa;
+      --secondary: #f7f9fa;
+      --accent: #00b96b;
+      --text: #222;
+      --muted: #7a869a;
+      --card: #fff;
+      --border: #e5e6eb;
+      --shadow: 0 2px 16px rgba(26,59,93,0.06);
+      --divider: #e9ecf1;
+    }
+    * { box-sizing: border-box; }
+    body {
+      font-family: 'Inter', 'PingFang SC', 'Microsoft YaHei', Arial, sans-serif;
+      background: var(--secondary);
+      color: var(--text);
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 900px;
+      margin: 48px auto 48px auto;
+      background: var(--card);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      padding: 0 0 36px 0;
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+    .topbar {
+      background: linear-gradient(90deg, var(--primary-light) 60%, transparent 100%);
+      padding: 38px 48px 28px 48px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      justify-content: space-between;
+      border-bottom: 1.5px solid var(--divider);
+    }
+    .topbar-main {
+      flex: 1 1 340px;
+      min-width: 220px;
+    }
+    .name {
+      font-size: 2.6rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 8px;
+      letter-spacing: 0.5px;
+      line-height: 1.1;
+    }
+    .role {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 10px;
+      letter-spacing: 0.2px;
+    }
+    .meta {
+      color: var(--muted);
+      font-size: 1.08rem;
+      margin-bottom: 10px;
+    }
+    .contact {
+      font-size: 1.08rem;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+    .contact a {
+      color: var(--primary);
+      text-decoration: none;
+      margin-left: 8px;
+      word-break: break-all;
+      transition: color 0.2s;
+    }
+    .contact a:hover { color: var(--accent); }
+    .contact-list {
+      margin: 0 0 8px 0;
+      padding: 0;
+      list-style: none;
+      font-size: 1.01rem;
+    }
+    .contact-list li { margin-bottom: 2px; }
+    .topbar-extra {
+      flex: 1 1 220px;
+      text-align: right;
+      font-size: 1.01rem;
+      color: var(--muted);
+      min-width: 180px;
+      margin-top: 2px;
+    }
+    .topbar-extra strong {
+      color: var(--accent);
+      font-weight: 600;
+    }
+    @media (max-width: 700px) {
+      .container { padding: 0; }
+      .topbar { flex-direction: column; align-items: flex-start; padding: 28px 6vw 18px 6vw; }
+      .topbar-extra { text-align: left; margin-top: 12px; }
+    }
+    .section {
+      margin: 0 auto 0px auto;
+      padding: 0 48px;
+      max-width: 900px;
+    }
+    @media (max-width: 700px) {
+      .section { padding: 0 6vw; }
+    }
+    h2 {
+      color: var(--primary);
+      margin-top: 44px;
+      font-size: 1.32rem;
+      font-weight: 600;
+      letter-spacing: 0.2px;
+      border-left: 4px solid var(--primary);
+      padding-left: 12px;
+      background: linear-gradient(90deg, #eaf1fa 60%, transparent 100%);
+      margin-bottom: 18px;
+    }
+    h3 {
+      color: var(--accent);
+      margin-top: 24px;
+      font-size: 1.13rem;
+      font-weight: 600;
+    }
+    ul, ol { padding-left: 1.2em; }
+    .section ul li, .section ol li {
+      line-height: 1.7;
+    }
+    .section ul { margin-top: 8px; }
+    .section:last-child { margin-bottom: 0; }
+    .card-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    @media (max-width: 900px) {
+      .card-list { gap: 12px; }
+    }
+    .card {
+      background: var(--card);
+      border-radius: 12px;
+      box-shadow: 0 1px 6px rgba(26,59,93,0.04);
+      padding: 18px 16px 14px 20px;
+      flex: 1 1 260px;
+      min-width: 220px;
+      max-width: 100%;
+      border: 1px solid var(--border);
+      margin-bottom: 8px;
+      transition: box-shadow 0.2s, border-color 0.2s;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .card:hover {
+      box-shadow: 0 4px 16px rgba(26,59,93,0.10);
+      border-color: var(--primary);
+    }
+    .card-title {
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: 4px;
+      font-size: 1.08em;
+    }
+    .card-meta {
+      color: var(--muted);
+      font-size: 0.97em;
+      margin-bottom: 4px;
+    }
+    .card-desc {
+      font-size: 1em;
+      color: var(--text);
+      line-height: 1.7;
+    }
+    .card-link {
+      color: var(--accent);
+      text-decoration: underline;
+      font-size: 0.98em;
+      word-break: break-all;
+      transition: color 0.2s;
+    }
+    .card-link:hover { color: var(--primary); }
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 8px 0;
+    }
+    .skill {
+      background: var(--primary);
+      color: #fff;
+      border-radius: 6px;
+      padding: 2px 10px;
+      font-size: 0.95em;
+      margin-bottom: 2px;
+    }
+    .project-img {
+      width: 100%;
+      max-width: 320px;
+      border-radius: 8px;
+      margin: 8px 0;
+      border: 1px solid var(--border);
+    }
+    .muted {
+      color: var(--muted);
+      font-size: 0.98em;
+    }
+    /* 优化开源&教育部分样式 */
+    .section.edu-section {
+      font-family: 'HarmonyOS Sans', 'PingFang SC', 'Microsoft YaHei', Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.8;
+      color: #222;
+      margin-bottom: 32px;
+    }
+    .edu-section h2 {
+      font-size: 1.35em;
+      font-weight: 700;
+      margin-bottom: 18px;
+      letter-spacing: 0.5px;
+    }
+    .edu-section ol {
+      padding-left: 22px;
+      margin-bottom: 0;
+    }
+    .edu-section ol > li {
+      margin-bottom: 16px;
+      font-size: 1em;
+      letter-spacing: 0.1px;
+    }
+    .edu-section ul {
+      margin-top: 8px;
+      margin-bottom: 8px;
+      padding-left: 22px;
+    }
+    .edu-section ul > li {
+      margin-bottom: 8px;
+      font-size: 0.98em;
+      color: #444;
+    }
+    .edu-section b {
+      color: #1a73e8;
+      font-weight: 600;
+    }
+    .edu-section a {
+      color: #1a73e8;
+      text-decoration: underline;
+      word-break: break-all;
+    }
+    @media (max-width: 600px) {
+      .edu-section {
+        font-size: 15px;
+      }
+      .edu-section h2 {
+        font-size: 1.1em;
+      }
+      .edu-section ol, .edu-section ul {
+        padding-left: 16px;
+      }
+    }
+    /* 右侧目录栏样式 */
+    .toc {
+      position: fixed;
+      top: 120px;
+      right: 32px;
+      width: 180px;
+      background: var(--card);
+      border-radius: 12px;
+      box-shadow: 0 2px 16px rgba(26,59,93,0.10);
+      border: 1px solid var(--border);
+      padding: 18px 16px 14px 16px;
+      z-index: 100;
+      font-size: 1.05em;
+      transition: box-shadow 0.2s, border-color 0.2s;
+    }
+    .toc-title {
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 10px;
+      font-size: 1.13em;
+      letter-spacing: 0.5px;
+    }
+    .toc ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .toc li {
+      margin-bottom: 10px;
+    }
+    .toc a {
+      color: var(--text);
+      text-decoration: none;
+      transition: color 0.2s;
+      border-left: 3px solid transparent;
+      padding-left: 8px;
+      display: block;
+    }
+    .toc a:hover, .toc a.active {
+      color: var(--accent);
+      border-left: 3px solid var(--accent);
+      background: var(--primary-light);
+    }
+    @media (max-width: 1000px) {
+      .toc { display: none; }
+    }
+    /* section卡片感优化 */
+    .section {
+      background: var(--card);
+      border-radius: 14px;
+      box-shadow: 0 2px 12px rgba(26,59,93,0.06);
+      border: 1px solid var(--border);
+      margin-bottom: 38px;
+      padding: 32px 48px 32px 48px;
+    }
+    /* 个人优势模块样式与topbar一致 */
+    .section#advantage {
+      background: linear-gradient(90deg, var(--primary-light) 60%, transparent 100%);
+      border-radius: 0;
+      box-shadow: none;
+      border: none;
+      padding: 38px 48px 28px 48px;
+      margin-bottom: 38px;
+    }
+    .section#advantage h2 {
+      color: var(--primary);
+      font-size: 2.6rem;
+      font-weight: 700;
+      border: none;
+      background: none;
+      padding-left: 0;
+      margin-bottom: 18px;
+      margin-top: 0;
+      letter-spacing: 0.5px;
+      line-height: 1.1;
+    }
+    .section#advantage ol {
+      font-size: 1.08rem;
+      color: var(--text);
+      line-height: 1.8;
+      margin-bottom: 0;
+    }
+    /* 项目经验与开源教育模块样式一致 */
+    .section#projects, .section#edu {
+      background: var(--card);
+      border-radius: 14px;
+      box-shadow: 0 2px 12px rgba(26,59,93,0.06);
+      border: 1px solid var(--border);
+      padding: 32px 48px 32px 48px;
+    }
+    .section#projects h2, .section#edu h2 {
+      color: var(--primary);
+      font-size: 1.45rem;
+      font-weight: 700;
+      border-left: 5px solid var(--accent);
+      padding-left: 14px;
+      background: linear-gradient(90deg, #eaf1fa 60%, transparent 100%);
+      margin-bottom: 22px;
+      margin-top: 0;
+    }
+    .section#projects h3, .section#edu h3 {
+      color: var(--accent);
+      font-size: 1.18rem;
+      font-weight: 600;
+      margin-top: 28px;
+    }
+    .section#projects ol, .section#projects ul, .section#edu ol, .section#edu ul {
+      line-height: 1.8;
+      font-size: 1.05em;
+    }
+    @media (max-width: 700px) {
+      .section#advantage {
+        padding: 28px 6vw 18px 6vw;
+      }
+      .section#advantage h2 {
+        font-size: 1.3rem;
+      }
+      .section#projects, .section#edu {
+        padding: 0 6vw;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- 右侧目录栏 -->
+  <nav class="toc">
+    <div class="toc-title">目录</div>
+    <ul>
+      <li><a href="#advantage">个人优势</a></li>
+      <li><a href="#projects">项目经验</a></li>
+      <li><a href="#edu">开源&教育</a></li>
+    </ul>
+  </nav>
+  <div class="container">
+    <div class="topbar">
+      <div class="topbar-main">
+        <div class="name">黄广达</div>
+        <div class="role">Java后端 & AI全栈架构师</div>
+        <div class="meta">男 / 软件技术 / 7年+经验 / 04.23</div>
+        <div class="contact">
+          📞 13119585432 &nbsp;|&nbsp; ✉️ <a href="mailto:2397923107@qq.com">2397923107@qq.com</a>
+        </div>
+        <ul class="contact-list">
+          <li>GitHub: <a href="https://github.com/webVueBlog" target="_blank">webVueBlog</a></li>
+          <li>博客: <a href="https://webvueblog.github.io/JavaPlusDoc/" target="_blank">Jeskson文档-微服务分布式系统架构</a></li>
+        </ul>
+      </div>
+      <div class="topbar-extra">
+        <div>GitHub & 码云活跃者，累积 <strong>700+ Stars</strong></div>
+        <div>敏捷项目管理 & 产品运营 & 营销经验</div>
+        <div>0到1项目孵化经验 & 团队管理</div>
+      </div>
+    </div>
+    <div class="section" id="advantage">
+      <h2>个人优势</h2>
+      <ol>
+        <li><b>开发经验</b>：<b>丰富的0到1项目开发经验</b>：拥有6年以上独立开发经验，主导大型前后端开发<b>重构项目(换电，画本妖鸡AI效率工具)</b>，具备<b>敏捷项目管理</b>经验和<b>多人团队协作</b>能力，能够独立进行全栈开发。</li>
+        <li><b>技术栈与架构：</b>
+          <ol type="a">
+            <li>前端技术栈与架构
+              <ul>
+                <li><b>微前端</b>：熟练 Qiankun 微前端架构，打造多应用独立部署、灰度发布与热更新能力，支持团队各产品模块化协同开发。</li>
+                <li><b>主流框架与生态</b>：熟练 React、Vue3/2、Taro、uniapp、Flutter 及 Node/Express；熟悉 TypeScript 全流程开发，善用 Ant Design Vue、Element Plus、Vue Router、Pinia、Axios、VueUse、VueRequest、vue-i18n、TailwindCSS 等。</li>
+                <li><b>跨平台能力</b>：具备 Android/iOS 、小程序端（微信/支付宝系）开发实战，能在多端保持体验一致、代码复用率高。</li>
+              </ul>
+            </li>
+            <li>后端技术栈与架构
+              <ul>
+                <li><b>微服务与分布式</b>：熟练 Spring Cloud（Spring Boot 2.7、Spring MVC、Spring Security、OAuth2、JWT）、Maven 多模块管理；有基于 Nacos/Zookeeper 的服务发现与配置管理、OpenFeign/Ribbon 负载均衡、Traefik/Nginx 反向代理落地经验。</li>
+                <li><b>高并发与消息</b>：熟练使用 Netty、MQTT、TCP/UDP 协议栈；擅长 Kafka 流式处理、Sentinel 熔断限流、XXL-Job 定时调度、SkyWalking 链路追踪，保障系统亿级并发下的稳定与可观测性。</li>
+                <li><b>数据存储与检索</b>：熟练关系型与 NoSQL 数据库：MySQL（主从+分库分表）、MongoDB、Redis（缓存、分布式锁）、Cassandra、Elasticsearch；熟练 MyBatis/MyBatis-Plus 快速开发、Log4j 全面日志方案。</li>
+                <li><b>云原生与存储</b>：熟练 MinIO 对象存储、Nginx/Tomcat/Docker 容器化部署；具备一键化脚本与 CI/CD 流水线落地实践。</li>
+              </ul>
+            </li>
+          </ol>
+        </li>
+        <li><b>运维与工具能力：</b>
+          <ul>
+            <li><b>容器化与编排</b>：熟练 Docker 镜像构建，熟练使用 Kubernetes（K8s）完成集群部署。</li>
+            <li><b>CI/CD 与自动化</b>：熟练基于 Jenkins／GitLab CI 搭建流水线，实现代码打包、蓝绿/灰度/滚动发布；能编写 Shell 自动化运维脚本，提升交付速度与稳定性。</li>
+            <li><b>监控与诊断</b>：利用 Arthas 在线诊断 JVM 问题，结合 SkyWalking 链路追踪与 Sentinel 熔断限流，实现从应用到中台的全链条可观测与服务保护；熟悉 Prometheus＋Grafana 指标采集与可视化。</li>
+            <li><b>系统运维与故障排查</b>：精通 Linux（CentOS）系统管理，熟练配置 Nginx、Redis、Kafka、MySQL 等常用中间件，并能快速定位网络、进程、磁盘 I/O、内存泄露等故障根因。</li>
+          </ul>
+        </li>
+        <li><b>管理与架构经验：</b>
+          <ul>
+            <li><b>技术管理（4+ 年）</b>：负责 5+ 人研发团队的技术选型、规范制订与执行，主导规划、项目进度监控与质量评审；建立文档化流程与绩效考核机制，保证项目按期交付。</li>
+            <li><b>高并发系统设计</b>：主导电商秒杀、物联网车联网与 AI 工具平台的千万级流量系统架构，采用微服务 + 异步消息（Kafka/MQTT）+ 分布式缓存（Redis）+ 多级限流（Sentinel）策略，保障系统在高并发场景下的可用性与稳定性。</li>
+            <li><b>团队成长与分享</b>：定期组织技术分享会、故障复盘，推动最佳实践在团队内落地；指导新人快速上手，持续提升团队整体交付能力与技术深度。</li>
+          </ul>
+        </li>
+        <li><b>高并发项目设计与落地：</b>
+          <ol type="a">
+            <li>二手珠宝 & 购车服务系统
+              <ul>
+                <li>构建基于 Spring Cloud 的微服务架构，使用 Nginx + Spring Cloud Gateway 作 API 网关，Kafka 异步解耦业务流；</li>
+                <li>引入 Redis 分布式缓存、布隆过滤器防击穿；</li>
+                <li>支撑日均<b>百万级</b>请求，秒级峰值超<b>5 万</b> QPS，P99 响应时间稳定在 <b><300ms</b>（压测）。</li>
+              </ul>
+            </li>
+            <li>新能源物联网·换电柜系统
+              <ul>
+                <li>基于 Kafka + Netty 双协议网关，高性能接入<b>50 万+</b> 设备；</li>
+                <li>后端微服务使用 Cassandra 存储设备上报，写入延迟 <b><50ms</b>；</li>
+                <li>前端结合 WebSocket 实时监控架构，实现设备状态秒级感知与指令下发。</li>
+              </ul>
+            </li>
+            <li>效率 AI 工具平台（有声小说行业）</li>
+          </ol>
+        </li>
+        <li><b>微服务平台能力亮点：</b>
+          <ul>
+            <li><b>稳定性与可靠性</b>：平台上线运行超过 3 年，承载核心业务持续稳定无故障；</li>
+            <li><b>SaaS 多租户</b>：设计多租户数据隔离服务，按需扩展子系统，满足隔离、安全、可审计要求。</li>
+          </ul>
+        </li>
+        <li><b>算法与数据分析实力：</b>
+          <ul>
+            <li><b>算法功底深厚</b>：深入剖析过 Vue 源码，完成 LeetCode 500+ 题目刷题，擅长常见数据结构与并发算法优化；</li>
+            <li><b>Python 自动化与数据洞察</b>：基于 Pandas 开发运营数据分析脚本，定期产出自动化报表，提升决策效率。</li>
+          </ul>
+        </li>
+        <li><b>产品运营与营销经验：</b>
+          <ul>
+            <li><b>精益创业思维</b>：驱动从需求调研、MVP 迭代到上线反馈的全生命周期管理；</li>
+            <li><b>跨部门协作</b>：与产品、市场、客服等团队紧密配合，推动专项营销活动。</li>
+          </ul>
+        </li>
+      </ol>
+    </div>
+
+
+    <div class="section" id="projects">
+      <h2>项目经验</h2>
+
+      <h3>项目名称：骑手换电平台（B端 & C端，2023.4–至今）｜SaaS + 车联网全栈核心开发 <a href="https://www.fnjkj.cn/" target="_blank">[https://www.fnjkj.cn/]</a></h3>
+      <div class="muted"><b>一、项目背景</b></div>
+      <div style="margin-bottom: 8px;">菲尼基科技专注于新能源锂电池全生命周期管理，为企业和个人提供换电柜、充电桩、租车与设备管理等一站式 IoT SaaS 平台，已覆盖 300+ 城市、500+ 运营商。</div>
+      <div class="muted"><b>二、核心职责</b></div>
+      <ol>
+        <li><b>前端0→1 架构设计：</b>
+          <ul>
+            <li><b>框架与工具：</b>Vue2、Vue3、TypeScript、Ant-Design-Vue、Element-Plus、Vue-i18n、Mitt、Axios、Pinia、Vue-Router、TailwindCSS、VueRequest、VueUse、WangEditor</li>
+            <li><b>小程序&H5开发：</b>Taro (React、Taro-UI、Dva-Core、Dva-Loading、UtilsCore、Promise-Polyfill)</li>
+          </ul>
+          <div style="margin: 6px 0 0 0;"><b>核心亮点（前端）：</b></div>
+          <ul>
+            <li><b>全栈后台与小程序：</b>独立从零搭建 Vue3 + TypeScript 管理后台及 Taro/uniapp 小程序，实现生产管理、资产（押金、企业客户、E签宝、免押扣款）、运营（现金活动、邀新、提现）、售后、优惠券、积分兑换、推广、分账、派单/获客、计费/会员与叠加套餐、消息推送等完整功能模块。</li>
+            <li><b>组件化与工程化：</b>设计并落地内部 Gd UI Components 组件库，基于 Ant-Design-Vue、Element-Plus、Naive-UI，高效复用；结合 ESlint、Prettier、Git Hooks、CI/CD 打造统一开发规范与自动化流程。</li>
+            <li><b>微前端接入：</b>基于 qiankun 搭建 Vue3-Vite-React 子应用体系，实现各业务模块独立部署、灰度发布与热更新。</li>
+            <li><b>可视化与地图：</b>Vue3 + ECharts + scale() 构建自适应运营大屏；高德地图 3D 轨迹回放、视野跟随、纠偏、资产地图与附近查询功能，支持海量点位下的高性能渲染。</li>
+          </ul>
+        </li>
+        <li><b>后端0→1 架构设计：</b>
+          <ul>
+            <li><b>技术栈：</b>Spring Cloud Alibaba + Nacos + Sentinel + Spring Cloud Gateway + redis + kafka + ribbon + Knife4j + netty + Skywalking + 熔断机制 Hystrix + OpenFeign，SkyWalking，MongoDB，MySql，Cassandra，Redis，clickhouse等。</li>
+            <li>架构：随着流量的增加，后端的可扩展性和高可用性变得尤为重要。</li>
+          </ul>
+          <div style="margin: 6px 0 0 0;"><b>核心亮点（后端）：</b></div>
+          <ul>
+            <li><b>0→1 微服务集群：</b>使用 Spring Cloud Alibaba + Nacos + Spring Cloud Gateway 构建十余服务（sys-service、order-service、finance-service、user-center、statistics-service、admin/user-gateway、sku-service、send-service 等）与四大设备网关（fcom-battery, fcom-cabinets, fcom-service, fcom-monitor）。</li>
+            <li><b>多存储融合：</b>
+              <ul>
+                <li><b>MongoDB</b> 主库：高并发读写；</li>
+                <li><b>MySQL</b>：事务与核心业务；</li>
+                <li><b>Elasticsearch</b>：列表/全文检索查询；</li>
+                <li><b>Cassandra</b>：历史/冷数据；</li>
+                <li><b>Redis</b>：缓存与实时热数据；</li>
+                <li><b>ClickHouse</b>：实时统计与大表关联分析。</li>
+              </ul>
+            </li>
+            <li><b>高可用与弹性：</b>Netty + Kafka 双协议消息网关，Hystrix 熔断、Sentinel 限流，SkyWalking 链路追踪，保证千万级 QPS 下的稳定；Kubernetes + Jenkins 自动扩缩容与滚动发布。</li>
+            <li><b>链路与监控：</b>统一接入 SkyWalking、Prometheus/Grafana、ELK 日志，实时监控服务健康、调用拓扑与关键指标；延迟队列（Kafka-Redisson + XXL-Job）管理定时任务与重试；EasyExcel 分批导出百万级数据（80s→8s）。</li>
+          </ul>
+        </li>
+        <li><b>数据分析 & 可视化：</b>
+          <ul>
+            <li>交付实时运营报表与大屏（ECharts／Vue3），帮助运营决策从"日度"缩短到"分钟级"，整体效率提升 60%。</li>
+            <li><b>用户行为监控：</b>从前端埋点→Cassandra，构建用户数据收集（接口请求，设备终端，页面流转，行为采集等）。</li>
+          </ul>
+        </li>
+        <li><b>DevOps & 监控体系：</b>
+          <ul>
+            <li><b>CI/CD 自动化：</b>搭建 GitLab + Jenkins + 自动化流水线，前端后端服务部署时间由 15 分钟缩短至 2 分钟，发布失败率下降 80%。</li>
+            <li><b>可观测性：</b>部署 ELK + Prometheus/Grafana + SkyWalking 全链路监控。</li>
+          </ul>
+        </li>
+        <li><b>性能优化：</b>
+          <ul>
+            <li><b>接口压测 & 调优：</b>使用 JMeter 进行千并发压力测试，精准定位瓶颈。</li>
+            <li><b>大数据导出：</b>基于 EasyExcel 多线程分批导出百万级记录，耗时从 80 秒降至 8 秒。</li>
+          </ul>
+        </li>
+        <li><b>异步 & 高可用：</b>
+          <ul>
+            <li><b>延迟队列：</b>结合 Kafka + Redisson + XXL-JOB 实现订单超时、状态变更等场景的异步补偿，任务吞吐量 > 10k TPS。</li>
+            <li><b>断连重连策略：</b>在 Netty+Kafka 网关层做心跳检测与离线指令缓存，设备在线率从 85% 提升至 98%，指令丢失率 < 0.1%。</li>
+          </ul>
+        </li>
+        <li><b>架构演进：</b>
+          <ul>
+            <li><b>缓存 & 搜索：</b>集群化 Redis 做高性能缓存，Elasticsearch 做全文检索，数据库压力峰值下降 80%。</li>
+            <li><b>消息解耦：</b>全链路引入 Kafka，服务间解耦率 100%，容错率提升 50%。</li>
+            <li><b>API 网关：</b>升级至 Spring Cloud Gateway，支持 JWT 细粒度鉴权与蓝绿/滚动发布，零停机上线。</li>
+          </ul>
+        </li>
+        <li><b>安全 & 实时通信：</b>
+          <ul>
+            <li><b>安全防护：</b>AJ-Captcha 滑块验证码＋jsencrypt 加密＋Redis 分布式限流，恶意请求减少 90%。</li>
+            <li><b>实时心跳：</b>整合 WebSocket 实现指令下发与心跳检测，确保秒级状态感知。</li>
+          </ul>
+        </li>
+      </ol>
+      <div style="margin: 10px 0 0 0;"><b>解决方案：</b></div>
+      <ol>
+        <li><b>物联网设备断连重连策略</b>
+          <ul>
+            <li><b>场景：</b>在换电柜系统中，部分柜体因网络波动导致 MQTT 连接不稳定，设备状态无法实时上报。</li>
+            <li><b>难点：</b>设备掉线后无法自动恢复连接，导致指令丢失和状态不同步。</li>
+            <li><b>解决方案：</b>
+              <ul>
+                <li>在 Netty + Kafka 双协议网关层实现 <b>心跳检测</b>，对长时间未上报的客户端进行主动断线并重连；</li>
+                <li>后端使用 <b>离线消息队列</b>（Kafka）缓存指令，重连成功后统一下发。</li>
+              </ul>
+            </li>
+            <li><b>效果：</b>设备在线率从 85% 提升至 98%，指令丢失率降至 <0.1%。</li>
+          </ul>
+        </li>
+        <li><b>分布式事务与幂等保障</b>
+          <ul>
+            <li><b>场景：</b>在换电柜系统中，订单服务（order-service）与库存服务（sku-service）跨微服务调用，需要保证"扣减库存–下单"操作的强一致性，且在高并发下不允许重复下单或库存超卖。</li>
+            <li><b>难点：</b>多服务间分布式事务实现困难；网络抖动或服务降级时可能导致库存扣减成功但订单创建失败，或重复请求导致库存多扣。</li>
+            <li><b>解决方案：</b>
+              <ul>
+                <li>消息驱动补偿：拆分下单流程为：<code>tryReserveStock → createOrder → confirmStock</code> 三阶段，失败时触发补偿；</li>
+                <li>接口幂等设计：在库存扣减与订单创建接口都使用唯一 <code>idempotencyKey</code>，并在数据库做唯一索引；重复请求自动短路返回上次结果。</li>
+              </ul>
+            </li>
+            <li><b>效果：</b>订单—库存强一致性达到 100%；幂等请求下单无重复，库存从无超扣；</li>
+          </ul>
+        </li>
+        <li><b>多级缓存与服务降级</b>
+          <ul>
+            <li><b>场景：</b>热点查询接口（如资产地图、运营概况）在短时间内出现突增并发，数据库压力骤增，曾出现超时和雪崩。</li>
+            <li><b>难点：</b>单层 Redis 缓存在失效瞬间仍会击穿，导致后端 DB 瞬时爆发式请求， 需要在缓存或 DB 不可用时保证接口的基本可用性。</li>
+            <li><b>解决方案：</b>
+              <ul>
+                <li><b>本地缓存</b>+<b>Redis 分布式缓存</b>，先查本地，再查 Redis，最后回落 DB。</li>
+                <li>缓存预热与主动更新：应用启动、业务变更或定时任务时，主动将热点数据写入二级缓存，保证高命中。</li>
+                <li>Sentinel 降级策略：当 Redis/DB 调用失败或超时，触发降级，返回灰度数据或静态兜底信息，保护核心服务可用。</li>
+                <li>异步刷新：缓存过期后，首个请求触发异步刷新，其他请求继续返回旧数据，避免"击穿 + 群体失效"。</li>
+              </ul>
+            </li>
+            <li><b>效果：</b>缓存命中率由 ~70% 提升至 >98%；数据库 QPS 峰值下降 80%，无单点雪崩；Redis 故障或网络抖动期间，API 成功率仍保持 >90% 。</li>
+          </ul>
+        </li>
+        <li><b>多区域多活部署与灾备演练</b>
+          <ul>
+            <li><b>场景：</b>为保障核心业务在单个机房或区域故障时持续可用，需要在不同地域同时运行服务，并能在故障时快速切换。</li>
+            <li><b>难点：</b>数据一致性：跨地域数据库主从或多主复制易出现延迟或冲突；DNS 切换与流量切换：需在毫秒级完成切流，避免用户感知。</li>
+            <li><b>解决方案：</b>
+              <ul>
+                <li>多活集群：在华东、华北、华南等区域各部署一套微服务集群；</li>
+                <li>跨区域数据库复制：MySQL 主主双写；Cassandra 跨地域多活复制；ClickHouse 利用 Kafka 同步数据。</li>
+                <li>定期灾备演练：注入区域级故障（断网、节点宕机），验证多活切换与数据恢复流程。</li>
+              </ul>
+            </li>
+            <li><b>效果：</b>区域单点故障恢复时间（RTO）< 60s，数据丢失（RPO）< 5s；故障切换透明度高，用户无感知服务中断。</li>
+          </ul>
+        </li>
+        <li><b>统一 RPC + gRPC 双通道降级</b>
+          <ul>
+            <li><b>场景：</b>微服务间大量使用 HTTP/JSON 调用，接口调用频次和数据量骤增，出现序列化开销高、链路阻塞、请求超时等问题。</li>
+            <li><b>难点：</b>JSON 序列化/反序列化开销大，网络带宽占用高；接口阻塞无法及时降级，影响链路整体可用性。</li>
+            <li><b>解决方案：</b>
+              <ul>
+                <li>引入 gRPC：在 Spring Cloud 基础上接入 gRPC（protobuf）作为微服务内部通信协议，替换高频调用的 REST 接口，显著降低序列化成本。</li>
+                <li>统一调用封装：在公共库中封装 <code>RpcClient</code>，根据配置动态选择 gRPC 或 HTTP，并自动埋点监控调用时延、错误率。</li>
+                <li>双通道灰度切换：失败回退逻辑：当 gRPC 调用失败或延迟超阈值，自动切回 HTTP 通道。</li>
+              </ul>
+            </li>
+            <li><b>效果：</b>服务调用带宽消耗降低 60%，CPU 序列化开销下降 50%；链路可用率提升至 99.99%，再无"单接口阻塞全链路"现象</li>
+          </ul>
+        </li>
+      </ol>
+
+      <h3>骑手商城项目（电商）</h3>
+      <div class="muted"><b>一、项目背景</b></div>
+      <div style="margin-bottom: 8px;">支持多运营商入驻的骑手商城服务平台，包含积分兑换、商品运营平台。</div>
+      <div class="muted"><b>技术栈：</b></div>
+      <ul>
+        <li>注册发现与配置（Nacos Discovery、Nacos Config、Nginx、Spring Cloud Gateway）</li>
+        <li>业务服务中间件（Redis、MongoDB、ClickHouse、Kafka、XXL-JOB 等）</li>
+        <li>可观测性（Prometheus、EFK、SkyWalking 等）</li>
+      </ul>
+      <div style="margin: 10px 0 0 0;"><b>解决方案：</b></div>
+      <ol>
+        <li><b>高并发秒杀——缓存击穿与库存超卖</b>
+          <ul>
+            <li><b>场景：</b>在"积分 & 优惠券微商城"的秒杀中，瞬间并发峰值超 10 万 QPS，库存一度出现超卖。</li>
+            <li><b>难点：</b>高并发下直接打数据库导致锁竞争严重，Redis 缓存在失效瞬间遭受击穿。</li>
+            <li><b>解决方案：</b>
+              <ul>
+                <li>引入 <b>布隆过滤器</b> 和 <b>预热缓存</b>，于秒杀开始前将商品 ID 加入布隆过滤器并填满缓存；</li>
+                <li>基于 Redis 的 <b>分布式锁</b>（Redisson）控制同一商品的并发扣减；</li>
+                <li>异步化库存更新：先用本地内存队列削峰，批量异步写 MySQL，并结合 <b>消息队列</b>（Kafka）重试机制保障最终一致性。</li>
+              </ul>
+            </li>
+            <li><b>效果：</b>接口响应从 800ms 降至 150ms，秒杀期间库存无超卖，系统稳定支撑百万级并发。</li>
+          </ul>
+        </li>
+      </ol>
+
+      <h3>埋点系统</h3>
+      <ul>
+        <li>所有接口请求过程日志记录，参数，状态，返回值等；</li>
+        <li>蓝牙日志记录，操作过程，数据上报等；</li>
+        <li>设备主题日志记录，用户画像，设备信息等；</li>
+        <li>页面流转记录，页面名称，路径，生命周期，滚动等。</li>
+      </ul>
+
+      <h3>应急模式</h3>
+      <ul>
+        <li>主备域名切换：主域名不可用切换到备用域名，备用域名不可用切换到主域名</li>
+        <li>应急小程序：通知公告服务下发公告指示，解决服务拥堵，节点挂失等问题</li>
+      </ul>
+
+      <h3>有声书制作软件项目（画本妖鸡等，2021.6–2023.4）<a href="https://huabenyaoji.com/" target="_blank">[https://huabenyaoji.com/]</a></h3>
+      <div class="muted"><b>项目背景</b></div>
+      <div style="margin-bottom: 8px;">喜马拉雅一站式有声书制作平台，涵盖"画本妖鸡""对轨妖鸡""云妖鸡""主播市场""剧社管理"等模块，月活突破 100 万+。</div>
+      <div class="muted"><b>技术栈：</b>Vue-TypeScript-Admin-Template、UEditor、Electron-Vue-Admin、Spring Boot、MySQL、Redis、JWT、七牛云</div>
+      <div style="margin: 10px 0 0 0;"><b>前端核心亮点：</b></div>
+      <ol>
+        <li>主要负责开发核心产品：画本妖鸡、对轨妖鸡、云妖鸡、主播市场、剧社管理等应用程序的开发和搭建。同时，我也负责协调<b>团队成员工作，进行代码分配和任务分配</b>。</li>
+        <li><b>TypeScript 转型</b>：1 周内完成 JS→TS 重构，搭建全新组件化脚手架，团队开发效率提升 300%。</li>
+        <li><b>富文本定制</b>：在UEditor富文本编辑器的基础上，封装了自己的API，包括文本自动解析、自动分章处理、角色管理中心RoleBus、定位系统ScrollTo、<b>自动匹配并高亮台词对话、选中对话自动判断角色、章节与对话定位</b>等功能。</li>
+        <li><b>高级交互组件</b>：灵活自定义plugin($xxx)和指令(v-)，抽离项目中复用且复杂的功能，比如当前选中元素切换时自动滚动局中、元素展示更多与收回内容的切换、权限控制等。</li>
+        <li><b>暗黑主题 & 断点续传</b>：魔改 ElementUI 为 CSS Variables 黑暗模式；WebSocket 大文件上传+断点续传，任务成功率 99.5%。</li>
+        <li><b>桌面客户端</b>：基于 Electron-Vue-Admin 打包 Windows/Mac 双端安装包</li>
+      </ol>
+      <div style="margin: 10px 0 0 0;"><b>后端核心亮点：</b></div>
+      <ol>
+        <li><b>安全与鉴权</b>：JWT 鉴权＋Redis 黑名单；自定义注解拦截重复提交。</li>
+        <li><b>高效文件存储</b>：七牛云 + MinIO 混合方案，支持海量音频/文本上传；日均存储请求 10k+。</li>
+        <li><b>配置与网关</b>：整合 Nacos 实现多环境配置管理，服务注册发现；Knife4j 生成 API 文档，减少 40% 沟通成本。</li>
+      </ol>
+
+      <h3>充电宝·充电线·充电桩一体化平台（2019.6–2021.6）</h3>
+      <div class="muted"><b>1. 充电桩、充电宝项目</b></div>
+      <div style="margin-bottom: 8px;"><b>背景：</b>自研共享充电宝/充电线与充电桩软硬件一体化服务，面向 C 端用户与 B 端运营商，支持多端（H5 管理后台、小程序、原生 App）全面覆盖。</div>
+      <div class="muted"><b>技术栈：</b>单体服务、Nacos 服务发现／配置、MySQL 主从＋分库分表、Redis 缓存、XXL-JOB 定时任务、Uniapp 小程序、ElementUI 管理端</div>
+      <div style="margin: 10px 0 0 0;"><b>核心亮点：</b></div>
+      <ol>
+        <li><b>端到端全链路</b>：前端 H5 与小程序实现充电站／桩管理、资产监控、故障报警、订单／押金／分账／优惠券全流程；后端用户服务、设备服务、充电运营服务、网关鉴权、模拟桩联调均独立部署、解耦弹性扩容。</li>
+        <li><b>高可用与高并发</b>：Redis + MySQL 双写一致性保证；XXL-JOB 与 Kafka-Redisson 延迟队列处理"押金退还"、"订单超时"等场景，峰值并发稳定支撑百 QPS。</li>
+        <li><b>全面安全体系</b>：JWT＋OAuth2 账户鉴权、RBAC 细粒度权限、AES＋RSA 混合加密、操作审计日志、运维堡垒机接入。</li>
+      </ol>
+      <div class="muted"><b>2. 推广内容平台（企业官网＋微信公众号＋小程序）</b></div>
+      <div style="margin-bottom: 8px;">项目背景：为多品牌客户提供统一的内容发布与运营推广解决方案，覆盖 PC 后台、手机 H5、微信小程序与公众号服务号。</div>
+      <div class="muted"><b>技术栈：</b>Spring Boot、MyBatis-Plus、MySQL、Redis、Elasticsearch、MongoDB；Vue + ECharts</div>
+      <div style="margin: 10px 0 0 0;"><b>核心亮点：</b></div>
+      <ol>
+        <li>通过验证码和前端保持半长链接映射关系，当用户扫码关注公众号并输入验证码后，发起回调，识别用户信息并找到对应半长链接，实现系统自动登录。</li>
+        <li><b>高吞吐热点缓存</b>：MySQL + Redis 缓存预热＋双层一致性策略；Elasticsearch 支持全文检索与推荐。</li>
+        <li><b>富媒体编辑与托管</b>：集成开源 Markdown 编辑器＋OSS 图片自动转链上传，编辑效率提升 3×，存储成本下降 40%。</li>
+      </ol>
+
+      <h3>物联网</h3>
+      <div class="muted"><b>IOT数据存储开发</b></div>
+      <div style="margin-bottom: 8px;"><b>项目：</b>对物联网数据的管理</div>
+      <div class="muted"><b>技术栈：</b>SwaggerUI，jwt+Shiro实现登录管理和权限管理，Redis key-value存储系统，Mybatis持久层框架+分页插件PageHelper，Mysql数据库，linux+Tomcat+Nginx部署</div>
+      <div style="margin: 10px 0 0 0;"><b>亮点：</b></div>
+      <ol>
+        <li>对传感器，系统，设备，图像数据，经纬度数据，账户，数值数据点进行统一权限管理</li>
+        <li>后台过滤器Filter，拦截器Interceptor，Controller层接收参数，Service服务，Dao持久层，数据交换</li>
+      </ol>
+
+      <h3>大模型</h3>
+      <div class="muted"><b>基于讯飞星火大模型的智能BI平台</b></div>
+      <div style="margin-bottom: 8px;"><b>项目：</b>用户只需导入原始数据，并输入分析需求，就能一键式生成可视化图表和结论</div>
+      <div class="muted"><b>技术栈：</b>SpringBoot，MySQL，MyBatis Plus，Easy Excel，Redission的RateLimiter，星火大模型SDK，Hutool工具库</div>
+      <div style="margin: 10px 0 0 0;"><b>亮点：</b></div>
+      <ol>
+        <li>用户输入图表名称，图表类型，分析目标后上传Excel文件进行多重校验</li>
+        <li>校验完成后对图表压缩数据进行处理</li>
+        <li>支持同步/异步两种分析模式，异步可批量分析多个文件</li>
+        <li>分析完成后的图表可在我的图表界面查看</li>
+      </ol>
+
+      <h3>Python-fastapi</h3>
+      <div class="muted"><b>基于full-stack-fastapi-template 全栈 FastAPI</b></div>
+      <div style="margin-bottom: 8px;"><b>项目：</b>仓储物料管理平台</div>
+      <div class="muted"><b>技术栈：</b>使用 FastAPI、React、SQLModel、PostgreSQL、Docker 自动 HTTPS 等， 包含DB、Redis、MongoDB、JSON等工具和基础服务类。</div>
+    </div>
+
+
+    <div class="section edu-section" id="edu">
+      <h2>开源 & 教育</h2>
+      <ol>
+        <li><b>学校</b>：广东机电职业技术学院 软件技术专业 （2016 – 2019）</li>
+        <li>开源项目
+          <ul>
+            <li><b>UUI 组件库</b>：自主设计并开源了一套高复用前端组件库，覆盖表单、表格、模态框等 20+ 组件</li>
+            <li>开源项目托管在 <b>GitHub</b>，具体内容可通过 <b>webVueBlog</b> 获取更多信息。</li>
+          </ul>
+        </li>
+        <li><b>个人博客与社交平台开发：</b>个人技术博客平台，支持 Markdown 编辑、SEO 优化、评论与分享，月访问量 10K+：<a href="https://webvueblog.github.io/JavaPlusDoc/" target="_blank">Jeskson文档-微服务分布式系统架构</a>。</li>
+        <li><b>语雀知识库</b>：维护 200+ 篇技术文档，体系化沉淀前端、后端、DevOps、算法笔记，累计阅读 5K+。</li>
+        <li>具备 <b>企业级 SaaS 多租户微服务分布式平台架构能力</b>，能根据业务需求设计高可扩展、高可用的微服务架构，并实现高效的多租户支持和资源隔离。</li>
+      </ol>
+    </div>
+  </div>
+</body>
+</html> 
