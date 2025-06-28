@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>ELFK生产集群搭建指南 | Jeskson文档-微服务分布式系统架构</title>
+    <meta name="generator" content="VuePress 1.9.10">
+    <script src="/JavaPlusDoc/JavaPlusDoc/js/sidebar-scroll.js"></script>
+    <script src="/JavaPlusDoc/JavaPlusDoc/js/sidebar-enhance.js"></script>
+    <script src="/JavaPlusDoc/JavaPlusDoc/js/report-site-enhance.js"></script>
+    <meta name="description" content="Jeskson文档-架构师">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    
+    <link rel="preload" href="/JavaPlusDoc/assets/css/0.styles.838581c8.css" as="style"><link rel="preload" href="/JavaPlusDoc/assets/js/app.1c71dc8e.js" as="script"><link rel="preload" href="/JavaPlusDoc/assets/js/7.941148c6.js" as="script"><link rel="preload" href="/JavaPlusDoc/assets/js/2.31ccdbab.js" as="script"><link rel="preload" href="/JavaPlusDoc/assets/js/1.748dc0a4.js" as="script"><link rel="preload" href="/JavaPlusDoc/assets/js/91.7c94a05e.js" as="script"><link rel="prefetch" href="/JavaPlusDoc/assets/js/10.d4c224cd.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/100.08bb3fc8.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/101.1e9f88d4.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/102.3862744e.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/103.b3cc3b51.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/104.e8e024a4.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/105.85a56661.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/106.265092b4.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/107.4dc288bd.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/108.c3111146.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/109.a44248ea.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/11.59149473.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/110.96a7dd5c.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/111.4e513a64.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/112.37159ed4.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/113.b4547f18.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/114.048a7262.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/115.4c8acb73.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/116.293f3c67.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/117.2d5306cf.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/118.24185d7b.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/119.31a8c4b8.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/120.cefa7c85.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/121.5928cac1.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/122.4cc452fc.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/123.92e63bb0.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/124.b83e45cc.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/125.13b2aa57.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/126.731deedf.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/127.f4378496.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/128.48634e21.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/129.d45cde5b.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/130.65b31b74.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/131.b84ff437.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/132.6d813867.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/133.e908bf32.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/134.1979ecf1.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/135.194af0e5.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/136.c05c3109.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/137.91dfe5b7.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/138.a8823375.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/139.d13b8653.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/14.1ee21d30.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/140.bd14c733.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/141.bcb6d483.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/142.35aed09b.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/143.7ebb9f43.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/144.46722312.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/145.5d5fd8c0.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/146.42eb7515.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/147.3c1a020e.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/148.e2b5bef3.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/149.5f527655.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/15.538273b3.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/150.cfc9934c.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/151.29b955d3.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/152.30ffb45c.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/153.fe09b996.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/154.cd81723e.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/155.80f8e513.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/156.8f62d1a7.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/157.b311aa60.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/158.f3a98e71.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/159.d524fdbd.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/16.7d8357d4.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/160.52543ecd.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/161.bca40ea4.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/162.2070f010.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/163.8f0572b8.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/164.6f70afcc.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/165.462a5eae.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/166.956adfd5.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/167.712cd248.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/168.ecff2012.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/169.d0983ebf.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/17.bb6eb08d.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/170.9aef180a.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/171.c3f0a0fe.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/172.ff19dd67.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/173.77f9222f.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/174.3d9765da.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/175.a70a3002.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/176.26f6a5d2.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/177.a4c83867.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/178.de3c4d24.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/179.6af98b6f.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/18.e4a3217f.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/180.639e900f.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/181.2f35e13f.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/182.eb16b342.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/183.6987fccc.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/184.4ea83c43.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/185.87c3da39.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/186.7354f2fb.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/187.959780ef.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/188.bd584836.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/189.0813d8c4.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/19.e89e69d2.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/190.89921caf.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/191.9f17341d.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/192.14a93516.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/193.201ee7b8.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/194.886d8837.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/195.664981d5.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/196.f57abdaf.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/197.86e1f447.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/198.9118e42e.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/199.b19b7c6d.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/20.2c8e93da.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/200.526f93bc.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/201.9e3e60f1.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/202.a1c7aa23.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/203.7c542831.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/204.df759e15.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/205.ee3e0d58.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/206.6f7ca8c2.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/207.cd7cf761.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/208.b8563610.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/209.8a4fab02.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/21.a46690d7.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/210.9eef944e.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/211.2fc7e380.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/212.33868d61.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/213.635eb578.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/214.4f9915ac.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/215.d7ba0ce5.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/216.c4d6b38a.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/217.dea3b466.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/218.ebe06fe9.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/219.cdf28517.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/22.a86ad42c.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/220.ac21e7dc.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/221.5c63c6fe.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/222.b1fea059.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/223.9090046c.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/224.ba5efee3.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/225.614dc2df.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/226.fa4185bd.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/227.ec01a324.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/228.6251ff01.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/229.e77c6407.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/23.93f4921c.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/230.7211982f.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/231.362445f2.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/232.9d11c566.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/233.0c7857ae.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/234.3d0e682e.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/235.1640190c.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/236.80ecd71e.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/237.6ef52831.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/238.f98da598.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/239.74b9ae17.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/24.b8447f3a.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/240.f1c44fe9.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/241.87fdb6c3.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/242.cd62fde5.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/243.ecc6da79.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/244.4d14e8b9.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/245.1a914602.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/246.6dc95a5a.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/247.b37adb84.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/248.3860c50e.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/249.d7c4b24e.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/25.cf0bf5ef.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/250.ba1eae57.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/251.2a75a388.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/252.50b9dc9e.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/253.8e005efe.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/254.7eb86e81.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/255.4d5fdea3.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/256.444a9ae8.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/257.7255ba55.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/258.df3accc3.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/259.79086c5f.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/26.423579c1.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/260.6e1c2376.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/261.d4180851.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/262.81518419.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/263.1b15e1b4.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/264.c36bc120.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/265.2951f70f.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/266.4e673ae0.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/267.fc49a4ab.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/268.1024b065.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/269.9b8b642d.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/27.1a1bf94f.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/270.7110e39b.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/271.da115fd6.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/272.b2393ab5.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/273.1a969a38.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/274.eaf5d600.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/275.d9d8ae38.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/276.ce7b628b.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/277.23aebd0b.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/278.8018dc78.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/279.7b7bd1bd.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/28.4a37ada5.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/280.b7e2a2f2.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/281.e3fc8969.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/282.084f82d4.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/283.dd806e36.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/284.315c893a.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/285.577c440c.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/286.37d88be4.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/287.6bf8943e.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/288.21b125b7.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/289.840320f4.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/29.987db541.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/290.b1b8ef09.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/291.17e8f913.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/292.e68f2846.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/293.87e54e53.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/294.fd752d3c.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/295.5e518940.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/296.a42b4c17.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/297.7d8456f8.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/3.f22d9bd8.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/30.f1129f12.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/31.2b080c4b.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/32.97e0650e.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/33.2a91d001.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/34.18b998e5.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/35.ac636497.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/36.19fa46d5.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/37.f69fbddc.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/38.4add5fca.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/39.c3e73098.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/4.6bd47ff0.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/40.a74a5256.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/41.ecf5c12a.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/42.6b968700.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/43.140ec1a3.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/44.44985b3f.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/45.71bf854c.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/46.f54ce0b4.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/47.65b995fb.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/48.5d37157a.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/49.89cbc247.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/5.d8800a67.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/50.f57e5fac.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/51.6504a7ca.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/52.8c648c21.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/53.763b4ac8.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/54.2a8e23d0.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/55.a837eff1.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/56.3e77f25d.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/57.43a34583.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/58.7181b563.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/59.ef120c7c.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/6.c8dd066c.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/60.c49a17fe.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/61.de958b14.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/62.5a3b9396.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/63.23622e8e.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/64.3c98355b.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/65.ed5ceb9b.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/66.70f1bf39.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/67.39ca5ee5.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/68.f9bfa776.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/69.69aa30f0.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/70.71c4617e.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/71.c8fe6737.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/72.7429bb15.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/73.b93b54ce.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/74.d2e65d50.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/75.10fd4a73.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/76.b38476c7.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/77.ccf84d39.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/78.73cfffa5.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/79.eb2f0c87.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/8.35d4911d.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/80.6ae07951.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/81.bc41f0c3.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/82.a0da99a8.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/83.d112d290.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/84.35146e9a.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/85.056693a6.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/86.1fabb3c5.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/87.e433c434.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/88.afb3602f.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/89.fc40ee32.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/9.e326c128.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/90.e4eb6386.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/92.7cd564cd.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/93.a6e07805.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/94.07f573ae.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/95.7b2d3fed.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/96.1fb6f802.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/97.9205ac25.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/98.8c40c9bf.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/99.27f06ec2.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/vendors~docsearch.b8521548.js">
+    <link rel="stylesheet" href="/JavaPlusDoc/assets/css/0.styles.838581c8.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container" data-v-7dd95ae2><div data-v-7dd95ae2><div class="password-shadow password-wrapper-out" style="display:none;" data-v-59e6cb88 data-v-7dd95ae2 data-v-7dd95ae2><h3 class="title" data-v-59e6cb88>Jeskson文档-微服务分布式系统架构</h3> <p class="description" data-v-59e6cb88>Jeskson文档-架构师</p> <label id="box" class="inputBox" data-v-59e6cb88><input type="password" value="" data-v-59e6cb88> <span data-v-59e6cb88>Konck! Knock!</span> <button data-v-59e6cb88>OK</button></label> <div class="footer" data-v-59e6cb88><span data-v-59e6cb88><i class="iconfont reco-theme" data-v-59e6cb88></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-59e6cb88>vuePress-theme-reco</a></span> <span data-v-59e6cb88><i class="iconfont reco-copyright" data-v-59e6cb88></i> <a data-v-59e6cb88><!---->
+          
+        <!---->
+        2025
+      </a></span></div></div> <div class="hide" data-v-7dd95ae2><header class="navbar" data-v-7dd95ae2><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/JavaPlusDoc/" class="home-link router-link-active"><!----> <span class="site-name">Jeskson文档-微服务分布式系统架构</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/JavaPlusDoc/" class="nav-link"><i class="undefined"></i>
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      学习路线
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/" class="nav-link"><i class="undefined"></i>
+  入门指南
+</a></li><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/basic-grammar/basic-data-type.html" class="nav-link"><i class="undefined"></i>
+  基础到进阶
+</a></li><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/high-concurrency/why-cache.html" class="nav-link"><i class="undefined"></i>
+  架构师成长
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      技术分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/basic-grammar/basic-data-type.html" class="nav-link"><i class="undefined"></i>
+  Java基础
+</a></li><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/java-up/nginx.html" class="nav-link"><i class="undefined"></i>
+  Java进阶
+</a></li><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/high-concurrency/why-cache.html" class="nav-link"><i class="undefined"></i>
+  分布式架构
+</a></li><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/worker/1.html" class="nav-link"><i class="undefined"></i>
+  微服务
+</a></li><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/mysql/mysql.html" class="nav-link"><i class="undefined"></i>
+  数据库
+</a></li><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/linux/linux.html" class="nav-link"><i class="undefined"></i>
+  运维与部署
+</a></li><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/docker/docker-tutorial.html" class="nav-link"><i class="undefined"></i>
+  Docker
+</a></li><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/products/" class="nav-link"><i class="undefined"></i>
+  产品系列
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      实战案例
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/worker/1.html" class="nav-link"><i class="undefined"></i>
+  系统设计
+</a></li><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/high-concurrency/why-cache.html" class="nav-link"><i class="undefined"></i>
+  性能优化
+</a></li><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/java-up/nginx.html" class="nav-link"><i class="undefined"></i>
+  项目实践
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      资源
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://webvueblog.github.io/JavaPlusDoc/" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  官方文档
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://github.com/webVueBlog/JavaPlusDoc" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  GitHub仓库
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://github.com/webVueBlog" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  作者主页
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-7dd95ae2></div> <aside class="sidebar" data-v-7dd95ae2><div class="personal-info-wrapper" data-v-1fad0c41 data-v-7dd95ae2><!----> <!----> <div class="num" data-v-1fad0c41><div data-v-1fad0c41><h3 data-v-1fad0c41>259</h3> <h6 data-v-1fad0c41>文章</h6></div> <div data-v-1fad0c41><h3 data-v-1fad0c41>0</h3> <h6 data-v-1fad0c41>标签</h6></div></div> <ul class="social-links" data-v-1fad0c41></ul> <hr data-v-1fad0c41></div> <nav class="nav-links"><div class="nav-item"><a href="/JavaPlusDoc/" class="nav-link"><i class="undefined"></i>
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      学习路线
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/" class="nav-link"><i class="undefined"></i>
+  入门指南
+</a></li><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/basic-grammar/basic-data-type.html" class="nav-link"><i class="undefined"></i>
+  基础到进阶
+</a></li><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/high-concurrency/why-cache.html" class="nav-link"><i class="undefined"></i>
+  架构师成长
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      技术分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/basic-grammar/basic-data-type.html" class="nav-link"><i class="undefined"></i>
+  Java基础
+</a></li><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/java-up/nginx.html" class="nav-link"><i class="undefined"></i>
+  Java进阶
+</a></li><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/high-concurrency/why-cache.html" class="nav-link"><i class="undefined"></i>
+  分布式架构
+</a></li><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/worker/1.html" class="nav-link"><i class="undefined"></i>
+  微服务
+</a></li><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/mysql/mysql.html" class="nav-link"><i class="undefined"></i>
+  数据库
+</a></li><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/linux/linux.html" class="nav-link"><i class="undefined"></i>
+  运维与部署
+</a></li><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/docker/docker-tutorial.html" class="nav-link"><i class="undefined"></i>
+  Docker
+</a></li><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/products/" class="nav-link"><i class="undefined"></i>
+  产品系列
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      实战案例
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/worker/1.html" class="nav-link"><i class="undefined"></i>
+  系统设计
+</a></li><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/high-concurrency/why-cache.html" class="nav-link"><i class="undefined"></i>
+  性能优化
+</a></li><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/java-up/nginx.html" class="nav-link"><i class="undefined"></i>
+  项目实践
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      资源
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://webvueblog.github.io/JavaPlusDoc/" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  官方文档
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://github.com/webVueBlog/JavaPlusDoc" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  GitHub仓库
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://github.com/webVueBlog" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  作者主页
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav> <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><a href="/JavaPlusDoc/" class="sidebar-heading clickable router-link-active open"><span>文档指南</span> <!----></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/JavaPlusDoc/" aria-current="page" class="sidebar-link">学前必读</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>Java核心技术</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading open"><span>基础篇</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/JavaPlusDoc/basic-grammar/basic-data-type.html" class="sidebar-link">Java基本数据类型</a></li><li><a href="/JavaPlusDoc/basic-grammar/type-cast.html" class="sidebar-link">数据类型转换</a></li><li><a href="/JavaPlusDoc/basic-grammar/int-cache.html" class="sidebar-link">数据类型缓存池</a></li><li><a href="/JavaPlusDoc/basic-grammar/operator.html" class="sidebar-link">运算符</a></li><li><a href="/JavaPlusDoc/basic-grammar/flow-control.html" class="sidebar-link">流程控制</a></li><li><a href="/JavaPlusDoc/basic-grammar/string-source.html" class="sidebar-link">String类详解</a></li><li><a href="/JavaPlusDoc/basic-grammar/constant-pool.html" class="sidebar-link">字符串常量池</a></li><li><a href="/JavaPlusDoc/basic-grammar/builder-buffer.html" class="sidebar-link">StringBuilder和Buffer</a></li><li><a href="/JavaPlusDoc/basic-grammar/equals.html" class="sidebar-link">字符串比较</a></li><li><a href="/JavaPlusDoc/basic-grammar/object-class.html" class="sidebar-link">面向对象基础</a></li><li><a href="/JavaPlusDoc/basic-grammar/package.html" class="sidebar-link">Java包机制</a></li><li><a href="/JavaPlusDoc/basic-grammar/var.html" class="sidebar-link">变量与方法</a></li><li><a href="/JavaPlusDoc/basic-grammar/construct.html" class="sidebar-link">构造方法</a></li><li><a href="/JavaPlusDoc/basic-grammar/abstract.html" class="sidebar-link">抽象类</a></li><li><a href="/JavaPlusDoc/basic-grammar/interface.html" class="sidebar-link">接口和内部类</a></li><li><a href="/JavaPlusDoc/basic-grammar/encapsulation-inheritance-polymorphism.html" class="sidebar-link">封装继承多态</a></li><li><a href="/JavaPlusDoc/basic-grammar/this-super.html" class="sidebar-link">this与super关键字</a></li><li><a href="/JavaPlusDoc/basic-grammar/immutable.html" class="sidebar-link">不可变对象</a></li></ul></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>集合框架</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>JVM与性能</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>并发编程</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>IO与网络</span> <span class="arrow right"></span></p> <!----></section></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>分布式架构</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading open"><span>缓存系统</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/JavaPlusDoc/high-concurrency/why-cache.html" class="sidebar-link">缓存使用场景</a></li><li><a href="/JavaPlusDoc/high-concurrency/redis-single-thread-model.html" class="sidebar-link">Redis vs Memcached</a></li><li><a href="/JavaPlusDoc/high-concurrency/redis-data-types.html" class="sidebar-link">Redis数据类型</a></li><li><a href="/JavaPlusDoc/high-concurrency/redis-expiration-policies-and-lru.html" class="sidebar-link">Redis过期策略</a></li><li><a href="/JavaPlusDoc/high-concurrency/how-to-ensure-high-concurrency-and-high-availability-of-redis.html" class="sidebar-link">Redis高并发与高可用</a></li><li><a href="/JavaPlusDoc/high-concurrency/redis-master-slave.html" class="sidebar-link">Redis主从架构</a></li><li><a href="/JavaPlusDoc/high-concurrency/redis-persistence.html" class="sidebar-link">Redis持久化</a></li><li><a href="/JavaPlusDoc/high-concurrency/redis-sentinel.html" class="sidebar-link">Redis哨兵集群</a></li><li><a href="/JavaPlusDoc/jobPro/redis.html" class="sidebar-link">Redis应用场景</a></li><li><a href="/JavaPlusDoc/redis/redis-key-expiration.html" class="sidebar-link">Redis key过期问题解决方案</a></li><li><a href="/JavaPlusDoc/java-up/redis-springboot.html" class="sidebar-link">SpringBoot整合Redis</a></li><li><a href="/JavaPlusDoc/redis/xuebeng-chuantou-jichuan.html" class="sidebar-link">缓存雪崩、穿透、击穿</a></li><li><a href="/JavaPlusDoc/redis/redis-lua.html" class="sidebar-link">深入分析Redis Lua脚本运行原理</a></li></ul></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>消息队列</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>搜索引擎</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>微服务架构</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>数据库技术</span> <span class="arrow right"></span></p> <!----></section></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>运维与部署</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>Docker容器技术</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>基础设施</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>DevOps工具链</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading open"><span>部署与监控</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/JavaPlusDoc/worker/elk.html" class="sidebar-link">ELK日志系统</a></li><li><a href="/JavaPlusDoc/worker/elfk-cluster.html" aria-current="page" class="active sidebar-link">ELFK生产集群搭建</a></li><li><a href="/JavaPlusDoc/worker/jenkins.html" class="sidebar-link">Jenkins部署SpringBoot</a></li><li><a href="/JavaPlusDoc/worker/rocketmq.html" class="sidebar-link">RocketMQ安装</a></li><li><a href="/JavaPlusDoc/worker/grafana.html" class="sidebar-link">Grafana监控</a></li><li><a href="/JavaPlusDoc/worker/prometheus.html" class="sidebar-link">Prometheus单机部署</a></li><li><a href="/JavaPlusDoc/worker/grafana-database-monitoring.html" class="sidebar-link">Grafana监控MySQL、Redis和MongoDB</a></li><li><a href="/JavaPlusDoc/worker/k8s-monitoring.html" class="sidebar-link">K8s监控</a></li><li><a href="/JavaPlusDoc/worker/cpu-troubleshooting.html" class="sidebar-link">CPU使用率100%异常排查</a></li><li><a href="/JavaPlusDoc/worker/springboot.html" class="sidebar-link">SpringBoot启动脚本</a></li><li><a href="/JavaPlusDoc/worker/skywalking.html" class="sidebar-link">SkyWalking监控</a></li><li><a href="/JavaPlusDoc/worker/7.html" class="sidebar-link">前端自动化部署</a></li><li><a href="/JavaPlusDoc/sre/sre.html" class="sidebar-link">SRE实践</a></li><li><a href="/JavaPlusDoc/sre/monitor.html" class="sidebar-link">分布式监控</a></li><li><a href="/JavaPlusDoc/sre/serviceQuality.html" class="sidebar-link">服务质量目标</a></li><li><a href="/JavaPlusDoc/sre/errorBudget.html" class="sidebar-link">错误预算</a></li><li><a href="/JavaPlusDoc/sre/system.html" class="sidebar-link">系统性能指标</a></li><li><a href="/JavaPlusDoc/sre/server-mining-virus-removal.html" class="sidebar-link">服务器挖矿病毒清除</a></li></ul></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>ElasticSearch</span> <span class="arrow right"></span></p> <!----></section></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>产品系列</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/JavaPlusDoc/products/" class="sidebar-link">产品概述</a></li><li><a href="/JavaPlusDoc/products/product-gallery.html" class="sidebar-link">【溜溜梅】官方商城小程序</a></li><li><a href="/JavaPlusDoc/products/productChange.html" class="sidebar-link">小区充电桩小程序</a></li><li><a href="/JavaPlusDoc/products/productShare.html" class="sidebar-link">分销小程序</a></li><li><a href="/JavaPlusDoc/products/product-car.html" class="sidebar-link">电动车充电桩小程序</a></li><li><a href="/JavaPlusDoc/products/无人岛商业计划书.html" class="sidebar-link">无人岛商业计划书</a></li><li><a href="/JavaPlusDoc/products/蜗牛睡眠高嵩.html" class="sidebar-link">蜗牛睡眠高嵩</a></li><li><a href="/JavaPlusDoc/products/优质行业报告网站.html" class="sidebar-link">优质行业报告网站</a></li><li><a href="/JavaPlusDoc/products/篮球场如何赚钱.html" class="sidebar-link">篮球场如何赚钱</a></li><li><a href="/JavaPlusDoc/products/enterprise-platform.html" class="sidebar-link">企业级应用平台</a></li><li><a href="/JavaPlusDoc/products/microservice-framework.html" class="sidebar-link">微服务框架</a></li><li><a href="/JavaPlusDoc/products/data-analytics-suite.html" class="sidebar-link">数据分析套件</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>实战案例</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading open"><span>Web应用开发</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/JavaPlusDoc/jobPro/login.html" class="sidebar-link">用户注册登录系统</a></li><li><a href="/JavaPlusDoc/jobPro/lan.html" class="sidebar-link">多语言国际化</a></li><li><a href="/JavaPlusDoc/jobPro/jobPro.html" class="sidebar-link">PC网站微信扫码登录</a></li><li><a href="/JavaPlusDoc/jobPro/wechat-miniprogram-guide.html" class="sidebar-link">微信小程序开发完全指南</a></li><li><a href="/JavaPlusDoc/jobPro/wechat-customer-service.html" class="sidebar-link">微信小程序API客服消息</a></li><li><a href="/JavaPlusDoc/jobPro/wechat-open-api.html" class="sidebar-link">微信小程序开放接口</a></li><li><a href="/JavaPlusDoc/jobPro/wechat-operation-center.html" class="sidebar-link">微信小程序运维中心</a></li><li><a href="/JavaPlusDoc/jobPro/appMsg.html" class="sidebar-link">微信小程序消息推送</a></li><li><a href="/JavaPlusDoc/jobPro/miniprogram.html" class="sidebar-link">微信小程序自动化部署</a></li><li><a href="/JavaPlusDoc/jobPro/appPay.html" class="sidebar-link">微信小程序支付功能</a></li><li><a href="/JavaPlusDoc/jobPro/uniapp.html" class="sidebar-link">iOS/Android打包发布</a></li></ul></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>技术架构</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>企业级应用</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>物联网应用</span> <span class="arrow right"></span></p> <!----></section></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>Java线程</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/JavaPlusDoc/aThread/linux.html" class="sidebar-link">linux线程基础</a></li><li><a href="/JavaPlusDoc/aThread/jvm.html" class="sidebar-link">jvm基础知识</a></li><li><a href="/JavaPlusDoc/aThread/jvmThread.html" class="sidebar-link">jvm线程</a></li><li><a href="/JavaPlusDoc/aThread/jvmThreadEvent.html" class="sidebar-link">jvm线程通信原理</a></li><li><a href="/JavaPlusDoc/aThread/jvmThreadSync.html" class="sidebar-link">jvm线程同步机制</a></li><li><a href="/JavaPlusDoc/aThread/jvmLock.html" class="sidebar-link">java锁实现原理</a></li><li><a href="/JavaPlusDoc/aThread/jvmAtomic.html" class="sidebar-link">java原子操作类实现原理</a></li><li><a href="/JavaPlusDoc/aThread/jvmConcurrent.html" class="sidebar-link">java并发容器实现原理</a></li><li><a href="/JavaPlusDoc/aThread/javaThreadPool.html" class="sidebar-link">java线程池实现原理</a></li><li><a href="/JavaPlusDoc/aThread/javaThreadPoolUse.html" class="sidebar-link">java线程池使用</a></li><li><a href="/JavaPlusDoc/aThread/javaThreadSkill.html" class="sidebar-link">java多线程编程技巧</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>计算机基础</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/JavaPlusDoc/cs/os.html" class="sidebar-link">操作系统</a></li><li><a href="/JavaPlusDoc/cs/wangluo.html" class="sidebar-link">计算机网络</a></li><li><a href="/JavaPlusDoc/cs/tcp-ip.html" class="sidebar-link">TCP/IP协议详解</a></li><li><a href="/JavaPlusDoc/aJava/cookie-session-token.html" class="sidebar-link">Cookie/Session/Token</a></li></ul></section></li></ul> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-59e6cb88 data-v-7dd95ae2><h3 class="title" data-v-59e6cb88>ELFK生产集群搭建指南</h3> <!----> <label id="box" class="inputBox" data-v-59e6cb88><input type="password" value="" data-v-59e6cb88> <span data-v-59e6cb88>Konck! Knock!</span> <button data-v-59e6cb88>OK</button></label> <div class="footer" data-v-59e6cb88><span data-v-59e6cb88><i class="iconfont reco-theme" data-v-59e6cb88></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-59e6cb88>vuePress-theme-reco</a></span> <span data-v-59e6cb88><i class="iconfont reco-copyright" data-v-59e6cb88></i> <a data-v-59e6cb88><!---->
+          
+        <!---->
+        2025
+      </a></span></div></div> <div data-v-7dd95ae2><div data-v-7dd95ae2><main class="page"><section style="display:;"><div class="page-title"><h1 class="title">ELFK生产集群搭建指南</h1> <div data-v-8a445198><!----> <i class="iconfont reco-date" data-v-8a445198><span data-v-8a445198>2023/6/1</span></i> <!----> <!----></div></div> <div class="theme-reco-content content__default"><h1 id="elfk生产集群搭建指南"><a href="#elfk生产集群搭建指南" class="header-anchor">#</a> ELFK生产集群搭建指南</h1> <h2 id="_1-elfk架构概述"><a href="#_1-elfk架构概述" class="header-anchor">#</a> 1. ELFK架构概述</h2> <p>ELFK是一个强大的日志收集、处理、存储和可视化的解决方案，由以下组件组成：</p> <ul><li><strong>Elasticsearch</strong>：分布式搜索和分析引擎，用于存储和检索日志数据</li> <li><strong>Logstash</strong>：数据处理管道，用于收集、转换和发送日志数据</li> <li><strong>Filebeat</strong>：轻量级日志收集器，部署在各个服务器上收集日志文件</li> <li><strong>Kafka</strong>：分布式消息队列，作为日志数据的缓冲层，提高系统的可靠性和扩展性</li> <li><strong>Kibana</strong>：数据可视化平台，提供日志数据的搜索、分析和展示功能</li></ul> <p>在ELFK架构中，Filebeat收集日志并发送到Kafka，Logstash从Kafka消费数据并进行处理后存入Elasticsearch，最后通过Kibana进行可视化展示。</p> <p><img src="/JavaPlusDoc/assets/img/elfk-architecture.3c9d15c5.svg" alt="ELFK架构图"></p> <h2 id="_2-环境准备"><a href="#_2-环境准备" class="header-anchor">#</a> 2. 环境准备</h2> <h3 id="_2-1-服务器规划"><a href="#_2-1-服务器规划" class="header-anchor">#</a> 2.1 服务器规划</h3> <p>对于生产环境，建议至少准备以下服务器：</p> <table><thead><tr><th>服务器角色</th> <th>数量</th> <th>配置建议</th> <th>说明</th></tr></thead> <tbody><tr><td>Elasticsearch主节点</td> <td>3台</td> <td>8核16G内存</td> <td>负责集群管理</td></tr> <tr><td>Elasticsearch数据节点</td> <td>3+台</td> <td>16核32G内存，大容量SSD</td> <td>存储和检索数据</td></tr> <tr><td>Kafka集群</td> <td>3+台</td> <td>8核16G内存</td> <td>消息队列</td></tr> <tr><td>Logstash服务器</td> <td>2+台</td> <td>8核16G内存</td> <td>数据处理</td></tr> <tr><td>Kibana服务器</td> <td>2台</td> <td>4核8G内存</td> <td>可视化界面</td></tr></tbody></table> <h3 id="_2-2-网络规划"><a href="#_2-2-网络规划" class="header-anchor">#</a> 2.2 网络规划</h3> <ul><li>所有服务器应该在同一内网环境</li> <li>配置合适的防火墙规则，只开放必要的端口</li> <li>建议使用专用网络接口用于集群内部通信</li></ul> <h3 id="_2-3-操作系统优化"><a href="#_2-3-操作系统优化" class="header-anchor">#</a> 2.3 操作系统优化</h3> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># 修改系统限制，添加到/etc/sysctl.conf</span>
+<span class="token assign-left variable">vm.max_map_count</span><span class="token operator">=</span><span class="token number">262144</span>
+<span class="token assign-left variable">net.core.somaxconn</span><span class="token operator">=</span><span class="token number">32768</span>
+<span class="token assign-left variable">net.ipv4.tcp_max_syn_backlog</span><span class="token operator">=</span><span class="token number">8192</span>
+<span class="token assign-left variable">net.ipv4.tcp_slow_start_after_idle</span><span class="token operator">=</span><span class="token number">0</span>
+<span class="token assign-left variable">net.ipv4.tcp_tw_reuse</span><span class="token operator">=</span><span class="token number">1</span>
+<span class="token assign-left variable">net.ipv4.ip_local_port_range</span><span class="token operator">=</span><span class="token number">1024</span> <span class="token number">65535</span>
+
+<span class="token comment"># 修改文件描述符限制，添加到/etc/security/limits.conf</span>
+* soft nofile <span class="token number">65536</span>
+* hard nofile <span class="token number">65536</span>
+* soft nproc <span class="token number">32768</span>
+* hard nproc <span class="token number">32768</span>
+</code></pre></div><h2 id="_3-elasticsearch集群部署"><a href="#_3-elasticsearch集群部署" class="header-anchor">#</a> 3. Elasticsearch集群部署</h2> <h3 id="_3-1-安装elasticsearch"><a href="#_3-1-安装elasticsearch" class="header-anchor">#</a> 3.1 安装Elasticsearch</h3> <p>我们使用Docker方式部署Elasticsearch集群。首先创建docker-compose.yml文件：</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">version</span><span class="token punctuation">:</span> <span class="token string">'3'</span>
+<span class="token key atrule">services</span><span class="token punctuation">:</span>
+  <span class="token key atrule">es01</span><span class="token punctuation">:</span>
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> docker.elastic.co/elasticsearch/elasticsearch<span class="token punctuation">:</span>7.17.0
+    <span class="token key atrule">container_name</span><span class="token punctuation">:</span> es01
+    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> node.name=es01
+      <span class="token punctuation">-</span> cluster.name=es<span class="token punctuation">-</span>cluster
+      <span class="token punctuation">-</span> discovery.seed_hosts=es02<span class="token punctuation">,</span>es03
+      <span class="token punctuation">-</span> cluster.initial_master_nodes=es01<span class="token punctuation">,</span>es02<span class="token punctuation">,</span>es03
+      <span class="token punctuation">-</span> bootstrap.memory_lock=true
+      <span class="token punctuation">-</span> <span class="token string">&quot;ES_JAVA_OPTS=-Xms8g -Xmx8g&quot;</span>
+    <span class="token key atrule">ulimits</span><span class="token punctuation">:</span>
+      <span class="token key atrule">memlock</span><span class="token punctuation">:</span>
+        <span class="token key atrule">soft</span><span class="token punctuation">:</span> <span class="token number">-1</span>
+        <span class="token key atrule">hard</span><span class="token punctuation">:</span> <span class="token number">-1</span>
+    <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> esdata01<span class="token punctuation">:</span>/usr/share/elasticsearch/data
+    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> 9200<span class="token punctuation">:</span><span class="token number">9200</span>
+    <span class="token key atrule">networks</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> elastic
+
+  <span class="token key atrule">es02</span><span class="token punctuation">:</span>
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> docker.elastic.co/elasticsearch/elasticsearch<span class="token punctuation">:</span>7.17.0
+    <span class="token key atrule">container_name</span><span class="token punctuation">:</span> es02
+    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> node.name=es02
+      <span class="token punctuation">-</span> cluster.name=es<span class="token punctuation">-</span>cluster
+      <span class="token punctuation">-</span> discovery.seed_hosts=es01<span class="token punctuation">,</span>es03
+      <span class="token punctuation">-</span> cluster.initial_master_nodes=es01<span class="token punctuation">,</span>es02<span class="token punctuation">,</span>es03
+      <span class="token punctuation">-</span> bootstrap.memory_lock=true
+      <span class="token punctuation">-</span> <span class="token string">&quot;ES_JAVA_OPTS=-Xms8g -Xmx8g&quot;</span>
+    <span class="token key atrule">ulimits</span><span class="token punctuation">:</span>
+      <span class="token key atrule">memlock</span><span class="token punctuation">:</span>
+        <span class="token key atrule">soft</span><span class="token punctuation">:</span> <span class="token number">-1</span>
+        <span class="token key atrule">hard</span><span class="token punctuation">:</span> <span class="token number">-1</span>
+    <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> esdata02<span class="token punctuation">:</span>/usr/share/elasticsearch/data
+    <span class="token key atrule">networks</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> elastic
+      
+  <span class="token key atrule">es03</span><span class="token punctuation">:</span>
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> docker.elastic.co/elasticsearch/elasticsearch<span class="token punctuation">:</span>7.17.0
+    <span class="token key atrule">container_name</span><span class="token punctuation">:</span> es03
+    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> node.name=es03
+      <span class="token punctuation">-</span> cluster.name=es<span class="token punctuation">-</span>cluster
+      <span class="token punctuation">-</span> discovery.seed_hosts=es01<span class="token punctuation">,</span>es02
+      <span class="token punctuation">-</span> cluster.initial_master_nodes=es01<span class="token punctuation">,</span>es02<span class="token punctuation">,</span>es03
+      <span class="token punctuation">-</span> bootstrap.memory_lock=true
+      <span class="token punctuation">-</span> <span class="token string">&quot;ES_JAVA_OPTS=-Xms8g -Xmx8g&quot;</span>
+    <span class="token key atrule">ulimits</span><span class="token punctuation">:</span>
+      <span class="token key atrule">memlock</span><span class="token punctuation">:</span>
+        <span class="token key atrule">soft</span><span class="token punctuation">:</span> <span class="token number">-1</span>
+        <span class="token key atrule">hard</span><span class="token punctuation">:</span> <span class="token number">-1</span>
+    <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> esdata03<span class="token punctuation">:</span>/usr/share/elasticsearch/data
+    <span class="token key atrule">networks</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> elastic
+
+<span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+  <span class="token key atrule">esdata01</span><span class="token punctuation">:</span>
+  <span class="token key atrule">esdata02</span><span class="token punctuation">:</span>
+  <span class="token key atrule">esdata03</span><span class="token punctuation">:</span>
+
+<span class="token key atrule">networks</span><span class="token punctuation">:</span>
+  <span class="token key atrule">elastic</span><span class="token punctuation">:</span>
+    <span class="token key atrule">driver</span><span class="token punctuation">:</span> bridge
+</code></pre></div><p>启动Elasticsearch集群：</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">docker-compose</span> up <span class="token parameter variable">-d</span>
+</code></pre></div><h3 id="_3-2-配置elasticsearch安全认证"><a href="#_3-2-配置elasticsearch安全认证" class="header-anchor">#</a> 3.2 配置Elasticsearch安全认证</h3> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># 进入容器</span>
+<span class="token function">docker</span> <span class="token builtin class-name">exec</span> <span class="token parameter variable">-it</span> es01 <span class="token function">bash</span>
+
+<span class="token comment"># 设置密码</span>
+./bin/elasticsearch-setup-passwords auto
+</code></pre></div><p>记录下生成的密码，后续配置需要使用。</p> <h3 id="_3-3-配置elasticsearch集群"><a href="#_3-3-配置elasticsearch集群" class="header-anchor">#</a> 3.3 配置Elasticsearch集群</h3> <p>创建索引生命周期管理策略：</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">curl</span> <span class="token parameter variable">-X</span> PUT <span class="token string">&quot;localhost:9200/_ilm/policy/logs-policy?pretty&quot;</span> <span class="token parameter variable">-H</span> <span class="token string">'Content-Type: application/json'</span> -d<span class="token string">'
+{
+  &quot;policy&quot;: {
+    &quot;phases&quot;: {
+      &quot;hot&quot;: {
+        &quot;min_age&quot;: &quot;0ms&quot;,
+        &quot;actions&quot;: {
+          &quot;rollover&quot;: {
+            &quot;max_age&quot;: &quot;1d&quot;,
+            &quot;max_size&quot;: &quot;50gb&quot;
+          },
+          &quot;set_priority&quot;: {
+            &quot;priority&quot;: 100
+          }
+        }
+      },
+      &quot;warm&quot;: {
+        &quot;min_age&quot;: &quot;3d&quot;,
+        &quot;actions&quot;: {
+          &quot;shrink&quot;: {
+            &quot;number_of_shards&quot;: 1
+          },
+          &quot;forcemerge&quot;: {
+            &quot;max_num_segments&quot;: 1
+          },
+          &quot;set_priority&quot;: {
+            &quot;priority&quot;: 50
+          }
+        }
+      },
+      &quot;cold&quot;: {
+        &quot;min_age&quot;: &quot;30d&quot;,
+        &quot;actions&quot;: {
+          &quot;set_priority&quot;: {
+            &quot;priority&quot;: 0
+          }
+        }
+      },
+      &quot;delete&quot;: {
+        &quot;min_age&quot;: &quot;90d&quot;,
+        &quot;actions&quot;: {
+          &quot;delete&quot;: {}
+        }
+      }
+    }
+  }
+}'</span>
+</code></pre></div><p>创建索引模板：</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">curl</span> <span class="token parameter variable">-X</span> PUT <span class="token string">&quot;localhost:9200/_template/logs-template?pretty&quot;</span> <span class="token parameter variable">-H</span> <span class="token string">'Content-Type: application/json'</span> -d<span class="token string">'
+{
+  &quot;index_patterns&quot;: [&quot;logs-*&quot;],
+  &quot;settings&quot;: {
+    &quot;number_of_shards&quot;: 3,
+    &quot;number_of_replicas&quot;: 1,
+    &quot;index.lifecycle.name&quot;: &quot;logs-policy&quot;,
+    &quot;index.lifecycle.rollover_alias&quot;: &quot;logs&quot;
+  },
+  &quot;mappings&quot;: {
+    &quot;properties&quot;: {
+      &quot;@timestamp&quot;: { &quot;type&quot;: &quot;date&quot; },
+      &quot;message&quot;: { &quot;type&quot;: &quot;text&quot; },
+      &quot;level&quot;: { &quot;type&quot;: &quot;keyword&quot; },
+      &quot;service&quot;: { &quot;type&quot;: &quot;keyword&quot; },
+      &quot;host&quot;: { &quot;type&quot;: &quot;keyword&quot; }
+    }
+  }
+}'</span>
+</code></pre></div><h2 id="_4-kafka集群部署"><a href="#_4-kafka集群部署" class="header-anchor">#</a> 4. Kafka集群部署</h2> <h3 id="_4-1-安装kafka"><a href="#_4-1-安装kafka" class="header-anchor">#</a> 4.1 安装Kafka</h3> <p>创建docker-compose.yml文件：</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">version</span><span class="token punctuation">:</span> <span class="token string">'3'</span>
+<span class="token key atrule">services</span><span class="token punctuation">:</span>
+  <span class="token key atrule">zookeeper-1</span><span class="token punctuation">:</span>
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> confluentinc/cp<span class="token punctuation">-</span>zookeeper<span class="token punctuation">:</span>7.0.1
+    <span class="token key atrule">container_name</span><span class="token punctuation">:</span> zookeeper<span class="token punctuation">-</span><span class="token number">1</span>
+    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+      <span class="token key atrule">ZOOKEEPER_CLIENT_PORT</span><span class="token punctuation">:</span> <span class="token number">2181</span>
+      <span class="token key atrule">ZOOKEEPER_TICK_TIME</span><span class="token punctuation">:</span> <span class="token number">2000</span>
+      <span class="token key atrule">ZOOKEEPER_SERVER_ID</span><span class="token punctuation">:</span> <span class="token number">1</span>
+      <span class="token key atrule">ZOOKEEPER_SERVERS</span><span class="token punctuation">:</span> zookeeper<span class="token punctuation">-</span>1<span class="token punctuation">:</span>2888<span class="token punctuation">:</span>3888;zookeeper<span class="token punctuation">-</span>2<span class="token punctuation">:</span>2888<span class="token punctuation">:</span>3888;zookeeper<span class="token punctuation">-</span>3<span class="token punctuation">:</span>2888<span class="token punctuation">:</span><span class="token number">3888</span>
+    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token string">&quot;2181:2181&quot;</span>
+    <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> zookeeper<span class="token punctuation">-</span>1<span class="token punctuation">-</span>data<span class="token punctuation">:</span>/var/lib/zookeeper/data
+      <span class="token punctuation">-</span> zookeeper<span class="token punctuation">-</span>1<span class="token punctuation">-</span>log<span class="token punctuation">:</span>/var/lib/zookeeper/log
+    <span class="token key atrule">networks</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> kafka<span class="token punctuation">-</span>net
+
+  <span class="token key atrule">zookeeper-2</span><span class="token punctuation">:</span>
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> confluentinc/cp<span class="token punctuation">-</span>zookeeper<span class="token punctuation">:</span>7.0.1
+    <span class="token key atrule">container_name</span><span class="token punctuation">:</span> zookeeper<span class="token punctuation">-</span><span class="token number">2</span>
+    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+      <span class="token key atrule">ZOOKEEPER_CLIENT_PORT</span><span class="token punctuation">:</span> <span class="token number">2181</span>
+      <span class="token key atrule">ZOOKEEPER_TICK_TIME</span><span class="token punctuation">:</span> <span class="token number">2000</span>
+      <span class="token key atrule">ZOOKEEPER_SERVER_ID</span><span class="token punctuation">:</span> <span class="token number">2</span>
+      <span class="token key atrule">ZOOKEEPER_SERVERS</span><span class="token punctuation">:</span> zookeeper<span class="token punctuation">-</span>1<span class="token punctuation">:</span>2888<span class="token punctuation">:</span>3888;zookeeper<span class="token punctuation">-</span>2<span class="token punctuation">:</span>2888<span class="token punctuation">:</span>3888;zookeeper<span class="token punctuation">-</span>3<span class="token punctuation">:</span>2888<span class="token punctuation">:</span><span class="token number">3888</span>
+    <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> zookeeper<span class="token punctuation">-</span>2<span class="token punctuation">-</span>data<span class="token punctuation">:</span>/var/lib/zookeeper/data
+      <span class="token punctuation">-</span> zookeeper<span class="token punctuation">-</span>2<span class="token punctuation">-</span>log<span class="token punctuation">:</span>/var/lib/zookeeper/log
+    <span class="token key atrule">networks</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> kafka<span class="token punctuation">-</span>net
+
+  <span class="token key atrule">zookeeper-3</span><span class="token punctuation">:</span>
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> confluentinc/cp<span class="token punctuation">-</span>zookeeper<span class="token punctuation">:</span>7.0.1
+    <span class="token key atrule">container_name</span><span class="token punctuation">:</span> zookeeper<span class="token punctuation">-</span><span class="token number">3</span>
+    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+      <span class="token key atrule">ZOOKEEPER_CLIENT_PORT</span><span class="token punctuation">:</span> <span class="token number">2181</span>
+      <span class="token key atrule">ZOOKEEPER_TICK_TIME</span><span class="token punctuation">:</span> <span class="token number">2000</span>
+      <span class="token key atrule">ZOOKEEPER_SERVER_ID</span><span class="token punctuation">:</span> <span class="token number">3</span>
+      <span class="token key atrule">ZOOKEEPER_SERVERS</span><span class="token punctuation">:</span> zookeeper<span class="token punctuation">-</span>1<span class="token punctuation">:</span>2888<span class="token punctuation">:</span>3888;zookeeper<span class="token punctuation">-</span>2<span class="token punctuation">:</span>2888<span class="token punctuation">:</span>3888;zookeeper<span class="token punctuation">-</span>3<span class="token punctuation">:</span>2888<span class="token punctuation">:</span><span class="token number">3888</span>
+    <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> zookeeper<span class="token punctuation">-</span>3<span class="token punctuation">-</span>data<span class="token punctuation">:</span>/var/lib/zookeeper/data
+      <span class="token punctuation">-</span> zookeeper<span class="token punctuation">-</span>3<span class="token punctuation">-</span>log<span class="token punctuation">:</span>/var/lib/zookeeper/log
+    <span class="token key atrule">networks</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> kafka<span class="token punctuation">-</span>net
+
+  <span class="token key atrule">kafka-1</span><span class="token punctuation">:</span>
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> confluentinc/cp<span class="token punctuation">-</span>kafka<span class="token punctuation">:</span>7.0.1
+    <span class="token key atrule">container_name</span><span class="token punctuation">:</span> kafka<span class="token punctuation">-</span><span class="token number">1</span>
+    <span class="token key atrule">depends_on</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> zookeeper<span class="token punctuation">-</span><span class="token number">1</span>
+      <span class="token punctuation">-</span> zookeeper<span class="token punctuation">-</span><span class="token number">2</span>
+      <span class="token punctuation">-</span> zookeeper<span class="token punctuation">-</span><span class="token number">3</span>
+    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token string">&quot;9092:9092&quot;</span>
+    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+      <span class="token key atrule">KAFKA_BROKER_ID</span><span class="token punctuation">:</span> <span class="token number">1</span>
+      <span class="token key atrule">KAFKA_ZOOKEEPER_CONNECT</span><span class="token punctuation">:</span> zookeeper<span class="token punctuation">-</span>1<span class="token punctuation">:</span><span class="token number">2181</span><span class="token punctuation">,</span>zookeeper<span class="token punctuation">-</span>2<span class="token punctuation">:</span><span class="token number">2181</span><span class="token punctuation">,</span>zookeeper<span class="token punctuation">-</span>3<span class="token punctuation">:</span><span class="token number">2181</span>
+      <span class="token key atrule">KAFKA_ADVERTISED_LISTENERS</span><span class="token punctuation">:</span> PLAINTEXT<span class="token punctuation">:</span>//kafka<span class="token punctuation">-</span>1<span class="token punctuation">:</span><span class="token number">29092</span><span class="token punctuation">,</span>PLAINTEXT_HOST<span class="token punctuation">:</span>//localhost<span class="token punctuation">:</span><span class="token number">9092</span>
+      <span class="token key atrule">KAFKA_LISTENER_SECURITY_PROTOCOL_MAP</span><span class="token punctuation">:</span> PLAINTEXT<span class="token punctuation">:</span>PLAINTEXT<span class="token punctuation">,</span>PLAINTEXT_HOST<span class="token punctuation">:</span>PLAINTEXT
+      <span class="token key atrule">KAFKA_INTER_BROKER_LISTENER_NAME</span><span class="token punctuation">:</span> PLAINTEXT
+      <span class="token key atrule">KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR</span><span class="token punctuation">:</span> <span class="token number">3</span>
+      <span class="token key atrule">KAFKA_AUTO_CREATE_TOPICS_ENABLE</span><span class="token punctuation">:</span> <span class="token string">&quot;true&quot;</span>
+    <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> kafka<span class="token punctuation">-</span>1<span class="token punctuation">-</span>data<span class="token punctuation">:</span>/var/lib/kafka/data
+    <span class="token key atrule">networks</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> kafka<span class="token punctuation">-</span>net
+
+  <span class="token key atrule">kafka-2</span><span class="token punctuation">:</span>
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> confluentinc/cp<span class="token punctuation">-</span>kafka<span class="token punctuation">:</span>7.0.1
+    <span class="token key atrule">container_name</span><span class="token punctuation">:</span> kafka<span class="token punctuation">-</span><span class="token number">2</span>
+    <span class="token key atrule">depends_on</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> zookeeper<span class="token punctuation">-</span><span class="token number">1</span>
+      <span class="token punctuation">-</span> zookeeper<span class="token punctuation">-</span><span class="token number">2</span>
+      <span class="token punctuation">-</span> zookeeper<span class="token punctuation">-</span><span class="token number">3</span>
+    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token string">&quot;9093:9093&quot;</span>
+    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+      <span class="token key atrule">KAFKA_BROKER_ID</span><span class="token punctuation">:</span> <span class="token number">2</span>
+      <span class="token key atrule">KAFKA_ZOOKEEPER_CONNECT</span><span class="token punctuation">:</span> zookeeper<span class="token punctuation">-</span>1<span class="token punctuation">:</span><span class="token number">2181</span><span class="token punctuation">,</span>zookeeper<span class="token punctuation">-</span>2<span class="token punctuation">:</span><span class="token number">2181</span><span class="token punctuation">,</span>zookeeper<span class="token punctuation">-</span>3<span class="token punctuation">:</span><span class="token number">2181</span>
+      <span class="token key atrule">KAFKA_ADVERTISED_LISTENERS</span><span class="token punctuation">:</span> PLAINTEXT<span class="token punctuation">:</span>//kafka<span class="token punctuation">-</span>2<span class="token punctuation">:</span><span class="token number">29093</span><span class="token punctuation">,</span>PLAINTEXT_HOST<span class="token punctuation">:</span>//localhost<span class="token punctuation">:</span><span class="token number">9093</span>
+      <span class="token key atrule">KAFKA_LISTENER_SECURITY_PROTOCOL_MAP</span><span class="token punctuation">:</span> PLAINTEXT<span class="token punctuation">:</span>PLAINTEXT<span class="token punctuation">,</span>PLAINTEXT_HOST<span class="token punctuation">:</span>PLAINTEXT
+      <span class="token key atrule">KAFKA_INTER_BROKER_LISTENER_NAME</span><span class="token punctuation">:</span> PLAINTEXT
+      <span class="token key atrule">KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR</span><span class="token punctuation">:</span> <span class="token number">3</span>
+      <span class="token key atrule">KAFKA_AUTO_CREATE_TOPICS_ENABLE</span><span class="token punctuation">:</span> <span class="token string">&quot;true&quot;</span>
+    <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> kafka<span class="token punctuation">-</span>2<span class="token punctuation">-</span>data<span class="token punctuation">:</span>/var/lib/kafka/data
+    <span class="token key atrule">networks</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> kafka<span class="token punctuation">-</span>net
+
+  <span class="token key atrule">kafka-3</span><span class="token punctuation">:</span>
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> confluentinc/cp<span class="token punctuation">-</span>kafka<span class="token punctuation">:</span>7.0.1
+    <span class="token key atrule">container_name</span><span class="token punctuation">:</span> kafka<span class="token punctuation">-</span><span class="token number">3</span>
+    <span class="token key atrule">depends_on</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> zookeeper<span class="token punctuation">-</span><span class="token number">1</span>
+      <span class="token punctuation">-</span> zookeeper<span class="token punctuation">-</span><span class="token number">2</span>
+      <span class="token punctuation">-</span> zookeeper<span class="token punctuation">-</span><span class="token number">3</span>
+    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token string">&quot;9094:9094&quot;</span>
+    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+      <span class="token key atrule">KAFKA_BROKER_ID</span><span class="token punctuation">:</span> <span class="token number">3</span>
+      <span class="token key atrule">KAFKA_ZOOKEEPER_CONNECT</span><span class="token punctuation">:</span> zookeeper<span class="token punctuation">-</span>1<span class="token punctuation">:</span><span class="token number">2181</span><span class="token punctuation">,</span>zookeeper<span class="token punctuation">-</span>2<span class="token punctuation">:</span><span class="token number">2181</span><span class="token punctuation">,</span>zookeeper<span class="token punctuation">-</span>3<span class="token punctuation">:</span><span class="token number">2181</span>
+      <span class="token key atrule">KAFKA_ADVERTISED_LISTENERS</span><span class="token punctuation">:</span> PLAINTEXT<span class="token punctuation">:</span>//kafka<span class="token punctuation">-</span>3<span class="token punctuation">:</span><span class="token number">29094</span><span class="token punctuation">,</span>PLAINTEXT_HOST<span class="token punctuation">:</span>//localhost<span class="token punctuation">:</span><span class="token number">9094</span>
+      <span class="token key atrule">KAFKA_LISTENER_SECURITY_PROTOCOL_MAP</span><span class="token punctuation">:</span> PLAINTEXT<span class="token punctuation">:</span>PLAINTEXT<span class="token punctuation">,</span>PLAINTEXT_HOST<span class="token punctuation">:</span>PLAINTEXT
+      <span class="token key atrule">KAFKA_INTER_BROKER_LISTENER_NAME</span><span class="token punctuation">:</span> PLAINTEXT
+      <span class="token key atrule">KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR</span><span class="token punctuation">:</span> <span class="token number">3</span>
+      <span class="token key atrule">KAFKA_AUTO_CREATE_TOPICS_ENABLE</span><span class="token punctuation">:</span> <span class="token string">&quot;true&quot;</span>
+    <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> kafka<span class="token punctuation">-</span>3<span class="token punctuation">-</span>data<span class="token punctuation">:</span>/var/lib/kafka/data
+    <span class="token key atrule">networks</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> kafka<span class="token punctuation">-</span>net
+
+<span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+  <span class="token key atrule">zookeeper-1-data</span><span class="token punctuation">:</span>
+  <span class="token key atrule">zookeeper-1-log</span><span class="token punctuation">:</span>
+  <span class="token key atrule">zookeeper-2-data</span><span class="token punctuation">:</span>
+  <span class="token key atrule">zookeeper-2-log</span><span class="token punctuation">:</span>
+  <span class="token key atrule">zookeeper-3-data</span><span class="token punctuation">:</span>
+  <span class="token key atrule">zookeeper-3-log</span><span class="token punctuation">:</span>
+  <span class="token key atrule">kafka-1-data</span><span class="token punctuation">:</span>
+  <span class="token key atrule">kafka-2-data</span><span class="token punctuation">:</span>
+  <span class="token key atrule">kafka-3-data</span><span class="token punctuation">:</span>
+
+<span class="token key atrule">networks</span><span class="token punctuation">:</span>
+  <span class="token key atrule">kafka-net</span><span class="token punctuation">:</span>
+    <span class="token key atrule">driver</span><span class="token punctuation">:</span> bridge
+</code></pre></div><p>启动Kafka集群：</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">docker-compose</span> up <span class="token parameter variable">-d</span>
+</code></pre></div><h3 id="_4-2-创建kafka主题"><a href="#_4-2-创建kafka主题" class="header-anchor">#</a> 4.2 创建Kafka主题</h3> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># 进入Kafka容器</span>
+<span class="token function">docker</span> <span class="token builtin class-name">exec</span> <span class="token parameter variable">-it</span> kafka-1 <span class="token function">bash</span>
+
+<span class="token comment"># 创建日志主题，3个分区，3个副本</span>
+kafka-topics <span class="token parameter variable">--create</span> <span class="token parameter variable">--topic</span> app-logs <span class="token parameter variable">--partitions</span> <span class="token number">3</span> --replication-factor <span class="token number">3</span> --bootstrap-server kafka-1:29092
+
+<span class="token comment"># 创建系统日志主题</span>
+kafka-topics <span class="token parameter variable">--create</span> <span class="token parameter variable">--topic</span> system-logs <span class="token parameter variable">--partitions</span> <span class="token number">3</span> --replication-factor <span class="token number">3</span> --bootstrap-server kafka-1:29092
+
+<span class="token comment"># 查看主题列表</span>
+kafka-topics <span class="token parameter variable">--list</span> --bootstrap-server kafka-1:29092
+</code></pre></div><h2 id="_5-logstash部署"><a href="#_5-logstash部署" class="header-anchor">#</a> 5. Logstash部署</h2> <h3 id="_5-1-安装logstash"><a href="#_5-1-安装logstash" class="header-anchor">#</a> 5.1 安装Logstash</h3> <p>创建Logstash配置文件 <code>logstash.conf</code>：</p> <div class="language-conf extra-class"><pre class="language-text"><code>input {
+  kafka {
+    bootstrap_servers =&gt; &quot;kafka-1:29092,kafka-2:29093,kafka-3:29094&quot;
+    topics =&gt; [&quot;app-logs&quot;, &quot;system-logs&quot;]
+    group_id =&gt; &quot;logstash&quot;
+    auto_offset_reset =&gt; &quot;latest&quot;
+    consumer_threads =&gt; 3
+    decorate_events =&gt; true
+  }
+}
+
+filter {
+  if [kafka][topic] == &quot;app-logs&quot; {
+    json {
+      source =&gt; &quot;message&quot;
+    }
+    date {
+      match =&gt; [ &quot;timestamp&quot;, &quot;ISO8601&quot; ]
+      target =&gt; &quot;@timestamp&quot;
+    }
+    mutate {
+      remove_field =&gt; [ &quot;timestamp&quot; ]
+    }
+  } else if [kafka][topic] == &quot;system-logs&quot; {
+    grok {
+      match =&gt; { &quot;message&quot; =&gt; &quot;%{SYSLOGTIMESTAMP:syslog_timestamp} %{SYSLOGHOST:syslog_hostname} %{DATA:syslog_program}(?:\[%{POSINT:syslog_pid}\])?: %{GREEDYDATA:syslog_message}&quot; }
+    }
+    date {
+      match =&gt; [ &quot;syslog_timestamp&quot;, &quot;MMM  d HH:mm:ss&quot;, &quot;MMM dd HH:mm:ss&quot; ]
+      target =&gt; &quot;@timestamp&quot;
+    }
+  }
+  
+  # 添加处理节点信息
+  mutate {
+    add_field =&gt; { &quot;logstash_node&quot; =&gt; &quot;${HOSTNAME}&quot; }
+  }
+}
+
+output {
+  if [kafka][topic] == &quot;app-logs&quot; {
+    elasticsearch {
+      hosts =&gt; [&quot;es01:9200&quot;, &quot;es02:9200&quot;, &quot;es03:9200&quot;]
+      user =&gt; &quot;elastic&quot;
+      password =&gt; &quot;${ELASTIC_PASSWORD}&quot;
+      index =&gt; &quot;app-logs-%{+YYYY.MM.dd}&quot;
+      ilm_enabled =&gt; true
+      ilm_rollover_alias =&gt; &quot;app-logs&quot;
+      ilm_pattern =&gt; &quot;{now/d}-000001&quot;
+      ilm_policy =&gt; &quot;logs-policy&quot;
+    }
+  } else if [kafka][topic] == &quot;system-logs&quot; {
+    elasticsearch {
+      hosts =&gt; [&quot;es01:9200&quot;, &quot;es02:9200&quot;, &quot;es03:9200&quot;]
+      user =&gt; &quot;elastic&quot;
+      password =&gt; &quot;${ELASTIC_PASSWORD}&quot;
+      index =&gt; &quot;system-logs-%{+YYYY.MM.dd}&quot;
+      ilm_enabled =&gt; true
+      ilm_rollover_alias =&gt; &quot;system-logs&quot;
+      ilm_pattern =&gt; &quot;{now/d}-000001&quot;
+      ilm_policy =&gt; &quot;logs-policy&quot;
+    }
+  }
+}
+</code></pre></div><p>创建docker-compose.yml文件：</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">version</span><span class="token punctuation">:</span> <span class="token string">'3'</span>
+<span class="token key atrule">services</span><span class="token punctuation">:</span>
+  <span class="token key atrule">logstash</span><span class="token punctuation">:</span>
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> docker.elastic.co/logstash/logstash<span class="token punctuation">:</span>7.17.0
+    <span class="token key atrule">container_name</span><span class="token punctuation">:</span> logstash
+    <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> ./logstash.conf<span class="token punctuation">:</span>/usr/share/logstash/pipeline/logstash.conf<span class="token punctuation">:</span>ro
+      <span class="token punctuation">-</span> ./logstash.yml<span class="token punctuation">:</span>/usr/share/logstash/config/logstash.yml<span class="token punctuation">:</span>ro
+    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+      <span class="token key atrule">LS_JAVA_OPTS</span><span class="token punctuation">:</span> <span class="token string">&quot;-Xmx1g -Xms1g&quot;</span>
+      <span class="token key atrule">ELASTIC_PASSWORD</span><span class="token punctuation">:</span> <span class="token string">&quot;your_elastic_password&quot;</span>
+    <span class="token key atrule">networks</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> elastic
+      <span class="token punctuation">-</span> kafka<span class="token punctuation">-</span>net
+
+<span class="token key atrule">networks</span><span class="token punctuation">:</span>
+  <span class="token key atrule">elastic</span><span class="token punctuation">:</span>
+    <span class="token key atrule">external</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token key atrule">kafka-net</span><span class="token punctuation">:</span>
+    <span class="token key atrule">external</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+</code></pre></div><p>创建logstash.yml配置文件：</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">http.host</span><span class="token punctuation">:</span> <span class="token string">&quot;0.0.0.0&quot;</span>
+<span class="token key atrule">xpack.monitoring.elasticsearch.hosts</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">&quot;http://es01:9200&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;http://es02:9200&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;http://es03:9200&quot;</span><span class="token punctuation">]</span>
+<span class="token key atrule">xpack.monitoring.elasticsearch.username</span><span class="token punctuation">:</span> elastic
+<span class="token key atrule">xpack.monitoring.elasticsearch.password</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span>ELASTIC_PASSWORD<span class="token punctuation">}</span>
+<span class="token key atrule">xpack.monitoring.enabled</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+<span class="token key atrule">pipeline.workers</span><span class="token punctuation">:</span> <span class="token number">4</span>
+<span class="token key atrule">pipeline.batch.size</span><span class="token punctuation">:</span> <span class="token number">1000</span>
+<span class="token key atrule">pipeline.batch.delay</span><span class="token punctuation">:</span> <span class="token number">50</span>
+<span class="token key atrule">queue.type</span><span class="token punctuation">:</span> persisted
+<span class="token key atrule">queue.max_bytes</span><span class="token punctuation">:</span> 1gb
+</code></pre></div><p>启动Logstash：</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">docker-compose</span> up <span class="token parameter variable">-d</span>
+</code></pre></div><h2 id="_6-filebeat部署"><a href="#_6-filebeat部署" class="header-anchor">#</a> 6. Filebeat部署</h2> <h3 id="_6-1-创建filebeat配置"><a href="#_6-1-创建filebeat配置" class="header-anchor">#</a> 6.1 创建Filebeat配置</h3> <p>创建filebeat.yml配置文件：</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">filebeat.inputs</span><span class="token punctuation">:</span>
+<span class="token punctuation">-</span> <span class="token key atrule">type</span><span class="token punctuation">:</span> log
+  <span class="token key atrule">enabled</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token key atrule">paths</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> /var/log/app/<span class="token important">*.log</span>
+  <span class="token key atrule">fields</span><span class="token punctuation">:</span>
+    <span class="token key atrule">log_type</span><span class="token punctuation">:</span> app
+  <span class="token key atrule">fields_under_root</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token key atrule">json.keys_under_root</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token key atrule">json.message_key</span><span class="token punctuation">:</span> log
+  <span class="token key atrule">json.add_error_key</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+
+<span class="token punctuation">-</span> <span class="token key atrule">type</span><span class="token punctuation">:</span> log
+  <span class="token key atrule">enabled</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token key atrule">paths</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> /var/log/system/<span class="token important">*.log</span>
+  <span class="token key atrule">fields</span><span class="token punctuation">:</span>
+    <span class="token key atrule">log_type</span><span class="token punctuation">:</span> system
+  <span class="token key atrule">fields_under_root</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+
+<span class="token key atrule">processors</span><span class="token punctuation">:</span>
+<span class="token punctuation">-</span> <span class="token key atrule">add_host_metadata</span><span class="token punctuation">:</span> <span class="token null important">~</span>
+<span class="token punctuation">-</span> <span class="token key atrule">add_cloud_metadata</span><span class="token punctuation">:</span> <span class="token null important">~</span>
+
+<span class="token key atrule">output.kafka</span><span class="token punctuation">:</span>
+  <span class="token key atrule">hosts</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">&quot;kafka-1:29092&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;kafka-2:29093&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;kafka-3:29094&quot;</span><span class="token punctuation">]</span>
+  <span class="token key atrule">topic</span><span class="token punctuation">:</span> <span class="token string">'%{[log_type]}-logs'</span>
+  <span class="token key atrule">partition.round_robin</span><span class="token punctuation">:</span>
+    <span class="token key atrule">reachable_only</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
+  <span class="token key atrule">required_acks</span><span class="token punctuation">:</span> <span class="token number">1</span>
+  <span class="token key atrule">compression</span><span class="token punctuation">:</span> gzip
+  <span class="token key atrule">max_message_bytes</span><span class="token punctuation">:</span> <span class="token number">1000000</span>
+
+<span class="token key atrule">logging.level</span><span class="token punctuation">:</span> info
+<span class="token key atrule">logging.to_files</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+<span class="token key atrule">logging.files</span><span class="token punctuation">:</span>
+  <span class="token key atrule">path</span><span class="token punctuation">:</span> /var/log/filebeat
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> filebeat
+  <span class="token key atrule">keepfiles</span><span class="token punctuation">:</span> <span class="token number">7</span>
+  <span class="token key atrule">permissions</span><span class="token punctuation">:</span> <span class="token number">0644</span>
+</code></pre></div><h3 id="_6-2-部署filebeat到应用服务器"><a href="#_6-2-部署filebeat到应用服务器" class="header-anchor">#</a> 6.2 部署Filebeat到应用服务器</h3> <p>创建docker-compose.yml文件：</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">version</span><span class="token punctuation">:</span> <span class="token string">'3'</span>
+<span class="token key atrule">services</span><span class="token punctuation">:</span>
+  <span class="token key atrule">filebeat</span><span class="token punctuation">:</span>
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> docker.elastic.co/beats/filebeat<span class="token punctuation">:</span>7.17.0
+    <span class="token key atrule">container_name</span><span class="token punctuation">:</span> filebeat
+    <span class="token key atrule">user</span><span class="token punctuation">:</span> root
+    <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> ./filebeat.yml<span class="token punctuation">:</span>/usr/share/filebeat/filebeat.yml<span class="token punctuation">:</span>ro
+      <span class="token punctuation">-</span> /var/log<span class="token punctuation">:</span>/var/log<span class="token punctuation">:</span>ro
+      <span class="token punctuation">-</span> /var/lib/docker/containers<span class="token punctuation">:</span>/var/lib/docker/containers<span class="token punctuation">:</span>ro
+      <span class="token punctuation">-</span> /var/run/docker.sock<span class="token punctuation">:</span>/var/run/docker.sock<span class="token punctuation">:</span>ro
+    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> strict.perms=false
+    <span class="token key atrule">networks</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> kafka<span class="token punctuation">-</span>net
+
+<span class="token key atrule">networks</span><span class="token punctuation">:</span>
+  <span class="token key atrule">kafka-net</span><span class="token punctuation">:</span>
+    <span class="token key atrule">external</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+</code></pre></div><p>启动Filebeat：</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">docker-compose</span> up <span class="token parameter variable">-d</span>
+</code></pre></div><h2 id="_7-kibana部署"><a href="#_7-kibana部署" class="header-anchor">#</a> 7. Kibana部署</h2> <h3 id="_7-1-安装kibana"><a href="#_7-1-安装kibana" class="header-anchor">#</a> 7.1 安装Kibana</h3> <p>创建docker-compose.yml文件：</p> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token key atrule">version</span><span class="token punctuation">:</span> <span class="token string">'3'</span>
+<span class="token key atrule">services</span><span class="token punctuation">:</span>
+  <span class="token key atrule">kibana</span><span class="token punctuation">:</span>
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> docker.elastic.co/kibana/kibana<span class="token punctuation">:</span>7.17.0
+    <span class="token key atrule">container_name</span><span class="token punctuation">:</span> kibana
+    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+      <span class="token key atrule">ELASTICSEARCH_HOSTS</span><span class="token punctuation">:</span> <span class="token string">'&quot;http://es01:9200&quot;,&quot;http://es02:9200&quot;,&quot;http://es03:9200&quot;'</span>
+      <span class="token key atrule">ELASTICSEARCH_USERNAME</span><span class="token punctuation">:</span> elastic
+      <span class="token key atrule">ELASTICSEARCH_PASSWORD</span><span class="token punctuation">:</span> <span class="token string">&quot;your_elastic_password&quot;</span>
+    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> 5601<span class="token punctuation">:</span><span class="token number">5601</span>
+    <span class="token key atrule">networks</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> elastic
+
+<span class="token key atrule">networks</span><span class="token punctuation">:</span>
+  <span class="token key atrule">elastic</span><span class="token punctuation">:</span>
+    <span class="token key atrule">external</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+</code></pre></div><p>启动Kibana：</p> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">docker-compose</span> up <span class="token parameter variable">-d</span>
+</code></pre></div><h3 id="_7-2-配置kibana仪表板"><a href="#_7-2-配置kibana仪表板" class="header-anchor">#</a> 7.2 配置Kibana仪表板</h3> <ol><li>访问Kibana界面：<code>http://your-kibana-host:5601</code></li> <li>创建索引模式：
+<ul><li>导航到 Management &gt; Stack Management &gt; Kibana &gt; Index Patterns</li> <li>创建索引模式 <code>app-logs-*</code> 和 <code>system-logs-*</code></li> <li>设置时间字段为 <code>@timestamp</code></li></ul></li> <li>创建可视化和仪表板：
+<ul><li>导航到 Dashboard</li> <li>创建新仪表板</li> <li>添加各种可视化组件，如日志计数、错误率、响应时间等</li></ul></li></ol> <h2 id="_8-系统监控与告警"><a href="#_8-系统监控与告警" class="header-anchor">#</a> 8. 系统监控与告警</h2> <h3 id="_8-1-设置elasticsearch监控"><a href="#_8-1-设置elasticsearch监控" class="header-anchor">#</a> 8.1 设置Elasticsearch监控</h3> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token function">curl</span> <span class="token parameter variable">-X</span> PUT <span class="token string">&quot;localhost:9200/_cluster/settings&quot;</span> <span class="token parameter variable">-H</span> <span class="token string">'Content-Type: application/json'</span> -d<span class="token string">'
+{
+  &quot;persistent&quot;: {
+    &quot;xpack.monitoring.collection.enabled&quot;: true
+  }
+}'</span>
+</code></pre></div><h3 id="_8-2-配置kibana告警"><a href="#_8-2-配置kibana告警" class="header-anchor">#</a> 8.2 配置Kibana告警</h3> <ol><li>导航到 Management &gt; Stack Management &gt; Alerts and Insights &gt; Rules</li> <li>创建新规则，例如：
+<ul><li>当错误日志数量在5分钟内超过100条时发送告警</li> <li>当集群健康状态变为黄色或红色时发送告警</li> <li>当磁盘使用率超过85%时发送告警</li></ul></li></ol> <h3 id="_8-3-配置通知渠道"><a href="#_8-3-配置通知渠道" class="header-anchor">#</a> 8.3 配置通知渠道</h3> <ol><li>导航到 Management &gt; Stack Management &gt; Alerts and Insights &gt; Connectors</li> <li>添加通知渠道，如Email、Slack、WebHook等</li></ol> <h2 id="_9-性能优化"><a href="#_9-性能优化" class="header-anchor">#</a> 9. 性能优化</h2> <h3 id="_9-1-elasticsearch性能优化"><a href="#_9-1-elasticsearch性能优化" class="header-anchor">#</a> 9.1 Elasticsearch性能优化</h3> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token comment"># 添加到elasticsearch.yml</span>
+<span class="token key atrule">indices.memory.index_buffer_size</span><span class="token punctuation">:</span> 30%
+<span class="token key atrule">indices.queries.cache.size</span><span class="token punctuation">:</span> 10%
+<span class="token key atrule">thread_pool.write.queue_size</span><span class="token punctuation">:</span> <span class="token number">1000</span>
+<span class="token key atrule">thread_pool.search.queue_size</span><span class="token punctuation">:</span> <span class="token number">1000</span>
+</code></pre></div><h3 id="_9-2-kafka性能优化"><a href="#_9-2-kafka性能优化" class="header-anchor">#</a> 9.2 Kafka性能优化</h3> <div class="language-properties extra-class"><pre class="language-properties"><code><span class="token comment"># 添加到server.properties</span>
+<span class="token key attr-name">num.io.threads</span><span class="token punctuation">=</span><span class="token value attr-value">16</span>
+<span class="token key attr-name">num.network.threads</span><span class="token punctuation">=</span><span class="token value attr-value">8</span>
+<span class="token key attr-name">socket.send.buffer.bytes</span><span class="token punctuation">=</span><span class="token value attr-value">1048576</span>
+<span class="token key attr-name">socket.receive.buffer.bytes</span><span class="token punctuation">=</span><span class="token value attr-value">1048576</span>
+<span class="token key attr-name">socket.request.max.bytes</span><span class="token punctuation">=</span><span class="token value attr-value">104857600</span>
+<span class="token key attr-name">log.flush.interval.messages</span><span class="token punctuation">=</span><span class="token value attr-value">10000</span>
+<span class="token key attr-name">log.flush.interval.ms</span><span class="token punctuation">=</span><span class="token value attr-value">1000</span>
+<span class="token key attr-name">log.retention.hours</span><span class="token punctuation">=</span><span class="token value attr-value">168</span>
+<span class="token key attr-name">log.segment.bytes</span><span class="token punctuation">=</span><span class="token value attr-value">1073741824</span>
+<span class="token key attr-name">log.cleaner.enable</span><span class="token punctuation">=</span><span class="token value attr-value">true</span>
+</code></pre></div><h3 id="_9-3-logstash性能优化"><a href="#_9-3-logstash性能优化" class="header-anchor">#</a> 9.3 Logstash性能优化</h3> <div class="language-yaml extra-class"><pre class="language-yaml"><code><span class="token comment"># 添加到logstash.yml</span>
+<span class="token key atrule">pipeline.workers</span><span class="token punctuation">:</span> <span class="token number">8</span>
+<span class="token key atrule">pipeline.batch.size</span><span class="token punctuation">:</span> <span class="token number">2000</span>
+<span class="token key atrule">pipeline.batch.delay</span><span class="token punctuation">:</span> <span class="token number">50</span>
+<span class="token key atrule">queue.type</span><span class="token punctuation">:</span> persisted
+<span class="token key atrule">queue.max_bytes</span><span class="token punctuation">:</span> 2gb
+</code></pre></div><h2 id="_10-备份与恢复策略"><a href="#_10-备份与恢复策略" class="header-anchor">#</a> 10. 备份与恢复策略</h2> <h3 id="_10-1-elasticsearch快照备份"><a href="#_10-1-elasticsearch快照备份" class="header-anchor">#</a> 10.1 Elasticsearch快照备份</h3> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># 注册快照仓库</span>
+<span class="token function">curl</span> <span class="token parameter variable">-X</span> PUT <span class="token string">&quot;localhost:9200/_snapshot/backup_repo&quot;</span> <span class="token parameter variable">-H</span> <span class="token string">'Content-Type: application/json'</span> -d<span class="token string">'
+{
+  &quot;type&quot;: &quot;fs&quot;,
+  &quot;settings&quot;: {
+    &quot;location&quot;: &quot;/usr/share/elasticsearch/backup&quot;
+  }
+}'</span>
+
+<span class="token comment"># 创建快照</span>
+<span class="token function">curl</span> <span class="token parameter variable">-X</span> PUT <span class="token string">&quot;localhost:9200/_snapshot/backup_repo/snapshot_1?wait_for_completion=true&quot;</span>
+</code></pre></div><h3 id="_10-2-自动备份脚本"><a href="#_10-2-自动备份脚本" class="header-anchor">#</a> 10.2 自动备份脚本</h3> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token shebang important">#!/bin/bash</span>
+
+<span class="token assign-left variable">DATE</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">date</span> +%Y%m%d<span class="token variable">)</span></span>
+<span class="token assign-left variable">SNAPSHOT_NAME</span><span class="token operator">=</span><span class="token string">&quot;snapshot_<span class="token variable">${DATE}</span>&quot;</span>
+
+<span class="token comment"># 创建快照</span>
+<span class="token function">curl</span> <span class="token parameter variable">-X</span> PUT <span class="token string">&quot;http://localhost:9200/_snapshot/backup_repo/<span class="token variable">${SNAPSHOT_NAME}</span>?wait_for_completion=true&quot;</span> <span class="token parameter variable">-H</span> <span class="token string">'Content-Type: application/json'</span> -d<span class="token string">'
+{
+  &quot;indices&quot;: &quot;*&quot;,
+  &quot;ignore_unavailable&quot;: true,
+  &quot;include_global_state&quot;: true
+}'</span>
+
+<span class="token comment"># 删除7天前的快照</span>
+<span class="token assign-left variable">OLD_DATE</span><span class="token operator">=</span><span class="token variable"><span class="token variable">$(</span><span class="token function">date</span> <span class="token parameter variable">-d</span> <span class="token string">&quot;7 days ago&quot;</span> +%Y%m%d<span class="token variable">)</span></span>
+<span class="token assign-left variable">OLD_SNAPSHOT</span><span class="token operator">=</span><span class="token string">&quot;snapshot_<span class="token variable">${OLD_DATE}</span>&quot;</span>
+<span class="token function">curl</span> <span class="token parameter variable">-X</span> DELETE <span class="token string">&quot;http://localhost:9200/_snapshot/backup_repo/<span class="token variable">${OLD_SNAPSHOT}</span>&quot;</span>
+</code></pre></div><h2 id="_11-故障排除"><a href="#_11-故障排除" class="header-anchor">#</a> 11. 故障排除</h2> <h3 id="_11-1-常见问题及解决方案"><a href="#_11-1-常见问题及解决方案" class="header-anchor">#</a> 11.1 常见问题及解决方案</h3> <ol><li><p><strong>Elasticsearch集群状态为黄色或红色</strong></p> <ul><li>检查节点是否正常运行</li> <li>检查磁盘空间</li> <li>查看日志文件中的错误信息</li></ul></li> <li><p><strong>Kafka消息积压</strong></p> <ul><li>增加Logstash实例数量</li> <li>优化Logstash配置，提高处理效率</li> <li>检查Elasticsearch写入性能</li></ul></li> <li><p><strong>Filebeat无法发送日志到Kafka</strong></p> <ul><li>检查网络连接</li> <li>验证Kafka集群状态</li> <li>查看Filebeat日志</li></ul></li></ol> <h3 id="_11-2-日志分析命令"><a href="#_11-2-日志分析命令" class="header-anchor">#</a> 11.2 日志分析命令</h3> <div class="language-bash extra-class"><pre class="language-bash"><code><span class="token comment"># 查看Elasticsearch集群健康状态</span>
+<span class="token function">curl</span> <span class="token parameter variable">-X</span> GET <span class="token string">&quot;localhost:9200/_cluster/health?pretty&quot;</span>
+
+<span class="token comment"># 查看Elasticsearch索引状态</span>
+<span class="token function">curl</span> <span class="token parameter variable">-X</span> GET <span class="token string">&quot;localhost:9200/_cat/indices?v&quot;</span>
+
+<span class="token comment"># 查看Kafka消费组状态</span>
+kafka-consumer-groups --bootstrap-server kafka-1:29092 <span class="token parameter variable">--describe</span> <span class="token parameter variable">--group</span> logstash
+
+<span class="token comment"># 查看Logstash处理延迟</span>
+<span class="token function">curl</span> <span class="token parameter variable">-X</span> GET <span class="token string">&quot;localhost:9600/_node/stats/pipeline?pretty&quot;</span>
+</code></pre></div><h2 id="_12-扩展与升级"><a href="#_12-扩展与升级" class="header-anchor">#</a> 12. 扩展与升级</h2> <h3 id="_12-1-扩展elasticsearch集群"><a href="#_12-1-扩展elasticsearch集群" class="header-anchor">#</a> 12.1 扩展Elasticsearch集群</h3> <ol><li>准备新节点，安装Elasticsearch</li> <li>配置与现有集群相同的集群名称</li> <li>设置discovery.seed_hosts指向现有节点</li> <li>启动新节点，它将自动加入集群</li></ol> <h3 id="_12-2-升级elfk组件"><a href="#_12-2-升级elfk组件" class="header-anchor">#</a> 12.2 升级ELFK组件</h3> <p>升级Elasticsearch：</p> <ol><li>备份数据</li> <li>逐个节点升级，先升级从节点，最后升级主节点</li> <li>每次升级后验证集群健康状态</li></ol> <p>升级Kafka：</p> <ol><li>逐个升级Kafka broker</li> <li>确保每个broker升级后正常工作再升级下一个</li></ol> <p>升级Logstash和Filebeat：</p> <ol><li>升级配置文件以兼容新版本</li> <li>逐个升级实例</li></ol> <h2 id="_13-安全加固"><a href="#_13-安全加固" class="header-anchor">#</a> 13. 安全加固</h2> <h3 id="_13-1-网络安全"><a href="#_13-1-网络安全" class="header-anchor">#</a> 13.1 网络安全</h3> <ol><li>使用专用网络隔离ELFK集群</li> <li>配置防火墙，只允许必要的端口访问</li> <li>使用TLS加密集群内部通信</li></ol> <h3 id="_13-2-认证与授权"><a href="#_13-2-认证与授权" class="header-anchor">#</a> 13.2 认证与授权</h3> <ol><li>启用Elasticsearch安全功能</li> <li>创建不同角色的用户，遵循最小权限原则</li> <li>使用API密钥进行服务间认证</li></ol> <h3 id="_13-3-数据安全"><a href="#_13-3-数据安全" class="header-anchor">#</a> 13.3 数据安全</h3> <ol><li>启用传输和存储加密</li> <li>实施数据脱敏，保护敏感信息</li> <li>定期审计访问日志</li></ol> <h2 id="_14-总结"><a href="#_14-总结" class="header-anchor">#</a> 14. 总结</h2> <p>本文详细介绍了如何搭建生产级ELFK集群，包括：</p> <ul><li>Elasticsearch集群部署与配置</li> <li>Kafka集群部署与主题创建</li> <li>Logstash配置与优化</li> <li>Filebeat部署到应用服务器</li> <li>Kibana安装与仪表板配置</li> <li>系统监控与告警设置</li> <li>性能优化建议</li> <li>备份与恢复策略</li> <li>故障排除指南</li> <li>扩展与升级方法</li> <li>安全加固措施</li></ul> <p>通过遵循本指南，您可以构建一个高可用、高性能、安全可靠的ELFK日志系统，为应用程序提供强大的日志收集、处理、存储和分析能力。</p></div></section> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">上次更新: </span> <span class="time">2025/6/19 04:01:27</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev"><a href="/JavaPlusDoc/worker/elk.html" class="prev">
+          ELK日志系统
+        </a></span> <span class="next"><a href="/JavaPlusDoc/worker/jenkins.html">
+          Jenkins部署SpringBoot
+        </a></span></p></div> <div class="comments-wrapper"><!----></div></main></div> <!----></div> <ul class="sub-sidebar sub-sidebar-wrapper" style="width:12rem;" data-v-b57cc07c data-v-7dd95ae2><li class="level-2" data-v-b57cc07c><a href="/JavaPlusDoc/worker/elfk-cluster.html#_1-elfk架构概述" class="sidebar-link reco-side-_1-elfk架构概述" data-v-b57cc07c>1. ELFK架构概述</a></li><li class="level-2" data-v-b57cc07c><a href="/JavaPlusDoc/worker/elfk-cluster.html#_2-环境准备" class="sidebar-link reco-side-_2-环境准备" data-v-b57cc07c>2. 环境准备</a></li><li class="level-3" data-v-b57cc07c><a href="/JavaPlusDoc/worker/elfk-cluster.html#_2-1-服务器规划" class="sidebar-link reco-side-_2-1-服务器规划" data-v-b57cc07c>2.1 服务器规划</a></li><li class="level-3" data-v-b57cc07c><a href="/JavaPlusDoc/worker/elfk-cluster.html#_2-2-网络规划" class="sidebar-link reco-side-_2-2-网络规划" data-v-b57cc07c>2.2 网络规划</a></li><li class="level-3" data-v-b57cc07c><a href="/JavaPlusDoc/worker/elfk-cluster.html#_2-3-操作系统优化" class="sidebar-link reco-side-_2-3-操作系统优化" data-v-b57cc07c>2.3 操作系统优化</a></li><li class="level-2" data-v-b57cc07c><a href="/JavaPlusDoc/worker/elfk-cluster.html#_3-elasticsearch集群部署" class="sidebar-link reco-side-_3-elasticsearch集群部署" data-v-b57cc07c>3. Elasticsearch集群部署</a></li><li class="level-3" data-v-b57cc07c><a href="/JavaPlusDoc/worker/elfk-cluster.html#_3-1-安装elasticsearch" class="sidebar-link reco-side-_3-1-安装elasticsearch" data-v-b57cc07c>3.1 安装Elasticsearch</a></li><li class="level-3" data-v-b57cc07c><a href="/JavaPlusDoc/worker/elfk-cluster.html#_3-2-配置elasticsearch安全认证" class="sidebar-link reco-side-_3-2-配置elasticsearch安全认证" data-v-b57cc07c>3.2 配置Elasticsearch安全认证</a></li><li class="level-3" data-v-b57cc07c><a href="/JavaPlusDoc/worker/elfk-cluster.html#_3-3-配置elasticsearch集群" class="sidebar-link reco-side-_3-3-配置elasticsearch集群" data-v-b57cc07c>3.3 配置Elasticsearch集群</a></li><li class="level-2" data-v-b57cc07c><a href="/JavaPlusDoc/worker/elfk-cluster.html#_4-kafka集群部署" class="sidebar-link reco-side-_4-kafka集群部署" data-v-b57cc07c>4. Kafka集群部署</a></li><li class="level-3" data-v-b57cc07c><a href="/JavaPlusDoc/worker/elfk-cluster.html#_4-1-安装kafka" class="sidebar-link reco-side-_4-1-安装kafka" data-v-b57cc07c>4.1 安装Kafka</a></li><li class="level-3" data-v-b57cc07c><a href="/JavaPlusDoc/worker/elfk-cluster.html#_4-2-创建kafka主题" class="sidebar-link reco-side-_4-2-创建kafka主题" data-v-b57cc07c>4.2 创建Kafka主题</a></li><li class="level-2" data-v-b57cc07c><a href="/JavaPlusDoc/worker/elfk-cluster.html#_5-logstash部署" class="sidebar-link reco-side-_5-logstash部署" data-v-b57cc07c>5. Logstash部署</a></li><li class="level-3" data-v-b57cc07c><a href="/JavaPlusDoc/worker/elfk-cluster.html#_5-1-安装logstash" class="sidebar-link reco-side-_5-1-安装logstash" data-v-b57cc07c>5.1 安装Logstash</a></li><li class="level-2" data-v-b57cc07c><a href="/JavaPlusDoc/worker/elfk-cluster.html#_6-filebeat部署" class="sidebar-link reco-side-_6-filebeat部署" data-v-b57cc07c>6. Filebeat部署</a></li><li class="level-3" data-v-b57cc07c><a href="/JavaPlusDoc/worker/elfk-cluster.html#_6-1-创建filebeat配置" class="sidebar-link reco-side-_6-1-创建filebeat配置" data-v-b57cc07c>6.1 创建Filebeat配置</a></li><li class="level-3" data-v-b57cc07c><a href="/JavaPlusDoc/worker/elfk-cluster.html#_6-2-部署filebeat到应用服务器" class="sidebar-link reco-side-_6-2-部署filebeat到应用服务器" data-v-b57cc07c>6.2 部署Filebeat到应用服务器</a></li><li class="level-2" data-v-b57cc07c><a href="/JavaPlusDoc/worker/elfk-cluster.html#_7-kibana部署" class="sidebar-link reco-side-_7-kibana部署" data-v-b57cc07c>7. Kibana部署</a></li><li class="level-3" data-v-b57cc07c><a href="/JavaPlusDoc/worker/elfk-cluster.html#_7-1-安装kibana" class="sidebar-link reco-side-_7-1-安装kibana" data-v-b57cc07c>7.1 安装Kibana</a></li><li class="level-3" data-v-b57cc07c><a href="/JavaPlusDoc/worker/elfk-cluster.html#_7-2-配置kibana仪表板" class="sidebar-link reco-side-_7-2-配置kibana仪表板" data-v-b57cc07c>7.2 配置Kibana仪表板</a></li><li class="level-2" data-v-b57cc07c><a href="/JavaPlusDoc/worker/elfk-cluster.html#_8-系统监控与告警" class="sidebar-link reco-side-_8-系统监控与告警" data-v-b57cc07c>8. 系统监控与告警</a></li><li class="level-3" data-v-b57cc07c><a href="/JavaPlusDoc/worker/elfk-cluster.html#_8-1-设置elasticsearch监控" class="sidebar-link reco-side-_8-1-设置elasticsearch监控" data-v-b57cc07c>8.1 设置Elasticsearch监控</a></li><li class="level-3" data-v-b57cc07c><a href="/JavaPlusDoc/worker/elfk-cluster.html#_8-2-配置kibana告警" class="sidebar-link reco-side-_8-2-配置kibana告警" data-v-b57cc07c>8.2 配置Kibana告警</a></li><li class="level-3" data-v-b57cc07c><a href="/JavaPlusDoc/worker/elfk-cluster.html#_8-3-配置通知渠道" class="sidebar-link reco-side-_8-3-配置通知渠道" data-v-b57cc07c>8.3 配置通知渠道</a></li><li class="level-2" data-v-b57cc07c><a href="/JavaPlusDoc/worker/elfk-cluster.html#_9-性能优化" class="sidebar-link reco-side-_9-性能优化" data-v-b57cc07c>9. 性能优化</a></li><li class="level-3" data-v-b57cc07c><a href="/JavaPlusDoc/worker/elfk-cluster.html#_9-1-elasticsearch性能优化" class="sidebar-link reco-side-_9-1-elasticsearch性能优化" data-v-b57cc07c>9.1 Elasticsearch性能优化</a></li><li class="level-3" data-v-b57cc07c><a href="/JavaPlusDoc/worker/elfk-cluster.html#_9-2-kafka性能优化" class="sidebar-link reco-side-_9-2-kafka性能优化" data-v-b57cc07c>9.2 Kafka性能优化</a></li><li class="level-3" data-v-b57cc07c><a href="/JavaPlusDoc/worker/elfk-cluster.html#_9-3-logstash性能优化" class="sidebar-link reco-side-_9-3-logstash性能优化" data-v-b57cc07c>9.3 Logstash性能优化</a></li><li class="level-2" data-v-b57cc07c><a href="/JavaPlusDoc/worker/elfk-cluster.html#_10-备份与恢复策略" class="sidebar-link reco-side-_10-备份与恢复策略" data-v-b57cc07c>10. 备份与恢复策略</a></li><li class="level-3" data-v-b57cc07c><a href="/JavaPlusDoc/worker/elfk-cluster.html#_10-1-elasticsearch快照备份" class="sidebar-link reco-side-_10-1-elasticsearch快照备份" data-v-b57cc07c>10.1 Elasticsearch快照备份</a></li><li class="level-3" data-v-b57cc07c><a href="/JavaPlusDoc/worker/elfk-cluster.html#_10-2-自动备份脚本" class="sidebar-link reco-side-_10-2-自动备份脚本" data-v-b57cc07c>10.2 自动备份脚本</a></li><li class="level-2" data-v-b57cc07c><a href="/JavaPlusDoc/worker/elfk-cluster.html#_11-故障排除" class="sidebar-link reco-side-_11-故障排除" data-v-b57cc07c>11. 故障排除</a></li><li class="level-3" data-v-b57cc07c><a href="/JavaPlusDoc/worker/elfk-cluster.html#_11-1-常见问题及解决方案" class="sidebar-link reco-side-_11-1-常见问题及解决方案" data-v-b57cc07c>11.1 常见问题及解决方案</a></li><li class="level-3" data-v-b57cc07c><a href="/JavaPlusDoc/worker/elfk-cluster.html#_11-2-日志分析命令" class="sidebar-link reco-side-_11-2-日志分析命令" data-v-b57cc07c>11.2 日志分析命令</a></li><li class="level-2" data-v-b57cc07c><a href="/JavaPlusDoc/worker/elfk-cluster.html#_12-扩展与升级" class="sidebar-link reco-side-_12-扩展与升级" data-v-b57cc07c>12. 扩展与升级</a></li><li class="level-3" data-v-b57cc07c><a href="/JavaPlusDoc/worker/elfk-cluster.html#_12-1-扩展elasticsearch集群" class="sidebar-link reco-side-_12-1-扩展elasticsearch集群" data-v-b57cc07c>12.1 扩展Elasticsearch集群</a></li><li class="level-3" data-v-b57cc07c><a href="/JavaPlusDoc/worker/elfk-cluster.html#_12-2-升级elfk组件" class="sidebar-link reco-side-_12-2-升级elfk组件" data-v-b57cc07c>12.2 升级ELFK组件</a></li><li class="level-2" data-v-b57cc07c><a href="/JavaPlusDoc/worker/elfk-cluster.html#_13-安全加固" class="sidebar-link reco-side-_13-安全加固" data-v-b57cc07c>13. 安全加固</a></li><li class="level-3" data-v-b57cc07c><a href="/JavaPlusDoc/worker/elfk-cluster.html#_13-1-网络安全" class="sidebar-link reco-side-_13-1-网络安全" data-v-b57cc07c>13.1 网络安全</a></li><li class="level-3" data-v-b57cc07c><a href="/JavaPlusDoc/worker/elfk-cluster.html#_13-2-认证与授权" class="sidebar-link reco-side-_13-2-认证与授权" data-v-b57cc07c>13.2 认证与授权</a></li><li class="level-3" data-v-b57cc07c><a href="/JavaPlusDoc/worker/elfk-cluster.html#_13-3-数据安全" class="sidebar-link reco-side-_13-3-数据安全" data-v-b57cc07c>13.3 数据安全</a></li><li class="level-2" data-v-b57cc07c><a href="/JavaPlusDoc/worker/elfk-cluster.html#_14-总结" class="sidebar-link reco-side-_14-总结" data-v-b57cc07c>14. 总结</a></li></ul></div></div></div><div class="global-ui"><div></div><div class="kanbanniang" data-v-5775ee02><div class="banniang-container" style="display:;" data-v-5775ee02><div class="messageBox" style="right:68px;bottom:190px;display:none;" data-v-5775ee02>
+      欢迎来到 Jeskson文档-微服务分布式系统架构
+    </div> <div class="operation" style="right:90px;bottom:40px;display:none;" data-v-5775ee02><i class="kbnfont kbn-ban-home ban-home" data-v-5775ee02></i> <i class="kbnfont kbn-ban-message message" data-v-5775ee02></i> <i class="kbnfont kbn-ban-close close" data-v-5775ee02></i> <a target="_blank" href="https://vuepress-theme-reco.recoluan.com/views/plugins/kanbanniang.html" data-v-5775ee02><i class="kbnfont kbn-ban-info info" data-v-5775ee02></i></a> <i class="kbnfont kbn-ban-theme skin" style="display:none;" data-v-5775ee02></i></div> <canvas id="banniang" width="150" height="260" class="live2d" style="width:100px;position:fixed;right:0px;bottom:0px;opacity:0.9;z-index:99999;object-fit:cover;" data-v-5775ee02></canvas></div> <div class="showBanNiang" style="display:none;" data-v-5775ee02>
+    看板娘
+  </div></div></div></div>
+    <script src="/JavaPlusDoc/assets/js/app.1c71dc8e.js" defer></script><script src="/JavaPlusDoc/assets/js/7.941148c6.js" defer></script><script src="/JavaPlusDoc/assets/js/2.31ccdbab.js" defer></script><script src="/JavaPlusDoc/assets/js/1.748dc0a4.js" defer></script><script src="/JavaPlusDoc/assets/js/91.7c94a05e.js" defer></script>
+  </body>
+</html>
