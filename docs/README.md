@@ -53,6 +53,7 @@
 <p align="center">
   <img src="https://img.shields.io/badge/-Spring-6DB33F?logo=Spring&logoColor=FFF" alt="Spring" style="display: inline-block;" />&nbsp;
   <img src="https://img.shields.io/badge/-Spring%20Boot-6DB33F?logo=Spring-Boot&logoColor=FFF" alt="Spring Boot" style="display: inline-block;" />&nbsp;
+  <img src="https://img.shields.io/badge/-Go-00ADD8?logo=Go&logoColor=FFF" alt="Go" style="display: inline-block;" />&nbsp;
   <img src="https://img.shields.io/badge/-MySQL-4479A1?logo=MySQL&logoColor=FFF" alt="MySQL" style="display: inline-block;" />&nbsp;
   <img src="https://img.shields.io/badge/-Redis-DC382D?logo=Redis&logoColor=FFF" alt="Redis" style="display: inline-block;" />&nbsp;
   <img src="https://img.shields.io/badge/-MongoDB-47A248?logo=MongoDB&logoColor=FFF" alt="MongoDB" style="display: inline-block;" />&nbsp;
@@ -187,6 +188,20 @@
     </ul>
   </div>
 
+  <!-- GO语言开发专题 -->
+  <div style="width: 300px; background: linear-gradient(145deg, #ffffff, #f5f7fa); border-radius: 12px; padding: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+    <h3 style="color: #00ADD8; border-bottom: 2px solid #00ADD8; padding-bottom: 8px; margin-top: 0;">
+      <img src="https://img.shields.io/badge/-Go-00ADD8?logo=Go&logoColor=FFF" alt="Go语言" style="vertical-align: middle;" /> GO语言开发
+    </h3>
+    <ul style="padding-left: 20px;">
+      <li><a href="/JavaPlusDoc/go/index.html">GO技术手册 - 完整学习指南</a></li>
+      <li><a href="/JavaPlusDoc/go/basic-grammar/basic-syntax.html">GO语言基础语法详解</a></li>
+      <li><a href="/JavaPlusDoc/go/advanced/concurrency.html">GO并发编程实战</a></li>
+      <li><a href="/JavaPlusDoc/go/stdlib/http.html">GO HTTP编程指南</a></li>
+      <li><a href="/JavaPlusDoc/go/projects/web-service.html">GO Web服务开发实战</a></li>
+    </ul>
+  </div>
+
 </div>
   
 ## 文档内容
@@ -204,6 +219,7 @@
 |现有技术 | 主要内容 | 业务价值 | 应用场景 |
 |---------|----------|----------|----------|
 | **Java核心** | JVM原理、多线程并发、内存模型、性能调优 | 提升系统性能，降低资源成本 | 核心业务系统、高性能服务 |
+| **GO语言** | 并发编程、网络服务、微服务架构、云原生应用 | 简化并发开发，提高开发效率 | 微服务、API网关、云原生应用 |
 | **分布式架构** | 微服务设计、服务注册发现、负载均衡、熔断降级 | 支持业务快速扩展，提高系统可用性 | 大型业务平台、多区域部署 |
 | **数据存储** | 关系型数据库、NoSQL、分库分表、数据一致性 | 保障数据安全，支持海量数据处理 | 用户数据分析、交易系统 |
 | **中间件技术** | 消息队列、缓存、搜索引擎、任务调度 | 提高系统集成能力，增强业务弹性 | 跨系统集成、峰值流量应对 |
@@ -221,6 +237,11 @@
 │   │   ├── 面向对象编程
 │   │   ├── 集合框架
 │   │   └── 异常处理
+│   ├── GO语言技术
+│   │   ├── 基础语法
+│   │   ├── 并发编程
+│   │   ├── 标准库应用
+│   │   └── Web服务开发
 │   ├── 开发环境搭建
 │   └── 编程规范与最佳实践
 ├── 企业级应用框架
