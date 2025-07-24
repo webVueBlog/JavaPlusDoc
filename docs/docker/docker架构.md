@@ -41,7 +41,7 @@ Docker Machine是一个简化Docker安装的命令行工具，通过一个简单
 在docker容器中运行一个 Python Flask 应用来运行一个web应用。
 
 ```shell
-runoob@runoob:~# docker run -d -P training/webapp python app.py
+Da@Da:~# docker run -d -P training/webapp python app.py
 ```
 
 参数说明:
@@ -68,7 +68,7 @@ Docker 开放了 5000 端口（默认 Python Flask 端口）映射到主机端�
 也可以指定 -p 标识来绑定指定端口。
 
 ```java
-runoob@runoob:~$ docker run -d -p 5000:5000 training/webapp python app.py
+Da@Da:~$ docker run -d -p 5000:5000 training/webapp python app.py
 ```
 
 docker ps查看正在运行的容器
