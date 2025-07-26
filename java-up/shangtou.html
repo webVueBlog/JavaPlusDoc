@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>JavaIO知识体系 | Jeskson文档-微服务分布式系统架构</title>
+    <meta name="generator" content="VuePress 1.9.10">
+    <script src="/JavaPlusDoc/JavaPlusDoc/js/sidebar-enhance.js"></script>
+    <script src="/JavaPlusDoc/JavaPlusDoc/js/report-site-enhance.js"></script>
+    <meta name="description" content="Jeskson文档-架构师">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    
+    <link rel="preload" href="/JavaPlusDoc/assets/css/0.styles.117e637b.css" as="style"><link rel="preload" href="/JavaPlusDoc/assets/js/app.09f92ebf.js" as="script"><link rel="preload" href="/JavaPlusDoc/assets/js/7.6c510d49.js" as="script"><link rel="preload" href="/JavaPlusDoc/assets/js/2.e503af43.js" as="script"><link rel="preload" href="/JavaPlusDoc/assets/js/1.cf0c2041.js" as="script"><link rel="preload" href="/JavaPlusDoc/assets/js/76.2625bc06.js" as="script"><link rel="preload" href="/JavaPlusDoc/assets/js/60.0cf9d6b4.js" as="script"><link rel="prefetch" href="/JavaPlusDoc/assets/js/10.bc31cc5e.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/100.699bff7a.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/101.cea16b1a.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/102.2ca0633b.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/103.549506cb.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/104.0ddbfe9f.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/105.cc6556f5.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/106.961990e9.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/107.10715e35.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/108.27460c59.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/109.c8949f7f.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/11.b82973db.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/110.dca729ff.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/111.f458a01e.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/112.3fbf1969.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/113.bd18c5a6.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/114.4910f848.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/115.77ba707e.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/116.b58289ed.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/117.2f9bb1ed.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/118.b0746804.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/119.7c3bac3c.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/120.05eac443.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/121.70a6c7b3.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/122.f055a97e.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/123.11e37eb8.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/124.afb0001a.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/125.441ae2af.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/126.eaccfb3d.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/127.842cf317.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/128.e682a355.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/129.2de1114d.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/130.dd25a754.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/131.305ce48b.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/132.cac7b4a7.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/133.1a6ac7ab.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/134.a9e88687.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/135.a196457e.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/136.9bfa35d2.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/137.0aff6c10.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/138.5f99bfc6.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/139.2a3b1391.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/140.64589fcc.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/141.98723a48.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/142.2b5edd5f.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/143.9ffe75c4.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/144.079decdb.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/145.4a125ee0.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/146.89200d22.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/147.3a484293.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/148.6136ec73.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/149.832befde.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/15.f7bb5ea3.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/150.ea36979a.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/151.25cd6882.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/152.b1d0fbde.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/153.c870460c.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/154.b0b8294a.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/155.d2b216e8.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/156.bfdee979.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/157.581cb4ed.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/158.910220c7.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/159.2f323387.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/16.586324b8.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/160.d93f356b.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/161.9acb0b20.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/162.f899ed2d.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/163.813cb137.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/164.6af6fcf3.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/165.5de6d217.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/166.fcea0162.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/167.06c2054f.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/168.d5f73362.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/169.def51c7c.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/17.0436c90a.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/170.8f8ba9ae.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/171.3bad980d.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/172.915a4542.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/173.eb546fdd.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/174.cb6d6901.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/175.74a014d4.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/176.98ad8566.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/177.39b288f8.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/178.5ed97219.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/179.4d805d77.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/18.05e9fe27.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/180.d7e0e2b6.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/181.4478bf0a.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/182.6f4f1200.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/183.f978238c.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/184.c36fb6d4.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/185.0fbba04e.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/186.a13d2227.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/187.aa1faf57.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/188.28a2ef13.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/189.2ea38c83.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/19.c5090892.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/190.dc3afeed.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/191.40d8a9a7.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/192.2355945d.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/193.14af2305.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/194.0abe41c2.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/195.45255d3e.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/196.7da607a4.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/197.cf3b6495.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/198.43bafddf.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/199.74aa561f.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/20.fe06b8fa.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/200.d0892b7e.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/201.6770eb33.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/202.6fd771e6.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/203.1078d859.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/204.53193726.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/205.ed28a3ef.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/206.05dfbf33.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/207.dd518125.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/208.11db54c7.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/209.e97248cb.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/21.5cc75adc.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/210.68c94877.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/211.0cea9ad7.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/212.49637e9f.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/213.55bf45ef.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/214.80a56402.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/215.7680a175.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/216.47c2aee4.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/217.1b044a1b.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/218.c6eb8774.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/219.273b5502.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/22.e82988fb.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/220.0b45e54b.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/221.d1e088c3.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/222.4ed3d93d.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/223.965d51c1.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/224.678e30e5.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/225.19a0e52b.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/226.fd0b091a.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/227.346cffd7.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/228.7e22e482.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/229.6401bd77.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/23.f3e64aa6.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/230.429c60db.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/231.e88745ce.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/232.acdf5cef.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/233.566808a9.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/234.07e07293.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/235.da798a8f.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/236.17249c36.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/237.a2923abb.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/238.6b696490.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/239.fb66b578.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/24.3352ec47.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/240.93857b5d.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/241.d02ee533.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/242.0a805c12.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/243.640c2aa2.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/244.f59cc36f.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/245.56258514.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/246.46eba63e.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/247.80a7085e.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/248.6eed82af.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/249.8d27a9b2.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/25.b042898d.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/250.b04ca6c6.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/251.f518fcc8.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/252.cf1135ef.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/253.41fbdff1.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/254.c02c3465.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/255.e19ed46c.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/256.cb0a3344.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/257.d82e4399.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/258.5abca90d.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/259.6a097f79.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/26.d627ccf4.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/260.93196e19.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/261.9745fec4.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/262.a12dd301.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/263.d44432dd.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/264.8d9f0a8e.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/265.a7999a07.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/266.3c411b55.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/267.b013794d.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/268.39b34ed4.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/269.e5fc6450.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/27.8eb184a1.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/270.5aa56ad1.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/271.f8555b71.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/272.df59c38b.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/273.b56effa6.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/274.caff3737.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/275.04c1081c.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/276.ee939cca.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/277.d9951361.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/278.7d53b7d4.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/279.b39c2472.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/28.72cad855.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/280.c7d589aa.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/281.e8c7e7e5.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/282.af73d3d9.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/283.f6e4c225.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/284.ed506c40.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/285.fe19fd99.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/286.d4251860.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/287.7190221a.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/288.e0aba9f8.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/289.3e51c14e.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/29.d8e1d3eb.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/290.8325ccca.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/291.a198a8e1.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/292.dd60af91.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/293.51ab4aed.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/294.e933894c.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/295.61b0fbc6.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/296.e7a0a2f2.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/297.efc67d93.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/298.ce499f49.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/299.ce320e5e.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/3.cf29c295.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/30.03d1868b.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/300.ea2ac728.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/301.9a87e6f1.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/302.bfe7b831.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/303.35d867be.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/304.d06fe501.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/305.30d65d71.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/306.d17c3b6f.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/307.0bb74bad.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/308.bb1d6b7a.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/309.c846bd4b.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/31.8fba9e28.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/310.8bc8670a.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/311.2b776480.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/312.fb383b8a.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/313.a8efbf51.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/314.1c0cf3bb.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/315.e6c815a9.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/316.7b2b4a9b.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/317.9df4771b.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/318.f0cb06bf.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/319.6996674a.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/32.a2907d7e.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/320.cb53d026.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/321.780e0ae6.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/322.223c962f.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/323.5b352ea8.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/324.3949ffea.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/325.32e4b966.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/326.78f870a9.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/327.0fabfa88.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/328.882742a3.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/329.841f4613.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/33.b3308674.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/330.48183f76.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/331.6f9cf80a.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/332.f50c631d.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/333.e438538a.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/334.5541c078.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/335.22ff4087.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/336.71fb83f2.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/337.1e6567a4.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/338.08ae2284.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/339.4163d003.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/34.cbe86245.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/340.6702cb84.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/341.cb442ce0.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/342.fa0e8fde.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/343.f18bda50.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/344.78b3db48.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/345.0ffbd1d1.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/346.884b4cfb.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/347.c4010c25.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/348.d254d585.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/349.59f2c0e9.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/35.9f418a18.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/350.ec9694f3.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/351.20ce8909.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/352.b639a4fa.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/353.f9a41590.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/354.43ea6796.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/355.b057f09a.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/356.ed205492.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/357.27fa76a9.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/358.4cec34e7.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/359.6ce64914.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/36.44d56a32.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/360.fca85530.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/361.acdfa40a.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/362.9235883d.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/363.ae594d39.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/364.09f505e4.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/365.f624d1f5.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/366.84a55155.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/367.1bd266c8.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/368.e5b87236.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/369.b4d87e75.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/37.166d187f.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/370.74c8e156.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/371.215d4624.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/372.8d5f03ff.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/373.1e79d9ac.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/374.08910aee.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/375.6c413877.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/376.15253f17.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/377.d605169d.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/378.5f39324a.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/379.af9dca31.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/38.95b68f58.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/380.0bf5a29b.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/381.d9c8380e.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/382.aa5c1f77.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/383.f16528b9.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/384.781ba860.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/385.94e6f26a.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/386.48349914.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/387.919fd3c1.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/388.7fcbb253.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/389.16cdf1c6.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/39.406f19e9.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/390.b559dfdd.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/391.676782fa.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/392.d7bd14a3.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/4.be32f060.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/40.1238e782.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/41.e674e661.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/42.004b49e7.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/43.cd3c91fe.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/44.0f39bbcd.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/45.8858bdde.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/46.62760f98.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/47.657ad58e.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/48.536e0ae3.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/49.706703e0.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/5.2c0f1bfe.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/50.9be69332.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/51.585a7fc9.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/52.5163f10c.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/53.8edd51a1.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/54.4aa2d2bb.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/55.002e9a22.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/56.dda03ec8.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/57.d566b58b.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/58.195f046d.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/59.f5bee6e3.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/6.e9fbc2fb.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/61.29f3d4c9.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/62.2ed46660.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/63.9fc81488.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/64.247a7f96.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/65.5729b215.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/66.67ae4d1a.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/67.31958bad.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/68.2a93f736.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/69.9a74a1c5.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/70.e77a25e4.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/71.e3b1659f.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/72.460ba8ba.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/73.6fce1eef.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/74.6e6cf27b.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/75.ddad67d8.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/77.6d2045d1.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/78.34a8eee7.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/79.1ac8884e.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/8.ad7c9949.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/80.06464e2d.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/81.cf19a164.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/82.47c4d875.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/83.48611c38.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/84.a5739ba1.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/85.9c2579c2.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/86.4b4057d6.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/87.22ff74fb.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/88.535b6927.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/89.b61a39be.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/9.5aaaf67a.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/90.d7c56471.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/91.ed4470e3.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/92.30b53f76.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/93.2805538e.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/94.71ececc8.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/95.8727ca7f.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/96.1a8dad4f.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/97.80f4d8b1.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/98.5c040bdb.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/99.7f455f51.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/vendors~docsearch.a704d14b.js"><link rel="prefetch" href="/JavaPlusDoc/assets/js/vendors~flowchart.5cfad4ff.js">
+    <link rel="stylesheet" href="/JavaPlusDoc/assets/css/0.styles.117e637b.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container" data-v-7dd95ae2><div data-v-7dd95ae2><div class="password-shadow password-wrapper-out" style="display:none;" data-v-59e6cb88 data-v-7dd95ae2 data-v-7dd95ae2><h3 class="title" data-v-59e6cb88>Jeskson文档-微服务分布式系统架构</h3> <p class="description" data-v-59e6cb88>Jeskson文档-架构师</p> <label id="box" class="inputBox" data-v-59e6cb88><input type="password" value="" data-v-59e6cb88> <span data-v-59e6cb88>Konck! Knock!</span> <button data-v-59e6cb88>OK</button></label> <div class="footer" data-v-59e6cb88><span data-v-59e6cb88><i class="iconfont reco-theme" data-v-59e6cb88></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-59e6cb88>vuePress-theme-reco</a></span> <span data-v-59e6cb88><i class="iconfont reco-copyright" data-v-59e6cb88></i> <a data-v-59e6cb88><!---->
+          
+        <!---->
+        2025
+      </a></span></div></div> <div class="hide" data-v-7dd95ae2><header class="navbar" data-v-7dd95ae2><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/JavaPlusDoc/" class="home-link router-link-active"><!----> <span class="site-name">Jeskson文档-微服务分布式系统架构</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/JavaPlusDoc/" class="nav-link"><i class="undefined"></i>
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      学习路线
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/" class="nav-link"><i class="undefined"></i>
+  入门指南
+</a></li><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/basic-grammar/basic-data-type.html" class="nav-link"><i class="undefined"></i>
+  基础到进阶
+</a></li><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/high-concurrency/why-cache.html" class="nav-link"><i class="undefined"></i>
+  架构师成长
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      技术分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/basic-grammar/basic-data-type.html" class="nav-link"><i class="undefined"></i>
+  Java基础
+</a></li><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/java-up/nginx.html" class="nav-link"><i class="undefined"></i>
+  Java进阶
+</a></li><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/go/" class="nav-link"><i class="undefined"></i>
+  GO语言技术
+</a></li><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/high-concurrency/why-cache.html" class="nav-link"><i class="undefined"></i>
+  分布式架构
+</a></li><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/worker/1.html" class="nav-link"><i class="undefined"></i>
+  微服务
+</a></li><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/mysql/mysql.html" class="nav-link"><i class="undefined"></i>
+  数据库
+</a></li><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/linux/linux.html" class="nav-link"><i class="undefined"></i>
+  运维与部署
+</a></li><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/docker/docker-tutorial.html" class="nav-link"><i class="undefined"></i>
+  Docker
+</a></li><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/products/" class="nav-link"><i class="undefined"></i>
+  产品系列
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      实战案例
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/worker/1.html" class="nav-link"><i class="undefined"></i>
+  系统设计
+</a></li><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/high-concurrency/why-cache.html" class="nav-link"><i class="undefined"></i>
+  性能优化
+</a></li><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/java-up/nginx.html" class="nav-link"><i class="undefined"></i>
+  项目实践
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      资源
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://webvueblog.github.io/JavaPlusDoc/" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  官方文档
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://github.com/webVueBlog/JavaPlusDoc" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  GitHub仓库
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://github.com/webVueBlog" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  作者主页
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-7dd95ae2></div> <aside class="sidebar" data-v-7dd95ae2><div class="personal-info-wrapper" data-v-1fad0c41 data-v-7dd95ae2><!----> <!----> <div class="num" data-v-1fad0c41><div data-v-1fad0c41><h3 data-v-1fad0c41>352</h3> <h6 data-v-1fad0c41>文章</h6></div> <div data-v-1fad0c41><h3 data-v-1fad0c41>15</h3> <h6 data-v-1fad0c41>标签</h6></div></div> <ul class="social-links" data-v-1fad0c41></ul> <hr data-v-1fad0c41></div> <nav class="nav-links"><div class="nav-item"><a href="/JavaPlusDoc/" class="nav-link"><i class="undefined"></i>
+  首页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      学习路线
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/" class="nav-link"><i class="undefined"></i>
+  入门指南
+</a></li><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/basic-grammar/basic-data-type.html" class="nav-link"><i class="undefined"></i>
+  基础到进阶
+</a></li><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/high-concurrency/why-cache.html" class="nav-link"><i class="undefined"></i>
+  架构师成长
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      技术分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/basic-grammar/basic-data-type.html" class="nav-link"><i class="undefined"></i>
+  Java基础
+</a></li><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/java-up/nginx.html" class="nav-link"><i class="undefined"></i>
+  Java进阶
+</a></li><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/go/" class="nav-link"><i class="undefined"></i>
+  GO语言技术
+</a></li><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/high-concurrency/why-cache.html" class="nav-link"><i class="undefined"></i>
+  分布式架构
+</a></li><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/worker/1.html" class="nav-link"><i class="undefined"></i>
+  微服务
+</a></li><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/mysql/mysql.html" class="nav-link"><i class="undefined"></i>
+  数据库
+</a></li><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/linux/linux.html" class="nav-link"><i class="undefined"></i>
+  运维与部署
+</a></li><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/docker/docker-tutorial.html" class="nav-link"><i class="undefined"></i>
+  Docker
+</a></li><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/products/" class="nav-link"><i class="undefined"></i>
+  产品系列
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      实战案例
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/worker/1.html" class="nav-link"><i class="undefined"></i>
+  系统设计
+</a></li><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/high-concurrency/why-cache.html" class="nav-link"><i class="undefined"></i>
+  性能优化
+</a></li><li class="dropdown-item"><!----> <a href="/JavaPlusDoc/java-up/nginx.html" class="nav-link"><i class="undefined"></i>
+  项目实践
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="undefined"></i>
+      资源
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://webvueblog.github.io/JavaPlusDoc/" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  官方文档
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://github.com/webVueBlog/JavaPlusDoc" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  GitHub仓库
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li><li class="dropdown-item"><!----> <a href="https://github.com/webVueBlog" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="undefined"></i>
+  作者主页
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav> <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><a href="/JavaPlusDoc/" class="sidebar-heading clickable router-link-active open"><span>文档指南</span> <!----></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/JavaPlusDoc/" aria-current="page" class="sidebar-link">学前必读</a></li><li><a href="/JavaPlusDoc/encrypted-article.html" class="sidebar-link">加密文章示例</a></li><li><a href="/JavaPlusDoc/plugin-demo.html" class="sidebar-link">插件功能演示</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>后端专属笔记</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading open"><span>达达JAVA基础问答</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/JavaPlusDoc/basic/1.html" class="sidebar-link">第1天-第一个程序</a></li><li><a href="/JavaPlusDoc/basic/2.html" class="sidebar-link">第2天-基础语法</a></li><li><a href="/JavaPlusDoc/basic/3.html" class="sidebar-link">第3天-基本概念</a></li><li><a href="/JavaPlusDoc/basic/4.html" class="sidebar-link">第4天-基本数据类型</a></li><li><a href="/JavaPlusDoc/basic/5.html" class="sidebar-link">第5天-变量的声明实例</a></li><li><a href="/JavaPlusDoc/basic/6.html" class="sidebar-link">第6天-变量命名规则</a></li><li><a href="/JavaPlusDoc/basic/7.html" class="sidebar-link">第7天-修饰符</a></li><li><a href="/JavaPlusDoc/basic/8.html" class="sidebar-link">第8天-运算符</a></li><li><a href="/JavaPlusDoc/basic/9.html" class="sidebar-link">第9天-循环结构</a></li><li><a href="/JavaPlusDoc/basic/10.html" class="sidebar-link">第10天-条件语句</a></li><li><a href="/JavaPlusDoc/basic/11.html" class="sidebar-link">第11天-switch-case</a></li><li><a href="/JavaPlusDoc/basic/12.html" class="sidebar-link">第12天-Number-Math类</a></li><li><a href="/JavaPlusDoc/basic/13.html" class="sidebar-link">第13天-Character</a></li><li><a href="/JavaPlusDoc/basic/14.html" class="sidebar-link">第14天-String</a></li><li><a href="/JavaPlusDoc/basic/15.html" class="sidebar-link">第15天-StringBuffer</a></li><li><a href="/JavaPlusDoc/basic/16.html" class="sidebar-link">第16天-数组</a></li><li><a href="/JavaPlusDoc/basic/17.html" class="sidebar-link">第17天-日期时间</a></li><li><a href="/JavaPlusDoc/basic/18.html" class="sidebar-link">第18天-正则表达式</a></li><li><a href="/JavaPlusDoc/basic/19.html" class="sidebar-link">第19天-方法</a></li><li><a href="/JavaPlusDoc/basic/20.html" class="sidebar-link">第20天-构造方法</a></li><li><a href="/JavaPlusDoc/basic/21.html" class="sidebar-link">第21天-流</a></li><li><a href="/JavaPlusDoc/basic/22.html" class="sidebar-link">第22天-异常处理</a></li></ul></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>达达JAVA写法思路</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>达达JAVA进阶教程</span> <span class="arrow right"></span></p> <!----></section></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>Python专属笔记</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading open"><span>Python基础</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/JavaPlusDoc/Python/1.html" class="sidebar-link">第1天-Python历史</a></li><li><a href="/JavaPlusDoc/Python/2.html" class="sidebar-link">第2天-安装Python</a></li><li><a href="/JavaPlusDoc/Python/3.html" class="sidebar-link">第3天-第一个程序</a></li></ul></section></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>Java核心技术</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>基础篇</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>集合框架</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>JVM与性能</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>并发编程</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading open"><span>IO与网络</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/JavaPlusDoc/java-up/shangtou.html" aria-current="page" class="active sidebar-link">JavaIO知识体系</a></li><li><a href="/JavaPlusDoc/java-up/file-path.html" class="sidebar-link">文件流</a></li><li><a href="/JavaPlusDoc/java-up/reader-writer.html" class="sidebar-link">字节流与字符流</a></li><li><a href="/JavaPlusDoc/java-up/char-byte.html" class="sidebar-link">转换流</a></li><li><a href="/JavaPlusDoc/java-up/serialize.html" class="sidebar-link">序列化和反序列化</a></li><li><a href="/JavaPlusDoc/nio/nio.html" class="sidebar-link">NIO基础</a></li><li><a href="/JavaPlusDoc/nio/BIONIOAIO.html" class="sidebar-link">NIO vs BIO vs AIO</a></li><li><a href="/JavaPlusDoc/nio/buffer-channel.html" class="sidebar-link">Buffer和Channel</a></li><li><a href="/JavaPlusDoc/nio/network-connect.html" class="sidebar-link">网络编程实践</a></li><li><a href="/JavaPlusDoc/nio/moxing.html" class="sidebar-link">IO模型</a></li><li><a href="/JavaPlusDoc/jobPro/IO.html" class="sidebar-link">IO多路复用</a></li><li><a href="/JavaPlusDoc/java-up/netty.html" class="sidebar-link">Netty入门</a></li></ul></section></li></ul></section></li><li><section class="sidebar-group depth-0"><a href="/JavaPlusDoc/gaobingfaxitong/1" class="sidebar-heading clickable"><span>高并发系统</span> <!----></a> <ul class="sidebar-links sidebar-group-items"><li><a href="/JavaPlusDoc/gaobingfaxitong/1.html" class="sidebar-link">它的通用设计方法是什么</a></li><li><a href="/JavaPlusDoc/gaobingfaxitong/2.html" class="sidebar-link">架构分层</a></li><li><a href="/JavaPlusDoc/gaobingfaxitong/3.html" class="sidebar-link">如何提升系统性能</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>物联网设备</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/JavaPlusDoc/iotDev/" class="sidebar-link">物联网设备实战设计</a></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>物联网设备实战</span> <span class="arrow right"></span></p> <!----></section></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>GO语言技术</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/JavaPlusDoc/go/" class="sidebar-link">GO技术手册导航</a></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>基础语法</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>高级特性</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>标准库</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>最佳实践</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>实战项目</span> <span class="arrow right"></span></p> <!----></section></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>分布式架构</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading open"><span>缓存系统</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/JavaPlusDoc/high-concurrency/why-cache.html" class="sidebar-link">缓存使用场景</a></li><li><a href="/JavaPlusDoc/high-concurrency/redis-single-thread-model.html" class="sidebar-link">Redis vs Memcached</a></li><li><a href="/JavaPlusDoc/high-concurrency/redis-data-types.html" class="sidebar-link">Redis数据类型</a></li><li><a href="/JavaPlusDoc/high-concurrency/redis-expiration-policies-and-lru.html" class="sidebar-link">Redis过期策略</a></li><li><a href="/JavaPlusDoc/high-concurrency/how-to-ensure-high-concurrency-and-high-availability-of-redis.html" class="sidebar-link">Redis高并发与高可用</a></li><li><a href="/JavaPlusDoc/high-concurrency/redis-master-slave.html" class="sidebar-link">Redis主从架构</a></li><li><a href="/JavaPlusDoc/high-concurrency/redis-persistence.html" class="sidebar-link">Redis持久化</a></li><li><a href="/JavaPlusDoc/high-concurrency/redis-sentinel.html" class="sidebar-link">Redis哨兵集群</a></li><li><a href="/JavaPlusDoc/jobPro/redis.html" class="sidebar-link">Redis应用场景</a></li><li><a href="/JavaPlusDoc/redis/redis-key-expiration.html" class="sidebar-link">Redis key过期问题解决方案</a></li><li><a href="/JavaPlusDoc/java-up/redis-springboot.html" class="sidebar-link">SpringBoot整合Redis</a></li><li><a href="/JavaPlusDoc/redis/xuebeng-chuantou-jichuan.html" class="sidebar-link">缓存雪崩、穿透、击穿</a></li><li><a href="/JavaPlusDoc/redis/redis-lua.html" class="sidebar-link">深入分析Redis Lua脚本运行原理</a></li></ul></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>消息队列</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>搜索引擎</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>微服务架构</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>数据库技术</span> <span class="arrow right"></span></p> <!----></section></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>运维与部署</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading open"><span>Docker容器技术</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/JavaPlusDoc/docker/docker-tutorial.html" class="sidebar-link">Docker教程</a></li><li><a href="/JavaPlusDoc/docker/docker架构.html" class="sidebar-link">docker架构</a></li><li><a href="/JavaPlusDoc/docker/docker-install.html" class="sidebar-link">Docker安装指南</a></li><li><a href="/JavaPlusDoc/docker/docker-mirror.html" class="sidebar-link">Docker配置国内源</a></li><li><a href="/JavaPlusDoc/docker/docker-images.html" class="sidebar-link">Docker镜像管理</a></li><li><a href="/JavaPlusDoc/docker/docker-containers.html" class="sidebar-link">Docker容器管理</a></li><li><a href="/JavaPlusDoc/docker/docker-network.html" class="sidebar-link">Docker网络配置</a></li><li><a href="/JavaPlusDoc/docker/docker-volumes.html" class="sidebar-link">Docker数据卷管理</a></li><li><a href="/JavaPlusDoc/docker/docker-dockerfile.html" class="sidebar-link">Dockerfile最佳实践</a></li><li><a href="/JavaPlusDoc/docker/docker-compose.html" class="sidebar-link">Docker Compose详解</a></li><li><a href="/JavaPlusDoc/docker/docker-swarm.html" class="sidebar-link">Docker Swarm集群</a></li><li><a href="/JavaPlusDoc/docker/docker-security.html" class="sidebar-link">Docker安全最佳实践</a></li><li><a href="/JavaPlusDoc/docker/docker-production.html" class="sidebar-link">Docker生产环境部署</a></li></ul></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>基础设施</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>DevOps工具链</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>部署与监控</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>ElasticSearch</span> <span class="arrow right"></span></p> <!----></section></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>产品系列</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/JavaPlusDoc/products/" class="sidebar-link">产品概述</a></li><li><a href="/JavaPlusDoc/products/product-gallery.html" class="sidebar-link">【溜溜梅】官方商城小程序</a></li><li><a href="/JavaPlusDoc/products/productChange.html" class="sidebar-link">小区充电桩小程序</a></li><li><a href="/JavaPlusDoc/products/photoImage.html" class="sidebar-link">话圈小程序</a></li><li><a href="/JavaPlusDoc/products/changeChange.html" class="sidebar-link">速绿充电小程序体验设计</a></li><li><a href="/JavaPlusDoc/products/changeChange2.html" class="sidebar-link">恒想充充电桩小程序改版设计</a></li><li><a href="/JavaPlusDoc/products/productShare.html" class="sidebar-link">分销小程序</a></li><li><a href="/JavaPlusDoc/products/product-car.html" class="sidebar-link">电动车充电桩小程序</a></li><li><a href="/JavaPlusDoc/products/无人岛商业计划书.html" class="sidebar-link">无人岛商业计划书</a></li><li><a href="/JavaPlusDoc/products/蜗牛睡眠高嵩.html" class="sidebar-link">蜗牛睡眠高嵩</a></li><li><a href="/JavaPlusDoc/products/优质行业报告网站.html" class="sidebar-link">优质行业报告网站</a></li><li><a href="/JavaPlusDoc/products/篮球场如何赚钱.html" class="sidebar-link">篮球场如何赚钱</a></li><li><a href="/JavaPlusDoc/products/enterprise-platform.html" class="sidebar-link">企业级应用平台</a></li><li><a href="/JavaPlusDoc/products/microservice-framework.html" class="sidebar-link">微服务框架</a></li><li><a href="/JavaPlusDoc/products/data-analytics-suite.html" class="sidebar-link">数据分析套件</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>实战案例</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading open"><span>Web应用开发</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/JavaPlusDoc/jobPro/login.html" class="sidebar-link">用户注册登录系统</a></li><li><a href="/JavaPlusDoc/jobPro/lan.html" class="sidebar-link">多语言国际化</a></li><li><a href="/JavaPlusDoc/jobPro/jobPro.html" class="sidebar-link">PC网站微信扫码登录</a></li><li><a href="/JavaPlusDoc/jobPro/wechat-miniprogram-guide.html" class="sidebar-link">微信小程序开发完全指南</a></li><li><a href="/JavaPlusDoc/jobPro/wechat-customer-service.html" class="sidebar-link">微信小程序API客服消息</a></li><li><a href="/JavaPlusDoc/jobPro/wechat-open-api.html" class="sidebar-link">微信小程序开放接口</a></li><li><a href="/JavaPlusDoc/jobPro/wechat-operation-center.html" class="sidebar-link">微信小程序运维中心</a></li><li><a href="/JavaPlusDoc/jobPro/appMsg.html" class="sidebar-link">微信小程序消息推送</a></li><li><a href="/JavaPlusDoc/jobPro/miniprogram.html" class="sidebar-link">微信小程序自动化部署</a></li><li><a href="/JavaPlusDoc/jobPro/appPay.html" class="sidebar-link">微信小程序支付功能</a></li><li><a href="/JavaPlusDoc/jobPro/uniapp.html" class="sidebar-link">iOS/Android打包发布</a></li></ul></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>GO语言应用</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>技术架构</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>企业级应用</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>物联网应用</span> <span class="arrow right"></span></p> <!----></section></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>Java线程</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/JavaPlusDoc/aThread/linux.html" class="sidebar-link">linux线程基础</a></li><li><a href="/JavaPlusDoc/aThread/jvm.html" class="sidebar-link">jvm基础知识</a></li><li><a href="/JavaPlusDoc/aThread/jvmThread.html" class="sidebar-link">jvm线程</a></li><li><a href="/JavaPlusDoc/aThread/jvmThreadEvent.html" class="sidebar-link">jvm线程通信原理</a></li><li><a href="/JavaPlusDoc/aThread/jvmThreadSync.html" class="sidebar-link">jvm线程同步机制</a></li><li><a href="/JavaPlusDoc/aThread/jvmLock.html" class="sidebar-link">java锁实现原理</a></li><li><a href="/JavaPlusDoc/aThread/jvmAtomic.html" class="sidebar-link">java原子操作类实现原理</a></li><li><a href="/JavaPlusDoc/aThread/jvmConcurrent.html" class="sidebar-link">java并发容器实现原理</a></li><li><a href="/JavaPlusDoc/aThread/javaThreadPool.html" class="sidebar-link">java线程池实现原理</a></li><li><a href="/JavaPlusDoc/aThread/javaThreadPoolUse.html" class="sidebar-link">java线程池使用</a></li><li><a href="/JavaPlusDoc/aThread/javaThreadSkill.html" class="sidebar-link">java多线程编程技巧</a></li></ul></section></li><li><section class="sidebar-group depth-0"><p class="sidebar-heading"><span>计算机基础</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/JavaPlusDoc/cs/os.html" class="sidebar-link">操作系统</a></li><li><a href="/JavaPlusDoc/cs/wangluo.html" class="sidebar-link">计算机网络</a></li><li><a href="/JavaPlusDoc/cs/tcp-ip.html" class="sidebar-link">TCP/IP协议详解</a></li><li><a href="/JavaPlusDoc/aJava/cookie-session-token.html" class="sidebar-link">Cookie/Session/Token</a></li></ul></section></li></ul> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-59e6cb88 data-v-7dd95ae2><h3 class="title" data-v-59e6cb88>JavaIO知识体系</h3> <!----> <label id="box" class="inputBox" data-v-59e6cb88><input type="password" value="" data-v-59e6cb88> <span data-v-59e6cb88>Konck! Knock!</span> <button data-v-59e6cb88>OK</button></label> <div class="footer" data-v-59e6cb88><span data-v-59e6cb88><i class="iconfont reco-theme" data-v-59e6cb88></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-59e6cb88>vuePress-theme-reco</a></span> <span data-v-59e6cb88><i class="iconfont reco-copyright" data-v-59e6cb88></i> <a data-v-59e6cb88><!---->
+          
+        <!---->
+        2025
+      </a></span></div></div> <div data-v-7dd95ae2><div data-v-7dd95ae2><main class="page"><section style="display:;"><div class="page-title"><h1 class="title">JavaIO知识体系</h1> <div data-v-8a445198><i class="iconfont reco-account" data-v-8a445198><span data-v-8a445198>哪吒</span></i> <i class="iconfont reco-date" data-v-8a445198><span data-v-8a445198>2020/1/1</span></i> <!----> <!----></div></div> <div class="theme-reco-content content__default"><blockquote><p>点击勘误<a href="https://github.com/webVueBlog/JavaPlusDoc/issues" target="_blank" rel="noopener noreferrer">issues<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>，哪吒感谢大家的阅读</p></blockquote> <img align="right" width="100" src="https://cdn.jsdelivr.net/gh/YunYouJun/yun/images/yun-alpha-compressed.png"> <h2 id="javaio知识体系"><a href="#javaio知识体系" class="header-anchor">#</a> JavaIO知识体系</h2> <h3 id="初识-java-io"><a href="#初识-java-io" class="header-anchor">#</a> 初识 Java IO</h3> <p>IO，即in和out，也就是输入和输出，指应用程序和外部设备之间的数据传递，常见的外部设备包括文件、管道、网络连接。</p> <p>Java 中是通过流处理IO 的，那么什么是流？</p> <p>流（Stream），是一个抽象的概念，是指一连串的数据（字符或字节），是以先进先出的方式发送信息的通道。</p> <p>当程序需要读取数据的时候，就会开启一个通向数据源的流，这个数据源可以是文件，内存，或是网络连接。类似的，当程序需要写入数据的时候，就会开启一个通向目的地的流。这时候你就可以想象数据好像在这其中“流”动一样。</p> <p>一般来说关于流的特性有下面几点：</p> <p>先进先出：最先写入输出流的数据最先被输入流读取到。
+顺序存取：可以一个接一个地往流中写入一串字节，读出时也将按写入顺序读取一串字节，不能随机访问中间的数据。（RandomAccessFile除外）
+只读或只写：每个流只能是输入流或输出流的一种，不能同时具备两个功能，输入流只能进行读操作，对输出流只能进行写操作。在一个数据传输通道中，如果既要写入数据，又要读取数据，则要分别提供两个流。</p> <h3 id="传输方式划分"><a href="#传输方式划分" class="header-anchor">#</a> 传输方式划分</h3> <p>传输方式有两种，字节和字符，那首先得搞明白字节和字符有什么区别，对吧？</p> <p>字节（byte）是计算机中用来表示存储容量的一个计量单位，通常情况下，一个字节有 8 位（bit）。</p> <p>字符（char）可以是计算机中使用的字母、数字、和符号，比如说 A 1 $ 这些。</p> <p>通常来说，一个字母或者一个字符占用一个字节，一个汉字占用两个字节。</p> <p>具体还要看字符编码，比如说在 UTF-8 编码下，一个英文字母（不分大小写）为一个字节，一个中文汉字为三个字节；在 Unicode 编码中，一个英文字母为一个字节，一个中文汉字为两个字节。</p> <p>字节流用来处理二进制文件，比如说图片啊、MP3 啊、视频啊。</p> <p>字符流用来处理文本文件，文本文件可以看作是一种特殊的二进制文件，只不过经过了编码，便于人们阅读。</p> <p>换句话说就是，字节流可以处理一切文件，而字符流只能处理文本。</p> <p>虽然 IO 类很多，但核心的就是 4 个抽象类：InputStream、OutputStream、Reader、Writer。</p> <p>（抽象大法真好）</p> <p>虽然 IO 类的方法也很多，但核心的也就 2 个：read 和 write。</p> <h3 id="inputstream-类"><a href="#inputstream-类" class="header-anchor">#</a> InputStream 类</h3> <ol><li>int read()：读取数据</li> <li>int read(byte b[], int off, int len)：从第 off 位置开始读，读取 len 长度的字节，然后放入数组 b 中</li> <li>long skip(long n)：跳过指定个数的字节</li> <li>int available()：返回可读的字节数</li> <li>void close()：关闭流，释放资源</li></ol> <h3 id="outputstream-类"><a href="#outputstream-类" class="header-anchor">#</a> OutputStream 类</h3> <ol><li>void write(int b)： 写入一个字节，虽然参数是一个 int 类型，但只有低 8 位才会写入，高 24 位会舍弃（这块后面再讲）</li> <li>void write(byte b[], int off, int len)： 将数组 b 中的从 off 位置开始，长度为 len 的字节写入</li> <li>void flush()： 强制刷新，将缓冲区的数据写入</li> <li>void close()：关闭流</li></ol> <h3 id="reader-类"><a href="#reader-类" class="header-anchor">#</a> Reader 类</h3> <ol><li>int read()：读取单个字符</li> <li>int read(char cbuf[], int off, int len)：从第 off 位置开始读，读取 len 长度的字符，然后放入数组 b 中</li> <li>long skip(long n)：跳过指定个数的字符</li> <li>int ready()：是否可以读了</li> <li>void close()：关闭流，释放资源</li></ol> <h3 id="writer-类"><a href="#writer-类" class="header-anchor">#</a> Writer 类</h3> <ol><li>void write(int c)： 写入一个字符</li> <li>void write( char cbuf[], int off, int len)： 将数组 cbuf 中的从 off 位置开始，长度为 len 的字符写入</li> <li>void flush()： 强制刷新，将缓冲区的数据写入</li> <li>void close()：关闭流</li></ol> <h3 id="字节流和字符流的区别"><a href="#字节流和字符流的区别" class="header-anchor">#</a> 字节流和字符流的区别：</h3> <ol><li>字节流一般用来处理图像、视频、音频、PPT、Word等类型的文件。字符流一般用于处理纯文本类型的文件，如TXT文件等，但不能处理图像视频等非文本文件。用一句话说就是：字节流可以处理一切文件，而字符流只能处理纯文本文件。</li> <li>字节流本身没有缓冲区，缓冲字节流相对于字节流，效率提升非常高。而字符流本身就带有缓冲区，缓冲字符流相对于字符流效率提升就不是那么大了。</li></ol> <p>字符流的源码</p> <div class="language- extra-class"><pre class="language-text"><code>// 声明一个 char 类型的数组，用于写入输出流
+private char[] writeBuffer;
+
+// 定义 writeBuffer 数组的大小，必须 &gt;= 1
+private static final int WRITE_BUFFER_SIZE = 1024;
+
+// 写入给定字符串中的一部分到输出流中
+public void write(String str, int off, int len) throws IOException {
+    // 使用 synchronized 关键字同步代码块，确保线程安全
+    synchronized (lock) {
+        char cbuf[];
+        // 如果 len &lt;= WRITE_BUFFER_SIZE，则使用 writeBuffer 数组进行写入
+        if (len &lt;= WRITE_BUFFER_SIZE) {
+            // 如果 writeBuffer 为 null，则创建一个大小为 WRITE_BUFFER_SIZE 的新 char 数组
+            if (writeBuffer == null) {
+                writeBuffer = new char[WRITE_BUFFER_SIZE];
+            }
+            cbuf = writeBuffer;
+        } else {    // 如果 len &gt; WRITE_BUFFER_SIZE，则不永久分配非常大的缓冲区
+            // 创建一个大小为 len 的新 char 数组
+            cbuf = new char[len];
+        }
+        // 将 str 中的一部分（从 off 开始，长度为 len）拷贝到 cbuf 数组中
+        str.getChars(off, (off + len), cbuf, 0);
+        // 将 cbuf 数组中的数据写入输出流中
+        write(cbuf, 0, len);
+    }
+}
+</code></pre></div><p>这段代码是 Java IO 类库中的 OutputStreamWriter 类的 write 方法，可以看到缓冲区的大小是 1024 个 char。</p> <div class="language- extra-class"><pre class="language-text"><code>// 字节流
+try (FileInputStream fis = new FileInputStream(&quot;input.txt&quot;);
+     FileOutputStream fos = new FileOutputStream(&quot;output.txt&quot;)) {
+    byte[] buffer = new byte[1024];
+    int len;
+    while ((len = fis.read(buffer)) != -1) {
+        fos.write(buffer, 0, len);
+    }
+} catch (IOException e) {
+    e.printStackTrace();
+}
+
+// 字符流
+try (FileReader fr = new FileReader(&quot;input.txt&quot;);
+     FileWriter fw = new FileWriter(&quot;output.txt&quot;)) {
+    char[] buffer = new char[1024];
+    int len;
+    while ((len = fr.read(buffer)) != -1) {
+        fw.write(buffer, 0, len);
+    }
+} catch (IOException e) {
+    e.printStackTrace();
+}
+</code></pre></div><h3 id="操作对象划分"><a href="#操作对象划分" class="header-anchor">#</a> 操作对象划分</h3> <p>IO IO，不就是输入输出（Input/Output）嘛：</p> <ol><li>Input：将外部的数据读入内存，比如说把文件从硬盘读取到内存，从网络读取数据到内存等等</li> <li>Output：将内存中的数据写入到外部，比如说把数据从内存写入到文件，把数据从内存输出到网络等等。</li></ol> <p>所有的程序，在执行的时候，都是在内存上进行的，一旦关机，内存中的数据就没了，那如果想要持久化，就需要把内存中的数据输出到外部，比如说文件。</p> <p>文件操作算是 IO 中最典型的操作了，也是最频繁的操作。那其实你可以换个角度来思考，比如说按照 IO 的操作对象来思考，IO 就可以分类为：文件、数组、管道、基本数据类型、缓冲、打印、对象序列化/反序列化，以及转换等。</p> <p><img src="/JavaPlusDoc/assets/img/img_1.54a860fb.png" alt="img_1.png"></p> <p>1）文件</p> <p>文件流也就是直接操作文件的流，可以细分为字节流（FileInputStream 和 FileOuputStream）和字符流（FileReader 和 FileWriter）。</p> <p>FileInputStream 的例子：</p> <div class="language- extra-class"><pre class="language-text"><code>// 声明一个 int 类型的变量 b，用于存储读取到的字节
+int b;
+// 创建一个 FileInputStream 对象，用于读取文件 fis.txt 中的数据
+FileInputStream fis1 = new FileInputStream(&quot;fis.txt&quot;);
+
+// 循环读取文件中的数据
+while ((b = fis1.read()) != -1) {
+    // 将读取到的字节转换为对应的 ASCII 字符，并输出到控制台
+    System.out.println((char)b);
+}
+
+// 关闭 FileInputStream 对象，释放资源
+fis1.close();
+</code></pre></div><p>FileOutputStream 的例子：</p> <div class="language- extra-class"><pre class="language-text"><code>// 创建一个 FileOutputStream 对象，用于写入数据到文件 fos.txt 中
+FileOutputStream fos = new FileOutputStream(&quot;fos.txt&quot;);
+
+// 向文件中写入数据，这里写入的是字符串 &quot;aa&quot; 对应的字节数组
+fos.write(&quot;aa&quot;.getBytes());
+
+// 关闭 FileOutputStream 对象，释放资源
+fos.close();
+</code></pre></div><p>FileReader 的例子：</p> <div class="language- extra-class"><pre class="language-text"><code>// 声明一个 int 类型的变量 b，用于存储读取到的字符
+int b = 0;
+
+// 创建一个 FileReader 对象，用于读取文件 read.txt 中的数据
+FileReader fileReader = new FileReader(&quot;read.txt&quot;);
+
+// 循环读取文件中的数据
+while ((b = fileReader.read()) != -1) {
+    // 将读取到的字符强制转换为 char 类型，并输出到控制台
+    System.out.println((char)b);
+}
+
+// 关闭 FileReader 对象，释放资源
+fileReader.close();
+</code></pre></div><p>FileWriter 的例子：</p> <div class="language- extra-class"><pre class="language-text"><code>// 创建一个 FileWriter 对象，用于写入数据到文件 fw.txt 中
+FileWriter fileWriter = new FileWriter(&quot;fw.txt&quot;);
+
+// 将字符串 &quot;aa&quot; 转换为字符数组
+char[] chars = &quot;aa&quot;.toCharArray();
+
+// 向文件中写入数据，这里写入的是 chars 数组中的所有字符
+fileWriter.write(chars, 0, chars.length);
+
+// 关闭 FileWriter 对象，释放资源
+fileWriter.close();
+</code></pre></div><p>文件流还可以用于创建、删除、重命名文件等操作。FileOutputStream 和 FileWriter 构造函数的第二个参数可以指定是否追加数据到文件末尾。</p> <div class="language- extra-class"><pre class="language-text"><code>// 创建文件
+File file = new File(&quot;test.txt&quot;);
+if (file.createNewFile()) {
+    System.out.println(&quot;文件创建成功&quot;);
+} else {
+    System.out.println(&quot;文件已存在&quot;);
+}
+
+// 删除文件
+if (file.delete()) {
+    System.out.println(&quot;文件删除成功&quot;);
+} else {
+    System.out.println(&quot;文件删除失败&quot;);
+}
+
+// 重命名文件
+File oldFile = new File(&quot;old.txt&quot;);
+File newFile = new File(&quot;new.txt&quot;);
+if (oldFile.renameTo(newFile)) {
+    System.out.println(&quot;文件重命名成功&quot;);
+} else {
+    System.out.println(&quot;文件重命名失败&quot;);
+}
+</code></pre></div><h3 id="_2-数组-内存"><a href="#_2-数组-内存" class="header-anchor">#</a> 2）数组（内存）</h3> <p>通常来说，针对文件的读写操作，使用文件流配合缓冲流就够用了，但为了提升效率，频繁地读写文件并不是太好，那么就出现了数组流，有时候也称为内存流。</p> <p>ByteArrayInputStream 的例子：</p> <div class="language- extra-class"><pre class="language-text"><code>// 创建一个 ByteArrayInputStream 对象，用于从字节数组中读取数据
+InputStream is = new BufferedInputStream(
+        new ByteArrayInputStream(
+                &quot;aa&quot;.getBytes(StandardCharsets.UTF_8)));
+
+// 定义一个字节数组用于存储读取到的数据
+byte[] flush = new byte[1024];
+
+// 定义一个变量用于存储每次读取到的字节数
+int len = 0;
+
+// 循环读取字节数组中的数据，并输出到控制台
+while (-1 != (len = is.read(flush))) {
+    // 将读取到的字节转换为对应的字符串，并输出到控制台
+    System.out.println(new String(flush, 0, len));
+}
+
+// 关闭输入流，释放资源
+is.close();
+</code></pre></div><p>ByteArrayOutputStream 的例子：</p> <div class="language- extra-class"><pre class="language-text"><code>// 创建一个 ByteArrayOutputStream 对象，用于写入数据到内存缓冲区中
+ByteArrayOutputStream bos = new ByteArrayOutputStream();
+
+// 定义一个字节数组用于存储要写入内存缓冲区中的数据
+byte[] info = &quot;aa&quot;.getBytes();
+
+// 向内存缓冲区中写入数据，这里写入的是 info 数组中的所有字节
+bos.write(info, 0, info.length);
+
+// 将内存缓冲区中的数据转换为字节数组
+byte[] dest = bos.toByteArray();
+
+// 关闭 ByteArrayOutputStream 对象，释放资源
+bos.close();
+</code></pre></div><p>数组流可以用于在内存中读写数据，比如将数据存储在字节数组中进行压缩、加密、序列化等操作。它的优点是不需要创建临时文件，可以提高程序的效率。但是，数组流也有缺点，它只能存储有限的数据量，如果存储的数据量过大，会导致内存溢出。</p> <p>3）管道</p> <p>Java 中的管道和 Unix/Linux 中的管道不同，在 Unix/Linux 中，不同的进程之间可以通过管道来通信，但 Java 中，通信的双方必须在同一个进程中，也就是在同一个 JVM 中，管道为线程之间的通信提供了通信能力。</p> <p>一个线程通过 PipedOutputStream 写入的数据可以被另外一个线程通过相关联的 PipedInputStream 读取出来。</p> <div class="language- extra-class"><pre class="language-text"><code>// 创建一个 PipedOutputStream 对象和一个 PipedInputStream 对象
+final PipedOutputStream pipedOutputStream = new PipedOutputStream();
+final PipedInputStream pipedInputStream = new PipedInputStream(pipedOutputStream);
+
+// 创建一个线程，向 PipedOutputStream 中写入数据
+Thread thread1 = new Thread(new Runnable() {
+    @Override
+    public void run() {
+        try {
+            // 将字符串 &quot;aa&quot; 转换为字节数组，并写入到 PipedOutputStream 中
+            pipedOutputStream.write(&quot;aa&quot;.getBytes(StandardCharsets.UTF_8));
+            // 关闭 PipedOutputStream，释放资源
+            pipedOutputStream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+});
+
+// 创建一个线程，从 PipedInputStream 中读取数据并输出到控制台
+Thread thread2 = new Thread(new Runnable() {
+    @Override
+    public void run() {
+        try {
+            // 定义一个字节数组用于存储读取到的数据
+            byte[] flush = new byte[1024];
+            // 定义一个变量用于存储每次读取到的字节数
+            int len = 0;
+            // 循环读取字节数组中的数据，并输出到控制台
+            while (-1 != (len = pipedInputStream.read(flush))) {
+                // 将读取到的字节转换为对应的字符串，并输出到控制台
+                System.out.println(new String(flush, 0, len));
+            }
+            // 关闭 PipedInputStream，释放资源
+            pipedInputStream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+});
+
+// 启动线程1和线程2
+thread1.start();
+thread2.start();
+</code></pre></div><p>使用管道流可以实现不同线程之间的数据传输，可以用于线程间的通信、数据的传递等。但是，管道流也有一些局限性，比如只能在同一个 JVM 中的线程之间使用，不能跨越不同的 JVM 进程。</p> <p>4）基本数据类型
+基本数据类型输入输出流是一个字节流，该流不仅可以读写字节和字符，还可以读写基本数据类型。</p> <p>DataInputStream 提供了一系列可以读基本数据类型的方法：</p> <div class="language- extra-class"><pre class="language-text"><code>// 创建一个 DataInputStream 对象，用于从文件中读取数据
+DataInputStream dis = new DataInputStream(new FileInputStream(&quot;das.txt&quot;));
+
+// 读取一个字节，将其转换为 byte 类型
+byte b = dis.readByte();
+
+// 读取两个字节，将其转换为 short 类型
+short s = dis.readShort();
+
+// 读取四个字节，将其转换为 int 类型
+int i = dis.readInt();
+
+// 读取八个字节，将其转换为 long 类型
+long l = dis.readLong();
+
+// 读取四个字节，将其转换为 float 类型
+float f = dis.readFloat();
+
+// 读取八个字节，将其转换为 double 类型
+double d = dis.readDouble();
+
+// 读取一个字节，将其转换为 boolean 类型
+boolean bb = dis.readBoolean();
+
+// 读取两个字节，将其转换为 char 类型
+char ch = dis.readChar();
+
+// 关闭 DataInputStream，释放资源
+dis.close();
+</code></pre></div><p>DataOutputStream 提供了一系列可以写基本数据类型的方法：</p> <div class="language- extra-class"><pre class="language-text"><code>// 创建一个 DataOutputStream 对象，用于将数据写入到文件中
+DataOutputStream das = new DataOutputStream(new FileOutputStream(&quot;das.txt&quot;));
+
+// 将一个 byte 类型的数据写入到文件中
+das.writeByte(10);
+
+// 将一个 short 类型的数据写入到文件中
+das.writeShort(100);
+
+// 将一个 int 类型的数据写入到文件中
+das.writeInt(1000);
+
+// 将一个 long 类型的数据写入到文件中
+das.writeLong(10000L);
+
+// 将一个 float 类型的数据写入到文件中
+das.writeFloat(12.34F);
+
+// 将一个 double 类型的数据写入到文件中
+das.writeDouble(12.56);
+
+// 将一个 boolean 类型的数据写入到文件中
+das.writeBoolean(true);
+
+// 将一个 char 类型的数据写入到文件中
+das.writeChar('A');
+
+// 关闭 DataOutputStream，释放资源
+das.close();
+</code></pre></div><p>除了 DataInputStream 和 DataOutputStream，Java IO 还提供了其他一些读写基本数据类型和字符串的流类，包括 ObjectInputStream 和 ObjectOutputStream（用于读写对象）。</p> <p>示例代码：</p> <div class="language- extra-class"><pre class="language-text"><code>public static void main(String[] args) {
+    try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(&quot;person.dat&quot;))) {
+        Person p = new Person(&quot;张三&quot;, 20);
+        oos.writeObject(p);
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+
+    try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(&quot;person.dat&quot;))) {
+        Person p = (Person) ois.readObject();
+        System.out.println(p);
+    } catch (IOException | ClassNotFoundException e) {
+        e.printStackTrace();
+    }
+}
+</code></pre></div><p>以上代码创建了一个 Person 对象，将其写入文件中，然后从文件中读取该对象，并打印在控制台上。</p> <p>5）缓冲</p> <p>CPU 很快，它比内存快 100 倍，比磁盘快百万倍。那也就意味着，程序和内存交互会很快，和硬盘交互相对就很慢，这样就会导致性能问题。</p> <p>为了减少程序和硬盘的交互，提升程序的效率，就引入了缓冲流，也就是类名前缀带有 Buffer 的那些，比如说 BufferedInputStream、BufferedOutputStream、BufferedReader、BufferedWriter。</p> <p><img src="/JavaPlusDoc/assets/img/img_2.8b8393ad.png" alt="img_2.png"></p> <p>缓冲流在内存中设置了一个缓冲区，只有缓冲区存储了足够多的带操作的数据后，才会和内存或者硬盘进行交互。简单来说，就是一次多读/写点，少读/写几次，这样程序的性能就会提高。</p> <p>以下是一个使用 BufferedInputStream 读取文件的示例代码：</p> <div class="language- extra-class"><pre class="language-text"><code>// 创建一个 BufferedInputStream 对象，用于从文件中读取数据
+BufferedInputStream bis = new BufferedInputStream(new FileInputStream(&quot;data.txt&quot;));
+
+// 创建一个字节数组，作为缓存区
+byte[] buffer = new byte[1024];
+
+// 读取文件中的数据，并将其存储到缓存区中
+int bytesRead;
+while ((bytesRead = bis.read(buffer)) != -1) {
+    // 对缓存区中的数据进行处理
+    // 这里只是简单地将读取到的字节数组转换为字符串并打印出来
+    System.out.println(new String(buffer, 0, bytesRead));
+}
+
+// 关闭 BufferedInputStream，释放资源
+bis.close();
+</code></pre></div><p>上述代码中，首先创建了一个 BufferedInputStream 对象，用于从文件中读取数据。然后创建了一个字节数组作为缓存区，每次读取数据时将数据存储到缓存区中。读取数据的过程是通过 while 循环实现的，每次读取数据后对缓存区中的数据进行处理。最后关闭 BufferedInputStream，释放资源。</p> <p>以下是一个使用 BufferedOutputStream 写入文件的示例代码：</p> <div class="language- extra-class"><pre class="language-text"><code>// 创建一个 BufferedOutputStream 对象，用于将数据写入到文件中
+BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(&quot;data.txt&quot;));
+
+// 创建一个字节数组，作为缓存区
+byte[] buffer = new byte[1024];
+
+// 将数据写入到文件中
+String data = &quot;aa是个大傻子!&quot;;
+buffer = data.getBytes();
+bos.write(buffer);
+
+// 刷新缓存区，将缓存区中的数据写入到文件中
+bos.flush();
+
+// 关闭 BufferedOutputStream，释放资源
+bos.close();
+</code></pre></div><p>上述代码中，首先创建了一个 BufferedOutputStream 对象，用于将数据写入到文件中。然后创建了一个字节数组作为缓存区，将数据写入到缓存区中。写入数据的过程是通过 write() 方法实现的，将字节数组作为参数传递给 write() 方法即可。</p> <p>最后，通过 flush() 方法将缓存区中的数据写入到文件中。在写入数据时，由于使用了 BufferedOutputStream，数据会先被写入到缓存区中，只有在缓存区被填满或者调用了 flush() 方法时才会将缓存区中的数据写入到文件中。</p> <p>以下是一个使用 BufferedReader 读取文件的示例代码：</p> <div class="language- extra-class"><pre class="language-text"><code>// 创建一个 BufferedReader 对象，用于从文件中读取数据
+BufferedReader br = new BufferedReader(new FileReader(&quot;data.txt&quot;));
+
+// 读取文件中的数据，并将其存储到字符串中
+String line;
+while ((line = br.readLine()) != null) {
+    // 对读取到的数据进行处理
+    // 这里只是简单地将读取到的每一行字符串打印出来
+    System.out.println(line);
+}
+
+// 关闭 BufferedReader，释放资源
+br.close();
+</code></pre></div><p>上述代码中，首先创建了一个 BufferedReader 对象，用于从文件中读取数据。然后使用 readLine() 方法读取文件中的数据，每次读取一行数据并将其存储到一个字符串中。读取数据的过程是通过 while 循环实现的。</p> <p>以下是一个使用 BufferedWriter 写入文件的示例代码：</p> <div class="language- extra-class"><pre class="language-text"><code>// 创建一个 BufferedWriter 对象，用于将数据写入到文件中
+BufferedWriter bw = new BufferedWriter(new FileWriter(&quot;data.txt&quot;));
+
+// 将数据写入到文件中
+String data = &quot;aa，真帅气&quot;;
+bw.write(data);
+
+// 刷新缓存区，将缓存区中的数据写入到文件中
+bw.flush();
+
+// 关闭 BufferedWriter，释放资源
+bw.close();
+</code></pre></div><p>上述代码中，首先创建了一个 BufferedWriter 对象，用于将数据写入到文件中。然后使用 write() 方法将数据写入到缓存区中，写入数据的过程和使用 FileWriter 类似。需要注意的是，使用 BufferedWriter 写入数据时，数据会先被写入到缓存区中，只有在缓存区被填满或者调用了 flush() 方法时才会将缓存区中的数据写入到文件中。</p> <p>最后，通过 flush() 方法将缓存区中的数据写入到文件中，并通过 close() 方法关闭 BufferedWriter，释放资源。</p> <p>使用缓冲流可以提高读写效率，减少了频繁的读写磁盘或网络的次数，从而提高了程序的性能。但是，在使用缓冲流时需要注意缓冲区的大小和清空缓冲区的时机，以避免数据丢失或不完整的问题。</p> <p>6）打印
+Java 的打印流是一组用于打印输出数据的类，包括 PrintStream 和 PrintWriter 两个类。</p> <p>恐怕 Java 程序员一生当中最常用的就是打印流了：System.out 其实返回的就是一个 PrintStream 对象，可以用来打印各式各样的对象。</p> <div class="language- extra-class"><pre class="language-text"><code>System.out.println(&quot;aa是真的二！&quot;);
+</code></pre></div><p>PrintStream 最终输出的是字节数据，而 PrintWriter 则是扩展了 Writer 接口，所以它的 print()/println() 方法最终输出的是字符数据。使用上几乎和 PrintStream 一模一样。</p> <div class="language- extra-class"><pre class="language-text"><code>StringWriter buffer = new StringWriter();
+try (PrintWriter pw = new PrintWriter(buffer)) {
+    pw.println(&quot;aa&quot;);
+}
+System.out.println(buffer.toString());
+</code></pre></div><p>7）对象序列化/反序列化</p> <p>序列化本质上是将一个 Java 对象转成字节数组，然后可以将其保存到文件中，或者通过网络传输到远程。</p> <div class="language- extra-class"><pre class="language-text"><code>// 创建一个 ByteArrayOutputStream 对象 buffer，用于存储数据
+ByteArrayOutputStream buffer = new ByteArrayOutputStream();
+
+// 使用 try-with-resources 语句创建一个 ObjectOutputStream 对象 output，并将其与 buffer 关联
+try (ObjectOutputStream output = new ObjectOutputStream(buffer)) {
+    
+    // 使用 writeUTF() 方法将字符串 &quot;aa&quot; 写入到缓冲区中
+    output.writeUTF(&quot;aa&quot;);
+}
+
+// 使用 toByteArray() 方法将缓冲区中的数据转换成字节数组，并输出到控制台
+System.out.println(Arrays.toString(buffer.toByteArray()));
+</code></pre></div><p>与其对应的，有序列化，就有反序列化，也就是再将字节数组转成 Java 对象的过程。</p> <div class="language- extra-class"><pre class="language-text"><code>try (ObjectInputStream input = new ObjectInputStream(new FileInputStream(
+        new File(&quot;Person.txt&quot;)))) {
+    String s = input.readUTF();
+}
+</code></pre></div><p>这段代码主要使用了 Java 的 ByteArrayOutputStream 和 ObjectOutputStream 类，将字符串 &quot;aa&quot; 写入到一个字节数组缓冲区中，并将缓冲区中的数据转换成字节数组输出到控制台。</p> <p>具体的执行过程如下：</p> <ol><li>创建一个 ByteArrayOutputStream 对象 buffer，用于存储数据。</li> <li>使用 try-with-resources 语句创建一个 ObjectOutputStream 对象 output，并将其与 buffer 关联。</li> <li>使用 writeUTF() 方法将字符串 &quot;aa&quot; 写入到缓冲区中。</li> <li>当 try-with-resources 语句执行完毕时，会自动调用 output 的 close() 方法关闭输出流，释放资源。</li> <li>使用 toByteArray() 方法将缓冲区中的数据转换成字节数组。</li> <li>使用 Arrays.toString() 方法将字节数组转换成字符串，并输出到控制台。</li></ol> <p>8）转换</p> <p>InputStreamReader 是从字节流到字符流的桥连接，它使用指定的字符集读取字节并将它们解码为字符。</p> <div class="language- extra-class"><pre class="language-text"><code>// 创建一个 InputStreamReader 对象 isr，使用 FileInputStream 对象读取文件 demo.txt 的内容并将其转换为字符流
+InputStreamReader isr = new InputStreamReader(new FileInputStream(&quot;demo.txt&quot;));
+
+// 创建一个字符数组 cha，用于存储读取的字符数据，其中 1024 表示数组的长度
+char[] cha = new char[1024];
+
+// 使用 read() 方法读取 isr 中的数据，并将读取的字符数据存储到 cha 数组中，返回值 len 表示读取的字符数
+int len = isr.read(cha);
+
+// 将 cha 数组中从下标 0 开始、长度为 len 的部分转换成字符串，并输出到控制台
+System.out.println(new String(cha, 0, len));
+
+// 关闭 InputStreamReader 对象 isr，释放资源
+isr.close();
+</code></pre></div><p>这段代码主要使用了 Java 的 InputStreamReader 和 FileInputStream 类，从文件 demo.txt 中读取数据并将其转换为字符流，然后将读取的字符数据存储到一个字符数组中，并输出转换成字符串后的结果到控制台。</p> <p>OutputStreamWriter 将一个字符流的输出对象变为字节流的输出对象，是字符流通向字节流的桥梁。</p> <div class="language- extra-class"><pre class="language-text"><code>// 创建一个 File 对象 f，表示文件 test.txt
+File f = new File(&quot;test.txt&quot;);
+
+// 创建一个 OutputStreamWriter 对象 out，使用 FileOutputStream 对象将数据写入到文件 f 中，并将字节流转换成字符流
+Writer out = new OutputStreamWriter(new FileOutputStream(f));
+
+// 使用 write() 方法将字符串 &quot;aa!!&quot; 写入到文件 f 中
+out.write(&quot;aa!!&quot;);
+
+// 关闭 Writer 对象 out，释放资源
+out.close();
+</code></pre></div><p>使用转换流可以方便地在字节流和字符流之间进行转换。在进行文本文件读写时，通常使用字符流进行操作，而在进行网络传输或与设备进行通信时，通常使用字节流进行操作。</p> <p>另外，在使用转换流时需要注意字符编码的问题。如果不指定字符编码，则使用默认的字符编码，可能会出现乱码问题。因此，建议在使用转换流时，始终指定正确的字符编码，以避免出现乱码问题。</p></div></section> <footer class="page-edit"><!----> <!----></footer> <div class="page-nav"><p class="inner"><span class="prev"><a href="/JavaPlusDoc/jobPro/synchronized.html" class="prev">
+          synchronized和lock
+        </a></span> <span class="next"><a href="/JavaPlusDoc/java-up/file-path.html">
+          文件流
+        </a></span></p></div> <div class="comments-wrapper"><!----></div></main></div> <!----></div> <ul class="sub-sidebar sub-sidebar-wrapper" style="width:12rem;" data-v-b57cc07c data-v-7dd95ae2><li class="level-2" data-v-b57cc07c><a href="/JavaPlusDoc/java-up/shangtou.html#javaio知识体系" class="sidebar-link reco-side-javaio知识体系" data-v-b57cc07c>JavaIO知识体系</a></li><li class="level-3" data-v-b57cc07c><a href="/JavaPlusDoc/java-up/shangtou.html#初识-java-io" class="sidebar-link reco-side-初识-java-io" data-v-b57cc07c>初识 Java IO</a></li><li class="level-3" data-v-b57cc07c><a href="/JavaPlusDoc/java-up/shangtou.html#传输方式划分" class="sidebar-link reco-side-传输方式划分" data-v-b57cc07c>传输方式划分</a></li><li class="level-3" data-v-b57cc07c><a href="/JavaPlusDoc/java-up/shangtou.html#inputstream-类" class="sidebar-link reco-side-inputstream-类" data-v-b57cc07c>InputStream 类</a></li><li class="level-3" data-v-b57cc07c><a href="/JavaPlusDoc/java-up/shangtou.html#outputstream-类" class="sidebar-link reco-side-outputstream-类" data-v-b57cc07c>OutputStream 类</a></li><li class="level-3" data-v-b57cc07c><a href="/JavaPlusDoc/java-up/shangtou.html#reader-类" class="sidebar-link reco-side-reader-类" data-v-b57cc07c>Reader 类</a></li><li class="level-3" data-v-b57cc07c><a href="/JavaPlusDoc/java-up/shangtou.html#writer-类" class="sidebar-link reco-side-writer-类" data-v-b57cc07c>Writer 类</a></li><li class="level-3" data-v-b57cc07c><a href="/JavaPlusDoc/java-up/shangtou.html#字节流和字符流的区别" class="sidebar-link reco-side-字节流和字符流的区别" data-v-b57cc07c>字节流和字符流的区别：</a></li><li class="level-3" data-v-b57cc07c><a href="/JavaPlusDoc/java-up/shangtou.html#操作对象划分" class="sidebar-link reco-side-操作对象划分" data-v-b57cc07c>操作对象划分</a></li><li class="level-3" data-v-b57cc07c><a href="/JavaPlusDoc/java-up/shangtou.html#_2-数组-内存" class="sidebar-link reco-side-_2-数组-内存" data-v-b57cc07c>2）数组（内存）</a></li></ul></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-c6073ba8 data-v-c6073ba8><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-c6073ba8><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-c6073ba8></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-c6073ba8></path></svg></div><div></div><div class="kanbanniang" data-v-5775ee02><div class="banniang-container" style="display:;" data-v-5775ee02><div class="messageBox" style="right:68px;bottom:190px;display:none;" data-v-5775ee02>
+      欢迎来到 Jeskson文档-微服务分布式系统架构
+    </div> <div class="operation" style="right:90px;bottom:40px;display:none;" data-v-5775ee02><i class="kbnfont kbn-ban-home ban-home" data-v-5775ee02></i> <i class="kbnfont kbn-ban-message message" data-v-5775ee02></i> <i class="kbnfont kbn-ban-close close" data-v-5775ee02></i> <a target="_blank" href="https://vuepress-theme-reco.recoluan.com/views/plugins/kanbanniang.html" data-v-5775ee02><i class="kbnfont kbn-ban-info info" data-v-5775ee02></i></a> <i class="kbnfont kbn-ban-theme skin" style="display:none;" data-v-5775ee02></i></div> <canvas id="banniang" width="150" height="260" class="live2d" style="width:100px;position:fixed;right:0px;bottom:0px;opacity:0.9;z-index:99999;object-fit:cover;" data-v-5775ee02></canvas></div> <div class="showBanNiang" style="display:none;" data-v-5775ee02>
+    看板娘
+  </div></div><!----></div></div>
+    <script src="/JavaPlusDoc/assets/js/app.09f92ebf.js" defer></script><script src="/JavaPlusDoc/assets/js/7.6c510d49.js" defer></script><script src="/JavaPlusDoc/assets/js/2.e503af43.js" defer></script><script src="/JavaPlusDoc/assets/js/1.cf0c2041.js" defer></script><script src="/JavaPlusDoc/assets/js/76.2625bc06.js" defer></script><script src="/JavaPlusDoc/assets/js/60.0cf9d6b4.js" defer></script>
+  </body>
+</html>
