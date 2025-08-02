@@ -1,0 +1,202 @@
+/**
+ * 侧边栏增强样式
+ * 专门针对平板设备的侧边栏优化
+ */
+
+// 平板设备侧边栏遮罩层
+.tablet-device.sidebar-open::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 999;
+    transition: opacity 0.3s ease;
+}
+
+// 侧边栏滚动条优化
+.sidebar .sidebar-links {
+    scrollbar-width: thin;
+    scrollbar-color: #c1c1c1 transparent;
+    
+    &::-webkit-scrollbar {
+        width: 6px;
+    }
+    
+    &::-webkit-scrollbar-track {
+        background: transparent;
+    }
+    
+    &::-webkit-scrollbar-thumb {
+        background: #c1c1c1;
+        border-radius: 3px;
+        
+        &:hover {
+            background: #a1a1a1;
+        }
+    }
+}
+
+// 侧边栏链接触摸优化
+.tablet-device .sidebar-links a {
+    position: relative;
+    transition: all 0.2s ease;
+    
+    &:hover, &:focus {
+        background-color: #f5f5f5;
+        transform: translateX(2px);
+    }
+    
+    &:active {
+        background-color: #e8e8e8;
+        transform: translateX(1px);
+    }
+}
+
+// 侧边栏分组标题优化
+.tablet-device .sidebar-group .sidebar-heading {
+    padding: 1rem 1rem 0.5rem;
+    font-weight: 600;
+    font-size: 1.1em;
+    color: #2c3e50;
+    border-bottom: 1px solid #eaecef;
+    margin-bottom: 0.5rem;
+    
+    &:not(.clickable) {
+        cursor: default;
+    }
+}
+
+// 侧边栏子项缩进优化
+.tablet-device .sidebar-links .sidebar-sub-headers {
+    padding-left: 1rem;
+    
+    a {
+        padding-left: 2rem;
+        font-size: 0.9em;
+        color: #666;
+        
+        &.active {
+            color: #3178c6;
+            font-weight: 500;
+        }
+    }
+}
+
+// 侧边栏按钮样式增强
+.tablet-device .navbar .sidebar-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+    
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.1);
+    }
+    
+    &:focus {
+        outline: 2px solid #3178c6;
+        outline-offset: 2px;
+    }
+    
+    // 汉堡菜单图标
+    .icon {
+        width: 20px;
+        height: 20px;
+        display: block;
+        
+        &::before,
+        &::after {
+            content: '';
+            display: block;
+            width: 100%;
+            height: 2px;
+            background: #2c3e50;
+            margin: 4px 0;
+            transition: all 0.3s ease;
+        }
+    }
+}
+
+// 侧边栏搜索框优化（如果存在）
+.tablet-device .sidebar .search-box {
+    margin: 1rem;
+    
+    input {
+        width: 100%;
+        padding: 0.8rem 1rem;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        font-size: 16px; // 防止iOS缩放
+        
+        &:focus {
+            border-color: #3178c6;
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(49, 120, 198, 0.2);
+        }
+    }
+}
+
+// 代码块滚动指示器
+.scrollable {
+    position: relative;
+    
+    &::after {
+        content: '→';
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        color: #999;
+        font-size: 12px;
+        opacity: 0.7;
+        pointer-events: none;
+    }
+}
+
+// 平板横屏模式特殊优化
+@media (orientation: landscape) and (max-height: 768px) {
+    .tablet-device .sidebar {
+        .sidebar-links {
+            padding-top: 0.5rem;
+            
+            a {
+                padding: 0.6rem 1rem;
+                font-size: 0.9em;
+            }
+        }
+        
+        .sidebar-group .sidebar-heading {
+            padding: 0.8rem 1rem 0.3rem;
+            font-size: 1em;
+        }
+    }
+}
+
+// 暗色主题适配
+.dark .tablet-device {
+    .sidebar {
+        background: #1e1e1e;
+        color: #fff;
+        
+        .sidebar-links a {
+            color: #ccc;
+            
+            &:hover, &:focus {
+                background-color: #333;
+                color: #fff;
+            }
+            
+            &.active {
+                color: #3178c6;
+            }
+        }
+    }
+    
+    &.sidebar-open::before {
+        background: rgba(0, 0, 0, 0.6);
+    }
+}

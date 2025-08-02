@@ -20,6 +20,9 @@ document.addEventListener('DOMContentLoaded', function() {
   // 添加侧边栏搜索框
   addSidebarSearch();
   
+  // 检查是否需要搜索定位
+  checkSearchPosition();
+  
   // 监听Vue路由变化
   waitForVue();
   
@@ -217,12 +220,36 @@ document.addEventListener('DOMContentLoaded', function() {
               
               resultItem.innerHTML = highlightedText;
               
-              // 点击结果项导航到对应页面
+              // 点击结果项导航到对应页面并自动定位
               resultItem.addEventListener('click', () => {
-                window.location.href = result.url;
+                // 先隐藏搜索结果
                 searchResults.style.display = 'none';
                 searchInput.value = '';
-              });
+                
+                // 如果是当前页面的链接，直接滚动定位
+                if (result.url === window.location.pathname || 
+                    result.url.replace(/\.html$/, '') === window.location.pathname.replace(/\.html$/, '')) {
+                  // 找到对应的侧边栏链接并滚动定位
+                  setTimeout(() => {
+                    const sidebar = document.querySelector('.sidebar-links');
+                    if (sidebar && result.element) {
+                      // 移除所有active类
+                      document.querySelectorAll('.sidebar-link.active').forEach(link => {
+                        link.classList.remove('active');
+                      });
+                      // 添加active类到选中项
+                      result.element.classList.add('active');
+                      // 滚动到选中项
+                      scrollActiveToCenter(sidebar, result.element);
+                    }
+                  }, 100);
+                } else {
+                   // 跳转到其他页面，并添加搜索定位参数
+                   const targetUrl = new URL(result.url, window.location.origin);
+                   targetUrl.searchParams.set('search_target', result.text);
+                   window.location.href = targetUrl.toString();
+                 }
+              });}]}}
               
               // 鼠标悬停效果
               resultItem.addEventListener('mouseenter', () => {
@@ -451,5 +478,46 @@ document.addEventListener('DOMContentLoaded', function() {
     setTimeout(() => {
       breadcrumb.style.opacity = '0';
     }, 3000);
+  }
+}
+
+// 检查搜索定位参数
+function checkSearchPosition() {
+  // 检查URL中是否有搜索定位标识
+  const urlParams = new URLSearchParams(window.location.search);
+  const searchTarget = urlParams.get('search_target');
+  
+  if (searchTarget) {
+    // 延迟执行，确保页面完全加载
+    setTimeout(() => {
+      const sidebar = document.querySelector('.sidebar-links');
+      if (sidebar) {
+        // 查找匹配的侧边栏链接
+        const links = document.querySelectorAll('.sidebar-link');
+        let targetLink = null;
+        
+        links.forEach(link => {
+          const linkText = link.textContent.toLowerCase();
+          if (linkText.includes(searchTarget.toLowerCase())) {
+            targetLink = link;
+          }
+        });
+        
+        if (targetLink) {
+          // 移除所有active类
+          document.querySelectorAll('.sidebar-link.active').forEach(link => {
+            link.classList.remove('active');
+          });
+          // 添加active类到目标项
+          targetLink.classList.add('active');
+          // 滚动到目标项
+          scrollActiveToCenter(sidebar, targetLink);
+          
+          // 清除URL参数
+          const newUrl = window.location.pathname + window.location.hash;
+          window.history.replaceState({}, document.title, newUrl);
+        }
+      }
+    }, 500);
   }
 });
