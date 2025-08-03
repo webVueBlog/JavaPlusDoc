@@ -18,6 +18,84 @@ JVM 是可运行 Java 代码的假想计算机 ，包括一套字节码指令集
 
 java代码的执行：代码编译为class，javac；装载class，ClassLoader；执行class，解释执行，编译执行，client compiler，server compiler。
 
+## 双亲委派机制
+
+双亲委派机制（Parent Delegation Model）是Java类加载器的核心机制，它定义了类加载器之间的层次关系和加载规则。
+
+### 类加载器层次结构
+
+1. **启动类加载器（Bootstrap ClassLoader）**
+   - 最顶层的类加载器，由C++实现
+   - 负责加载Java核心库（如rt.jar中的类）
+   - 加载路径：$JAVA_HOME/lib目录
+
+2. **扩展类加载器（Extension ClassLoader）**
+   - 由Java实现，继承自ClassLoader
+   - 负责加载扩展库中的类
+   - 加载路径：$JAVA_HOME/lib/ext目录
+
+3. **应用程序类加载器（Application ClassLoader）**
+   - 也称为系统类加载器（System ClassLoader）
+   - 负责加载应用程序classpath下的类
+   - 是用户自定义类加载器的默认父加载器
+
+4. **用户自定义类加载器（User Defined ClassLoader）**
+   - 继承自ClassLoader类
+   - 可以实现特定的类加载逻辑
+
+### 双亲委派工作流程
+
+1. **向上委派**：当一个类加载器收到类加载请求时，首先将请求委派给父类加载器
+2. **逐级委派**：父类加载器继续向上委派，直到达到启动类加载器
+3. **尝试加载**：启动类加载器尝试加载该类，如果能够加载则返回Class对象
+4. **向下返回**：如果父类加载器无法加载，则由子类加载器尝试加载
+5. **抛出异常**：如果所有类加载器都无法加载，则抛出ClassNotFoundException
+
+```java
+protected Class<?> loadClass(String name, boolean resolve) throws ClassNotFoundException {
+    synchronized (getClassLoadingLock(name)) {
+        // 首先检查类是否已经被加载
+        Class<?> c = findLoadedClass(name);
+        if (c == null) {
+            try {
+                if (parent != null) {
+                    // 委派给父类加载器
+                    c = parent.loadClass(name, false);
+                } else {
+                    // 委派给启动类加载器
+                    c = findBootstrapClassOrNull(name);
+                }
+            } catch (ClassNotFoundException e) {
+                // 父类加载器无法加载时，由当前加载器尝试加载
+            }
+            
+            if (c == null) {
+                // 调用findClass方法加载类
+                c = findClass(name);
+            }
+        }
+        if (resolve) {
+            resolveClass(c);
+        }
+        return c;
+    }
+}
+```
+
+### 双亲委派的优势
+
+1. **安全性**：防止核心API被篡改，确保Java核心库的类由启动类加载器加载
+2. **避免重复加载**：确保同一个类在JVM中只有一个Class对象
+3. **层次清晰**：类加载器之间形成清晰的层次关系
+4. **稳定性**：保证Java程序的稳定运行
+
+### 破坏双亲委派的场景
+
+1. **自定义类加载器**：重写loadClass方法而不调用父类加载器
+2. **线程上下文类加载器**：用于解决SPI（Service Provider Interface）加载问题
+3. **OSGi框架**：实现模块化的类加载机制
+4. **热部署**：在不重启JVM的情况下更新类文件
+
 内存管理：内存空间，方法区，堆，方法栈，本地方法栈，pc寄存器；内存分片，堆上分配，TLAB分配，栈上分配；
 
 内存回收：算法 Copy Mark-Sweep， Mark-Compact；Sun JDK 分代回收 GC参数，G1
