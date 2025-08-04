@@ -378,3 +378,17 @@
 > 进一寸有一寸的欣喜 —— 持续学习，每天进步一点点！
 
 作者致力于技术的学习与分享，通过开源项目和技术文章帮助更多开发者成长。欢迎通过GitHub、掘金等与作者交流，共同进步！
+
+
+| 输出信息                                                                 | 含义                                                                              |                                       |
+| -------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------- |
+| `Enumerating objects: 1324, done.`                                   | 正在枚举（统计）一共 1324 个对象（包括文件、文件夹、提交等）。                                              |                                       |
+| `Counting objects: 100% (1324/1324), done.`                          | 统计完毕。                                                                           |                                       |
+| `Delta compression using up to 32 threads`                           | 使用最多 32 个线程进行增量压缩（优化数据上传体积）。                                                    |                                       |
+| `Compressing objects: 100% (1293/1293), done.`                       | 完成压缩 1293 个对象。                                                                  |                                       |
+| \`Writing objects: 100% (1324/1324), 106.13 MiB                      | 1.49 MiB/s, done.\`                                                             | 将所有对象写入 Git 仓库，合计 106MB，速度为 1.49MB/s。 |
+| `Total 1324 (delta 559), reused 0 (delta 0), pack-reused 0 (from 0)` | 一共上传了 1324 个对象，其中有 559 个是差异对象（delta）。                                           |                                       |
+| `remote: Resolving deltas: 100% (559/559), done.`                    | GitHub 远端解析并合并了 559 个差异对象。                                                      |                                       |
+| `To https://github.com/webVueBlog/JavaPlusDoc.git`                   | 上传目标仓库为 `webVueBlog/JavaPlusDoc`。                                               |                                       |
+| `+ cda33eb...cf5b0b4 dist -> gh-pages (forced update)`               | 将本地 `dist` 内容强制推送（force push）到了远程的 `gh-pages` 分支，旧的提交是 `cda33eb`，新的是 `cf5b0b4`。 |                                       |
+| ✅ `dist目录上传成功，部署完成！`                                                 | 你部署成功了！dist 目录已上传并生效，一般这是构建后的静态页面，用于 GitHub Pages 展示。                           |                                       |
