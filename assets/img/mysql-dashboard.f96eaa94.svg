@@ -1,0 +1,68 @@
+<svg width="800" height="400" xmlns="http://www.w3.org/2000/svg">
+  <!-- 背景 -->
+  <rect width="800" height="400" fill="#181b1f" />
+  
+  <!-- 标题 -->
+  <text x="400" y="30" font-family="Arial" font-size="24" fill="#e9ecef" text-anchor="middle">MySQL 监控面板</text>
+  
+  <!-- 指标面板 -->
+  <g>
+    <!-- 面板1: 连接数 -->
+    <rect x="20" y="50" width="230" height="150" rx="5" fill="#212529" />
+    <text x="135" y="75" font-family="Arial" font-size="16" fill="#e9ecef" text-anchor="middle">连接数</text>
+    <text x="135" y="120" font-family="Arial" font-size="32" fill="#20c997" text-anchor="middle">142 / 500</text>
+    <text x="135" y="150" font-family="Arial" font-size="14" fill="#adb5bd" text-anchor="middle">当前 / 最大</text>
+    
+    <!-- 面板2: 查询性能 -->
+    <rect x="270" y="50" width="230" height="150" rx="5" fill="#212529" />
+    <text x="385" y="75" font-family="Arial" font-size="16" fill="#e9ecef" text-anchor="middle">每秒查询数 (QPS)</text>
+    <text x="385" y="120" font-family="Arial" font-size="32" fill="#20c997" text-anchor="middle">1,245</text>
+    <text x="385" y="150" font-family="Arial" font-size="14" fill="#adb5bd" text-anchor="middle">过去1分钟平均</text>
+    
+    <!-- 面板3: 慢查询 -->
+    <rect x="520" y="50" width="230" height="150" rx="5" fill="#212529" />
+    <text x="635" y="75" font-family="Arial" font-size="16" fill="#e9ecef" text-anchor="middle">慢查询数</text>
+    <text x="635" y="120" font-family="Arial" font-size="32" fill="#ffc107" text-anchor="middle">12</text>
+    <text x="635" y="150" font-family="Arial" font-size="14" fill="#adb5bd" text-anchor="middle">过去1小时</text>
+  </g>
+  
+  <!-- 图表 -->
+  <g>
+    <!-- 图表1: InnoDB缓冲池使用率 -->
+    <rect x="20" y="220" width="370" height="160" rx="5" fill="#212529" />
+    <text x="205" y="245" font-family="Arial" font-size="16" fill="#e9ecef" text-anchor="middle">InnoDB缓冲池使用率</text>
+    
+    <!-- 简化的折线图 -->
+    <polyline points="40,330 70,310 100,320 130,300 160,290 190,310 220,300 250,280 280,290 310,270 340,260 370,280" 
+              stroke="#20c997" fill="none" stroke-width="2" />
+    
+    <!-- X轴 -->
+    <line x1="40" y1="350" x2="370" y2="350" stroke="#495057" stroke-width="1" />
+    <text x="205" y="370" font-family="Arial" font-size="12" fill="#adb5bd" text-anchor="middle">时间 (过去24小时)</text>
+    
+    <!-- Y轴 -->
+    <line x1="40" y1="270" x2="40" y2="350" stroke="#495057" stroke-width="1" />
+    <text x="30" y="310" font-family="Arial" font-size="12" fill="#adb5bd" text-anchor="middle" transform="rotate(-90,30,310)">使用率 (%)</text>
+    
+    <!-- 图表2: 表锁定 -->
+    <rect x="410" y="220" width="370" height="160" rx="5" fill="#212529" />
+    <text x="595" y="245" font-family="Arial" font-size="16" fill="#e9ecef" text-anchor="middle">表锁定等待次数</text>
+    
+    <!-- 简化的柱状图 -->
+    <rect x="440" y="330" width="20" height="20" fill="#fd7e14" />
+    <rect x="480" y="320" width="20" height="30" fill="#fd7e14" />
+    <rect x="520" y="310" width="20" height="40" fill="#fd7e14" />
+    <rect x="560" y="300" width="20" height="50" fill="#fd7e14" />
+    <rect x="600" y="320" width="20" height="30" fill="#fd7e14" />
+    <rect x="640" y="330" width="20" height="20" fill="#fd7e14" />
+    <rect x="680" y="340" width="20" height="10" fill="#fd7e14" />
+    
+    <!-- X轴 -->
+    <line x1="430" y1="350" x2="760" y2="350" stroke="#495057" stroke-width="1" />
+    <text x="595" y="370" font-family="Arial" font-size="12" fill="#adb5bd" text-anchor="middle">时间 (过去24小时)</text>
+    
+    <!-- Y轴 -->
+    <line x1="430" y1="270" x2="430" y2="350" stroke="#495057" stroke-width="1" />
+    <text x="420" y="310" font-family="Arial" font-size="12" fill="#adb5bd" text-anchor="middle" transform="rotate(-90,420,310)">次数</text>
+  </g>
+</svg>

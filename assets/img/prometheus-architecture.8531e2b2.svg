@@ -1,0 +1,80 @@
+<svg width="800" height="500" xmlns="http://www.w3.org/2000/svg">
+  <!-- 背景 -->
+  <rect width="800" height="500" fill="#1f2937" rx="10" ry="10"/>
+  
+  <!-- 标题 -->
+  <text x="400" y="30" font-family="Arial" font-size="24" fill="#e9ecef" text-anchor="middle">Prometheus 架构图</text>
+  
+  <!-- Prometheus Server -->
+  <rect x="300" y="80" width="200" height="100" fill="#e74c3c" rx="5" ry="5" opacity="0.9"/>
+  <text x="400" y="130" font-family="Arial" font-size="18" fill="#ffffff" text-anchor="middle">Prometheus Server</text>
+  <text x="400" y="155" font-family="Arial" font-size="12" fill="#ffffff" text-anchor="middle">抓取、存储、查询</text>
+  
+  <!-- 数据源 -->
+  <rect x="50" y="250" width="150" height="60" fill="#3498db" rx="5" ry="5" opacity="0.9"/>
+  <text x="125" y="280" font-family="Arial" font-size="16" fill="#ffffff" text-anchor="middle">Node Exporter</text>
+  <text x="125" y="300" font-family="Arial" font-size="12" fill="#ffffff" text-anchor="middle">主机指标</text>
+  
+  <rect x="250" y="250" width="150" height="60" fill="#3498db" rx="5" ry="5" opacity="0.9"/>
+  <text x="325" y="280" font-family="Arial" font-size="16" fill="#ffffff" text-anchor="middle">cAdvisor</text>
+  <text x="325" y="300" font-family="Arial" font-size="12" fill="#ffffff" text-anchor="middle">容器指标</text>
+  
+  <rect x="450" y="250" width="150" height="60" fill="#3498db" rx="5" ry="5" opacity="0.9"/>
+  <text x="525" y="280" font-family="Arial" font-size="16" fill="#ffffff" text-anchor="middle">应用程序</text>
+  <text x="525" y="300" font-family="Arial" font-size="12" fill="#ffffff" text-anchor="middle">自定义指标</text>
+  
+  <rect x="650" y="250" width="150" height="60" fill="#3498db" rx="5" ry="5" opacity="0.9"/>
+  <text x="725" y="280" font-family="Arial" font-size="16" fill="#ffffff" text-anchor="middle">Pushgateway</text>
+  <text x="725" y="300" font-family="Arial" font-size="12" fill="#ffffff" text-anchor="middle">短期作业指标</text>
+  
+  <!-- 消费者 -->
+  <rect x="50" y="400" width="150" height="60" fill="#2ecc71" rx="5" ry="5" opacity="0.9"/>
+  <text x="125" y="430" font-family="Arial" font-size="16" fill="#ffffff" text-anchor="middle">Grafana</text>
+  <text x="125" y="450" font-family="Arial" font-size="12" fill="#ffffff" text-anchor="middle">可视化</text>
+  
+  <rect x="250" y="400" width="150" height="60" fill="#2ecc71" rx="5" ry="5" opacity="0.9"/>
+  <text x="325" y="430" font-family="Arial" font-size="16" fill="#ffffff" text-anchor="middle">Alertmanager</text>
+  <text x="325" y="450" font-family="Arial" font-size="12" fill="#ffffff" text-anchor="middle">告警处理</text>
+  
+  <rect x="450" y="400" width="150" height="60" fill="#2ecc71" rx="5" ry="5" opacity="0.9"/>
+  <text x="525" y="430" font-family="Arial" font-size="16" fill="#ffffff" text-anchor="middle">API Clients</text>
+  <text x="525" y="450" font-family="Arial" font-size="12" fill="#ffffff" text-anchor="middle">自定义应用</text>
+  
+  <!-- 连接线 -->
+  <!-- 数据源到Prometheus -->
+  <line x1="125" y1="250" x2="320" y2="180" stroke="#f8f9fa" stroke-width="2" stroke-dasharray="5,5"/>
+  <line x1="325" y1="250" x2="360" y2="180" stroke="#f8f9fa" stroke-width="2" stroke-dasharray="5,5"/>
+  <line x1="525" y1="250" x2="400" y2="180" stroke="#f8f9fa" stroke-width="2" stroke-dasharray="5,5"/>
+  <line x1="725" y1="250" x2="480" y2="180" stroke="#f8f9fa" stroke-width="2" stroke-dasharray="5,5"/>
+  
+  <!-- Prometheus到消费者 -->
+  <line x1="320" y1="180" x2="125" y2="400" stroke="#f8f9fa" stroke-width="2"/>
+  <line x1="360" y1="180" x2="325" y2="400" stroke="#f8f9fa" stroke-width="2"/>
+  <line x1="400" y1="180" x2="525" y2="400" stroke="#f8f9fa" stroke-width="2"/>
+  
+  <!-- 箭头标记 -->
+  <text x="200" y="210" font-family="Arial" font-size="12" fill="#f8f9fa" transform="rotate(-30, 200, 210)">Pull</text>
+  <text x="340" y="210" font-family="Arial" font-size="12" fill="#f8f9fa" transform="rotate(-60, 340, 210)">Pull</text>
+  <text x="450" y="210" font-family="Arial" font-size="12" fill="#f8f9fa" transform="rotate(-30, 450, 210)">Pull</text>
+  <text x="600" y="210" font-family="Arial" font-size="12" fill="#f8f9fa" transform="rotate(-30, 600, 210)">Push</text>
+  
+  <text x="200" y="350" font-family="Arial" font-size="12" fill="#f8f9fa" transform="rotate(30, 200, 350)">查询</text>
+  <text x="340" y="350" font-family="Arial" font-size="12" fill="#f8f9fa" transform="rotate(60, 340, 350)">告警</text>
+  <text x="450" y="350" font-family="Arial" font-size="12" fill="#f8f9fa" transform="rotate(30, 450, 350)">API</text>
+  
+  <!-- 图例 -->
+  <rect x="600" y="400" width="20" height="10" fill="#e74c3c" rx="2" ry="2" opacity="0.9"/>
+  <text x="625" y="410" font-family="Arial" font-size="12" fill="#f8f9fa" text-anchor="start">核心组件</text>
+  
+  <rect x="600" y="420" width="20" height="10" fill="#3498db" rx="2" ry="2" opacity="0.9"/>
+  <text x="625" y="430" font-family="Arial" font-size="12" fill="#f8f9fa" text-anchor="start">数据源</text>
+  
+  <rect x="600" y="440" width="20" height="10" fill="#2ecc71" rx="2" ry="2" opacity="0.9"/>
+  <text x="625" y="450" font-family="Arial" font-size="12" fill="#f8f9fa" text-anchor="start">消费者</text>
+  
+  <line x1="600" y1="460" x2="620" y2="460" stroke="#f8f9fa" stroke-width="2" stroke-dasharray="5,5"/>
+  <text x="625" y="465" font-family="Arial" font-size="12" fill="#f8f9fa" text-anchor="start">Pull/Push</text>
+  
+  <line x1="600" y1="480" x2="620" y2="480" stroke="#f8f9fa" stroke-width="2"/>
+  <text x="625" y="485" font-family="Arial" font-size="12" fill="#f8f9fa" text-anchor="start">数据流</text>
+</svg>

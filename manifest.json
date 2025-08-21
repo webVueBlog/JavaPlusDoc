@@ -1,0 +1,21 @@
+{
+  "name": "Jeskson-微服务分布式",
+  "short_name": "JavaPlusDoc",
+  "description": "Jeskson文档-架构师，Java微服务分布式技术文档",
+  "start_url": "/JavaPlusDoc/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#42b883",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/JavaPlusDoc/favicon.ico",
+      "sizes": "16x16 32x32 48x48",
+      "type": "image/x-icon"
+    }
+  ],
+  "categories": ["education", "productivity", "developer"],
+  "lang": "zh-CN",
+  "scope": "/JavaPlusDoc/",
+  "prefer_related_applications": false
+}
